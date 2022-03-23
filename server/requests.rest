@@ -5,26 +5,32 @@ POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-    "email": "testmailtwo@mail.com",
+    "email": "testmailfour@mail.com",
     "password": "12345678",
     "confirmPassword": "12345678"
 }
 
 ###
+# activate account
+PUT http://localhost:3000/users/activate/623b76c5744649db24ad7659
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjNiNzZjNTc0NDY0OWRiMjRhZDc2NTkiLCJyb2wiOmZhbHNlLCJpYXQiOjE2NDgwNjQxOTcsImV4cCI6MTY1MTY2NDE5N30.YnNX3-YZgT6HxQNjYv878zKy2S08J9lxqPwRmqe34Yk
+Content-Type: application/json
+
+###
 # login
 POST http://localhost:3000/users/login
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjNiMzU4YTcxMjU5Nzg4NDU4MGM5YWYiLCJyb2wiOmZhbHNlLCJpYXQiOjE2NDgwNDc0OTgsImV4cCI6MTY1MTY0NzQ5OH0.F7Ezo1yDDqRAfG_seir9zEmu6xtTDWtXSy9c0qtYybI
 Content-Type: application/json
 
 {
-    "email": "testmailtwo@mail.com",
+    "email": "testmailthree@mail.com",
     "password": "12345678"
 }
 
+
 ###
 # update user
-PUT http://localhost:3000/users/62383c52f98524f57ba08a4b
-//POTRZEBNY TOKEN token
+PUT http://localhost:3000/users/623b6521f4ff389ef4c00566
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjNiNjUyMWY0ZmYzODllZjRjMDA1NjYiLCJyb2wiOmZhbHNlLCJpYXQiOjE2NDgwNTk2ODEsImV4cCI6MTY1MTY1OTY4MX0.w7AphfL4yloqbiBg8MJzp529uekhjxckj2BssrmeRx4
 Content-Type: application/json
 
 {
@@ -33,20 +39,19 @@ Content-Type: application/json
 
 ###
 # delete user
-DELETE http://localhost:3000/users/621f3780906c210f8af8ce83
+DELETE http://localhost:3000/users/623b6521f4ff389ef4c00566
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjNiNjUyMWY0ZmYzODllZjRjMDA1NjYiLCJyb2wiOmZhbHNlLCJpYXQiOjE2NDgwNTk2ODEsImV4cCI6MTY1MTY1OTY4MX0.w7AphfL4yloqbiBg8MJzp529uekhjxckj2BssrmeRx4
 Content-Type: application/json
 
 
-
-###
 # ____________________________ CATEGORIES____________________________
+###
 # create category
 POST http://localhost:3000/categories
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDczODY0NDcsImV4cCI6MjUxMTM4NjQ0N30.PmiBkkD6iFzT6Fw0PJkpggiQ05ttDJZw9L4LgiuP0q0
 Content-Type: application/json
 
 {
-	"name": "trees"
+	"name": "marchew"
 }
 
 ###
@@ -60,7 +65,7 @@ POST http://localhost:3000/heights
 Content-Type: application/json
 
 {
-	"range": "9008"
+	"range": "123-123"
 }
 
 ###
@@ -71,18 +76,18 @@ GET http://localhost:3000/heights
 # ____________________________ OFFERS____________________________
 # create offer
 POST http://localhost:3000/offers
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDczODY0NDcsImV4cCI6MjUxMTM4NjQ0N30.PmiBkkD6iFzT6Fw0PJkpggiQ05ttDJZw9L4LgiuP0q0
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjNiNzZjNTc0NDY0OWRiMjRhZDc2NTkiLCJyb2wiOmZhbHNlLCJpYXQiOjE2NDgwNjQxOTcsImV4cCI6MTY1MTY2NDE5N30.YnNX3-YZgT6HxQNjYv878zKy2S08J9lxqPwRmqe34Yk
 Content-Type: application/json
 
 {
-    "userId": "62208ded0807a0241696b30c",
-	"title": "Roses",
-    "description": "Lorem ipsum Lorem Ipsum.",
-    "city": "Brześć",
-    "phoneNumber": "123234345",
+    "userId": "623b64abf4ff389ef4c00562",
+	"title": "Brukselka",
+    "description": "Adoptuj brukselkę!",
+    "city": "Lodówka",
+    "phoneNumber": "989898982",
     "category": "623a4712db6477afcad4d52a",
     "height": "623a411ad32b3e7b591c0679",
-    "price": 330,
+    "price": 1330,
     "forExchange": false,
     "photos": []
 }
@@ -94,10 +99,19 @@ GET http://localhost:3000/offers
 
 ###
 # update offer
-PUT http://localhost:3000/offers/62208ded0807a0241696b30c
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDczODY0NDcsImV4cCI6MjUxMTM4NjQ0N30.PmiBkkD6iFzT6Fw0PJkpggiQ05ttDJZw9L4LgiuP0q0
+PUT http://localhost:3000/offers/623b775f744649db24ad765e
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjNiNzZjNTc0NDY0OWRiMjRhZDc2NTkiLCJyb2wiOmZhbHNlLCJpYXQiOjE2NDgwNjQxOTcsImV4cCI6MTY1MTY2NDE5N30.YnNX3-YZgT6HxQNjYv878zKy2S08J9lxqPwRmqe34Yk
 Content-Type: application/json
 
 {
-  "title": "Kapusta"
+    "userId": "623b64abf4ff389ef4c00562",
+	"title": "Kalafior",
+    "description": "Adoptuj kalafioraaa!",
+    "city": "Las Canarias",
+    "phoneNumber": "123234345",
+    "category": "623a4712db6477afcad4d52a",
+    "height": "623a411ad32b3e7b591c0679",
+    "price": 1330,
+    "forExchange": false,
+    "photos": []
 }
