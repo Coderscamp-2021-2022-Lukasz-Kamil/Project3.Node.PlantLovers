@@ -30,7 +30,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/offer" element={<AddOfferPage />} />
+          <Route path="/add-offer" element={<AddOfferPage />} />
           <Route path="/plants" element={<PlantsPage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/user/login" element={<LoginPage />} />
@@ -39,7 +39,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/admin" element={<AdminLoginPage />} />
           <Route
-            path="admin/categories&heights"
+            path="admin/categories-and-heights"
             element={<AdminCategoriesAndHeightsPage />}
           />
           <Route
