@@ -4,6 +4,7 @@ import GlobalStyles from "../../../global-styles/GlobalStyles";
 import { theme } from "../../../theme/theme";
 import { Button, ButtonWithBorders } from "../../ui/Button/Button.style";
 import { FlexCenter } from "../../wrappers/FlexCenter/FlexCenter.style";
+import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -12,6 +13,7 @@ function App() {
         <h1>Hello World</h1>
         <Button>Primary</Button>
         <ButtonWithBorders>Mam style z Buttona</ButtonWithBorders>
+        <GridContainer></GridContainer>
       </FlexCenter>
     </ThemeProvider>
   );
