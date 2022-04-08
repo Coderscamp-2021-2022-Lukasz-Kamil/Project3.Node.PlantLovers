@@ -7,10 +7,10 @@ const GlobalStyles = createGlobalStyle`
    margin: 0;
 }
 body {
-   font-family: 'Poppins', sans-serif;
+   font-family: 'Roboto', sans-serif;
    -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;background-color: ${({ theme }) =>
-     theme.colors.pageBackground};
+   -moz-osx-font-smoothing: grayscale;
+   background-color: ${({ theme }) => theme.colors.common.backgroundcolor};
 }
 `;
 

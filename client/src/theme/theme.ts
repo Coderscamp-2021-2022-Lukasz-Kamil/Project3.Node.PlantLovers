@@ -3,6 +3,7 @@ export const theme = {
     common: {
       textColor: "#000",
       textInactive: "#A59E9E",
+      backgroundcolor: "#FFF",
     },
     navigationBar: {
       primary: "#73A942",
