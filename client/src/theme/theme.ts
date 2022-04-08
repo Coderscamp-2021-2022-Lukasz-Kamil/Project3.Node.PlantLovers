@@ -18,7 +18,8 @@ export const theme = {
     button: {
       primary: "#538D22",
       secondary: "#F9F8F8",
-      textInactive: "#8B8B8B", 
+      textInactive: "#8B8B8B",
+      hover: "#AAD576",
     },
   },
 
@@ -28,15 +29,23 @@ export const text = {
   size: {
       mobile: {
         xs: 10,
-        sm: 14,
+        sm: 12,
+        md: 14,
+        mdl: 16,
         lg: 20,
-        xl: 26,
+        xl: 24,
+        xxl: 26,
       },
       desktop: {
         xs: 14,
-        sm: 18,
+        sm: 16,
+        mds: 18,
+        md: 20,
+        mdl: 24,
         lg: 26,
         xl: 32,
+        xxl: 36,
+        xxxl: 38,
       },
     },
   weight: {
