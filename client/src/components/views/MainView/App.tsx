@@ -44,6 +44,30 @@ function App() {
       </Router>
     </ThemeProvider>
   );
+
+  /*
+  // Here should be outlent when navbar will be created, like://
+    function PagesWithNavigationBar() {
+      return (
+        <> 
+        //component imported from file with navbar//
+          <NavigationBar />
+          <Outlet />
+        </>
+      );
+    }
+
+    //Aslo navbar must be included in routes e.g.: //
+      <Route path="/" element={<PagesWithNavigationBar />} >
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/add-offer" element={<AddOfferPage />} />
+        <Route path="/plants" element={<PlantsPage />} />
+        <Route path="/user" element={<UserPage />} />
+        <Route path="/user/login" element={<LoginPage />} />
+        <Route path="/user/sign-up" element={<SignUpPage />} />
+        <Route path="/user/your-offers" element={<YourOfferPage />} />
+      </Route>
+  */
 }
 
 export default App;

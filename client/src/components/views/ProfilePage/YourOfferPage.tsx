@@ -1,7 +1,7 @@
 import React from "react";
 
 const YourOfferPage = () => {
-  return <div>LoginPage</div>;
+  return <div>YourOfferPage</div>;
 };
 
 export default YourOfferPage;
