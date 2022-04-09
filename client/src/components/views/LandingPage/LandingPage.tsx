@@ -1,7 +1,19 @@
 import React from "react";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
+// import useFetchData from "../../../hooks/UseFetch";
 
 const LandingPage = () => {
+  // const { response, error } = useFetchData({
+  //   url: "/offers",
+  //   method: "GET",
+  //   headers: {
+  //     accept: "*/*",
+  //   },
+  // });
+
+  // const offers = response;
+  // console.log(offers);
+
   return (
     <div>
       <GridContainer></GridContainer>
