@@ -18,5 +18,4 @@ export const ImageCard = styled.div<SizeOfImageCard>`
   background-position: center;
   width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "12vw")};
   height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "15vw")};
-  background-color: aliceblue;
 `;
