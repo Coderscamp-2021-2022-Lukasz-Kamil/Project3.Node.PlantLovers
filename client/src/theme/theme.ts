@@ -43,6 +43,10 @@ export const theme = {
       xxl: 36,
       xxxl: 38,
     },
+    common: {
+      borderRadius: "5px",
+      marginTop: "30px",
+    },
   },
   weight: {
     light: 200,

@@ -7,13 +7,11 @@ interface TypographyProps {
 }
 
 export const Typography = styled.p<TypographyProps>`
-	font-size: ${({ fontSize }) =>
-		fontSize ? theme.size.desktop.lg : theme.size.desktop.sm};
-	font-weight: ${({ fontWeight }) =>
-		fontWeight ? theme.weight.bold : theme.weight.regular};
+	font-size: ${({ fontSize }) => fontSize ? fontSize : theme.size.desktop.sm};
+	font-weight: ${({ fontWeight }) => fontWeight ? fontWeight : theme.weight.regular};
 
 	@media (max-width: 576px) {
 		font-size: ${({ fontSize }) =>
-			fontSize ? theme.size.mobile.mdl : theme.size.mobile.sm};
+			fontSize ? fontSize : theme.size.mobile.sm};
 	}
 `;
