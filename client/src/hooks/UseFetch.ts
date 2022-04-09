@@ -16,7 +16,6 @@ const useFetchData = (params: FetchDataParams) => {
   const [loading, setLoading] = useState(true);
 
   const fetchData = useCallback(async () => {
-    setLoading(true);
     try {
       const result = await axios.request({
         method: params.method,
@@ -33,11 +32,9 @@ const useFetchData = (params: FetchDataParams) => {
   }, [params]);
 
   useEffect(() => {
-    const callData = async () => {
-      await fetchData();
-    };
-    callData();
-  }, [params, fetchData]);
+    fetchData();
+  }, []);
+
   return { response, error, loading };
 };
 
