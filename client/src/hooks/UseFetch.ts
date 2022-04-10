@@ -8,7 +8,8 @@ interface FetchDataParams {
   body: Record<string, unknown>;
 }
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "https://plant-lovers.herokuapp.com";
+axios.defaults.method = "GET";
 
 const useFetchData = (params: FetchDataParams) => {
   const [response, setResponse] = useState([]);

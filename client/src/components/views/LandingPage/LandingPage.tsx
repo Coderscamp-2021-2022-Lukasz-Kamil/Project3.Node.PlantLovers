@@ -1,11 +1,11 @@
 import React from "react";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 // import useFetchData from "../../../hooks/UseFetch";
+import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 
 const LandingPage = () => {
   // const { response, error } = useFetchData({
   //   url: "/offers",
-  //   method: "GET",
   //   headers: {
   //     accept: "*/*",
   //   },
@@ -17,6 +17,7 @@ const LandingPage = () => {
   return (
     <div>
       <GridContainer></GridContainer>
+      <FlexWrapper></FlexWrapper>
       <p>LandingPage</p>
       <p>
         Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja
