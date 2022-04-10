@@ -1,10 +1,12 @@
 import React from "react";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
+import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 
 const LandingPage = () => {
   return (
     <div>
       <GridContainer></GridContainer>
+      <FlexWrapper></FlexWrapper>
       <p>LandingPage</p>
       <p>
         Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja
