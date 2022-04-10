@@ -23,6 +23,11 @@ export const theme = {
       hover: "#AAD576",
       secondaryHover: "#A59E9E",
     },
+    input: {
+      primary: "#F9F8F8",
+      secondary: "#000",
+      placeholder: "#9E9999",
+    }
   },
   size: {
     mobile: {
