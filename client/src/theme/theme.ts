@@ -3,6 +3,7 @@ export const theme = {
     common: {
       textColor: "#000",
       textInactive: "#A59E9E",
+      secondaryTextInactive: "#8B8B8B",
       backgroundcolor: "#FFF",
     },
     navigationBar: {
@@ -20,6 +21,7 @@ export const theme = {
       secondary: "#F9F8F8",
       textInactive: "#8B8B8B",
       hover: "#AAD576",
+      secondaryHover: "#A59E9E",
     },
   },
   size: {
