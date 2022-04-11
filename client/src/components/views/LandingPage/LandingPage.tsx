@@ -1,9 +1,7 @@
 import React from "react";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 // import useFetchData from "../../../hooks/UseFetch";
-import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-import { CardTypography } from "../../ui/Card/CardTypography.style";
-import { Typography } from "../../ui/Typography/Typography.style";
+import CardWithTypography from "../../ui/CardTypography/CardTypography";
 
 const LandingPage = () => {
   // const { response, error } = useFetchData({
@@ -19,14 +17,7 @@ const LandingPage = () => {
   return (
     <div>
       <GridContainer></GridContainer>
-      <FlexWrapper>
-        <CardTypography>
-          <Typography>
-            Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja
-            jechałem na rowerze, i go spotkałe
-          </Typography>
-        </CardTypography>
-      </FlexWrapper>
+      <CardWithTypography />
       <p>LandingPage</p>
       <p>
         Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja

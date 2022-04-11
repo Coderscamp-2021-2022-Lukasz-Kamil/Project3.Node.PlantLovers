@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface CardProps {
+export interface CardProps {
   color?: "primary" | "secondary" | "highlighted";
   width?: number;
   height?: number;
@@ -8,7 +8,7 @@ interface CardProps {
   boxShadow?: boolean;
 }
 
-export const CardTypography = styled.div<CardProps>`
+export const Card = styled.div<CardProps>`
   height: ${({ height }) => (height ? height : 70)}vh;
   width: ${({ width }) => (width ? width : 32)}vw;
   background-color: ${({ theme, color }) =>
