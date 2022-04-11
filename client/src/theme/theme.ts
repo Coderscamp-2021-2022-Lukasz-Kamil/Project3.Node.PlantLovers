@@ -22,6 +22,7 @@ export const theme = {
       textInactive: "#8B8B8B",
       hover: "#AAD576",
       secondaryHover: "#A59E9E",
+      transparent: "transparent",
     },
   },
   size: {
