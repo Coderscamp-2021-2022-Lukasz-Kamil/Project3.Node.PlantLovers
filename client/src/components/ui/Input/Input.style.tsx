@@ -7,7 +7,6 @@ interface InputProps {
     | "primary"
     | "secondary"
     | "placeholder";
-    background?: "primary";
     width?: number;
 }
 
@@ -20,8 +19,7 @@ export const Input = styled.input<InputProps>`
         fontSize ? theme.size.desktop[fontSize] : theme.size.desktop.mds}px;
     font-weight: ${({ theme, fontWeight }) =>
         fontWeight ? theme.weight[fontWeight] : theme.weight.regular};
-    background: ${({ theme, background }) =>
-        background ? theme.colors.input[background] : theme.colors.input.primary};
+    background: ${({ theme }) => theme.colors.input.primary};
     width: ${({ width }) => (width ? width : 670)}px;
 
     &::placeholder {
