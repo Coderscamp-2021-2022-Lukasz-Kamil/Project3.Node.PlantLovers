@@ -17,6 +17,6 @@ export const Typography = styled.p<TypographyProps>`
     font-size: ${({ fontSizeMobile }) =>
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
-        : theme.size.mobile.sm}px;
+        : theme.size.mobile.mdl}px;
   }
 `;
