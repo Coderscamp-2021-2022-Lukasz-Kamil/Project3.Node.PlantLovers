@@ -34,6 +34,7 @@ export const theme = {
       lg: 20,
       xl: 24,
       xxl: 26,
+      title: 35,
     },
     desktop: {
       xs: 14,
@@ -45,6 +46,7 @@ export const theme = {
       xl: 32,
       xxl: 36,
       xxxl: 38,
+      title: 55,
     },
   },
   weight: {

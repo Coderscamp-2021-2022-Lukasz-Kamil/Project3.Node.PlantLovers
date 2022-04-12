@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import PlantsLovin from "../font/Plants_lovin";
+//import PlantsLovin from "../font/Plants_lovin";
 
 const GlobalStyles = createGlobalStyle`
 *, *:before, *:after{
