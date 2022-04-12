@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
+export enum Color {
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+  HIGHLIGHTED = "highlighted",
+}
+
 export interface CardProps {
-  color?: "primary" | "secondary" | "highlighted";
+  color?: Color;
   width?: number;
   height?: number;
   borderRadius?: number;
@@ -15,7 +21,7 @@ export const Card = styled.div<CardProps>`
     color ? theme.colors.card[color] : theme.colors.card.secondary};
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : 0)}px;
   box-shadow: ${({ theme, boxShadow }) =>
-    boxShadow ? "none" : theme.colors.card.boxShadow};
+    boxShadow ? theme.colors.card.boxShadow : "none"};
   padding: 2rem;
   word-wrap: break-word;
 

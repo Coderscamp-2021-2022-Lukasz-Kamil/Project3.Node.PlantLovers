@@ -6,13 +6,16 @@ import { Typography, TypographyProps } from "../Typography/Typography.style";
 interface CardWithTypographyProps {
   cardProps?: CardProps;
   typographyProps?: TypographyProps;
+  textToDisplay?: string;
 }
 
 const CardWithTypography = (props: CardWithTypographyProps) => {
   return (
     <FlexWrapper>
       <Card {...props.cardProps}>
-        <Typography {...props.typographyProps}>Jakis tekst</Typography>
+        <Typography {...props.typographyProps}>
+          {props.textToDisplay}
+        </Typography>
       </Card>
     </FlexWrapper>
   );
