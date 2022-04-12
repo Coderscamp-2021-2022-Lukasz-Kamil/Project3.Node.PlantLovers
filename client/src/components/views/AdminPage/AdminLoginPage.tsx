@@ -1,12 +1,15 @@
 import React from "react";
-import { Button } from "../../ui/Button/Button.style";
 import { ButtonWithImage } from "../../ui/ButtonWithIcon/ButtonWithIcon";
 
 const AdminLoginPage = () => {
   return (
     <div>
       <div>AdminLoginPage</div>
-      <ButtonWithImage content="Add Photos" />
+      <ButtonWithImage
+        src="AddVector.svg"
+        alt="add photos button"
+        content="Add Photos"
+      />
     </div>
   );
 };

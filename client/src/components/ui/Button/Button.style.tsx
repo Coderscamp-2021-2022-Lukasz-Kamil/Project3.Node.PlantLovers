@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface ButtonProps {
+export interface ButtonProps {
   fontSizeDesktop?: "sm" | "mds" | "md" | "mdl";
   fontSizeMobile?: "sm" | "md" | "mdl";
   fontWeight?: "bold" | "regular";
@@ -10,7 +10,7 @@ interface ButtonProps {
     | "textColor"
     | "secondaryTextInactive";
   background?: "primary" | "hover" | "secondary" | "secondaryHover";
-  width?: number;
+  width?: number | "auto";
   height?: number;
 }
 
@@ -85,11 +85,11 @@ export const FilterButton = styled(Button)`
   }
 
   @media (max-width: 576px) {
-    width: ${({ width }) => (width ? width : 68)}px;
-    height: ${({ height }) => (height ? height : 21)}px;
     font-size: ${({ theme, fontSizeMobile }) =>
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
         : theme.size.mobile.sm}px;
+    width: ${({ width }) => (width ? width : 68)}px;
+    height: ${({ height }) => (height ? height : 21)}px;
   }
 `;

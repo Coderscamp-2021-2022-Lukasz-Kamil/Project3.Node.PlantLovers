@@ -14,15 +14,12 @@ interface ButtonWithImage {
 export const Icon = styled.img<ButtonWithImage>`
   src: ${({ src }) => src};
   alt: ${({ alt }) => alt};
-  width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "35px")};
-  height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "35px")};
+  width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "30px")};
+  height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "30px")};
   color: white;
-  position: relative;
-  left: 130px;
+  margin-right: 10px;
   transition: 0.2s;
-
   @media (max-width: 576px) {
-    left: 29px;
     width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "20px")};
     height: ${({ imageSize }) =>
       imageSize?.height ? imageSize.height : "20px"};
@@ -30,9 +27,8 @@ export const Icon = styled.img<ButtonWithImage>`
 `;
 
 export const AddPhotos = styled(Button)`
-  display: grid;
-  grid-template-columns: 0.4fr 0.6fr;
-  justify-items: left;
+  display: flex;
+  justify-content: center;
   align-items: center;
   font-size: ${({ theme, fontSizeDesktop }) =>
     fontSizeDesktop
@@ -44,7 +40,6 @@ export const AddPhotos = styled(Button)`
     background ? theme.colors.button[background] : theme.colors.card.secondary};
   width: ${({ width }) => (width ? width : 454)}px;
   height: ${({ height }) => (height ? height : 87)}px;
-
   &:hover {
     color: ${({ theme, color }) =>
       color ? theme.colors.common[color] : theme.colors.common.backgroundcolor};
@@ -58,7 +53,6 @@ export const AddPhotos = styled(Button)`
       brightness(108%) contrast(100%);
   }
   @media (max-width: 576px) {
-    grid-template-columns: 0.32fr 0.68fr;
     font-size: ${({ theme, fontSizeMobile }) =>
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
@@ -68,11 +62,15 @@ export const AddPhotos = styled(Button)`
   }
 `;
 
-export const ButtonWithImage = (props: { content: string }) => {
+export const ButtonWithImage = (props: {
+  content: string;
+  src: string;
+  alt: string;
+}) => {
   return (
     <div>
       <AddPhotos>
-        <Icon src="AddVector.svg" alt="add photos button" />
+        <Icon src={props.src} alt={props.alt} />
         {props.content}
       </AddPhotos>
     </div>
