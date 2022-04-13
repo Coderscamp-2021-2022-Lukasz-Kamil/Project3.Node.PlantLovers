@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-interface Icon {
-    src: string;
-    alt: string;
+interface SVG {
     imageSize?: {
       width: string;
       height: string;
     };
 }
 
-const Icon = styled.img<Icon>`
+const SVG = styled.img<SVG>`
 align-self: center;
-src: ${({ src }) => src};
-alt: ${({ alt }) => alt};
 width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "18px")};
 height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "18px")};
 
@@ -24,7 +20,7 @@ height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "18px")};
 } 
 `;
 
-const DropDownContainer = styled.div`
+const  DropdownContainer = styled.div`
     margin-top: ${({theme}) => theme.size.common.marginTop};
     display: flex;
     flex-flow: column;
@@ -37,7 +33,7 @@ const DropDownContainer = styled.div`
 const DropdownHeader = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 670px;
+    max-width: 670px;
     margin-bottom: 0.8em;
     padding: 0.4em 2em 0.4em 1em;
     font-size: ${({theme}) => theme.size.desktop.mds}px;
@@ -50,17 +46,13 @@ const DropdownHeader = styled.div`
     background-color:${({theme}) => theme.colors.card.highlighted};
     }
 
-    &:hover ${Icon} {
-        background-color: red;
-    }
-
     @media (max-width: 576px) {
         width: 290px;
         font-size: ${({theme}) => theme.size.mobile.md}px;
     }
 `;
 
-const DropDownList = styled.ul`
+export const List = styled.div`
     width: 670px;
     border-radius: ${({theme}) => theme.size.common.borderRadius};
     background: ${({theme}) => theme.colors.card.secondary};
@@ -77,7 +69,7 @@ const DropDownList = styled.ul`
     };
 `;
 
-const ListItem= styled.li`
+export const ListItem= styled.div`
     padding-left: 1em;
     list-style: none;
     margin-bottom: 0.8em;
@@ -87,22 +79,26 @@ const ListItem= styled.li`
     }
 `;
 
-export const DropDown = (props: {title: string; src: string; alt: string}) => {
+export const Dropdown = (props: {title: string; src: string; alt: string}) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggling = () => setIsOpen(state => !state);
 
     return (
-      <DropDownContainer>
+      < DropdownContainer>
         <DropdownHeader onClick={toggling}>
             {props.title}
-          <Icon src={props.src} alt={props.alt} />
+          <SVG src={props.src} alt={props.alt} />
         </DropdownHeader>
         {isOpen && (
-            <DropDownList>
-                  <ListItem>
-                    </ListItem>     
-            </DropDownList>
+            <List>
+                <ListItem ></ListItem>
+                {/* <ListItem>hanging plants</ListItem>      */}
+                {/* <ListItem >cacti and succulents</ListItem> */}
+                {/* <ListItem >blooming</ListItem> */}
+                {/* <ListItem >green</ListItem> */}
+                {/* <ListItem >trees and shrubs</ListItem> */}
+            </List>
         )}
-      </DropDownContainer>
+      </ DropdownContainer>
     );
   };
