@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
-interface TypographyProps {
+export interface TypographyProps {
   fontSize?: "xs" | "sm" | "mds" | "md" | "mdl" | "lg" | "xl" | "xxl" | "xxxl";
   fontSizeMobile?: "xs" | "sm" | "md" | "mdl" | "lg" | "xl" | "xxl";
   fontWeight?: "light" | "regular" | "bold";
@@ -17,6 +17,6 @@ export const Typography = styled.p<TypographyProps>`
     font-size: ${({ fontSizeMobile }) =>
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
-        : theme.size.mobile.sm}px;
+        : theme.size.mobile.mdl}px;
   }
 `;

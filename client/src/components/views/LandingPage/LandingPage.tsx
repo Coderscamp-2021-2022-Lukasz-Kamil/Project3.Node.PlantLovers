@@ -2,8 +2,7 @@ import React from "react";
 import { ImageCard } from "../../ui/ImageCard.style";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 // import useFetchData from "../../../hooks/UseFetch";
-import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-
+import { Card } from "../../ui/Card/Card.style";
 const LandingPage = () => {
   // const { response, error } = useFetchData({
   //   url: "/offers",
@@ -18,7 +17,7 @@ const LandingPage = () => {
   return (
     <div>
       <GridContainer></GridContainer>
-      <FlexWrapper></FlexWrapper>
+      <Card />
       <p>LandingPage</p>
       <ImageCard src="examplePlantPhoto.svg" alt="plantphoto" />
       <p>
