@@ -1,13 +1,7 @@
 import styled from "styled-components";
 
-export enum Color {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  HIGHLIGHTED = "highlighted",
-}
-
 export interface CardProps {
-  color?: Color;
+  color?: "primary" | "secondary" | "highlighted";
   width?: number;
   height?: number;
   borderRadius?: number;

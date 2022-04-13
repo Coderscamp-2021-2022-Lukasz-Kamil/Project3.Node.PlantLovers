@@ -1,8 +1,7 @@
 import React from "react";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 // import useFetchData from "../../../hooks/UseFetch";
-import CardWithTypography from "../../ui/CardTypography/CardTypography";
-import { Color } from "../../ui/Card/Card.style";
+import { Card } from "../../ui/Card/Card.style";
 const LandingPage = () => {
   // const { response, error } = useFetchData({
   //   url: "/offers",
@@ -14,18 +13,10 @@ const LandingPage = () => {
   // const offers = response;
   // console.log(offers);
 
-  const example = {
-    color: Color.HIGHLIGHTED,
-    width: 30,
-    height: 50,
-    borderRadius: 0,
-    boxShadow: true,
-  };
-
   return (
     <div>
       <GridContainer></GridContainer>
-      <CardWithTypography cardProps={example} />
+      <Card />
       <p>LandingPage</p>
       <p>
         Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja
