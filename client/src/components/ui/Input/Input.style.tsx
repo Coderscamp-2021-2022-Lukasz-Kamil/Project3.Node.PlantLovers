@@ -11,9 +11,8 @@ interface InputProps {
 }
 
 export const Input = styled.input<InputProps>`
-    padding-bottom: 13px;
     border-radius: 5px;
-    border: medium solid #000;
+    border: 2px solid #000;
     cursor: pointer;
     font-size: ${({ theme, fontSize }) =>
         fontSize ? theme.size.desktop[fontSize] : theme.size.desktop.mds}px;
