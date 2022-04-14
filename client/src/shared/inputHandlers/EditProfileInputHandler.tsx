@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { phoneRegExp } from "./AddOfferInputHandler";
+import { phoneRegExp } from "./constants";
 
 const editProfileSchema = Yup.object({
   email: Yup.string().email("Invalid email"),

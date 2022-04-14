@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { phoneRegExp } from "./AddOfferInputHandler";
-import { passwordRegExp } from "./LoginInputHandler";
+import { phoneRegExp } from "./constants";
+import { passwordRegExp } from "./constants";
 
 const signUpSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -9,7 +9,7 @@ const signUpSchema = Yup.object({
   city: Yup.string(),
   password: Yup.string()
     .required("Password is required")
-    .min(4, "Password is too short - should be 4 chars minimum")
+    .min(8, "Password is too short - should be 8 chars minimum")
     .matches(
       passwordRegExp,
       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"

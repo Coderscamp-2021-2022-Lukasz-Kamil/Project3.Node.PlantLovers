@@ -1,10 +1,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-export const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
-const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/png"];
+import { phoneRegExp } from "./constants";
+import { supportedFormats } from "./constants";
 
 const offerSchema = Yup.object({
   title: Yup.string().required("Title offer is required"),
@@ -24,7 +21,7 @@ const offerSchema = Yup.object({
   photos: Yup.mixed()
     .required("Image is required")
     .test("fileType", " You can only upload JPG, JPEG and PNG files", (value) =>
-      SUPPORTED_FORMATS.includes(value.type)
+      supportedFormats.includes(value.type)
     ),
 });
 
