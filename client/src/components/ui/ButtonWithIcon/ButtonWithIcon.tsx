@@ -26,7 +26,7 @@ export const Icon = styled.img<ButtonWithImage>`
   }
 `;
 
-export const AddPhotos = styled(Button)`
+export const AddButton = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,17 +63,17 @@ export const AddPhotos = styled(Button)`
   }
 `;
 
-export const ButtonWithImage = (props: {
+export const ButtonWithIcon = (props: {
   content: string;
   src: string;
   alt: string;
 }) => {
   return (
     <div>
-      <AddPhotos>
-        <Icon src={props.src} alt="add photos button" />
+      <AddButton>
+        <Icon src={props.src} alt={props.alt} />
         {props.content}
-      </AddPhotos>
+      </AddButton>
     </div>
   );
 };

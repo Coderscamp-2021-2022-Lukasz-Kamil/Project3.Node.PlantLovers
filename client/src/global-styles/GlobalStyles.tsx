@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-//import PlantsLovin from "../font/Plants_lovin";
 
 const GlobalStyles = createGlobalStyle`
 *, *:before, *:after{
@@ -8,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
    margin: 0;
 }
 body {
-   font-family: 'Roboto', sans-serif;
+   font-family: 'Poppins', sans-serif;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
    background-color: ${({ theme }) => theme.colors.common.backgroundcolor};

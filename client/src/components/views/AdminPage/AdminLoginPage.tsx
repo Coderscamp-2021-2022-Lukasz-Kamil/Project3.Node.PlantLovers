@@ -1,12 +1,7 @@
 import React from "react";
-import { NavBar } from "../NavigationBar/NavigationBar";
 
 const AdminLoginPage = () => {
-  return (
-    <div>
-      <NavBar />
-    </div>
-  );
+  return <div>AdminLoginPage</div>;
 };
 /*
  <ButtonWithImage
