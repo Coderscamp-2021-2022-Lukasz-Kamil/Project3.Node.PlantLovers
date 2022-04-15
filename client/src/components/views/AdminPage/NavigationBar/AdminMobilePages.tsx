@@ -8,16 +8,16 @@ import { Icon } from "../../../ui/ButtonWithIcon/ButtonWithIcon";
 
 const AdminMobliePages = () => {
   const pages = [
-    { source: "/admin/users", icon: "UsersVector.svg", alt: "users button" },
+    { source: "/admin/users", icon: "UsersVector.svg", aria: "Users" },
     {
       source: "/admin/offers/users-offers",
       icon: "OffersVector.svg",
-      alt: "Offers button",
+      aria: "Users offers",
     },
     {
       source: "/admin/settings",
       icon: "UserVector.svg",
-      alt: "profile setting button",
+      aria: "profile setting",
     },
   ];
   return (
@@ -25,7 +25,7 @@ const AdminMobliePages = () => {
       {pages.map((page) => (
         <NavBarButton key={page.source}>
           <PageLink to={page.source}>
-            <Icon src={page.icon} alt={page.alt} />
+            <Icon src={page.icon} aria-label={page.aria} />
           </PageLink>{" "}
         </NavBarButton>
       ))}

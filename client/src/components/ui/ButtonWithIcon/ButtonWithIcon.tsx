@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { Button } from "../Button/Button.style";
 
 interface ButtonWithImage {
-  src: string;
-  alt: string;
   imageSize?: {
     width: string;
     height: string;
@@ -12,8 +10,6 @@ interface ButtonWithImage {
 }
 
 export const Icon = styled.img<ButtonWithImage>`
-  src: ${({ src }) => src};
-  alt: ${({ alt }) => alt};
   width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "30px")};
   height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "30px")};
   color: white;
@@ -63,15 +59,11 @@ export const AddButton = styled(Button)`
   }
 `;
 
-export const ButtonWithIcon = (props: {
-  content: string;
-  src: string;
-  alt: string;
-}) => {
+export const ButtonWithIcon = (props: { content: string; src: string }) => {
   return (
     <div>
       <AddButton>
-        <Icon src={props.src} alt={props.alt} />
+        <Icon src={props.src} />
         {props.content}
       </AddButton>
     </div>
