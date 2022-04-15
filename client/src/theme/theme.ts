@@ -28,8 +28,9 @@ export const theme = {
       primary: "#F9F8F8",
       secondary: "#000",
       placeholder: "#9E9999",
-    }
+    },
   },
+
   size: {
     mobile: {
       xs: 10,
