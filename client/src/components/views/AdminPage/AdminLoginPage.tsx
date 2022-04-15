@@ -5,11 +5,7 @@ const AdminLoginPage = () => {
   return (
     <div>
       <div>AdminLoginPage</div>
-      <ButtonWithImage
-        src="AddVector.svg"
-        alt="add photos button"
-        content="Add Photos"
-      />
+      <ButtonWithImage src="AddVector.svg" content="Add Photos" />
     </div>
   );
 };
