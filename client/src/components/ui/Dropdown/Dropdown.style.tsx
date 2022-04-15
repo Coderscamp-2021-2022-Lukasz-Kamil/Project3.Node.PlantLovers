@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 
 interface SVG {
@@ -8,7 +7,7 @@ interface SVG {
     };
 }
 
-const SVGElement = styled.img<SVG>`
+export const SVGElement = styled.img<SVG>`
 align-self: center;
 width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "18px")};
 height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "18px")};
@@ -20,7 +19,7 @@ height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "18px")};
 } 
 `;
 
-const DropdownContainer = styled.div`
+export const DropdownContainer = styled.div`
     margin-top: ${({theme}) => theme.size.common.marginTop};
     display: flex;
     flex-flow: column;
@@ -30,7 +29,7 @@ const DropdownContainer = styled.div`
     }
 `;
 
-const DropdownHeader = styled.div`
+export const DropdownHeader = styled.div`
     display: flex;
     justify-content: space-between;
     max-width: 670px;
@@ -79,26 +78,3 @@ export const ListItem= styled.div`
     }
 `;
 
-export const Dropdown = (props: {title: string; src: string; alt: string}) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggling = () => setIsOpen(state => !state);
-
-    return (
-      <DropdownContainer>
-        <DropdownHeader onClick={toggling}>
-            {props.title}
-          <SVGElement src={props.src} alt={props.alt} />
-        </DropdownHeader>
-        {isOpen && (
-            <List>
-                {/* <ListItem ></ListItem> */}
-                <ListItem>hanging plants</ListItem>     
-                <ListItem >cacti and succulents</ListItem>
-                <ListItem >blooming</ListItem>
-                <ListItem >green</ListItem>
-                <ListItem >trees and shrubs</ListItem>
-            </List>
-        )}
-      </ DropdownContainer>
-    );
-  };

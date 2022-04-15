@@ -3,7 +3,8 @@ import { ImageCard } from "../../ui/ImageCard.style";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 // import useFetchData from "../../../hooks/UseFetch";
 import { Card } from "../../ui/Card/Card.style";
-// import { Dropdown } from "../../ui/Dropdown/Dropdown.style";
+// import { Dropdown } from "../../ui/Dropdown/Dropdown";
+
 const LandingPage = () => {
   // const { response, error } = useFetchData({
   //   url: "/offers",
@@ -17,7 +18,7 @@ const LandingPage = () => {
 
   return (
     <div>
-	{/* <Dropdown title="Category" src="DownVector.svg" alt="arrow down" /> */}
+      {/* <Dropdown title="Category" src="DownVector.svg" alt="arrow down" /> */}
       <GridContainer></GridContainer>
       <Card />
       <p>LandingPage</p>
