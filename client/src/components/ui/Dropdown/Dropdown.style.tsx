@@ -8,7 +8,7 @@ interface SVG {
     };
 }
 
-const SVG = styled.img<SVG>`
+const SVGElement = styled.img<SVG>`
 align-self: center;
 width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "18px")};
 height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "18px")};
@@ -20,7 +20,7 @@ height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "18px")};
 } 
 `;
 
-const  DropdownContainer = styled.div`
+const DropdownContainer = styled.div`
     margin-top: ${({theme}) => theme.size.common.marginTop};
     display: flex;
     flex-flow: column;
@@ -84,19 +84,19 @@ export const Dropdown = (props: {title: string; src: string; alt: string}) => {
     const toggling = () => setIsOpen(state => !state);
 
     return (
-      < DropdownContainer>
+      <DropdownContainer>
         <DropdownHeader onClick={toggling}>
             {props.title}
-          <SVG src={props.src} alt={props.alt} />
+          <SVGElement src={props.src} alt={props.alt} />
         </DropdownHeader>
         {isOpen && (
             <List>
-                <ListItem ></ListItem>
-                {/* <ListItem>hanging plants</ListItem>      */}
-                {/* <ListItem >cacti and succulents</ListItem> */}
-                {/* <ListItem >blooming</ListItem> */}
-                {/* <ListItem >green</ListItem> */}
-                {/* <ListItem >trees and shrubs</ListItem> */}
+                {/* <ListItem ></ListItem> */}
+                <ListItem>hanging plants</ListItem>     
+                <ListItem >cacti and succulents</ListItem>
+                <ListItem >blooming</ListItem>
+                <ListItem >green</ListItem>
+                <ListItem >trees and shrubs</ListItem>
             </List>
         )}
       </ DropdownContainer>
