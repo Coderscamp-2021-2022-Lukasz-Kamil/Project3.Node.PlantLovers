@@ -4,7 +4,7 @@ import { ButtonProps } from "../../../ui/Button/Button.style";
 import { Icon } from "../../../ui/ButtonWithIcon/ButtonWithIcon";
 
 export const NavBar = styled.nav`
-  height: 100px;
+  height: 10vh;
   width: 100%;
   display: flex;
   align-items: center;
