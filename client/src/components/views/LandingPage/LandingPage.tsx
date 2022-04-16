@@ -1,13 +1,27 @@
 import React from "react";
+import { ImageCard } from "../../ui/ImageCard.style";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
-import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-
+// import useFetchData from "../../../hooks/UseFetch";
+import { Card } from "../../ui/Card/Card.style";
+import { Textarea } from "../../ui/Textarea/Textarea.style";
 const LandingPage = () => {
+  // const { response, error } = useFetchData({
+  //   url: "/offers",
+  //   headers: {
+  //     accept: "*/*",
+  //   },
+  // });
+
+  // const offers = response;
+  // console.log(offers);
+
   return (
     <div>
       <GridContainer></GridContainer>
-      <FlexWrapper></FlexWrapper>
+      <Card />
       <p>LandingPage</p>
+      <Textarea placeholder="Description" />
+      <ImageCard src="examplePlantPhoto.svg" alt="plantphoto" />
       <p>
         Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja
         jechałem na rowerze, i go spotkałem, i potem jeszcze pojechałem do
