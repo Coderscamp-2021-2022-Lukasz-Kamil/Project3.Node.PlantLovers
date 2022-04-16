@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "../Button/Button.style";
 
-interface ButtonWithImage {
+interface IconInButton {
   imageSize?: {
     width: string;
     height: string;
   };
 }
 
-export const Icon = styled.img<ButtonWithImage>`
+export const Icon = styled.img<IconInButton>`
   width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "30px")};
   height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "30px")};
   color: white;
@@ -22,7 +22,7 @@ export const Icon = styled.img<ButtonWithImage>`
   }
 `;
 
-export const AddButton = styled(Button)`
+export const Add = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,7 +49,6 @@ export const AddButton = styled(Button)`
       brightness(108%) contrast(100%);
   }
   @media (max-width: 576px) {
-    grid-template-columns: 0.32fr 0.68fr;
     font-size: ${({ theme, fontSizeMobile }) =>
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
@@ -62,10 +61,10 @@ export const AddButton = styled(Button)`
 export const ButtonWithIcon = (props: { content: string; src: string }) => {
   return (
     <div>
-      <AddButton>
+      <Add>
         <Icon src={props.src} />
         {props.content}
-      </AddButton>
+      </Add>
     </div>
   );
 };
