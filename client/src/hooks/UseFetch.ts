@@ -7,9 +7,9 @@ interface FetchDataParams {
   headers: Record<string, unknown>;
   body: Record<string, unknown>;
 }
-
-axios.defaults.baseURL = "https://plant-lovers.herokuapp.com";
+export const BASE_URL = "https://plant-lovers.herokuapp.com";
 axios.defaults.method = "GET";
+axios.defaults.baseURL = BASE_URL;
 
 const useFetchData = (params: FetchDataParams) => {
   const [response, setResponse] = useState([]);
