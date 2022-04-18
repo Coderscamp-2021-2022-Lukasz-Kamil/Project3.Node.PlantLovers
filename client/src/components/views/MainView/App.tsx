@@ -15,6 +15,8 @@ import AdminLoginPage from "../AdminPage/AdminLoginPage";
 import AdminCategoriesAndHeightsPage from "../AdminPage/AdminCategoriesAndHeightsPage";
 import AdminUsersOffersPage from "../AdminPage/AdminUsersOffersPage";
 import AdminUsersPage from "../AdminPage/AdminUsersPage";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -41,6 +43,7 @@ function App() {
           />
           <Route path="/admin/offers/users" element={<AdminUsersPage />} />
         </Routes>
+        <ToastContainer />
       </Router>
     </ThemeProvider>
   );

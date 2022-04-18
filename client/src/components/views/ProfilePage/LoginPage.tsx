@@ -4,6 +4,8 @@ import { useNavigate } from "react-router";
 import { signInSchema } from "../../../shared/inputHandlers/LoginInputHandler";
 import { useFormik } from "formik";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const signInFormHandler = useFormik({
@@ -16,7 +18,7 @@ const LoginPage = () => {
   });
 
   const navigate = useNavigate();
-  const navigation = () => {
+  const navigateTo = () => {
     navigate("/user/your-offers");
   };
 
@@ -31,14 +33,13 @@ const LoginPage = () => {
         email: signInFormHandler.values.email,
         password: signInFormHandler.values.password,
       },
-    }).then((response) => {
-      const correctResponse = response.status == 200;
-      if (!correctResponse) {
-        throw Error("Incorrect response, check credentials");
-      } else {
-        navigation();
-      }
-    });
+    })
+      .then(() => {
+        navigateTo();
+      })
+      .catch(() => {
+        return toast.error("Incorrect data, check your credentials");
+      });
   };
 
   return (
