@@ -30,6 +30,7 @@ export const theme = {
       placeholder: "#9E9999",
     },
   },
+
   size: {
     mobile: {
       xs: 10,
