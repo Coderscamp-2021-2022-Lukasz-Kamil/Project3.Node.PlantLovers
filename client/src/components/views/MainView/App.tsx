@@ -24,11 +24,13 @@ import { NavigationBar } from "../NavigationBar/MainNavigationBar/NavigationBar"
 import { AdminNavigationBar } from "../AdminPage/NavigationBar/AdminNavigationBar";
 import AdminSettings from "../AdminPage/AdminSettings";
 import { LoginNavigationBar } from "../NavigationBar/LoginNavigationBar/LoginNavigationBar";
+import GlobalFonts from "../../../font/fonts";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
+      <GlobalFonts />
       <Router>
         <Routes>
           <Route path="/" element={<PagesWithNavigationBar />}>

@@ -41,7 +41,10 @@ export const theme = {
       lg: 20,
       xl: 24,
       xxl: 26,
-      title: 35,
+      titleXs: 35,
+      titleSm: 45,
+      titleMd: 50,
+      titleLg: 55,
     },
     desktop: {
       xs: 14,
@@ -53,7 +56,8 @@ export const theme = {
       xl: 32,
       xxl: 36,
       xxxl: 38,
-      title: 55,
+      titleMd: 70,
+      titleLg: 80,
     },
     common: {
       borderRadius: "5px",

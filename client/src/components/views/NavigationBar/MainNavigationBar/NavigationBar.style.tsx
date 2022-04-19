@@ -8,10 +8,8 @@ export const NavBar = styled.nav`
   width: 100%;
   display: flex;
   align-items: center;
+  overflow: hidden;
   background: ${({ theme }) => theme.colors.navigationBar.primary};
-  @media (max-width: 576px) {
-    height: 65px;
-  }
 `;
 
 export const NavBarButtonContainer = styled.div`
@@ -58,6 +56,13 @@ export const NavBarButton = styled.button<ButtonProps>`
       brightness(108%) contrast(100%);
   }
 
+  @media (max-width: 680px) {
+    font-size: ${({ theme, fontSizeDesktop }) =>
+      fontSizeDesktop
+        ? theme.size.desktop[fontSizeDesktop]
+        : theme.size.desktop.md}px;
+  }
+
   @media (max-width: 576px) {
     display: block;
     font-size: ${({ theme, fontSizeMobile }) =>
@@ -67,26 +72,52 @@ export const NavBarButton = styled.button<ButtonProps>`
   }
 `;
 
-// I will adjust this element when font will be right one//
 export const TitleButton = styled(NavBarButton)`
   display: flex;
+  align-items: center;
   margin-left: 30px;
+  font-family: "plants_lovin";
+  font-size: ${({ theme, fontSizeDesktop }) =>
+    fontSizeDesktop
+      ? theme.size.desktop[fontSizeDesktop]
+      : theme.size.desktop.titleLg}px;
+  font-weight: ${({ theme, fontWeight }) =>
+    fontWeight ? theme.weight[fontWeight] : theme.weight.regular};
   background: ${({ theme, background }) =>
     background
       ? theme.colors.button[background]
       : theme.colors.button.transparent};
-  font-size: ${({ theme, fontSizeDesktop }) =>
-    fontSizeDesktop
-      ? theme.size.desktop[fontSizeDesktop]
-      : theme.size.desktop.title}px;
   width: ${({ width }) => (width ? width : 100)}%;
+  height: 10vh;
+
+  @media (max-width: 680px) {
+    font-size: ${({ theme, fontSizeDesktop }) =>
+      fontSizeDesktop
+        ? theme.size.desktop[fontSizeDesktop]
+        : theme.size.desktop.titleMd}px;
+  }
 
   @media (max-width: 576px) {
-    display: block;
+    display: flex;
+    margin-left: 15px;
     font-size: ${({ theme, fontSizeMobile }) =>
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
-        : theme.size.mobile.title}px;
+        : theme.size.mobile.titleLg}px;
+  }
+
+  @media (max-width: 370px) {
+    font-size: ${({ theme, fontSizeMobile }) =>
+      fontSizeMobile
+        ? theme.size.mobile[fontSizeMobile]
+        : theme.size.mobile.titleSm}px;
+  }
+
+  @media (max-width: 315px) {
+    font-size: ${({ theme, fontSizeMobile }) =>
+      fontSizeMobile
+        ? theme.size.mobile[fontSizeMobile]
+        : theme.size.mobile.titleXs}px;
   }
 `;
 
