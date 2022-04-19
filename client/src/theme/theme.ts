@@ -16,7 +16,6 @@ export const theme = {
       highlighted: "#EEE6E6",
       boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
     },
-
     button: {
       primary: "#538D22",
       secondary: "#F9F8F8",
@@ -24,6 +23,11 @@ export const theme = {
       hover: "#AAD576",
       secondaryHover: "#A59E9E",
       transparent: "transparent",
+    },
+    input: {
+      primary: "#F9F8F8",
+      secondary: "#000",
+      placeholder: "#9E9999",
     },
   },
   size: {
