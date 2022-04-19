@@ -3,8 +3,10 @@ import { ImageCard } from "../../ui/ImageCard.style";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 // import useFetchData from "../../../hooks/UseFetch";
 import { Card } from "../../ui/Card/Card.style";
+
 // import { Dropdown } from "../../ui/Dropdown/Dropdown";
 
+import { Textarea } from "../../ui/Textarea/Textarea.style";
 const LandingPage = () => {
   // const { response, error } = useFetchData({
   //   url: "/offers",
@@ -22,6 +24,7 @@ const LandingPage = () => {
       <GridContainer></GridContainer>
       <Card />
       <p>LandingPage</p>
+      <Textarea placeholder="Description" />
       <ImageCard src="examplePlantPhoto.svg" alt="plantphoto" />
       <p>
         Jeszcze gdy chodziłem do podstawówki, to był tam taki Paweł, i ja
