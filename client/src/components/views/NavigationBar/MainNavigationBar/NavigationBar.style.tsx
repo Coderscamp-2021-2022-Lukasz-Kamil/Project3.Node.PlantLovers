@@ -10,6 +10,10 @@ export const NavBar = styled.nav`
   align-items: center;
   overflow: hidden;
   background: ${({ theme }) => theme.colors.navigationBar.primary};
+
+  @media (max-width: 1000px) and (max-height: 500px) {
+    height: 85px;
+  }
 `;
 
 export const NavBarButtonContainer = styled.div`
