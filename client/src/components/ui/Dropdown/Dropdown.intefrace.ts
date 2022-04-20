@@ -1,5 +1,8 @@
+import { ReactNode } from "react";
+
 export default interface IDropdown {
 	title: string;
-	src: string;
-	alt: string;
+	ico: ReactNode;
+	src?: string;
+	alt?: string;
 }
