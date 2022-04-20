@@ -34,7 +34,7 @@ export const DropdownHeader = styled.div`
     align-items: center;
 `;
 
-export const List = styled.div`
+export const List = styled.ul`
 	width: 670px;
 	border-radius: ${({ theme }) => theme.size.common.borderRadius};
 	background: ${({ theme }) => theme.colors.card.secondary};
@@ -51,7 +51,7 @@ export const List = styled.div`
 	} ;
 `;
 
-export const ListItem = styled.div`
+export const ListItem = styled.li`
 	padding-left: 1em;
 	list-style: none;
 	margin-bottom: 0.8em;

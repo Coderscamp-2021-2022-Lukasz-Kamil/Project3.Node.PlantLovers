@@ -9,52 +9,55 @@ import {
 import IDropdown from "./Dropdown.intefrace";
 
 const items = [
-		{
-			id: 1,
-			name: "hanging plants",
-		},
-		{
-			id: 2,
-			name: "cacti and succulents",
-		},
-		{
-			id: 3,
-			name: "blooming",
-		},
-		{
-			id: 4,
-			name: "green",
-		},
-		{
-			id: 5,
-			name: "trees and shrubs",
-		},
-		{
-			id: 5,
-			name: "others",
-		},
-	];
+	{
+		id: 1,
+		name: "hanging plants",
+	},
+	{
+		id: 2,
+		name: "cacti and succulents",
+	},
+	{
+		id: 3,
+		name: "blooming",
+	},
+	{
+		id: 4,
+		name: "green",
+	},
+	{
+		id: 5,
+		name: "trees and shrubs",
+	},
+	{
+		id: 6,
+		name: "others",
+	},
+];
 
 export const Dropdown = ({ title, ico }: IDropdown) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [selected, setSelected] = useState(null);
 	const toggling = () => setIsOpen(state => !state);
+	const handleSelect = (e: any) => {
+		console.log(e.target.textContent);
+		// setSelected(e.target.textContent);
+	};
 
 	return (
 		<DropdownContainer>
 			<Wrapper onClick={toggling}>
-			<DropdownHeader >
-				{title}
-				{ico}
-			</DropdownHeader>
+				<DropdownHeader>
+					{title}
+					{ico}
+				</DropdownHeader>
 			</Wrapper>
 			{isOpen && (
 				<List>
-					<ListItem></ListItem>
-					<ListItem>hanging plants</ListItem>
-					<ListItem>cacti and succulents</ListItem>
-					<ListItem>blooming</ListItem>
-					{/* <ListItem>green</ListItem> */}
-					{/* <ListItem>trees and shrubs</ListItem> */}
+					{items.map(item => (
+						// <ListItem key={item.id}>{item.name}</ListItem>
+						<ListItem key={item.id} onClick={handleSelect} >{item.name}</ListItem>
+					))}
 				</List>
 			)}
 		</DropdownContainer>
