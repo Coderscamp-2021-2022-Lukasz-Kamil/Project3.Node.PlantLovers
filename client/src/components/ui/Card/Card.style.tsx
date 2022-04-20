@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export interface CardProps {
   color?: "primary" | "secondary" | "highlighted";
-  width?: number;
-  height?: number;
+  width?: string;
+  height?: string;
   borderRadius?: number;
   boxShadow?: boolean;
 }
 
 export const Card = styled.div<CardProps>`
-  height: ${({ height }) => (height ? height : 70)}vh;
-  width: ${({ width }) => (width ? width : 32)}vw;
+  height: ${({ height }) => (height ? height : "70vh")};
+  width: ${({ width }) => (width ? width : "32vw")};
   background-color: ${({ theme, color }) =>
     color ? theme.colors.card[color] : theme.colors.card.secondary};
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : 0)}px;
@@ -20,8 +20,8 @@ export const Card = styled.div<CardProps>`
   word-wrap: break-word;
 
   @media (max-width: 576px) {
-    height: ${({ height }) => (height ? height : 100)}vh;
-    width: ${({ width }) => (width ? width : 100)}vw;
+    height: ${({ height }) => (height ? height : "100vh")};
+    width: ${({ width }) => (width ? width : "100vw")};
     background-color: ${({ theme, color }) =>
       color ? theme.colors.card[color] : theme.colors.common.backgroundcolor};
   }
