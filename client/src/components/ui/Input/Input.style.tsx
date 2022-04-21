@@ -1,25 +1,29 @@
 import styled from "styled-components";
 
 interface InputProps {
-    fontSize?: "xs" | "sm" | "md" | "mdl";
+    fontSizeDesktop?: "sm" | "mds" | "md" | "mdl";
+    fontSizeMobile?: "sm" | "md" | "mdl";
     fontWeight?: "regular" | "light";
     color?:
     | "primary"
     | "secondary"
-    | "placeholder";
-    width?: number;
+    | "placeholder"
+    | "transparent";
+    width?: number | "auto";
+    height?: number;
 }
 
 export const Input = styled.input<InputProps>`
     border-radius: 5px;
     border: 1px solid #000;
     cursor: pointer;
-    font-size: ${({ theme, fontSize }) =>
-        fontSize ? theme.size.desktop[fontSize] : theme.size.desktop.mds}px;
+    font-size: ${({ theme, fontSizeDesktop }) =>
+        fontSizeDesktop ? theme.size.desktop[fontSizeDesktop] : theme.size.desktop.mds}px;
     font-weight: ${({ theme, fontWeight }) =>
         fontWeight ? theme.weight[fontWeight] : theme.weight.regular};
     background: ${({ theme }) => theme.colors.input.primary};
     width: ${({ width }) => (width ? width : 670)}px;
+    height: ${({ height }) => (height ? height : 45)}px;
 
     &::placeholder {
         opacity: 0.2;
@@ -30,8 +34,9 @@ export const Input = styled.input<InputProps>`
     }
 
     @media (max-width: 576px) {
-        font-size: ${({ theme, fontSize }) =>
-            fontSize ? theme.size.mobile[fontSize] : theme.size.mobile.xs}px;
+        font-size: ${({ theme, fontSizeMobile }) =>
+            fontSizeMobile ? theme.size.mobile[fontSizeMobile] : theme.size.mobile.xs}px;
         width: ${({ width }) => (width ? width : 280)}px;
+        height: ${({ height }) => (height ? height : 30)}px;
     }
 `;
