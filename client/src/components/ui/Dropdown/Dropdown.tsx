@@ -37,17 +37,20 @@ const items = [
 
 export const Dropdown = ({ title, ico }: IDropdown) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [selected, setSelected] = useState(null);
+	const [selectedOption, setSelectedOption] = useState(null);
 	const toggling = () => setIsOpen(state => !state);
-	const handleSelect = (e: any) => {
-		console.log(e.target.textContent);
-		// setSelected(e.target.textContent);
-	};
-
+	const handleSelected = (value: any) => {
+		setSelectedOption(value);
+		setIsOpen(false);
+		console.log(selectedOption);
+		};
+	
+	// setSelected(e.target.textContent);
 	return (
 		<DropdownContainer>
 			<Wrapper onClick={toggling}>
 				<DropdownHeader>
+				{selectedOption || {title}}
 					{title}
 					{ico}
 				</DropdownHeader>
@@ -56,7 +59,7 @@ export const Dropdown = ({ title, ico }: IDropdown) => {
 				<List>
 					{items.map(item => (
 						// <ListItem key={item.id}>{item.name}</ListItem>
-						<ListItem key={item.id} onClick={handleSelect} >{item.name}</ListItem>
+						<ListItem key={item.id} onClick={()=> handleSelected(item)} >{item.name}</ListItem>
 					))}
 				</List>
 			)}

@@ -32,6 +32,18 @@ export const DropdownHeader = styled.div`
     display: flex; 
 	justify-content: space-between;
     align-items: center;
+	width: 100%;
+
+	&:first-child {
+		max-width: 360px;
+		margin-left: auto;
+	}
+
+	@media (max-width: 576px) {
+		&:first-child {
+		max-width: 190px;
+	}
+	}
 `;
 
 export const List = styled.ul`
