@@ -1,8 +1,15 @@
 import styled from "styled-components";
 
 export interface ButtonProps {
-  fontSizeDesktop?: "sm" | "mds" | "md" | "mdl";
-  fontSizeMobile?: "sm" | "md" | "mdl";
+  fontSizeDesktop?: "sm" | "mds" | "md" | "mdl" | "lg" | "titleMd" | "titleLg";
+  fontSizeMobile?:
+    | "sm"
+    | "md"
+    | "mdl"
+    | "titleXs"
+    | "titleSm"
+    | "titleMd"
+    | "titleLg";
   fontWeight?: "bold" | "regular";
   color?:
     | "backgroundcolor"

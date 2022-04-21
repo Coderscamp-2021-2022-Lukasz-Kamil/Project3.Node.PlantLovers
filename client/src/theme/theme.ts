@@ -16,13 +16,13 @@ export const theme = {
       highlighted: "#EEE6E6",
       boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
     },
-
     button: {
       primary: "#538D22",
       secondary: "#F9F8F8",
       textInactive: "#8B8B8B",
       hover: "#AAD576",
       secondaryHover: "#A59E9E",
+      transparent: "transparent",
     },
     input: {
       primary: "#F9F8F8",
@@ -30,7 +30,6 @@ export const theme = {
       placeholder: "#9E9999",
     },
   },
-
   size: {
     mobile: {
       xs: 10,
@@ -40,6 +39,10 @@ export const theme = {
       lg: 20,
       xl: 24,
       xxl: 26,
+      titleXs: 35,
+      titleSm: 45,
+      titleMd: 50,
+      titleLg: 55,
     },
     desktop: {
       xs: 14,
@@ -51,6 +54,8 @@ export const theme = {
       xl: 32,
       xxl: 36,
       xxxl: 38,
+      titleMd: 70,
+      titleLg: 80,
     },
     common: {
       borderRadius: "5px",
