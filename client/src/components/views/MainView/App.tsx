@@ -26,6 +26,7 @@ import AdminSettings from "../AdminPage/AdminSettings";
 import { LoginNavigationBar } from "../NavigationBar/LoginNavigationBar/LoginNavigationBar";
 import GlobalFonts from "../../../font/fonts";
 
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
