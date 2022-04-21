@@ -4,8 +4,8 @@ import { Button } from "../Button/Button.style";
 
 interface IconInButton {
   imageSize?: {
-    width: string;
-    height: string;
+    width: number;
+    height: number;
   };
 }
 
@@ -13,26 +13,21 @@ export const Icon = styled.img<IconInButton>`
   display: flex;
   margin-right: 10px;
   transition: 0.2s;
-  width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "30px")};
-  height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "30px")};
+  width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : 30)}px;
+  height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : 30)}px;
 
   @media (max-width: 680px) {
-    width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "25px")};
-    height: ${({ imageSize }) =>
-      imageSize?.height ? imageSize.height : "25px"};
+    width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : 25)}px;
+    height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : 25)}px;
   }
 
   @media (max-width: 576px) {
-    width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "20px")};
-    height: ${({ imageSize }) =>
-      imageSize?.height ? imageSize.height : "20px"};
+    width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : 20)}px;
+    height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : 20)}px;
   }
 `;
 
 export const Add = styled(Button)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: ${({ theme, fontSizeDesktop }) =>
     fontSizeDesktop
       ? theme.size.desktop[fontSizeDesktop]
@@ -65,13 +60,25 @@ export const Add = styled(Button)`
   }
 `;
 
+const LogOut = styled(Button)`
+  position: absolute;
+  right: 0;
+`;
+
+export const LogOutButton = (props: { content: string; src: string }) => {
+  return (
+    <LogOut background="transparent" color="textColor">
+      <Icon src={props.src} />
+      {props.content}
+    </LogOut>
+  );
+};
+
 export const ButtonWithIcon = (props: { content: string; src: string }) => {
   return (
-    <div>
-      <Add>
-        <Icon src={props.src} />
-        {props.content}
-      </Add>
-    </div>
+    <Add>
+      <Icon src={props.src} />
+      {props.content}
+    </Add>
   );
 };

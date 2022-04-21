@@ -47,6 +47,8 @@ export const theme = {
       titleLg: 55,
     },
     desktop: {
+      xxxs: 10,
+      xxs: 12,
       xs: 14,
       sm: 16,
       mds: 18,
