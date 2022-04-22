@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { Button, ButtonProps } from "../../../ui/Button/Button.style";
+import { Button } from "../../../ui/Button/Button.style";
 import { Icon } from "../../../ui/ButtonWithIcon/ButtonWithIcon";
 
 export const NavBar = styled.nav`

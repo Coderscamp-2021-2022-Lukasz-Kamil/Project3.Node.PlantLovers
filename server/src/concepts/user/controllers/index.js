@@ -56,7 +56,9 @@ export const loginUser = async (req, res) => {
     if (!token) {
       return res.status(400).send("Unsuccessful login attempt");
     }
-    res.setHeader("token", token);
+    res.cookie("token", token, {
+      httpOnly: true,
+    });
     return res.status(200).send({
       message: "Successfully logged in",
     });

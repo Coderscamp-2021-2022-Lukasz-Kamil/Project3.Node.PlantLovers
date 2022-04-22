@@ -17,7 +17,6 @@ export const theme = {
       boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
       offer: "#FFF",
     },
-
     button: {
       primary: "#538D22",
       secondary: "#F9F8F8",
@@ -32,7 +31,6 @@ export const theme = {
       placeholder: "#9E9999",
     },
   },
-
   size: {
     mobile: {
       xs: 10,
