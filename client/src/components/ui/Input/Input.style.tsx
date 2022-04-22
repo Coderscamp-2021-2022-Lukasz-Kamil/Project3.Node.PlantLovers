@@ -25,13 +25,13 @@ export const Input = styled.input<InputProps>`
     width: ${({ width }) => (width ? width : 670)}px;
     height: ${({ height }) => (height ? height : 45)}px;
 
-    &::placeholder {
-        opacity: 0.2;
-        font-family: 'Poppins';
-        text-align: center;
-        color: ${({ theme, color }) =>
-            color ? theme.colors.input[color] : theme.colors.input.placeholder};
-    }
+  &::placeholder {
+    opacity: 0.2;
+    font-family: "Poppins";
+    text-align: center;
+    color: ${({ theme, color }) =>
+      color ? theme.colors.input[color] : theme.colors.input.placeholder};
+  }
 
     @media (max-width: 576px) {
         font-size: ${({ theme, fontSizeMobile }) =>

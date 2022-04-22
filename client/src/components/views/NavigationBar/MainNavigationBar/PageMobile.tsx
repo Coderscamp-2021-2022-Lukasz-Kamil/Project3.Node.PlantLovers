@@ -10,7 +10,7 @@ const PagesOnMobile = () => {
   const pages = [
     { source: "/plants", icon: "plantVector.svg", aria: "plants" },
     { source: "/add-offer", icon: "addVector.svg", aria: "add offer" },
-    { source: "/user", icon: "userVector.svg", aria: "user profile" },
+    { source: "/user/", icon: "userVector.svg", aria: "user profile" },
   ];
   return (
     <NavBarButtonContainerMobile>

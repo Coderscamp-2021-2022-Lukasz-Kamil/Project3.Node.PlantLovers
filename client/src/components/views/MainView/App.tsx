@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import AddOfferPage from "../AddOfferPage/AddOfferPage";
 import PlantsPage from "../PlantsPage/PlantsPage";
-import UserPage from "../ProfilePage/ProfilePage";
+import UserPage from "../ProfilePage/ProfilePage/ProfilePage";
 import NotFoundPage from "../NotFound/NotFound";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../ProfilePage/LoginPage";
@@ -20,12 +20,14 @@ import AdminLoginPage from "../AdminPage/AdminLoginPage";
 import AdminCategoriesAndHeightsPage from "../AdminPage/AdminCategoriesAndHeightsPage";
 import AdminUsersOffersPage from "../AdminPage/AdminUsersOffersPage";
 import AdminUsersPage from "../AdminPage/AdminUsersPage";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import { NavigationBar } from "../NavigationBar/MainNavigationBar/NavigationBar";
 import { AdminNavigationBar } from "../AdminPage/NavigationBar/AdminNavigationBar";
 import AdminSettings from "../AdminPage/AdminSettings";
 import { LoginNavigationBar } from "../NavigationBar/LoginNavigationBar/LoginNavigationBar";
 import GlobalFonts from "../../../font/fonts";
-
+import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
 
 function App() {
   return (
@@ -38,8 +40,10 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/add-offer" element={<AddOfferPage />} />
             <Route path="/plants" element={<PlantsPage />} />
-            <Route path="/user" element={<UserPage />} />
-            <Route path="/user/your-offers" element={<YourOfferPage />} />
+            <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
+              <Route path="/user/" element={<UserPage />} />
+              <Route path="/user/your-offers" element={<YourOfferPage />} />
+            </Route>
           </Route>
           <Route path="/" element={<LoginPagesWithNavigationBar />}>
             <Route path="/user/login" element={<LoginPage />} />
@@ -60,6 +64,7 @@ function App() {
             <Route path="/admin/settings" element={<AdminSettings />} />
           </Route>
         </Routes>
+        <ToastContainer />
       </Router>
     </ThemeProvider>
   );
@@ -86,6 +91,15 @@ function App() {
     return (
       <>
         <LoginNavigationBar />
+        <Outlet />
+      </>
+    );
+  }
+
+  function UserProfileOrOffersNavigationBar() {
+    return (
+      <>
+        <ProfileAndYourOfferBar />
         <Outlet />
       </>
     );
