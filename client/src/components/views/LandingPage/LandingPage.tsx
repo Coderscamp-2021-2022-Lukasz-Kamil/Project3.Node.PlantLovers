@@ -14,7 +14,7 @@ const LandingPageContainer = styled.div`
   min-height: 90vh;
 
   @media (max-width: 952px) {
-    background-position: 66% 0;
+    background-position: 80% 0;
   }
 
   @media (max-width: 576px) {
