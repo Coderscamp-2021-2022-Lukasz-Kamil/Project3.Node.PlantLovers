@@ -5,23 +5,26 @@ import { Button } from "../Button/Button.style";
 interface IconInButton {
   width?: number;
   height?: number;
+  marginRight?: number;
+  mobileWidth?: number;
+  mobileHeight?: number;
 }
 
 export const Icon = styled.img<IconInButton>`
   display: flex;
-  margin-right: 10px;
+  margin-right: ${({ marginRight }) => (marginRight ? marginRight : 0)}px;
   transition: 0.2s;
   width: ${({ width }) => (width ? width : 30)}px;
   height: ${({ height }) => (height ? height : 30)}px;
-
+  /*
   @media (max-width: 680px) {
     width: ${({ width }) => (width ? width : 25)}px;
     height: ${({ height }) => (height ? height : 25)}px;
   }
-
+*/
   @media (max-width: 576px) {
-    width: ${({ width }) => (width ? width : 20)}px;
-    height: ${({ height }) => (height ? height : 20)}px;
+    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : 20)}px;
+    height: ${({ mobileHeight }) => (mobileHeight ? mobileHeight : 20)}px;
   }
 `;
 

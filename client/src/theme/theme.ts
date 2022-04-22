@@ -15,6 +15,7 @@ export const theme = {
       secondary: "#F9F8F8",
       highlighted: "#EEE6E6",
       boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+      offer: "#FFF",
     },
 
     button: {

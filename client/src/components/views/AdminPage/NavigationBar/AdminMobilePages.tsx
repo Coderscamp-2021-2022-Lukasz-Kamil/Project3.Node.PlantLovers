@@ -25,7 +25,7 @@ const AdminMobliePages = () => {
       {pages.map((page) => (
         <NavBarButton key={page.source}>
           <PageLink to={page.source}>
-            <Icon src={page.icon} aria-label={page.aria} />
+            <Icon src={page.icon} aria-label={page.aria} marginRight={10} />
           </PageLink>{" "}
         </NavBarButton>
       ))}

@@ -1,49 +1,44 @@
 import React from "react";
 import styled from "styled-components";
-import { FilterButton } from "../../../ui/Button/Button.style";
-import { Icon } from "../../../ui/ButtonWithIcon/ButtonWithIcon";
-import { Card } from "../../../ui/Card/Card.style";
 import { Input } from "../../../ui/Input/Input.style";
-import { Typography } from "../../../ui/Typography/Typography.style";
-import { FlexWrapper } from "../../../wrappers/FlexCenter/FlexWrapper.style";
-import { GridContainer } from "../../../wrappers/FlexCenter/GridContainer.style";
-import { ReactComponent as RandomImage } from "../../OfferPage/examplePlantPhoto.svg";
+import { FilterButtons } from "./FilterButtons";
+import { Offers } from "./Offers";
 
 const YourOfferPageContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin: 15px 0;
 `;
 
-const YourOfferGridContainer = styled(GridContainer)`
-  grid-gap: 4vw;
-`;
 const SearchAndFilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
-`;
-const FilterButtonsContainer = styled.div`
-  display: flex;
-  gap: 15px;
+
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
 `;
 
-const OfferCard = styled(Card)`
-  height: 33vh;
-  padding: 0;
-`;
+const SearchInput = styled(Input)`
+  border: none;
 
-const CardImage = styled(RandomImage)`
-  width: 100%;
-  height: 90%;
-`;
+  @media (max-width: 576px) {
+    display: none;
+  }
 
-const OfferIconsContainer = styled(FlexWrapper)`
-  gap: 0;
-`;
-const PriceTypography = styled(Typography)`
-  text-align: end;
+  @media (max-width: 950px) {
+    width: 240px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 700px) {
+    width: 200px;
+    height: 25px;
+  }
 `;
 
 const YourOfferPage = () => {
@@ -51,34 +46,14 @@ const YourOfferPage = () => {
     <YourOfferPageContainer>
       <div>
         <SearchAndFilterContainer>
-          <Input placeholder="Search for plant" width="320px" height={35} />
-          <FilterButtonsContainer>
-            <FilterButton>Active</FilterButton>
-            <FilterButton>Awaiting</FilterButton>
-            <FilterButton>Archived</FilterButton>
-          </FilterButtonsContainer>
+          <SearchInput
+            placeholder="Search for plant"
+            width="320px"
+            height={35}
+          />
+          <FilterButtons />
         </SearchAndFilterContainer>
-        <YourOfferGridContainer>
-          <OfferCard width="200px">
-            <CardImage />
-            <FlexWrapper justifyContent="space-between">
-              <div>
-                <Typography fontSize="xxs">Jarek</Typography>
-                <Typography fontSize="xxxs">Żoliborz</Typography>
-              </div>
-              <div>
-                <PriceTypography fontSize="xxs">32$</PriceTypography>
-                <OfferIconsContainer justifyContent="flex-end">
-                  <Icon src="EditVector.svg" width={15} height={15} />
-                  <Icon src="DeleteVector.svg" width={15} height={15} />
-                </OfferIconsContainer>
-              </div>
-            </FlexWrapper>
-          </OfferCard>
-          <OfferCard width="200px"></OfferCard>
-          <OfferCard width="200px"></OfferCard>
-          <OfferCard width="200px"></OfferCard>
-        </YourOfferGridContainer>
+        <Offers />
       </div>
     </YourOfferPageContainer>
   );
