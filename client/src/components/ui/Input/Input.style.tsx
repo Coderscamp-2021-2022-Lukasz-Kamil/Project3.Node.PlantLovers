@@ -8,6 +8,7 @@ interface InputProps {
     | "secondary"
     | "placeholder";
     width?: number;
+    height?: number;
 }
 
 export const Input = styled.input<InputProps>`
@@ -20,6 +21,7 @@ export const Input = styled.input<InputProps>`
         fontWeight ? theme.weight[fontWeight] : theme.weight.regular};
     background: ${({ theme }) => theme.colors.input.primary};
     width: ${({ width }) => (width ? width : 670)}px;
+    height: ${({ height }) => (height ? height : 45)}px;
 
     &::placeholder {
         opacity: 0.2;

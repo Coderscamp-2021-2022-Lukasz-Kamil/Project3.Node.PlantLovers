@@ -4,7 +4,7 @@ import { Card } from "../../ui/Card/Card.style";
 import styled from "styled-components";
 import { Typography } from "../../ui/Typography/Typography.style";
 
-const LandingPageContainer = styled.div`
+export const LandingPageContainer = styled.div`
   background-image: url("LandingPagePhoto.svg");
   background-size: cover;
   background-position: 100% 0;
