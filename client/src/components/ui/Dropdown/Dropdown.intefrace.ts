@@ -1,13 +1,14 @@
 import { ReactNode } from "react";
 
-export default interface IDropdown {
+export interface Item {
+	id: number;
+	name: string;
+}
+
+export interface IDropdown {
 	title: string;
 	ico: ReactNode;
-	list: {
-		id: number;
-		name?: string;
-		range?: number;
-	}[];
+	list: Item[];
 	src?: string;
 	alt?: string;
 }

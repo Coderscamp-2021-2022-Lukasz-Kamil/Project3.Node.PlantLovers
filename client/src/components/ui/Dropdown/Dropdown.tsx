@@ -6,39 +6,7 @@ import {
 	ListItem,
 	Wrapper,
 } from "./Dropdown.style";
-import IDropdown from "./Dropdown.intefrace";
-
-interface Item {
-	id: number;
-	name: string;
-}
-
-const items:Item[] = [
-	{
-		id: 1,
-		name: "hanging plants",
-	},
-	{
-		id: 2,
-		name: "cacti and succulents",
-	},
-	{
-		id: 3,
-		name: "blooming",
-	},
-	{
-		id: 4,
-		name: "green",
-	},
-	{
-		id: 5,
-		name: "trees and shrubs",
-	},
-	{
-		id: 6,
-		name: "others",
-	},
-];
+import { IDropdown, Item } from "./Dropdown.intefrace";
 
 export const Dropdown = ({ title, ico, list }: IDropdown) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +15,6 @@ export const Dropdown = ({ title, ico, list }: IDropdown) => {
 	const handleSelected = (value: Item) => {
 		setSelectedOption(value.name);
 		setIsOpen(false);
-		// console.log(selectedOption);
 		};
 	return (
 		<DropdownContainer>
@@ -59,7 +26,7 @@ export const Dropdown = ({ title, ico, list }: IDropdown) => {
 			</Wrapper>
 			{isOpen && (
 				<List>
-					{items.map(item => (
+					{list.map(item => (
 						<ListItem key={item.id} onClick={()=> handleSelected(item)} >{item.name}</ListItem>
 					))}
 				</List>
