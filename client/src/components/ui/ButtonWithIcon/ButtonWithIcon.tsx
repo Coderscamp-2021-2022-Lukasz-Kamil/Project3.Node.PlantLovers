@@ -78,7 +78,7 @@ export const LogOutButton = (props: { content: string; src: string }) => {
 export const ButtonWithIcon = (props: { content: string; src: string }) => {
   return (
     <Add>
-      <Icon src={props.src} />
+      <Icon marginRight={10} src={props.src} />
       {props.content}
     </Add>
   );

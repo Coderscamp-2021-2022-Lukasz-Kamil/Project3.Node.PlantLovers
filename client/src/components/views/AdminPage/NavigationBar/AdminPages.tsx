@@ -5,6 +5,7 @@ import {
   NavBarButtonContainer,
   PageLink,
 } from "../../NavigationBar/MainNavigationBar/NavigationBar.style";
+import UserVector from "../../../../assets/UserVector.svg";
 
 const AdminPages = () => {
   const pages = [
@@ -20,11 +21,7 @@ const AdminPages = () => {
       ))}
       <NavBarButton>
         <PageLink to="/admin/settings">
-          <Icon
-            src="UserVector.svg"
-            aria-label="User profile"
-            marginRight={10}
-          />
+          <Icon src={UserVector} aria-label="User profile" marginRight={10} />
         </PageLink>
       </NavBarButton>
     </NavBarButtonContainer>

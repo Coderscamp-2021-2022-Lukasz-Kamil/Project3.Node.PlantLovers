@@ -5,6 +5,7 @@ import {
   NavBarButtonContainer,
   PageLink,
 } from "./NavigationBar.style";
+import UserVecor from "../../../../assets/UserVector.svg";
 
 const Pages = () => {
   const pages = [
@@ -20,11 +21,7 @@ const Pages = () => {
       ))}
       <NavBarButton>
         <PageLink to="/user/">
-          <Icon
-            src="UserVector.svg"
-            aria-label="User profile"
-            marginRight={10}
-          />
+          <Icon src={UserVecor} aria-label="User profile" marginRight={10} />
         </PageLink>
       </NavBarButton>
     </NavBarButtonContainer>

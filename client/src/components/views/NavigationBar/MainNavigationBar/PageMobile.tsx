@@ -5,12 +5,15 @@ import {
   NavBarButton,
 } from "./NavigationBar.style";
 import { Icon } from "../../../ui/ButtonWithIcon/ButtonWithIcon";
+import PlantVecor from "../../../../assets/PlantVector.svg";
+import OfferVecor from "../../../../assets/AddVector.svg";
+import UserVecor from "../../../../assets/UserVector.svg";
 
 const PagesOnMobile = () => {
   const pages = [
-    { source: "/plants", icon: "plantVector.svg", aria: "plants" },
-    { source: "/add-offer", icon: "addVector.svg", aria: "add offer" },
-    { source: "/user/", icon: "userVector.svg", aria: "user profile" },
+    { source: "/plants", icon: PlantVecor, aria: "plants" },
+    { source: "/add-offer", icon: OfferVecor, aria: "add offer" },
+    { source: "/user/", icon: UserVecor, aria: "user profile" },
   ];
   return (
     <NavBarButtonContainerMobile>
