@@ -13,5 +13,14 @@ body {
    background-color: ${({ theme }) => theme.colors.common.backgroundcolor};
 }
 `;
+/*
+export const LogoStyle = createGlobalStyle`
+@font-face {
+    font-family: 'plants_lovin';
+    src: url('../font/plants_lovin-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+`*/
 
 export default GlobalStyles;

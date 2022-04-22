@@ -10,11 +10,18 @@ interface IconInButton {
 }
 
 export const Icon = styled.img<IconInButton>`
-  width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "30px")};
-  height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "30px")};
-  color: white;
+  display: flex;
   margin-right: 10px;
   transition: 0.2s;
+  width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "30px")};
+  height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : "30px")};
+
+  @media (max-width: 680px) {
+    width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "25px")};
+    height: ${({ imageSize }) =>
+      imageSize?.height ? imageSize.height : "25px"};
+  }
+
   @media (max-width: 576px) {
     width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : "20px")};
     height: ${({ imageSize }) =>
@@ -58,7 +65,7 @@ export const Add = styled(Button)`
   }
 `;
 
-export const ButtonWithImage = (props: { content: string; src: string }) => {
+export const ButtonWithIcon = (props: { content: string; src: string }) => {
   return (
     <div>
       <Add>
