@@ -20,12 +20,13 @@ import AdminLoginPage from "../AdminPage/AdminLoginPage";
 import AdminCategoriesAndHeightsPage from "../AdminPage/AdminCategoriesAndHeightsPage";
 import AdminUsersOffersPage from "../AdminPage/AdminUsersOffersPage";
 import AdminUsersPage from "../AdminPage/AdminUsersPage";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import { NavigationBar } from "../NavigationBar/MainNavigationBar/NavigationBar";
 import { AdminNavigationBar } from "../AdminPage/NavigationBar/AdminNavigationBar";
 import AdminSettings from "../AdminPage/AdminSettings";
 import { LoginNavigationBar } from "../NavigationBar/LoginNavigationBar/LoginNavigationBar";
 import GlobalFonts from "../../../font/fonts";
-
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
             <Route path="/admin/settings" element={<AdminSettings />} />
           </Route>
         </Routes>
+        <ToastContainer />
       </Router>
     </ThemeProvider>
   );
