@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import AddOfferPage from "../AddOfferPage/AddOfferPage";
 import PlantsPage from "../PlantsPage/PlantsPage";
-import UserPage from "../ProfilePage/ProfilePage";
+import UserPage from "../ProfilePage/ProfilePage/ProfilePage";
 import NotFoundPage from "../NotFound/NotFound";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../ProfilePage/LoginPage";
@@ -27,6 +27,7 @@ import { AdminNavigationBar } from "../AdminPage/NavigationBar/AdminNavigationBa
 import AdminSettings from "../AdminPage/AdminSettings";
 import { LoginNavigationBar } from "../NavigationBar/LoginNavigationBar/LoginNavigationBar";
 import GlobalFonts from "../../../font/fonts";
+import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
 
 function App() {
   return (
@@ -39,8 +40,10 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/add-offer" element={<AddOfferPage />} />
             <Route path="/plants" element={<PlantsPage />} />
-            <Route path="/user" element={<UserPage />} />
-            <Route path="/user/your-offers" element={<YourOfferPage />} />
+            <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
+              <Route path="/user/" element={<UserPage />} />
+              <Route path="/user/your-offers" element={<YourOfferPage />} />
+            </Route>
           </Route>
           <Route path="/" element={<LoginPagesWithNavigationBar />}>
             <Route path="/user/login" element={<LoginPage />} />
@@ -88,6 +91,15 @@ function App() {
     return (
       <>
         <LoginNavigationBar />
+        <Outlet />
+      </>
+    );
+  }
+
+  function UserProfileOrOffersNavigationBar() {
+    return (
+      <>
+        <ProfileAndYourOfferBar />
         <Outlet />
       </>
     );
