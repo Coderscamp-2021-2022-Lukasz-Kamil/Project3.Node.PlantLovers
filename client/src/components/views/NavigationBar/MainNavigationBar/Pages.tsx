@@ -19,7 +19,7 @@ const Pages = () => {
         </NavBarButton>
       ))}
       <NavBarButton>
-        <PageLink to="/user">
+        <PageLink to="/user/">
           <Icon src="UserVector.svg" aria-label="User profile" />
         </PageLink>
       </NavBarButton>

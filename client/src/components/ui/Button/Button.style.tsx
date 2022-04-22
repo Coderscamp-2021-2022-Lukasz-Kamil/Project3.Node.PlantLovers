@@ -16,12 +16,20 @@ export interface ButtonProps {
     | "textInactive"
     | "textColor"
     | "secondaryTextInactive";
-  background?: "primary" | "hover" | "secondary" | "secondaryHover";
+  background?:
+    | "primary"
+    | "hover"
+    | "secondary"
+    | "secondaryHover"
+    | "transparent";
   width?: number | "auto";
   height?: number;
 }
 
 export const Button = styled.button<ButtonProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.5rem;
   border-radius: 5px;
   border: none;
