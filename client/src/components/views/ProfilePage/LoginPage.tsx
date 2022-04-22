@@ -42,6 +42,31 @@ const LoginPage = () => {
       });
   };
 
+  const noFieldsAreTouched = () => {
+    return (
+      !signInFormHandler.touched.email && !signInFormHandler.touched.password
+    );
+  };
+
+  const bothFieldsAreTouched = () => {
+    return (
+      signInFormHandler.touched.email && signInFormHandler.touched.password
+    );
+  };
+
+  const anyFieldInputIsInvalid = () => {
+    return (
+      !!signInFormHandler.errors.email || !!signInFormHandler.errors.password
+    );
+  };
+
+  const isInputInvalid = () => {
+    return (
+      noFieldsAreTouched() ||
+      (bothFieldsAreTouched() && anyFieldInputIsInvalid())
+    );
+  };
+
   return (
     <div>
       <section>
@@ -72,7 +97,9 @@ const LoginPage = () => {
               <div>{signInFormHandler.errors.password}</div>
             ) : null}
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" disabled={isInputInvalid()}>
+            Login
+          </button>
         </form>
       </section>
     </div>
