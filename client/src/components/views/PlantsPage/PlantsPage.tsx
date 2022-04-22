@@ -7,7 +7,7 @@ const PlantsPage = () => {
   return (
   <div>
     PlantsPage
-    <Dropdown title="Category" ico={<Arrow/>} />
+    <Dropdown title="Category" ico={<Arrow/>} list={[]}/>
   </div>);
 };
 

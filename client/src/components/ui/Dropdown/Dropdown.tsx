@@ -8,7 +8,12 @@ import {
 } from "./Dropdown.style";
 import IDropdown from "./Dropdown.intefrace";
 
-const items = [
+interface Item {
+	id: number;
+	name: string;
+}
+
+const items:Item[] = [
 	{
 		id: 1,
 		name: "hanging plants",
@@ -35,11 +40,11 @@ const items = [
 	},
 ];
 
-export const Dropdown = ({ title, ico }: IDropdown) => {
+export const Dropdown = ({ title, ico, list }: IDropdown) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedOption, setSelectedOption] = useState(null);
+	const [selectedOption, setSelectedOption] = useState<string|null>(null);
 	const toggling = () => setIsOpen(state => !state);
-	const handleSelected = (value: any) => {
+	const handleSelected = (value: Item) => {
 		setSelectedOption(value.name);
 		setIsOpen(false);
 		// console.log(selectedOption);
