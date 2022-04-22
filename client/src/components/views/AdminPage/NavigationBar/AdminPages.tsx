@@ -21,7 +21,7 @@ const AdminPages = () => {
       ))}
       <NavBarButton>
         <PageLink to="/admin/settings">
-          <Icon src={UserVector} aria-label="User profile" marginRight={10} />
+          <Icon src={UserVector} aria-label="User profile" />
         </PageLink>
       </NavBarButton>
     </NavBarButtonContainer>

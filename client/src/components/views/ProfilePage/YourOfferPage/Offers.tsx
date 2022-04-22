@@ -11,7 +11,7 @@ const OfferCard = styled(Card)`
   height: 36vh;
   padding: 0;
 
-  @media (max-width: 950px) {
+  @media (max-width: 1050px) {
     height: auto;
   }
 `;
@@ -25,7 +25,7 @@ const YourOfferGridContainer = styled(GridContainer)`
   grid-gap: 1vw 4vw;
 
   @media (max-width: 1050px) {
-    grid-gap: 1vw 2vw;
+    grid-gap: 2vw 2vw;
   }
 
   @media (max-width: 576px) {

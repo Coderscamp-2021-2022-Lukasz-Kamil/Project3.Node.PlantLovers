@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Button } from "../../../ui/Button/Button.style";
 import {
   LoginNavBarButtonContainer,
   LoginPageLink,
@@ -26,9 +27,15 @@ export const ProfileAndYourOfferPages = () => {
   return (
     <ProfileAndYourOfferBarButtonContainer>
       {pages.map((page) => (
-        <NavBarButton key={page.name}>
+        <Button
+          key={page.name}
+          fontSizeDesktop="xl"
+          fontSizeMobile="mdl"
+          background="transparent"
+          padding="0"
+        >
           <LoginPageLink to={page.source}>{page.name}</LoginPageLink>
-        </NavBarButton>
+        </Button>
       ))}
     </ProfileAndYourOfferBarButtonContainer>
   );

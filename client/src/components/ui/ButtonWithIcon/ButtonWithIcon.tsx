@@ -5,23 +5,23 @@ import { Button } from "../Button/Button.style";
 interface IconInButton {
   width?: number;
   height?: number;
-  marginRight?: number;
+  marginRight?: string;
   mobileWidth?: number;
   mobileHeight?: number;
 }
 
 export const Icon = styled.img<IconInButton>`
   display: flex;
-  margin-right: ${({ marginRight }) => (marginRight ? marginRight : 0)}px;
+  margin-right: ${({ marginRight }) => (marginRight ? marginRight : "10px")};
   transition: 0.2s;
   width: ${({ width }) => (width ? width : 30)}px;
   height: ${({ height }) => (height ? height : 30)}px;
-  /*
+
   @media (max-width: 680px) {
     width: ${({ width }) => (width ? width : 25)}px;
     height: ${({ height }) => (height ? height : 25)}px;
   }
-*/
+
   @media (max-width: 576px) {
     width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : 20)}px;
     height: ${({ mobileHeight }) => (mobileHeight ? mobileHeight : 20)}px;
@@ -78,7 +78,7 @@ export const LogOutButton = (props: { content: string; src: string }) => {
 export const ButtonWithIcon = (props: { content: string; src: string }) => {
   return (
     <Add>
-      <Icon marginRight={10} src={props.src} />
+      <Icon src={props.src} />
       {props.content}
     </Add>
   );

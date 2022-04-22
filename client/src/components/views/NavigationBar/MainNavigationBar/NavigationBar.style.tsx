@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { ButtonProps } from "../../../ui/Button/Button.style";
+import { Button, ButtonProps } from "../../../ui/Button/Button.style";
 import { Icon } from "../../../ui/ButtonWithIcon/ButtonWithIcon";
 
 export const NavBar = styled.nav`
@@ -39,22 +39,12 @@ export const NavBarButtonContainerMobile = styled(NavBarButtonContainer)`
   }
 `;
 
-export const NavBarButton = styled.button<ButtonProps>`
-  border: none;
-  transition: 0.2s;
-  font-family: "Poppins", sans-serif;
+export const NavBarButton = styled(Button)`
   font-size: ${({ theme, fontSizeDesktop }) =>
     fontSizeDesktop
       ? theme.size.desktop[fontSizeDesktop]
       : theme.size.desktop.mdl}px;
-  font-weight: ${({ theme, fontWeight }) =>
-    fontWeight ? theme.weight[fontWeight] : theme.weight.bold};
-  background: ${({ theme, background }) =>
-    background
-      ? theme.colors.button[background]
-      : theme.colors.button.transparent};
-  width: ${({ width }) => (width ? width : "auto")};
-
+  cursor: default;
   &:hover ${Icon} {
     filter: invert(91%) sepia(99%) saturate(2%) hue-rotate(230deg)
       brightness(108%) contrast(100%);
@@ -77,21 +67,14 @@ export const NavBarButton = styled.button<ButtonProps>`
 `;
 
 export const TitleButton = styled(NavBarButton)`
-  display: flex;
-  align-items: center;
   margin-left: 30px;
+  justify-content: start;
   font-family: "plants_lovin";
   font-size: ${({ theme, fontSizeDesktop }) =>
     fontSizeDesktop
       ? theme.size.desktop[fontSizeDesktop]
       : theme.size.desktop.titleLg}px;
-  font-weight: ${({ theme, fontWeight }) =>
-    fontWeight ? theme.weight[fontWeight] : theme.weight.regular};
-  background: ${({ theme, background }) =>
-    background
-      ? theme.colors.button[background]
-      : theme.colors.button.transparent};
-  width: ${({ width }) => (width ? width : 100)}%;
+  width: 100%;
   height: 10vh;
 
   @media (max-width: 680px) {

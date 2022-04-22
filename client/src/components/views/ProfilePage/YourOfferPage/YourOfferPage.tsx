@@ -49,7 +49,7 @@ const YourOfferPage = () => {
           <SearchInput
             placeholder="Search for plant"
             width="320px"
-            height={35}
+            height="35px"
           />
           <FilterButtons />
         </SearchAndFilterContainer>

@@ -18,9 +18,14 @@ const PagesOnMobile = () => {
   return (
     <NavBarButtonContainerMobile>
       {pages.map((page) => (
-        <NavBarButton key={page.source}>
+        <NavBarButton
+          key={page.source}
+          background="transparent"
+          mobileWidth="auto"
+          padding="0"
+        >
           <PageLink to={page.source}>
-            <Icon src={page.icon} aria-label={page.aria} marginRight={10} />
+            <Icon src={page.icon} aria-label={page.aria} />
           </PageLink>
         </NavBarButton>
       ))}

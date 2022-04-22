@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FilterButton } from "../../../ui/Button/Button.style";
+import { Button } from "../../../ui/Button/Button.style";
 
 const FilterButtonsContainer = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const FilterButtonsContainer = styled.div`
   }
 `;
 
-const OfferFilterButton = styled(FilterButton)`
+const OfferFilterButton = styled(Button)`
   @media (max-width: 950px) {
     width: 70px;
     height: 30px;
@@ -26,12 +26,8 @@ const OfferFilterButton = styled(FilterButton)`
   }
 
   @media (max-width: 576px) {
-    font-size: ${({ theme, fontSizeMobile }) =>
-      fontSizeMobile
-        ? theme.size.mobile[fontSizeMobile]
-        : theme.size.mobile.sm}px;
-    width: ${({ width }) => (width ? width : 68)}px;
-    height: ${({ height }) => (height ? height : 21)}px;
+    width: 68px;
+    height: 21px;
   }
 `;
 
@@ -44,7 +40,19 @@ export const FilterButtons = () => {
   return (
     <FilterButtonsContainer>
       {buttons.map((button) => (
-        <OfferFilterButton key={button.name}>{button.name}</OfferFilterButton>
+        <OfferFilterButton
+          key={button.name}
+          color="secondaryTextInactive"
+          background="secondary"
+          fontSizeDesktop="sm"
+          fontSizeMobile="sm"
+          fontWeight="regular"
+          width="93px"
+          height="35px"
+          borderRadius="10"
+        >
+          {button.name}
+        </OfferFilterButton>
       ))}
     </FilterButtonsContainer>
   );
