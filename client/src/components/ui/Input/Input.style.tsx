@@ -9,14 +9,14 @@ interface InputProps {
     | "secondary"
     | "placeholder"
     | "transparent";
-    width?: number | "auto";
+    width?: number;
     height?: number;
 }
 
 export const Input = styled.input<InputProps>`
     border-radius: 5px;
     border: 1px solid #000;
-    cursor: pointer;
+    cursor: text;
     font-size: ${({ theme, fontSizeDesktop }) =>
         fontSizeDesktop ? theme.size.desktop[fontSizeDesktop] : theme.size.desktop.mds}px;
     font-weight: ${({ theme, fontWeight }) =>
