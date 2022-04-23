@@ -15,7 +15,7 @@ import NotFoundPage from "../NotFound/NotFound";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../ProfilePage/LoginPage";
 import SignUpPage from "../ProfilePage/SignUpPage";
-import YourOfferPage from "../ProfilePage/YourOfferPage";
+import YourOfferPage from "../ProfilePage/YourOfferPage/YourOfferPage";
 import AdminLoginPage from "../AdminPage/AdminLoginPage";
 import AdminCategoriesAndHeightsPage from "../AdminPage/AdminCategoriesAndHeightsPage";
 import AdminUsersOffersPage from "../AdminPage/AdminUsersOffersPage";
@@ -43,8 +43,6 @@ function App() {
             <Route path="/add-offer" element={<AddOfferPage />} />
             <Route path="/plants" element={<PlantsPage />} />
             <Route path="/plants/offer" element={<Offer />} />
-            <Route path="/user" element={<UserPage />} />
-            <Route path="/user/your-offers" element={<YourOfferPage />} />
             <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
               <Route path="/user/" element={<UserPage />} />
               <Route path="/user/your-offers" element={<YourOfferPage />} />

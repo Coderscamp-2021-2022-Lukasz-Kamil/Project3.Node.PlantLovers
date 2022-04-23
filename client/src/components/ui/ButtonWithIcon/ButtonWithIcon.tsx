@@ -3,27 +3,28 @@ import styled from "styled-components";
 import { Button } from "../Button/Button.style";
 
 interface IconInButton {
-  imageSize?: {
-    width: number;
-    height: number;
-  };
+  width?: number;
+  height?: number;
+  marginRight?: string;
+  mobileWidth?: number;
+  mobileHeight?: number;
 }
 
 export const Icon = styled.img<IconInButton>`
   display: flex;
-  margin-right: 10px;
+  margin-right: ${({ marginRight }) => (marginRight ? marginRight : "10px")};
   transition: 0.2s;
-  width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : 30)}px;
-  height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : 30)}px;
+  width: ${({ width }) => (width ? width : 30)}px;
+  height: ${({ height }) => (height ? height : 30)}px;
 
   @media (max-width: 680px) {
-    width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : 25)}px;
-    height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : 25)}px;
+    width: ${({ width }) => (width ? width : 25)}px;
+    height: ${({ height }) => (height ? height : 25)}px;
   }
 
   @media (max-width: 576px) {
-    width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : 20)}px;
-    height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : 20)}px;
+    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : 20)}px;
+    height: ${({ mobileHeight }) => (mobileHeight ? mobileHeight : 20)}px;
   }
 `;
 

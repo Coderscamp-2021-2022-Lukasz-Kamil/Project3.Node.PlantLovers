@@ -26,7 +26,7 @@ export const ProfileAndYourOfferPages = () => {
   return (
     <ProfileAndYourOfferBarButtonContainer>
       {pages.map((page) => (
-        <NavBarButton key={page.name}>
+        <NavBarButton key={page.name} background="transparent" padding="0">
           <LoginPageLink to={page.source}>{page.name}</LoginPageLink>
         </NavBarButton>
       ))}

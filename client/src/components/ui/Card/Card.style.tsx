@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export interface CardProps {
-  color?: "primary" | "secondary" | "highlighted";
+  color?: "primary" | "secondary" | "highlighted" | "offer";
   width?: string;
   height?: string;
   borderRadius?: number;

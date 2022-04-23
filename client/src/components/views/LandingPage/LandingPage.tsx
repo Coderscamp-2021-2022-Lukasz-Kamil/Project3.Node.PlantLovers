@@ -3,9 +3,10 @@ import React from "react";
 import { Card } from "../../ui/Card/Card.style";
 import styled from "styled-components";
 import { Typography } from "../../ui/Typography/Typography.style";
+import LandingPageBackground from "../../../assets/LandingPagePhoto.svg";
 
 const LandingPageContainer = styled.div`
-  background-image: url("LandingPagePhoto.svg");
+  background-image: url("${LandingPageBackground}");
   background-size: cover;
   background-position: 100% 0;
   display: flex;

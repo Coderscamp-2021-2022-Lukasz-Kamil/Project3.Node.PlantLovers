@@ -5,13 +5,13 @@ interface InputProps {
   fontWeight?: "regular" | "light";
   color?: "primary" | "secondary" | "placeholder";
   width?: string;
-  height?: number;
+  height?: string;
 }
 
 export const Input = styled.input<InputProps>`
   border-radius: 5px;
   border: 1px solid #000;
-  cursor: pointer;
+  cursor: text;
   padding-left: 10px;
   font-size: ${({ theme, fontSize }) =>
     fontSize ? theme.size.desktop[fontSize] : theme.size.desktop.mds}px;
@@ -19,7 +19,7 @@ export const Input = styled.input<InputProps>`
     fontWeight ? theme.weight[fontWeight] : theme.weight.regular};
   background: ${({ theme }) => theme.colors.input.primary};
   width: ${({ width }) => (width ? width : "670px")};
-  height: ${({ height }) => (height ? height : 45)}px;
+  height: ${({ height }) => (height ? height : "45px")};
 
   &::placeholder {
     opacity: 0.2;
@@ -33,6 +33,6 @@ export const Input = styled.input<InputProps>`
     font-size: ${({ theme, fontSize }) =>
       fontSize ? theme.size.mobile[fontSize] : theme.size.mobile.xs}px;
     width: ${({ width }) => (width ? width : "280px")};
-    height: ${({ height }) => (height ? height : 33)}px;
+    height: ${({ height }) => (height ? height : "33px")};
   }
 `;
