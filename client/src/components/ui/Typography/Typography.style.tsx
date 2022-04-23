@@ -2,7 +2,18 @@ import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
 export interface TypographyProps {
-  fontSize?: "xs" | "sm" | "mds" | "md" | "mdl" | "lg" | "xl" | "xxl" | "xxxl";
+  fontSize?:
+    | "xxxs"
+    | "xxs"
+    | "xs"
+    | "sm"
+    | "mds"
+    | "md"
+    | "mdl"
+    | "lg"
+    | "xl"
+    | "xxl"
+    | "xxxl";
   fontSizeMobile?: "xs" | "sm" | "md" | "mdl" | "lg" | "xl" | "xxl";
   fontWeight?: "light" | "regular" | "bold";
 }

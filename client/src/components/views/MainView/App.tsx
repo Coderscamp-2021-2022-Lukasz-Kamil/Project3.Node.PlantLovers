@@ -15,7 +15,7 @@ import NotFoundPage from "../NotFound/NotFound";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../ProfilePage/LoginPage";
 import SignUpPage from "../ProfilePage/SignUpPage";
-import YourOfferPage from "../ProfilePage/YourOfferPage";
+import YourOfferPage from "../ProfilePage/YourOfferPage/YourOfferPage";
 import AdminLoginPage from "../AdminPage/AdminLoginPage";
 import AdminCategoriesAndHeightsPage from "../AdminPage/AdminCategoriesAndHeightsPage";
 import AdminUsersOffersPage from "../AdminPage/AdminUsersOffersPage";
@@ -27,7 +27,9 @@ import { AdminNavigationBar } from "../AdminPage/NavigationBar/AdminNavigationBa
 import AdminSettings from "../AdminPage/AdminSettings";
 import { LoginNavigationBar } from "../NavigationBar/LoginNavigationBar/LoginNavigationBar";
 import GlobalFonts from "../../../font/fonts";
+import Offer from "../OfferPage/OfferPage";
 import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
+
 
 function App() {
   return (
@@ -40,6 +42,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/add-offer" element={<AddOfferPage />} />
             <Route path="/plants" element={<PlantsPage />} />
+            <Route path="/plants/offer" element={<Offer />} />
             <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
               <Route path="/user/" element={<UserPage />} />
               <Route path="/user/your-offers" element={<YourOfferPage />} />

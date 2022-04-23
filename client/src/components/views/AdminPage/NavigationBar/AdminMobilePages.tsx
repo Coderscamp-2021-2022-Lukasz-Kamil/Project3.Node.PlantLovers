@@ -5,18 +5,21 @@ import {
   PageLink,
 } from "../../NavigationBar/MainNavigationBar/NavigationBar.style";
 import { Icon } from "../../../ui/ButtonWithIcon/ButtonWithIcon";
+import UsersVector from "../../../../assets/UsersVector.svg";
+import OffersVector from "../../../../assets/OffersVector.svg";
+import UserVector from "../../../../assets/UserVector.svg";
 
 const AdminMobliePages = () => {
   const pages = [
-    { source: "/admin/users", icon: "UsersVector.svg", aria: "Users" },
+    { source: "/admin/users", icon: UsersVector, aria: "Users" },
     {
       source: "/admin/offers/users-offers",
-      icon: "OffersVector.svg",
+      icon: OffersVector,
       aria: "Users offers",
     },
     {
       source: "/admin/settings",
-      icon: "UserVector.svg",
+      icon: UserVector,
       aria: "profile setting",
     },
   ];

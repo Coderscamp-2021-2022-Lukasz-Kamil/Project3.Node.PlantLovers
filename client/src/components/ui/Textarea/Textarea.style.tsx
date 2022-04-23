@@ -16,7 +16,7 @@ export const Textarea = styled.textarea<TextAreaProps>`
   border: 1px solid #000;
   padding: 0.5rem;
   font-size: ${({ theme, fontSize }) =>
-    fontSize ? theme.size.desktop[fontSize] : theme.size.desktop.sm}px;
+    fontSize ? theme.size.desktop[fontSize] : theme.size.desktop.mds}px;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.input.placeholder};
@@ -29,7 +29,7 @@ export const Textarea = styled.textarea<TextAreaProps>`
     font-size: ${({ fontSizeMobile, theme }) =>
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
-        : theme.size.mobile.lg}px;
+        : theme.size.mobile.md}px;
     height: ${({ height }) => (height ? height : 10)}vh;
   }
 `;
