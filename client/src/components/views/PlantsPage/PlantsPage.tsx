@@ -1,14 +1,22 @@
 import React from "react";
-import { ReactComponent as Arrow } from "../../../assets/DownVector.svg";
-import { Dropdown } from "../../ui/Dropdown/Dropdown";
-import { CategoryList } from "../../ui/Dropdown/DropdownLists";
+import styled from "styled-components";
+import { PlantPageOfferts } from "./PlantPageOfferts";
+
+const YourOfferPageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+`;
 
 const PlantsPage = () => {
   return (
-    <div>
-      PlantsPage
-      <Dropdown title="Category" ico={<Arrow />} list={CategoryList} />
-    </div>
+    <YourOfferPageContainer>
+      <div>
+        <PlantPageOfferts />
+      </div>
+    </YourOfferPageContainer>
   );
 };
 
