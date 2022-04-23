@@ -1,20 +1,20 @@
 import React from "react";
-import { BASE_URL } from "../../../hooks/UseFetch";
-import { useNavigate } from "react-router";
-import { signInSchema } from "../../../shared/inputHandlers/LoginInputHandler";
+import styled from "styled-components";
 import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BASE_URL } from "../../../hooks/UseFetch";
+import { useNavigate } from "react-router";
+import { signInSchema } from "../../../shared/inputHandlers/LoginInputHandler";
 
-import styled from "styled-components";
 import { LandingPageContainer } from "../LandingPage/LandingPage";
 import { Card } from "../../ui/Card/Card.style";
-import { Input } from "../../ui/Input/Input.style";
-import { Button } from "../../ui/Button/Button.style";
 import background from "../../../assets/LoginPagePhoto.svg";
+import { Logo, SignUpButton } from "./SignUpPage";
+import { InputUser } from "../../ui/Input/Input.style";
 
-export const SignUpContainer = styled(LandingPageContainer)`
+export const LoginContainer = styled(LandingPageContainer)`
   background-image: url(${background});
   flex-flow: column;
   justify-content: center;
@@ -28,6 +28,7 @@ const LoginCard = styled(Card)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   box-shadow: ${({ theme }) => theme.colors.card.boxShadow};
 
   @media (max-width: 576px) {
@@ -41,34 +42,8 @@ const LoginCard = styled(Card)`
 
 `;
 
-export const LoginInput = styled(Input)`
-  margin: 15px 20px;
-  width: 300px;
-
-  @media (max-width: 576px) {
-    width: 300px;
-    margin: 10px 0;
-    background: inherit;
-  }
-
-`;
-
-export const Logo = styled.h4`
-  font-family: "plants_lovin";
-  font-size: clamp(3.5rem, 2.6rem + 4.5vw, 8rem);
+export const LoginButton = styled(SignUpButton)`
   margin: 0 auto;
-`;
-
-export const LoginButton = styled(Button)`
-  margin: 0 auto;
-  margin-top: 50px;
-  width: 300px;
-  text-transform: uppercase;
-
-  @media (max-width: 576px) {
-    margin-top: 20px;
-    width: 300px;
-  }
 `;
 
 const LoginPage = () => {
@@ -132,15 +107,16 @@ const LoginPage = () => {
   };
 
   return (
-    <SignUpContainer>
+    <LoginContainer>
       <Logo> Plant Lovers </Logo>
       <LoginCard>
         <form onSubmit={onSubmitHandler}>
           <div>
-            <label htmlFor="email">Email</label>
-            <LoginInput
+            <label htmlFor="email"></label>
+            <InputUser
               type="email"
               id="email"
+              placeholder="e-mail"
               value={signInFormHandler.values.email}
               onChange={signInFormHandler.handleChange}
               onBlur={signInFormHandler.handleBlur}
@@ -150,10 +126,11 @@ const LoginPage = () => {
             ) : null}
           </div>
           <div>
-            <label htmlFor="password">Password</label>
-            <LoginInput
+            <label htmlFor="password"></label>
+            <InputUser
               type="password"
               id="password"
+              placeholder="password"
               value={signInFormHandler.values.password}
               onChange={signInFormHandler.handleChange}
               onBlur={signInFormHandler.handleBlur}
@@ -167,7 +144,7 @@ const LoginPage = () => {
           </LoginButton>
         </form>
       </LoginCard>
-    </SignUpContainer>
+    </LoginContainer>
   );
 };
 
