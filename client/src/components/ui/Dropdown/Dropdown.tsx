@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import {
   DropdownContainer,
   DropdownHeader,
+  DropdownHeaderTitle,
+  DropdownHeaderIcon,
   List,
   ListItem,
   Wrapper,
@@ -20,8 +22,8 @@ export const Dropdown = ({ title, ico, list }: IDropdown) => {
     <DropdownContainer>
       <Wrapper onClick={toggling}>
         <DropdownHeader>
-          {selectedOption || title}
-          {ico}
+          <DropdownHeaderTitle>{selectedOption || title}</DropdownHeaderTitle>
+          <DropdownHeaderIcon>{ico}</DropdownHeaderIcon>
         </DropdownHeader>
       </Wrapper>
       {isOpen && (

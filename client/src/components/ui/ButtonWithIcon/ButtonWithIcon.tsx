@@ -29,6 +29,8 @@ export const Icon = styled.img<IconInButton>`
 `;
 
 export const Add = styled(Button)`
+  border: 1px solid black;
+  margin-bottom: 0.8em;
   font-size: ${({ theme, fontSizeDesktop }) =>
     fontSizeDesktop
       ? theme.size.desktop[fontSizeDesktop]
@@ -37,8 +39,8 @@ export const Add = styled(Button)`
     color ? theme.colors.common[color] : theme.colors.common.textColor};
   background: ${({ theme, background }) =>
     background ? theme.colors.button[background] : theme.colors.card.secondary};
-  width: ${({ width }) => (width ? width : 454)}px;
-  height: ${({ height }) => (height ? height : 87)}px;
+  width: ${({ width }) => (width ? width : "100%")};
+  height: ${({ height }) => (height ? height : "65px")};
   &:hover {
     color: ${({ theme, color }) =>
       color ? theme.colors.common[color] : theme.colors.common.backgroundcolor};
@@ -56,8 +58,7 @@ export const Add = styled(Button)`
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
         : theme.size.mobile.mdl}px;
-    width: ${({ width }) => (width ? width : 188)}px;
-    height: ${({ height }) => (height ? height : 42)}px;
+    height: ${({ height }) => (height ? height : "42px")};
   }
 `;
 
