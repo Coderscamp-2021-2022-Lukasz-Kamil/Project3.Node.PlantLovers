@@ -1,7 +1,15 @@
 import styled from "styled-components";
 
 export interface ButtonProps {
-  fontSizeDesktop?: "sm" | "mds" | "md" | "mdl" | "lg" | "titleMd" | "titleLg";
+  fontSizeDesktop?:
+    | "sm"
+    | "mds"
+    | "md"
+    | "mdl"
+    | "lg"
+    | "xl"
+    | "titleMd"
+    | "titleLg";
   fontSizeMobile?:
     | "sm"
     | "md"
@@ -22,16 +30,22 @@ export interface ButtonProps {
     | "secondary"
     | "secondaryHover"
     | "transparent";
-  width?: number | "auto";
-  height?: number;
+  width?: string;
+  height?: string;
+  padding?: string;
+  mediumWidth?: string;
+  mediumHeight?: string;
+  mobileWidth?: string;
+  mobileHeight?: string;
+  borderRadius?: string;
 }
 
 export const Button = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
-  border-radius: 5px;
+  padding: ${({ padding }) => (padding ? padding : "0.5rem")};
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : 5)}px;
   border: none;
   cursor: pointer;
   transition: 0.2s;
@@ -45,8 +59,8 @@ export const Button = styled.button<ButtonProps>`
     color ? theme.colors.common[color] : theme.colors.common.backgroundcolor};
   background: ${({ theme, background }) =>
     background ? theme.colors.button[background] : theme.colors.button.primary};
-  width: ${({ width }) => (width ? width : 200)}px;
-  height: ${({ height }) => (height ? height : 45)}px;
+  width: ${({ width }) => (width ? width : "200px")};
+  height: ${({ height }) => (height ? height : "45px")};
 
   &:hover {
     color: ${({ theme, color }) =>
@@ -60,16 +74,8 @@ export const Button = styled.button<ButtonProps>`
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
         : theme.size.mobile.md}px;
-    width: ${({ width }) => (width ? width : 160)}px;
-    height: ${({ height }) => (height ? height : 42)}px;
-  }
-`;
-
-export const AddCategoryOrHeightButton = styled(Button)`
-  width: ${({ width }) => (width ? width : 55)}px;
-
-  @media (max-width: 576px) {
-    width: ${({ width }) => (width ? width : 45)}px;
+    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : "160px")};
+    height: ${({ mobileHeight }) => (mobileHeight ? mobileHeight : "42px")};
   }
 `;
 
@@ -87,8 +93,8 @@ export const FilterButton = styled(Button)`
       : theme.colors.common.secondaryTextInactive};
   background: ${({ theme, background }) =>
     background ? theme.colors.button[background] : theme.colors.card.secondary};
-  width: ${({ width }) => (width ? width : 93)}px;
-  height: ${({ height }) => (height ? height : 35)}px;
+  width: ${({ width }) => (width ? width : "93px")};
+  height: ${({ height }) => (height ? height : "35px")};
 
   &:hover {
     color: ${({ theme, color }) =>
@@ -104,7 +110,7 @@ export const FilterButton = styled(Button)`
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
         : theme.size.mobile.sm}px;
-    width: ${({ width }) => (width ? width : 68)}px;
-    height: ${({ height }) => (height ? height : 21)}px;
+    width: ${({ width }) => (width ? width : "68px")};
+    height: ${({ height }) => (height ? height : "21px")};
   }
 `;

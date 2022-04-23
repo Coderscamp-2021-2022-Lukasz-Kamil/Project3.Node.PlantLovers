@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface GridColumnProps {
   bigScreenColumns?: number;
+  mediumScreenColumns?: number;
   smallScreenColumns?: number;
 }
 
@@ -13,6 +14,13 @@ export const GridContainer = styled.div<GridColumnProps>`
   grid-auto-flow: dense;
   grid-gap: 1em;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    grid-template-columns: ${({ mediumScreenColumns }) =>
+      mediumScreenColumns
+        ? `repeat(${mediumScreenColumns}, 1fr)`
+        : `repeat(3, 1fr)`};
+  }
 
   @media (max-width: 576px) {
     grid-template-columns: ${({ smallScreenColumns }) =>

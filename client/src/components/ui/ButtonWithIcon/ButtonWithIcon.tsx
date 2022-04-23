@@ -3,31 +3,34 @@ import styled from "styled-components";
 import { Button } from "../Button/Button.style";
 
 interface IconInButton {
-  imageSize?: {
-    width: number;
-    height: number;
-  };
+  width?: number;
+  height?: number;
+  marginRight?: string;
+  mobileWidth?: number;
+  mobileHeight?: number;
 }
 
 export const Icon = styled.img<IconInButton>`
   display: flex;
-  margin-right: 10px;
+  margin-right: ${({ marginRight }) => (marginRight ? marginRight : "10px")};
   transition: 0.2s;
-  width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : 30)}px;
-  height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : 30)}px;
+  width: ${({ width }) => (width ? width : 30)}px;
+  height: ${({ height }) => (height ? height : 30)}px;
 
   @media (max-width: 680px) {
-    width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : 25)}px;
-    height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : 25)}px;
+    width: ${({ width }) => (width ? width : 25)}px;
+    height: ${({ height }) => (height ? height : 25)}px;
   }
 
   @media (max-width: 576px) {
-    width: ${({ imageSize }) => (imageSize?.width ? imageSize.width : 20)}px;
-    height: ${({ imageSize }) => (imageSize?.height ? imageSize.height : 20)}px;
+    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : 20)}px;
+    height: ${({ mobileHeight }) => (mobileHeight ? mobileHeight : 20)}px;
   }
 `;
 
 export const Add = styled(Button)`
+  border: 1px solid black;
+  margin-bottom: 0.8em;
   font-size: ${({ theme, fontSizeDesktop }) =>
     fontSizeDesktop
       ? theme.size.desktop[fontSizeDesktop]
@@ -36,8 +39,8 @@ export const Add = styled(Button)`
     color ? theme.colors.common[color] : theme.colors.common.textColor};
   background: ${({ theme, background }) =>
     background ? theme.colors.button[background] : theme.colors.card.secondary};
-  width: ${({ width }) => (width ? width : 454)}px;
-  height: ${({ height }) => (height ? height : 87)}px;
+  width: ${({ width }) => (width ? width : "100%")};
+  height: ${({ height }) => (height ? height : "65px")};
   &:hover {
     color: ${({ theme, color }) =>
       color ? theme.colors.common[color] : theme.colors.common.backgroundcolor};
@@ -55,8 +58,7 @@ export const Add = styled(Button)`
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
         : theme.size.mobile.mdl}px;
-    width: ${({ width }) => (width ? width : 188)}px;
-    height: ${({ height }) => (height ? height : 42)}px;
+    height: ${({ height }) => (height ? height : "42px")};
   }
 `;
 

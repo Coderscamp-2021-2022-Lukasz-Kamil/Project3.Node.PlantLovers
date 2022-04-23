@@ -15,6 +15,7 @@ export const theme = {
       secondary: "#F9F8F8",
       highlighted: "#EEE6E6",
       boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+      offer: "#FFF",
     },
     button: {
       primary: "#538D22",
@@ -28,6 +29,7 @@ export const theme = {
       primary: "#F9F8F8",
       secondary: "#000",
       placeholder: "#9E9999",
+      transparent: "transparent",
     },
   },
   size: {
@@ -45,6 +47,8 @@ export const theme = {
       titleLg: 55,
     },
     desktop: {
+      xxxs: 10,
+      xxs: 12,
       xs: 14,
       sm: 16,
       mds: 18,
