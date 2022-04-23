@@ -37,7 +37,7 @@ const UserData = () => {
           <ProfilePageTypography fontSize="mdl">
             {data.name}
           </ProfilePageTypography>
-          <Input fontSize="md" width="100%" />
+          <Input fontSizeDesktop="md" width="100%" />
         </ProfilePageContainerColumnItem>
       ))}
       <Button>Save changes</Button>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const DropdownContainer = styled.div`
-  margin-top: ${({ theme }) => theme.size.common.marginTop};
   display: flex;
   flex-flow: column;
 
@@ -10,9 +9,9 @@ export const DropdownContainer = styled.div`
   }
 `;
 export const Wrapper = styled.div`
-  width: 670px;
+  width: 40vw;
   margin-bottom: 0.8em;
-  padding: 0.4em 2em 0.4em 1em;
+  padding: 0.4em 1em 0.4em 1em;
   font-size: ${({ theme }) => theme.size.desktop.mds}px;
   color: ${({ theme }) => theme.colors.common.textColor};
   background: ${({ theme }) => theme.colors.card.secondary};
@@ -24,7 +23,7 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: 576px) {
-    width: 290px;
+    width: 90vw;
     font-size: ${({ theme }) => theme.size.mobile.md}px;
   }
 `;
@@ -33,21 +32,23 @@ export const DropdownHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  position: relative;
+`;
 
-  &:first-child {
-    max-width: 360px;
-    margin-left: auto;
-  }
+export const DropdownHeaderTitle = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+`;
 
-  @media (max-width: 576px) {
-    &:first-child {
-      max-width: 190px;
-    }
-  }
+export const DropdownHeaderIcon = styled(DropdownHeaderTitle)`
+  position: absolute;
+  justify-content: end;
 `;
 
 export const List = styled.ul`
-  width: 670px;
+  width: 40vw;
   border-radius: ${({ theme }) => theme.size.common.borderRadius};
   background: ${({ theme }) => theme.colors.card.secondary};
   border: 2px solid #e5e5e5;
@@ -58,7 +59,7 @@ export const List = styled.ul`
   }
 
   @media (max-width: 576px) {
-    width: 290px;
+    width: 90vw;
     font-size: ${({ theme }) => theme.size.mobile.md}px;
   } ;
 `;
