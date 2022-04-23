@@ -27,7 +27,9 @@ import { AdminNavigationBar } from "../AdminPage/NavigationBar/AdminNavigationBa
 import AdminSettings from "../AdminPage/AdminSettings";
 import { LoginNavigationBar } from "../NavigationBar/LoginNavigationBar/LoginNavigationBar";
 import GlobalFonts from "../../../font/fonts";
+import Offer from "../OfferPage/OfferPage";
 import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
+
 
 function App() {
   return (
@@ -40,6 +42,9 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/add-offer" element={<AddOfferPage />} />
             <Route path="/plants" element={<PlantsPage />} />
+            <Route path="/plants/offer" element={<Offer />} />
+            <Route path="/user" element={<UserPage />} />
+            <Route path="/user/your-offers" element={<YourOfferPage />} />
             <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
               <Route path="/user/" element={<UserPage />} />
               <Route path="/user/your-offers" element={<YourOfferPage />} />
