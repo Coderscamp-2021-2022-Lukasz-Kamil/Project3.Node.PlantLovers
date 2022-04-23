@@ -5,7 +5,7 @@ interface FetchDataParams {
   url: string;
   method: Method;
   headers: Record<string, unknown>;
-  body: Record<string, unknown>;
+  body?: Record<string, unknown>;
 }
 export const BASE_URL = "https://plant-lovers.herokuapp.com";
 axios.defaults.method = "GET";
