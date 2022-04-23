@@ -30,6 +30,7 @@ import GlobalFonts from "../../../font/fonts";
 import Offer from "../OfferPage/OfferPage";
 import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
 
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
