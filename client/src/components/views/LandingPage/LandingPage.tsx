@@ -22,7 +22,7 @@ export const LandingPageContainer = styled.div`
   }
 `;
 
-const LandingPageCard = styled(Card)`
+export const LandingPageCard = styled(Card)`
   position: relative;
   left: 10vw;
   border-radius: 20px;
