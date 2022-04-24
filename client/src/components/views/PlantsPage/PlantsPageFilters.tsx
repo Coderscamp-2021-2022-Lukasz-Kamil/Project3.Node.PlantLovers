@@ -10,7 +10,7 @@ const FilterButton = styled.button`
   padding: 0.48em 1em 0.48em 1em;
   font-size: 20px;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.common.textColor};
   position: relative;
   display: flex;
   justify-content: center;

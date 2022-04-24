@@ -24,13 +24,13 @@ const PlantsPageFlexWrapper = styled(FlexWrapper)`
 const FilterContener = styled.div`
   background: ${({ theme }) => theme.colors.card.secondary};
   height: 75vh;
-  margin-right: 2vw;
+  margin: 0 2vw;
 `;
 
 const PlantsPage = () => {
   return (
     <YourOfferPageContainer>
-      <PlantsPageFlexWrapper>
+      <PlantsPageFlexWrapper justifyContent="flex-start">
         <FilterContener>
           <PlantsDropdown
             title="Category"

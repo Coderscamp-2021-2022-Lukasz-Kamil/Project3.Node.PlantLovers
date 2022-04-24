@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
   background: ${({ theme }) => theme.colors.card.secondary};
   border-radius: ${({ theme }) => theme.size.common.borderRadius};
   border: 1px solid ${({ theme }) => theme.colors.common.textColor};
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};

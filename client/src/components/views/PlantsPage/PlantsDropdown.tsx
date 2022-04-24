@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import {
-  DropdownContainer,
-  DropdownHeader,
-  DropdownHeaderTitle,
-  DropdownHeaderIcon,
-  List,
-  ListItem,
-  Wrapper,
+  PlantsDropdownWrapper,
+  PlantsDropdownList,
 } from "./PlantsDropdown.style";
 import { ReactNode } from "react";
+import {
+  DropdownContainer,
+  DropdownHeader,
+  DropdownHeaderIcon,
+  DropdownHeaderTitle,
+  ListItem,
+} from "../../ui/Dropdown/Dropdown.style";
 
 export interface Item {
   id: number;
@@ -45,20 +47,20 @@ export const PlantsDropdown = ({ title, ico, list }: IDropdown) => {
   };
   return (
     <DropdownContainer>
-      <Wrapper onClick={toggling}>
+      <PlantsDropdownWrapper onClick={toggling}>
         <DropdownHeader>
           <DropdownHeaderTitle>{selectedOption || title}</DropdownHeaderTitle>
           <DropdownHeaderIcon>{ico}</DropdownHeaderIcon>
         </DropdownHeader>
-      </Wrapper>
+      </PlantsDropdownWrapper>
       {isOpen && (
-        <List>
+        <PlantsDropdownList>
           {list.map((item) => (
             <ListItem key={item.id} onClick={() => handleSelected(item)}>
               {item.name}
             </ListItem>
           ))}
-        </List>
+        </PlantsDropdownList>
       )}
     </DropdownContainer>
   );
@@ -78,14 +80,14 @@ export const PlantsDropdownWithInput = ({
   };
   return (
     <DropdownContainer>
-      <Wrapper onClick={toggling}>
+      <PlantsDropdownWrapper onClick={toggling}>
         <DropdownHeader>
           <DropdownHeaderTitle>{selectedOption || title}</DropdownHeaderTitle>
           <DropdownHeaderIcon>{ico}</DropdownHeaderIcon>
         </DropdownHeader>
-      </Wrapper>
+      </PlantsDropdownWrapper>
       {isOpen && (
-        <List>
+        <PlantsDropdownList>
           {list.map((item) => (
             <ListItem
               key={item.placeholder}
@@ -94,7 +96,7 @@ export const PlantsDropdownWithInput = ({
               {item.placeholder}
             </ListItem>
           ))}
-        </List>
+        </PlantsDropdownList>
       )}
     </DropdownContainer>
   );

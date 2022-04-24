@@ -87,16 +87,6 @@ const LandingPageCardHeading = styled(Typography)`
 `;
 
 const LandingPage = () => {
-  // const { response, error } = useFetchData({
-  //   url: "/offers",
-  //   headers: {
-  //     accept: "*/*",
-  //   },
-  // });
-
-  // const offers = response;
-  // console.log(offers);
-
   return (
     <LandingPageContainer>
       <LandingPageCard>

@@ -39,7 +39,6 @@ const LoginCard = styled(Card)`
     background: transparent;
     box-shadow: none;
   }
-
 `;
 
 export const LoginButton = styled(SignUpButton)`
@@ -110,7 +109,7 @@ const LoginPage = () => {
 
   return (
     <LoginContainer>
-      <Logo> Plant Lovers </Logo>
+      <Logo fontWeight="regular"> Plant Lovers </Logo>
       <LoginCard>
         <form onSubmit={onSubmitHandler}>
           <div>

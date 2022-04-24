@@ -38,6 +38,7 @@ const SearchInput = styled(Input)`
   @media (max-width: 700px) {
     width: 200px;
     height: 25px;
+    margin-right: 20px;
   }
 `;
 
