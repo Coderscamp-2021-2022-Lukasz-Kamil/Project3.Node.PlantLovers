@@ -17,6 +17,7 @@ export const Textarea = styled.textarea<TextAreaProps>`
   padding: 0.5rem;
   font-size: ${({ theme, fontSize }) =>
     fontSize ? theme.size.desktop[fontSize] : theme.size.desktop.mds}px;
+  resize: none;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.input.placeholder};

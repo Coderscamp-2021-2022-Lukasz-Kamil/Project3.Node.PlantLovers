@@ -1,14 +1,53 @@
 import React from "react";
-import { ReactComponent as Arrow } from "../../../assets/DownVector.svg";
-import { Dropdown } from "../../ui/Dropdown/Dropdown";
-import { CategoryList } from "../../ui/Dropdown/DropdownLists";
+import styled from "styled-components";
+import {
+  FilterCategoryList,
+  FilterHeightList,
+} from "../../ui/Dropdown/DropdownLists";
+import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
+import { PlantPageOfferts } from "./PlantPageOfferts";
+import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
+import { PlantsDropdown } from "./PlantsDropdown";
+import { CitySearch, PriceRange } from "./PlantsPageFilters";
+
+const YourOfferPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  margin: 100px 0;
+`;
+
+const PlantsPageFlexWrapper = styled(FlexWrapper)`
+  align-items: flex-start;
+`;
+
+const FilterContener = styled.div`
+  background: ${({ theme }) => theme.colors.card.secondary};
+  height: 75vh;
+  margin-right: 2vw;
+`;
 
 const PlantsPage = () => {
   return (
-    <div>
-      PlantsPage
-      <Dropdown title="Category" ico={<Arrow />} list={CategoryList} />
-    </div>
+    <YourOfferPageContainer>
+      <PlantsPageFlexWrapper>
+        <FilterContener>
+          <PlantsDropdown
+            title="Category"
+            ico={<Arrow />}
+            list={FilterCategoryList}
+          />
+          <PlantsDropdown
+            title="Height"
+            ico={<Arrow />}
+            list={FilterHeightList}
+          />
+          <CitySearch />
+          <PriceRange />
+        </FilterContener>
+        <PlantPageOfferts />
+      </PlantsPageFlexWrapper>
+    </YourOfferPageContainer>
   );
 };
 

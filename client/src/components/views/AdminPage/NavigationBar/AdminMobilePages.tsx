@@ -26,7 +26,11 @@ const AdminMobliePages = () => {
   return (
     <NavBarButtonContainerMobile>
       {pages.map((page) => (
-        <NavBarButton key={page.source}>
+        <NavBarButton
+          key={page.source}
+          background="transparent"
+          mobileWidth="auto"
+        >
           <PageLink to={page.source}>
             <Icon src={page.icon} aria-label={page.aria} />
           </PageLink>{" "}

@@ -10,14 +10,13 @@ export const DropdownContainer = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 40vw;
-  margin-bottom: 0.8em;
-  padding: 0.4em 1em 0.4em 1em;
-  font-size: ${({ theme }) => theme.size.desktop.mds}px;
+  width: 20vw;
+  padding: 0.3em 1em 0.3em 1em;
+  font-size: ${({ theme }) => theme.size.desktop.md}px;
   color: ${({ theme }) => theme.colors.common.textColor};
   background: ${({ theme }) => theme.colors.card.secondary};
-  border-radius: ${({ theme }) => theme.size.common.borderRadius};
-  border: 1px solid ${({ theme }) => theme.colors.common.textColor};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.common.textColor};
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
@@ -49,8 +48,7 @@ export const DropdownHeaderIcon = styled(DropdownHeaderTitle)`
 `;
 
 export const List = styled.ul`
-  width: 40vw;
-  border-radius: ${({ theme }) => theme.size.common.borderRadius};
+  width: 20vw;
   background: ${({ theme }) => theme.colors.card.secondary};
   border: 2px solid #e5e5e5;
   color: ${({ theme }) => theme.colors.common.textColor};
