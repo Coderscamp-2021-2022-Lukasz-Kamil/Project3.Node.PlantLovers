@@ -9,7 +9,14 @@ import AdminPages from "./AdminPages";
 export const AdminNavigationBar = () => {
   return (
     <NavBar>
-      <TitleButton>Plant Lovers</TitleButton>
+      <TitleButton
+        fontWeight="regular"
+        background="transparent"
+        padding="0"
+        color="textColor"
+      >
+        Plant Lovers
+      </TitleButton>
       <AdminPages />
       <AdminMobliePages />
     </NavBar>
