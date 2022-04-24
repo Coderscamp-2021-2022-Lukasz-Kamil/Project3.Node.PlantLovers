@@ -1,12 +1,50 @@
 import React from "react";
-import { BASE_URL } from "../../../hooks/UseFetch";
-import { useNavigate } from "react-router";
-import { signInSchema } from "../../../shared/inputHandlers/LoginInputHandler";
+import styled from "styled-components";
 import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCookies } from "react-cookie";
+import { BASE_URL } from "../../../hooks/UseFetch";
+import { useNavigate } from "react-router";
+import { signInSchema } from "../../../shared/inputHandlers/LoginInputHandler";
+import { LandingPageContainer } from "../LandingPage/LandingPage";
+import { Card } from "../../ui/Card/Card.style";
+import background from "../../../assets/LoginPagePhoto.svg";
+import { Logo, SignUpButton } from "./SignUpPage";
+import { InputUser } from "../../ui/Input/Input.style";
+
+export const LoginContainer = styled(LandingPageContainer)`
+  background-image: url(${background});
+  flex-flow: column;
+  justify-content: center;
+`;
+
+const LoginCard = styled(Card)`
+  margin: 0 auto;
+  padding: 0;
+  width: 440px;
+  max-height: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: ${({ theme }) => theme.colors.card.boxShadow};
+
+  @media (max-width: 576px) {
+    margin: 0 auto;
+    padding: 0;
+    width: 310px;
+    height: 410px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+`;
+
+export const LoginButton = styled(SignUpButton)`
+  margin: 0 auto;
+`;
 
 const LoginPage = () => {
   const [_, setUserIdCookie] = useCookies(["user-id"]);
@@ -71,14 +109,16 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <section>
+    <LoginContainer>
+      <Logo> Plant Lovers </Logo>
+      <LoginCard>
         <form onSubmit={onSubmitHandler}>
           <div>
-            <label htmlFor="email">Email</label>
-            <input
+            <label htmlFor="email"></label>
+            <InputUser
               type="email"
               id="email"
+              placeholder="e-mail"
               value={signInFormHandler.values.email}
               onChange={signInFormHandler.handleChange}
               onBlur={signInFormHandler.handleBlur}
@@ -88,10 +128,11 @@ const LoginPage = () => {
             ) : null}
           </div>
           <div>
-            <label htmlFor="password">Password</label>
-            <input
+            <label htmlFor="password"></label>
+            <InputUser
               type="password"
               id="password"
+              placeholder="password"
               value={signInFormHandler.values.password}
               onChange={signInFormHandler.handleChange}
               onBlur={signInFormHandler.handleBlur}
@@ -100,12 +141,12 @@ const LoginPage = () => {
               <div>{signInFormHandler.errors.password}</div>
             ) : null}
           </div>
-          <button type="submit" disabled={isInputInvalid()}>
+          <LoginButton type="submit" disabled={isInputInvalid()}>
             Login
-          </button>
+          </LoginButton>
         </form>
-      </section>
-    </div>
+      </LoginCard>
+    </LoginContainer>
   );
 };
 

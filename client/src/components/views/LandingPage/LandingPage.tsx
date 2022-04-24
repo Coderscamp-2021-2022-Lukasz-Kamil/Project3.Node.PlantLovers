@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Typography } from "../../ui/Typography/Typography.style";
 import LandingPageBackground from "../../../assets/LandingPagePhoto.svg";
 
-const LandingPageContainer = styled.div`
+export const LandingPageContainer = styled.div`
   background-image: url("${LandingPageBackground}");
   background-size: cover;
   background-position: 100% 0;
@@ -22,7 +22,7 @@ const LandingPageContainer = styled.div`
   }
 `;
 
-const LandingPageCard = styled(Card)`
+export const LandingPageCard = styled(Card)`
   position: relative;
   left: 10vw;
   border-radius: 20px;
