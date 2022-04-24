@@ -4,15 +4,12 @@ import { Card } from "../../../ui/Card/Card.style";
 import { Typography } from "../../../ui/Typography/Typography.style";
 import { FlexWrapper } from "../../../wrappers/FlexCenter/FlexWrapper.style";
 import { GridContainer } from "../../../wrappers/FlexCenter/GridContainer.style";
-import { ReactComponent as RandomImage } from "../../OfferPage/examplePlantPhoto.svg";
+import { ImageCard } from "../../../ui/ImageCard.style";
 import Icons from "./Icons";
 import useFetchData from "../../../../hooks/UseFetch";
-import {
-  createInferTypeNode,
-  getImpliedNodeFormatForFile,
-  idText,
-} from "typescript";
-import { Offer, Photo } from "./OfferModel";
+import { useCookies } from "react-cookie";
+
+import { Offer } from "./OfferModel";
 
 const OfferCard = styled(Card)`
   height: 36vh;
@@ -21,11 +18,6 @@ const OfferCard = styled(Card)`
   @media (max-width: 1050px) {
     height: auto;
   }
-`;
-
-const CardImage = styled(RandomImage)`
-  width: 100%;
-  height: 100%;
 `;
 
 const YourOfferGridContainer = styled(GridContainer)`
@@ -44,14 +36,11 @@ const PriceTypography = styled(Typography)`
   text-align: end;
 `;
 
-const ImageContainer = styled.div`
-  width: 100%;
-  height: 86%;
-`;
-
 export const Offers = () => {
+  const [userIdCookie] = useCookies(["user-id"]);
+  console.log(userIdCookie["user-id"]);
   const { response } = useFetchData({
-    url: "/offers",
+    url: `/offers/${userIdCookie["user-id"]}`,
     method: "GET",
     headers: {
       accept: "*/*",
@@ -65,9 +54,11 @@ export const Offers = () => {
     <YourOfferGridContainer smallScreenColumns={2}>
       {offers.map((offer) => (
         <OfferCard width="auto" color="offer" key={offer._id}>
-          <ImageContainer>
-            <CardImage>{offer.photos[0].url}</CardImage>
-          </ImageContainer>
+          <ImageCard
+            alt="plantPhoto"
+            src={offer.photos[0].url}
+            height="auto"
+          ></ImageCard>
           <FlexWrapper justifyContent="space-between">
             <div>
               <Typography fontSize="xxs" fontSizeMobile="xs">

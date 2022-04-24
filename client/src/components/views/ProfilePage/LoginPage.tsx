@@ -6,8 +6,10 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useCookies } from "react-cookie";
 
 const LoginPage = () => {
+  const [_, setUserIdCookie] = useCookies(["user-id"]);
   const signInFormHandler = useFormik({
     initialValues: {
       email: "",
@@ -34,7 +36,8 @@ const LoginPage = () => {
         password: signInFormHandler.values.password,
       },
     })
-      .then(() => {
+      .then((response) => {
+        setUserIdCookie("user-id", response.data.id);
         navigateTo();
       })
       .catch(() => {
