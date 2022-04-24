@@ -4,8 +4,12 @@ import { Card } from "../../../ui/Card/Card.style";
 import { Typography } from "../../../ui/Typography/Typography.style";
 import { FlexWrapper } from "../../../wrappers/FlexCenter/FlexWrapper.style";
 import { GridContainer } from "../../../wrappers/FlexCenter/GridContainer.style";
-import { ReactComponent as RandomImage } from "../../OfferPage/examplePlantPhoto.svg";
+import { ImageCard } from "../../../ui/ImageCard.style";
 import Icons from "./Icons";
+import useFetchData from "../../../../hooks/UseFetch";
+import { useCookies } from "react-cookie";
+
+import { Offer } from "./OfferModel";
 
 const OfferCard = styled(Card)`
   height: 36vh;
@@ -14,11 +18,6 @@ const OfferCard = styled(Card)`
   @media (max-width: 1050px) {
     height: auto;
   }
-`;
-
-const CardImage = styled(RandomImage)`
-  width: 100%;
-  height: 100%;
 `;
 
 const YourOfferGridContainer = styled(GridContainer)`
@@ -37,95 +36,41 @@ const PriceTypography = styled(Typography)`
   text-align: end;
 `;
 
-const ImageContainer = styled.div`
-  width: 100%;
-  height: 86%;
-`;
-
-//Temporary Array//
 export const Offers = () => {
-  const cards = [
-    {
-      id: "EFFF3Eessdf",
-      name: "Chwast",
-      city: "Żarów",
-      price: 32,
-      picture: <CardImage />,
+  const [userIdCookie] = useCookies(["user-id"]);
+  console.log(userIdCookie["user-id"]);
+  const { response } = useFetchData({
+    url: `/offers/${userIdCookie["user-id"]}`,
+    method: "GET",
+    headers: {
+      accept: "*/*",
+      "Content-Type": "application/json",
     },
-    {
-      id: "EFFgdssdEessdf",
-      name: "Mandragora",
-      city: "Żarów",
-      price: 32,
-      picture: <CardImage />,
-    },
-    {
-      id: "EFFgdss",
-      name: "ARG",
-      city: "Żarów",
-      price: 32,
-      picture: <CardImage />,
-    },
-    {
-      id: "EdsfFFgdss",
-      name: "GFZfg",
-      city: "Żarów",
-      price: 32,
-      picture: <CardImage />,
-    },
-    {
-      id: "ESGEgg",
-      name: "Chwast",
-      city: "Żarów",
-      price: 32,
-      picture: <CardImage />,
-    },
-    {
-      id: "ESGEg5g",
-      name: "Chwast",
-      city: "Żarów",
-      price: 32,
-      picture: <CardImage />,
-    },
-    {
-      id: "ESGgfEgg",
-      name: "Chwast",
-      city: "Żarów",
-      price: 32,
-      picture: <CardImage />,
-    },
-    {
-      id: "ESGEsfdgg",
-      name: "Chwast",
-      city: "Żarów",
-      price: 32,
-      picture: <CardImage />,
-    },
-    {
-      id: "ESGEafggg",
-      name: "Chwast",
-      city: "Żarów",
-      price: 32,
-      picture: <CardImage />,
-    },
-  ];
+  });
+
+  const offers: Offer[] = response;
+
   return (
     <YourOfferGridContainer smallScreenColumns={2}>
-      {cards.map((card) => (
-        <OfferCard width="auto" color="offer" key={card.id}>
-          <ImageContainer>{card.picture}</ImageContainer>
+      {offers.map((offer) => (
+        <OfferCard width="auto" color="offer" key={offer._id}>
+          <ImageCard
+            alt="plantPhoto"
+            src={offer.photos[0].url}
+            height="auto"
+          ></ImageCard>
           <FlexWrapper justifyContent="space-between">
             <div>
               <Typography fontSize="xxs" fontSizeMobile="xs">
-                {card.name}
+                {offer.title}
               </Typography>
               <Typography fontSize="xxxs" fontSizeMobile="xs">
-                {card.city}
+                {offer.city}
               </Typography>
             </div>
             <div>
               <PriceTypography fontSize="xxs" fontSizeMobile="xs">
-                {card.price}$
+                {offer.price}$
               </PriceTypography>
               <Icons />
             </div>

@@ -19,5 +19,8 @@ export const signInUserFunc = async (email, password) => {
   if (!user.isActive) throw new Error(`You have to activate your account`);
 
   const token = generateToken(user, 3600000);
-  return token;
+  return {
+    id: user._id,
+    token: token,
+  };
 };

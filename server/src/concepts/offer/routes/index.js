@@ -6,6 +6,7 @@ import {
   createOffer,
   deleteOffer,
   getAllOffers,
+  getAllUserOffers,
   updateOffer,
 } from "../controllers/index.js";
 import { isAuthenticated } from "../../authorization/controllers/auth.js";
@@ -19,6 +20,7 @@ const router = express.Router();
 router.post("/", isAuthenticated, createOffer);
 router.delete("/:id", isThatUserOrAdmin, deleteOffer);
 router.get("/", getAllOffers);
+router.get("/:id", getAllUserOffers);
 router.get("/:id", getOneOffer);
 router.put("/:id", isAuthenticated, updateOffer);
 router.put("/activate/:id", isAdmin, activateOffer);

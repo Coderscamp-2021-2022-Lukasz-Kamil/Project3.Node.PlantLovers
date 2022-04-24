@@ -52,7 +52,11 @@ export const loginUser = async (req, res) => {
     if (!req.body.email || !req.body.password) {
       return res.status(400).send("Need email and password");
     }
-    const token = await signInUserFunc(req.body.email, req.body.password);
+    const signedUserInfo = await signInUserFunc(
+      req.body.email,
+      req.body.password
+    );
+    const token = signedUserInfo.token;
     if (!token) {
       return res.status(400).send("Unsuccessful login attempt");
     }
@@ -61,6 +65,7 @@ export const loginUser = async (req, res) => {
     });
     return res.status(200).send({
       message: "Successfully logged in",
+      id: signedUserInfo.id,
     });
   } catch (error) {
     return res.status(500).send(error.message);

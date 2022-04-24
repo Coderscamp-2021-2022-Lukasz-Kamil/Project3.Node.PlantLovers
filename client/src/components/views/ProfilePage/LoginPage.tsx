@@ -4,10 +4,10 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useCookies } from "react-cookie";
 import { BASE_URL } from "../../../hooks/UseFetch";
 import { useNavigate } from "react-router";
 import { signInSchema } from "../../../shared/inputHandlers/LoginInputHandler";
-
 import { LandingPageContainer } from "../LandingPage/LandingPage";
 import { Card } from "../../ui/Card/Card.style";
 import background from "../../../assets/LoginPagePhoto.svg";
@@ -47,6 +47,7 @@ export const LoginButton = styled(SignUpButton)`
 `;
 
 const LoginPage = () => {
+  const [_, setUserIdCookie] = useCookies(["user-id"]);
   const signInFormHandler = useFormik({
     initialValues: {
       email: "",
@@ -73,7 +74,8 @@ const LoginPage = () => {
         password: signInFormHandler.values.password,
       },
     })
-      .then(() => {
+      .then((response) => {
+        setUserIdCookie("user-id", response.data.id);
         navigateTo();
       })
       .catch(() => {
