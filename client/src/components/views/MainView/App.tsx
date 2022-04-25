@@ -29,7 +29,7 @@ import { LoginNavigationBar } from "../NavigationBar/LoginNavigationBar/LoginNav
 import GlobalFonts from "../../../font/fonts";
 import Offer from "../OfferPage/OfferPage";
 import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
-
+import AccountActivation from "../ProfilePage/AccountActivation";
 
 function App() {
   return (
@@ -51,6 +51,10 @@ function App() {
           <Route path="/" element={<LoginPagesWithNavigationBar />}>
             <Route path="/user/login" element={<LoginPage />} />
             <Route path="/user/sign-up" element={<SignUpPage />} />
+            <Route
+              path="/activation/:userId/:token"
+              element={<AccountActivation />}
+            />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/" element={<AdminPagesWithNavigationBar />}>
