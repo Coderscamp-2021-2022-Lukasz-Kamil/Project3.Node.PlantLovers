@@ -20,9 +20,9 @@ const IconButton = styled(Button)`
 `;
 
 export interface IconsProps {
-  onArchiveButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onEditButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onDeleteButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onArchiveButtonClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onEditButtonClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onDeleteButtonClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Icons = (props: IconsProps) => {
