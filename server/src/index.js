@@ -13,13 +13,19 @@ if (!process.env.MONGO_CONNECT_URI)
 
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    credentials: true,
-    origin: "http://localhost:3001",
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-  })
-);
+
+const corsOptions = {
+  exposedHeaders: "Authorization",
+};
+app.use(cors(corsOptions));
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: "https://plant-lovers.herokuapp.com",
+//     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+//     "Access-Control-Allow-Origin": "https://plant-lovers.herokuapp.com",
+//   })
+// );
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server started`);

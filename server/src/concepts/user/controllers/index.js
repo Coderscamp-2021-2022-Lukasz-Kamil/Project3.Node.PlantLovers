@@ -60,9 +60,13 @@ export const loginUser = async (req, res) => {
     if (!token) {
       return res.status(400).send("Unsuccessful login attempt");
     }
-    res.cookie("token", token, {
-      httpOnly: true,
-    });
+    // res.cookie("Authorization", token, {
+    //   httpOnly: true,
+    // });
+    res.append("Authorization", token);
+    res.setHeader("Access-Control-Expose-Headers", "token-authorization");
+    res.setHeader("token-authorization", `Bearer ${token}`);
+
     return res.status(200).send({
       message: "Successfully logged in",
       id: signedUserInfo.id,

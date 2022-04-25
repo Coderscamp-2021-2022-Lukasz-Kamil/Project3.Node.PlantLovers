@@ -11,9 +11,10 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Offer } from "./OfferModel";
 
-const axiosWithCredentials = axios.create({
-  withCredentials: true,
-});
+// const axiosWithCredentials = axios.create({
+//   withCredentials: true,
+//   // timeout: 1000,
+// });
 
 const OfferCard = styled(Card)`
   height: 36vh;
@@ -54,73 +55,157 @@ export const Offers = () => {
 
   const offers: Offer[] = response;
 
-  const onArchiveButtonClickWrapper = (offerId: string) => {
-    const onArchiveButtonClick = (
-      event: React.MouseEvent<HTMLButtonElement>
-    ) => {
-      console.log(event);
-      console.log("archive");
-      axiosWithCredentials
-        .put(BASE_URL + `/offers/archive/${offerId}`)
-        .then((response) => {
-          console.log("archived");
-        })
-        .catch(() => {
-          console.log("failed to archive");
-        });
-    };
-    return onArchiveButtonClick;
-  };
+  // const onArchiveButtonClickWrapper = (offerId: string) => {
+  //   const onArchiveButtonClick = (
+  //     event: React.MouseEvent<HTMLButtonElement>
+  //   ) => {
+  //     console.log(event);
+  //     console.log("archive");
+  //     // axiosWithCredentials
+  //     // .put(BASE_URL + `/offers/archive/${offerId}`)
+  //     // .then((response) => {
+  //     //   console.log("archived");
+  //     // })
+  //     // .catch(() => {
+  //     //   console.log("failed to archive");
+  //     // });
 
-  const onEditButtonClickWrapper = (offerId: string) => {
-    const onEditButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      console.log("edit");
+  //     axios({
+  //       method: "PUT",
+  //       url: BASE_URL + `/offers/archive/${offerId}`,
+  //       headers: {
+  //         accept: "*/*",
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //       .then((response) => {
+  //         console.log("archived");
+  //       })
+  //       .catch(() => {
+  //         console.log("failed to edit");
+  //       });
+  //   };
+  //   return onArchiveButtonClick;
+  // };
 
-      axios({
-        method: "PUT",
-        url: BASE_URL + `/offers/${offerId}`,
-        data: {
-          daneDoUpdejtowania: null,
-        },
-        headers: {
-          accept: "*/*",
-          "Content-Type": "application/json",
-        },
+  const onArchiveButtonClick = (offerId: string) => {
+    console.log(event);
+    console.log("archive");
+    // axiosWithCredentials
+    // .put(BASE_URL + `/offers/archive/${offerId}`)
+    // .then((response) => {
+    //   console.log("archived");
+    // })
+    // .catch(() => {
+    //   console.log("failed to archive");
+    // });
+
+    axios({
+      method: "PUT",
+      url: BASE_URL + `/offers/archive/${offerId}`,
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log("archived");
       })
-        .then((response) => {
-          console.log("edited");
-        })
-        .catch(() => {
-          console.log("failed to edit");
-        });
-    };
-    return onEditButtonClick;
+      .catch(() => {
+        console.log("failed to edit");
+      });
   };
 
-  const onDeleteButtonClickWrapper = (offerId: string) => {
-    const onDeleteButtonClick = (
-      event: React.MouseEvent<HTMLButtonElement>
-    ) => {
-      console.log("delete");
+  const onEditButtonClick = (offerId: string) => {
+    console.log("edit");
 
-      axios({
-        method: "DELETE",
-        url: BASE_URL + `/offers/${offerId}`,
-        headers: {
-          accept: "*/*",
-          "Content-Type": "application/json",
-        },
+    axios({
+      method: "PUT",
+      url: BASE_URL + `/offers/${offerId}`,
+      data: {
+        daneDoUpdejtowania: null,
+      },
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log("edited");
       })
-        .then((response) => {
-          console.log("deleted");
-        })
-        .catch(() => {
-          console.log("failed to delete");
-        });
-    };
-
-    return onDeleteButtonClick;
+      .catch(() => {
+        console.log("failed to edit");
+      });
   };
+
+  const onDeleteButtonClick = (offerId: string) => {
+    console.log("delete");
+
+    axios({
+      method: "DELETE",
+      url: BASE_URL + `/offers/${offerId}`,
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log("deleted");
+      })
+      .catch(() => {
+        console.log("failed to delete");
+      });
+  };
+
+  // const onEditButtonClickWrapper = (offerId: string) => {
+  //   const onEditButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //     console.log("edit");
+
+  //     axios({
+  //       method: "PUT",
+  //       url: BASE_URL + `/offers/${offerId}`,
+  //       data: {
+  //         daneDoUpdejtowania: null,
+  //       },
+  //       headers: {
+  //         accept: "*/*",
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //       .then((response) => {
+  //         console.log("edited");
+  //       })
+  //       .catch(() => {
+  //         console.log("failed to edit");
+  //       });
+  //   };
+  //   return onEditButtonClick;
+  // };
+
+  // const onDeleteButtonClickWrapper = (offerId: string) => {
+  //   const onDeleteButtonClick = (
+  //     event: React.MouseEvent<HTMLButtonElement>
+  //   ) => {
+  //     console.log("delete");
+
+  //     axios({
+  //       method: "DELETE",
+  //       url: BASE_URL + `/offers/${offerId}`,
+  //       headers: {
+  //         accept: "*/*",
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //       .then((response) => {
+  //         console.log("deleted");
+  //       })
+  //       .catch(() => {
+  //         console.log("failed to delete");
+  //       });
+  //   };
+
+  //   return onDeleteButtonClick;
+  // };
 
   return (
     <YourOfferGridContainer smallScreenColumns={2}>
@@ -145,9 +230,9 @@ export const Offers = () => {
                 {offer.price}$
               </PriceTypography>
               <Icons
-                onArchiveButtonClick={onArchiveButtonClickWrapper(offer._id)}
-                onEditButtonClick={onEditButtonClickWrapper(offer._id)}
-                onDeleteButtonClick={onDeleteButtonClickWrapper(offer._id)}
+                onArchiveButtonClick={() => onArchiveButtonClick(offer._id)}
+                onEditButtonClick={() => onEditButtonClick(offer._id)}
+                onDeleteButtonClick={() => onDeleteButtonClick(offer._id)}
               />
             </div>
           </FlexWrapper>

@@ -39,7 +39,6 @@ const LoginCard = styled(Card)`
     background: transparent;
     box-shadow: none;
   }
-
 `;
 
 export const LoginButton = styled(SignUpButton)`
@@ -48,6 +47,7 @@ export const LoginButton = styled(SignUpButton)`
 
 const LoginPage = () => {
   const [_, setUserIdCookie] = useCookies(["user-id"]);
+
   const signInFormHandler = useFormik({
     initialValues: {
       email: "",
@@ -75,6 +75,7 @@ const LoginPage = () => {
       },
     })
       .then((response) => {
+        console.log(response.headers);
         setUserIdCookie("user-id", response.data.id);
         navigateTo();
       })

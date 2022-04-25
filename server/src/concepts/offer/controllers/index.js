@@ -86,6 +86,11 @@ export const archiveOffer = async (req, res) => {
     if (!archivedOffer) {
       return res.status(404).send("There is no offer");
     }
+    // res.append("Access-Control-Allow-Origin", "http://localhost:3001");
+    // res.append(
+    //   "Access-Control-Allow-Origin",
+    //   "https://plant-lovers.herokuapp.com/"
+    // );
     return res.status(200).send(`Offer was archived!`);
   } catch (error) {
     return res.status(500).send(error.message);

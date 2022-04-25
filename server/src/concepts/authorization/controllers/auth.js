@@ -25,7 +25,6 @@ export const generateToken = (user, expiresIn) => {
 
 export const isAuthenticated = (req, res, next) => {
   const token = req.headers.token;
-  console.log(req);
   const check = isTokenValid(token);
   if (!check) {
     return res.status(401).send("Access denied!");
