@@ -40,6 +40,12 @@ const LoginCard = styled(Card)`
     box-shadow: none;
   }
 `;
+const ErrorCard = styled.div`
+  width: 280px;
+  font-size: ${({theme})=> theme.size.desktop.xs}px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+`;
 
 export const LoginButton = styled(SignUpButton)`
   margin: 0 auto;
@@ -132,7 +138,7 @@ const LoginPage = () => {
               onBlur={signInFormHandler.handleBlur}
             />
             {signInFormHandler.errors.email ? (
-              <div>{signInFormHandler.errors.email}</div>
+              <ErrorCard>{signInFormHandler.errors.email}</ErrorCard>
             ) : null}
           </div>
           <div>
@@ -146,7 +152,7 @@ const LoginPage = () => {
               onBlur={signInFormHandler.handleBlur}
             />
             {signInFormHandler.errors.password ? (
-              <div>{signInFormHandler.errors.password}</div>
+              <ErrorCard>{signInFormHandler.errors.password}</ErrorCard>
             ) : null}
           </div>
           <LoginButton type="submit" disabled={isInputInvalid()}>
