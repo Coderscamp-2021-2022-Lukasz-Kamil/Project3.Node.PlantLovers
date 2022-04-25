@@ -13,9 +13,15 @@ if (!process.env.MONGO_CONNECT_URI)
 
 const app = express();
 app.use(express.json());
-app.use(cors());
 
-app.listen(process.env.PORT || 3000, () => {
+const corsOptions = {
+  origin: "*",
+  "Access-Control-Allow-Origin": "*",
+  exposedHeaders: "token",
+};
+app.use(cors(corsOptions));
+
+app.listen(process.env.PORT || 5000, () => {
   console.log(`Server started`);
 });
 

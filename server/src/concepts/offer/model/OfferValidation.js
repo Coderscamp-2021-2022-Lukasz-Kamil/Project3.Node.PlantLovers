@@ -21,6 +21,7 @@ const validateCreateOffer = (offer) => {
       Joi.object({
         url: Joi.string().required(),
         isMainPhoto: Joi.boolean().required(),
+        _id: Joi.string().optional(),
       })
     ),
 

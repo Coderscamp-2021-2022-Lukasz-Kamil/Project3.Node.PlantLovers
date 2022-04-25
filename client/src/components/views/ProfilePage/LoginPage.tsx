@@ -39,7 +39,6 @@ const LoginCard = styled(Card)`
     background: transparent;
     box-shadow: none;
   }
-
 `;
 
 export const LoginButton = styled(SignUpButton)`
@@ -47,7 +46,11 @@ export const LoginButton = styled(SignUpButton)`
 `;
 
 const LoginPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setUserIdCookie] = useCookies(["user-id"]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [token, setTokenCookie] = useCookies(["token"]);
+
   const signInFormHandler = useFormik({
     initialValues: {
       email: "",
@@ -75,7 +78,9 @@ const LoginPage = () => {
       },
     })
       .then((response) => {
+        console.log(response);
         setUserIdCookie("user-id", response.data.id);
+        setTokenCookie("token", response.headers.token);
         navigateTo();
       })
       .catch(() => {

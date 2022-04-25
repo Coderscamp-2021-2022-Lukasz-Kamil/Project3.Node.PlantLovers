@@ -19,35 +19,75 @@ const IconButton = styled(Button)`
   }
 `;
 
-const Icons = () => {
-  const icons = [
-    { src: ArchiveVector, aria: "Archive" },
-    { src: EditIcon, aria: "Edit" },
-    { src: DeleteVector, aria: "Delete" },
-  ];
+export interface IconsProps {
+  onArchiveButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onEditButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onDeleteButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const Icons = (props: IconsProps) => {
   return (
     <OfferIconsContainer justifyContent="flex-end">
-      {icons.map((icon) => (
-        <IconButton
-          key={icon.aria}
-          background="transparent"
-          width="auto"
-          height="auto"
-          padding="0"
-          mobileWidth="auto"
-          mobileHeight="auto"
-        >
-          <Icon
-            src={icon.src}
-            aria-label={icon.aria}
-            width={15}
-            height={15}
-            mobileWidth={10}
-            mobileHeight={10}
-            marginRight="0"
-          />
-        </IconButton>
-      ))}
+      <IconButton
+        key="Archive"
+        background="transparent"
+        width="auto"
+        height="auto"
+        padding="0"
+        mobileWidth="auto"
+        mobileHeight="auto"
+        onClick={props.onArchiveButtonClick}
+      >
+        <Icon
+          src={ArchiveVector}
+          aria-label="Archive"
+          width={15}
+          height={15}
+          mobileWidth={10}
+          mobileHeight={10}
+          marginRight="0"
+        />
+      </IconButton>
+      <IconButton
+        key="Edit"
+        background="transparent"
+        width="auto"
+        height="auto"
+        padding="0"
+        mobileWidth="auto"
+        mobileHeight="auto"
+        onClick={props.onEditButtonClick}
+      >
+        <Icon
+          src={EditIcon}
+          aria-label="Edit"
+          width={15}
+          height={15}
+          mobileWidth={10}
+          mobileHeight={10}
+          marginRight="0"
+        />
+      </IconButton>
+      <IconButton
+        key="Delete"
+        background="transparent"
+        width="auto"
+        height="auto"
+        padding="0"
+        mobileWidth="auto"
+        mobileHeight="auto"
+        onClick={props.onDeleteButtonClick}
+      >
+        <Icon
+          src={DeleteVector}
+          aria-label="Delete"
+          width={15}
+          height={15}
+          mobileWidth={10}
+          mobileHeight={10}
+          marginRight="0"
+        />
+      </IconButton>
     </OfferIconsContainer>
   );
 };
