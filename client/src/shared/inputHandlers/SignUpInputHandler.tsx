@@ -1,9 +1,8 @@
-import { useFormik } from "formik";
 import * as Yup from "yup";
 import { phoneRegExp } from "./constants";
 import { passwordRegExp } from "./constants";
 
-const signUpSchema = Yup.object({
+export const signUpSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
   phone: Yup.string().matches(phoneRegExp, "Phone number is not valid"),
   city: Yup.string(),
@@ -19,16 +18,3 @@ const signUpSchema = Yup.object({
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
-const signUpFormHandler = useFormik({
-  initialValues: {
-    email: "",
-    phone: "",
-    city: "",
-    password: "",
-    confirmPassword: "",
-  },
-  validationSchema: signUpSchema,
-  onSubmit: (values) => alert(JSON.stringify(values)),
-});
-
-export default signUpFormHandler;
