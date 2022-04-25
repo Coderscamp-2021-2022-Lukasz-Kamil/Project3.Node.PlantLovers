@@ -11,4 +11,33 @@ export interface IDropdown {
   list: Item[];
   src?: string;
   alt?: string;
+
+  desktopWidth?: string;
+  mobileWidth?: string;
+  marginBottom?: string;
+  padding?: string;
+  border?: string;
+  fontSizeDesktop?: string;
+  fontSizeMobile?: string;
+  listDesktopWidth?: string;
+  listMobileWidth?: string;
+  position?: string;
+  borderRadius?: string;
+}
+
+export interface DropdownLookProps {
+  desktopWidth?: string;
+  mobileWidth?: string;
+  marginBottom?: string;
+  padding?: string;
+  fontSizeDesktop?: string;
+  fontSizeMobile?: string;
+  border?: string;
+  borderRadius?: string;
+}
+
+export interface DropdownListProps {
+  listDesktopWidth?: string;
+  listMobileWidth?: string;
+  position?: string;
 }

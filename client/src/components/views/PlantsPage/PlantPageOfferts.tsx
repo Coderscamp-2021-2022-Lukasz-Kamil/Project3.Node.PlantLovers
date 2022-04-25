@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Typography } from "../../ui/Typography/Typography.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-import Icons from "../ProfilePage/YourOfferPage/Icons";
 import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
 import ExamplePhoto from "../../../assets/examplePlantPhoto.svg";
 import {
@@ -33,7 +32,7 @@ const PlantPageOfferCard = styled(OfferCard)`
   }
 
   @media (max-width: 576px) {
-    width: 30vw;
+    width: 40vw;
   }
 `;
 
@@ -43,7 +42,7 @@ const PlantPageImageContainer = styled(ImageContainer)`
   }
 
   @media (max-width: 576px) {
-    width: 30vw;
+    width: 40vw;
   }
 `;
 

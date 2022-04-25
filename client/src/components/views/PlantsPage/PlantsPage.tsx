@@ -1,19 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  FilterCategoryList,
-  FilterHeightList,
-} from "../../ui/Dropdown/DropdownLists";
+import { SortList } from "../../ui/Dropdown/DropdownLists";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import { PlantPageOfferts } from "./PlantPageOfferts";
 import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
-import { PlantsDropdown } from "./PlantsDropdown";
-import { AllFilters, CitySearch, PriceRange } from "./PlantsPageFilters";
+import { AllFilters } from "./PlantsPageFilters";
 import {
   SearchAndFilterContainer,
   SearchInput,
 } from "../ProfilePage/YourOfferPage/YourOfferPage";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
+import { Dropdown } from "../../ui/Dropdown/Dropdown";
 
 export const YourOfferPageContainer = styled(FlexWrapper)`
   margin: 100px 0;
@@ -98,10 +95,19 @@ const PlantsPage = () => {
             width="320px"
             height="35px"
           />
-          <PlantsDropdown
+          <Dropdown
             title="Sort by"
             ico={<Arrow />}
-            list={FilterCategoryList}
+            list={SortList}
+            desktopWidth="20vw"
+            mobileWidth="30vw"
+            padding="0.3em 1em 0.3em 1em"
+            marginBottom="0"
+            border="none"
+            borderRadius="0"
+            listDesktopWidth="20vw"
+            listMobileWidth="30vw"
+            position="absolute"
           />
         </PlantsPageSearchAndFilterContainer>
       </PlantsPageSearchAndFilterFlexWrapper>

@@ -3,14 +3,6 @@ import styled from "styled-components";
 import { Input } from "../../ui/Input/Input.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import ArrowUp from "../../../assets/ArrowDownVector.svg";
-import { FilterContener, PlantsPageFlexWrapper } from "./PlantsPage";
-import { PlantPageOfferts } from "./PlantPageOfferts";
-import { PlantsDropdown } from "./PlantsDropdown";
-import {
-  FilterCategoryList,
-  FilterHeightList,
-} from "../../ui/Dropdown/DropdownLists";
-import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 
 const FilterButton = styled.button`
@@ -28,14 +20,13 @@ const FilterButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
   }
-
-  @media (max-width: 900px) {
-    font-size: ${({ theme }) => theme.size.desktop.sm}px;
-    width: 25vw;
-  }
 `;
 const ArrowImage = styled.img`
   position: absolute;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
 const FiltersInputContainer = styled(FlexWrapper)`
@@ -59,6 +50,7 @@ const AllFiltersFilterButton = styled(FilterButton)`
 
   @media (max-width: 576px) {
     display: flex;
+    font-size: ${({ theme }) => theme.size.mobile.md}px;
   }
 `;
 
@@ -132,6 +124,7 @@ export const AllFilters = () => {
         <PlantsPageWholeFilterComponent
           desktopDisplay="none"
           mobileDisplay="block"
+          position="absolute"
         />
       ) : null}
     </div>
