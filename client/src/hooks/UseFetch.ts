@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import axios, { AxiosError, Method } from "axios";
+import axios, { Method } from "axios";
 
 interface FetchDataParams {
   url: string;
