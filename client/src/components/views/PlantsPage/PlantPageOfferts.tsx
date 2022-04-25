@@ -12,6 +12,11 @@ import {
   PriceTypography,
   YourOfferGridContainer,
 } from "../ProfilePage/YourOfferPage/Offers";
+import Icons from "../ProfilePage/YourOfferPage/Icons";
+import { ReactComponent as RandomImage } from "../../../assets/examplePlantPhoto.svg";
+import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
+import useFetchData from "../../../hooks/UseFetch";
+import { Offer } from "../ProfilePage/YourOfferPage/OfferModel";
 
 const PlantsPageGridContainer = styled(YourOfferGridContainer)`
   margin-right: 2vw;
@@ -46,82 +51,27 @@ const PlantPageImageContainer = styled(ImageContainer)`
   }
 `;
 
-//Temporary Array//
 export const PlantPageOfferts = () => {
-  const offers = [
-    {
-      _id: "EFFF3Eessdf",
-      title: "Chwast",
-      city: "Żarów",
-      price: 32,
-      src: ExamplePhoto,
+  const { response } = useFetchData({
+    url: `/offers`,
+    method: "GET",
+    headers: {
+      accept: "*/*",
+      "Content-Type": "application/json",
     },
-    {
-      _id: "EFFgdssdEessdf",
-      title: "Mandragora",
-      city: "Żarów",
-      price: 32,
-      src: ExamplePhoto,
-    },
-    {
-      _id: "EFFgdss",
-      title: "ARG",
-      city: "Żarów",
-      price: 32,
-      src: ExamplePhoto,
-    },
-    {
-      _id: "EdsfFFgdss",
-      title: "GFZfg",
-      city: "Żarów",
-      price: 32,
-      src: ExamplePhoto,
-    },
-    {
-      _id: "ESGEgg",
-      title: "Chwast",
-      city: "Żarów",
-      price: 32,
-      src: ExamplePhoto,
-    },
-    {
-      _id: "ESGEg5g",
-      title: "Chwast",
-      city: "Żarów",
-      price: 32,
-      src: ExamplePhoto,
-    },
-    {
-      _id: "ESGgfEgg",
-      title: "Chwast",
-      city: "Żarów",
-      price: 32,
-      src: ExamplePhoto,
-    },
-    {
-      _id: "ESGEsfdgg",
-      title: "Chwast",
-      city: "Żarów",
-      price: 32,
-      src: ExamplePhoto,
-    },
-    {
-      _id: "ESGEafggg",
-      title: "Chwast",
-      city: "Żarów",
-      price: 32,
-      src: ExamplePhoto,
-    },
-  ];
+  });
+
+  const offers: Offer[] = response;
+
   return (
-    <PlantsPageGridContainer smallScreenColumns={2}>
+   <PlantsPageGridContainer smallScreenColumns={2}>
       {offers.map((offer) => (
         <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
           <OfferCardButton>
             <PlantPageImageContainer>
               <PlantPageImageCard
                 alt="plantPhoto"
-                src={offer.src}
+            src={offer.photos[0].url}
               ></PlantPageImageCard>
             </PlantPageImageContainer>
           </OfferCardButton>

@@ -39,6 +39,12 @@ const LoginCard = styled(Card)`
     background: transparent;
     box-shadow: none;
   }
+
+const ErrorCard = styled.div`
+  width: 280px;
+  font-size: ${({theme})=> theme.size.desktop.xs}px;
+  margin: 0 auto;
+  margin-bottom: 5px;
 `;
 
 export const LoginButton = styled(SignUpButton)`
@@ -46,7 +52,11 @@ export const LoginButton = styled(SignUpButton)`
 `;
 
 const LoginPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setUserIdCookie] = useCookies(["user-id"]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [token, setTokenCookie] = useCookies(["token"]);
+
   const signInFormHandler = useFormik({
     initialValues: {
       email: "",
@@ -74,10 +84,15 @@ const LoginPage = () => {
       },
     })
       .then((response) => {
+        console.log(response);
         setUserIdCookie("user-id", response.data.id);
+        setTokenCookie("token", response.headers.token);
         navigateTo();
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err.response.data) {
+          return toast.error(`${err.response.data}`);
+        }
         return toast.error("Incorrect data, check your credentials");
       });
   };
@@ -123,7 +138,7 @@ const LoginPage = () => {
               onBlur={signInFormHandler.handleBlur}
             />
             {signInFormHandler.errors.email ? (
-              <div>{signInFormHandler.errors.email}</div>
+              <ErrorCard>{signInFormHandler.errors.email}</ErrorCard>
             ) : null}
           </div>
           <div>
@@ -137,7 +152,7 @@ const LoginPage = () => {
               onBlur={signInFormHandler.handleBlur}
             />
             {signInFormHandler.errors.password ? (
-              <div>{signInFormHandler.errors.password}</div>
+              <ErrorCard>{signInFormHandler.errors.password}</ErrorCard>
             ) : null}
           </div>
           <LoginButton type="submit" disabled={isInputInvalid()}>
