@@ -9,7 +9,6 @@ import { BASE_URL } from "../../../hooks/UseFetch";
 import { useNavigate } from "react-router";
 import { signUpSchema } from "../../../shared/inputHandlers/SignUpInputHandler";
 import { LandingPageContainer } from "../LandingPage/LandingPage";
-import background from "../../../assets/LoginPagePhoto.svg";
 import { Card } from "../../ui/Card/Card.style";
 import { InputUser } from "../../ui/Input/Input.style";
 import { Button } from "../../ui/Button/Button.style";
@@ -47,10 +46,9 @@ export const Logo = styled(Typography)`
 `;
 
 export const SignUpButton = styled(Button)`
-	margin-top: 20px;
-	width: 300px;
-	text-transform: uppercase;
-
+  margin-top: 20px;
+  width: 300px;
+  text-transform: uppercase;
 
   @media (max-width: 576px) {
     margin-top: 20px;

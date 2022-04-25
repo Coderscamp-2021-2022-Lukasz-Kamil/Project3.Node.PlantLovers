@@ -39,10 +39,11 @@ const LoginCard = styled(Card)`
     background: transparent;
     box-shadow: none;
   }
+`;
 
 const ErrorCard = styled.div`
   width: 280px;
-  font-size: ${({theme})=> theme.size.desktop.xs}px;
+  font-size: ${({ theme }) => theme.size.desktop.xs}px;
   margin: 0 auto;
   margin-bottom: 5px;
 `;
