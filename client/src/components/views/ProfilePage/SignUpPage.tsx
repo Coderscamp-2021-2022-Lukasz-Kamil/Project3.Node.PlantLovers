@@ -86,10 +86,10 @@ const SignUpPage = () => {
 
 		await axios({
 			method: "post",
-			url: BASE_URL + "/users/sign-up",
+			url: BASE_URL + "/users/register",
 			data: {
 				email: signUpFormHandler.values.email,
-				phone: signUpFormHandler.values.phone,
+				phoneNumber: signUpFormHandler.values.phone,
 				city: signUpFormHandler.values.city,
 				password: signUpFormHandler.values.password,
 				confirmPassword: signUpFormHandler.values.confirmPassword,
