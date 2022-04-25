@@ -2,7 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Input } from "../../ui/Input/Input.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-import Arrow from "../../../assets/ArrowDownVector.svg";
+import ArrowUp from "../../../assets/ArrowDownVector.svg";
+import { FilterContener, PlantsPageFlexWrapper } from "./PlantsPage";
+import { PlantPageOfferts } from "./PlantPageOfferts";
+import { PlantsDropdown } from "./PlantsDropdown";
+import {
+  FilterCategoryList,
+  FilterHeightList,
+} from "../../ui/Dropdown/DropdownLists";
+import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
+import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 
 const FilterButton = styled.button`
   width: 20vw;
@@ -45,6 +54,14 @@ const ArrowContainer = styled.div`
   padding: 0 1em 0 1em;
 `;
 
+const AllFiltersFilterButton = styled(FilterButton)`
+  display: none;
+
+  @media (max-width: 576px) {
+    display: flex;
+  }
+`;
+
 export const CitySearch = () => {
   const [show, setShow] = useState(false);
   return (
@@ -52,7 +69,7 @@ export const CitySearch = () => {
       <FilterButton onClick={() => setShow(!show)}>
         City{" "}
         <ArrowContainer>
-          <ArrowImage src={Arrow} />
+          <ArrowImage src={ArrowUp} />
         </ArrowContainer>
       </FilterButton>
       {show ? (
@@ -76,7 +93,7 @@ export const PriceRange = () => {
       <FilterButton onClick={() => setShow(!show)}>
         Price{" "}
         <ArrowContainer>
-          <ArrowImage src={Arrow} />
+          <ArrowImage src={ArrowUp} />
         </ArrowContainer>
       </FilterButton>
       {show ? (
@@ -96,6 +113,26 @@ export const PriceRange = () => {
             type="number"
           />
         </FiltersInputContainer>
+      ) : null}
+    </div>
+  );
+};
+
+export const AllFilters = () => {
+  const [show, setShow] = useState(false);
+  return (
+    <div>
+      <AllFiltersFilterButton onClick={() => setShow(!show)}>
+        Filters{" "}
+        <ArrowContainer>
+          <ArrowImage src={ArrowUp} />
+        </ArrowContainer>
+      </AllFiltersFilterButton>
+      {show ? (
+        <PlantsPageWholeFilterComponent
+          desktopDisplay="none"
+          mobileDisplay="block"
+        />
       ) : null}
     </div>
   );

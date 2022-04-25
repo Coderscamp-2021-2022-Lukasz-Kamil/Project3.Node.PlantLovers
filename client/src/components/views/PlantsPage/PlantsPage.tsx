@@ -8,68 +8,105 @@ import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import { PlantPageOfferts } from "./PlantPageOfferts";
 import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
 import { PlantsDropdown } from "./PlantsDropdown";
-import { CitySearch, PriceRange } from "./PlantsPageFilters";
+import { AllFilters, CitySearch, PriceRange } from "./PlantsPageFilters";
 import {
   SearchAndFilterContainer,
   SearchInput,
 } from "../ProfilePage/YourOfferPage/YourOfferPage";
+import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 
-const YourOfferPageContainer = styled(FlexWrapper)`
+export const YourOfferPageContainer = styled(FlexWrapper)`
   margin: 100px 0;
 `;
 
-const PlantsPageSearchAndFilterFlexWrapper = styled(FlexWrapper)`
+export const PlantsPageSearchAndFilterFlexWrapper = styled(FlexWrapper)`
   width: 100%;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
 `;
 
-const EmptyDiv = styled.div`
+export const EmptyDiv = styled.div`
   width: 25vw;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
-const PlantsPageSearchAndFilterContainer = styled(SearchAndFilterContainer)`
+export const PlantsPageSearchAndFilterContainer = styled(
+  SearchAndFilterContainer
+)`
   width: 72%;
+
+  @media (max-width: 576px) {
+    width: 80%;
+    justify-content: space-between;
+  }
 `;
 
-const PlantsPageFlexWrapper = styled(FlexWrapper)`
+export const PlantsPageFlexWrapper = styled(FlexWrapper)`
   align-items: flex-start;
 `;
 
-const FilterContener = styled.div`
+export const PlantsPageSearchInput = styled(SearchInput)`
+  @media (max-width: 576px) {
+    display: flex;
+  }
+`;
+export const PlantsPageOnlyMobileSearchInput = styled(PlantsPageSearchInput)`
+  display: none;
+  width: 80%;
+
+  @media (max-width: 576px) {
+    display: flex;
+    margin: 0;
+  }
+`;
+
+export const PlantsPageSearchDesktopOnlyInput = styled(SearchInput)`
+  @media (max-width: 576px) {
+    display: none;
+  }
+`;
+
+export const FilterContener = styled.div`
   background: ${({ theme }) => theme.colors.card.secondary};
   height: 75vh;
   margin: 0 2vw;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
 const PlantsPage = () => {
   return (
     <YourOfferPageContainer direction="column">
       <PlantsPageSearchAndFilterFlexWrapper>
+        <PlantsPageOnlyMobileSearchInput
+          placeholder="Search for plant"
+          width="320px"
+          height="35px"
+        />
         <EmptyDiv></EmptyDiv>
         <PlantsPageSearchAndFilterContainer>
-          <SearchInput
+          <AllFilters />
+          <PlantsPageSearchDesktopOnlyInput
             placeholder="Search for plant"
             width="320px"
             height="35px"
           />
-          <SearchInput placeholder="Sort by" width="320px" height="35px" />
-        </PlantsPageSearchAndFilterContainer>
-      </PlantsPageSearchAndFilterFlexWrapper>
-
-      <PlantsPageFlexWrapper justifyContent="flex-start">
-        <FilterContener>
           <PlantsDropdown
-            title="Category"
+            title="Sort by"
             ico={<Arrow />}
             list={FilterCategoryList}
           />
-          <PlantsDropdown
-            title="Height"
-            ico={<Arrow />}
-            list={FilterHeightList}
-          />
-          <CitySearch />
-          <PriceRange />
-        </FilterContener>
+        </PlantsPageSearchAndFilterContainer>
+      </PlantsPageSearchAndFilterFlexWrapper>
+      <PlantsPageFlexWrapper justifyContent="flex-start">
+        <PlantsPageWholeFilterComponent />
         <PlantPageOfferts />
       </PlantsPageFlexWrapper>
     </YourOfferPageContainer>

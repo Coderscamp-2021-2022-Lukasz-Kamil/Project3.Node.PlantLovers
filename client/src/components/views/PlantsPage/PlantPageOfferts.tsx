@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Card } from "../../ui/Card/Card.style";
 import { Typography } from "../../ui/Typography/Typography.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import Icons from "../ProfilePage/YourOfferPage/Icons";
-import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
 import ExamplePhoto from "../../../assets/examplePlantPhoto.svg";
 import {
@@ -141,7 +139,6 @@ export const PlantPageOfferts = () => {
               <Typography fontSize="xxxs" fontSizeMobile="xs">
                 {offer.city}
               </Typography>
-              <Icons />
             </OffersInfoFlexWrapper>
           </FlexWrapper>
         </PlantPageOfferCard>
