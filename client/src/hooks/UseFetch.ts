@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
-import axios, { Method } from "axios";
+import axios, { AxiosRequestHeaders, Method } from "axios";
 
 interface FetchDataParams {
   url: string;
   method: Method;
-  headers: Record<string, unknown>;
+  headers?: AxiosRequestHeaders | undefined;
   body?: Record<string, unknown>;
 }
 export const BASE_URL = "https://plant-lovers.herokuapp.com";
@@ -13,7 +13,7 @@ axios.defaults.baseURL = BASE_URL;
 
 const useFetchData = (params: FetchDataParams) => {
   const [response, setResponse] = useState([]);
-  const [error, setError] = useState<unknown | undefined>(undefined);
+  const [error, setError] = useState<any | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
   const fetchData = useCallback(async () => {
@@ -22,11 +22,12 @@ const useFetchData = (params: FetchDataParams) => {
         method: params.method,
         url: params.url,
         data: params.body,
+        headers: params.headers,
       });
       setResponse(result.data);
       setError(undefined);
-    } catch (err: unknown) {
-      setError(err);
+    } catch (err: any) {
+      setError(err.response.data || "Something goes wrong!");
     } finally {
       setLoading(false);
     }
