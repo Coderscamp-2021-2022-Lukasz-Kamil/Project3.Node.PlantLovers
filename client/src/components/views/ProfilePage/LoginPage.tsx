@@ -83,7 +83,10 @@ const LoginPage = () => {
         setTokenCookie("token", response.headers.token);
         navigateTo();
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err.response.data) {
+          return toast.error(`${err.response.data}`);
+        }
         return toast.error("Incorrect data, check your credentials");
       });
   };
