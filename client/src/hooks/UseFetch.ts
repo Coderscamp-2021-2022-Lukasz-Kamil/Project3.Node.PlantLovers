@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
-import axios, { Method } from "axios";
+import axios, { AxiosRequestHeaders, Method } from "axios";
 
 interface FetchDataParams {
   url: string;
   method: Method;
-  headers: Record<string, unknown>;
+  headers?: AxiosRequestHeaders | undefined;
   body?: Record<string, unknown>;
 }
 export const BASE_URL = "https://plant-lovers.herokuapp.com";
@@ -22,6 +22,7 @@ const useFetchData = (params: FetchDataParams) => {
         method: params.method,
         url: params.url,
         data: params.body,
+        headers: params.headers,
       });
       setResponse(result.data);
       setError(undefined);
