@@ -7,129 +7,145 @@ import Icons from "../ProfilePage/YourOfferPage/Icons";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
 import ExamplePhoto from "../../../assets/examplePlantPhoto.svg";
+import {
+  ImageContainer,
+  OfferCard,
+  OfferCardButton,
+  OffersInfoFlexWrapper,
+  PriceTypography,
+  YourOfferGridContainer,
+} from "../ProfilePage/YourOfferPage/Offers";
 
-const OfferCard = styled(Card)`
-  height: 36vh;
-  padding: 0;
+const PlantsPageGridContainer = styled(YourOfferGridContainer)`
+  margin-right: 2vw;
 
-  @media (max-width: 1050px) {
-    height: auto;
+  @media (max-width: 576px) {
+    grid-gap: 5vw 5vw;
   }
 `;
-
-const YourOfferGridContainer = styled(GridContainer)`
-  grid-gap: 1vw 4vw;
-
-  @media (max-width: 1050px) {
-    grid-gap: 2vw 2vw;
+const PlantPageImageCard = styled(ImageCard)`
+  @media (max-width: 1000px) {
+    height: ${({ mobileImageSize }) =>
+      mobileImageSize?.height ? mobileImageSize.height : "23vh"};
+  }
+`;
+const PlantPageOfferCard = styled(OfferCard)`
+  @media (max-width: 1000px) {
+    width: 20vw;
   }
 
   @media (max-width: 576px) {
-    grid-gap: 10vw 10vw;
+    width: 30vw;
   }
 `;
 
-const PriceTypography = styled(Typography)`
-  text-align: end;
+const PlantPageImageContainer = styled(ImageContainer)`
+  @media (max-width: 1000px) {
+    width: 20vw;
+  }
+
+  @media (max-width: 576px) {
+    width: 30vw;
+  }
 `;
 
 //Temporary Array//
 export const PlantPageOfferts = () => {
   const offers = [
     {
-      id: "EFFF3Eessdf",
-      name: "Chwast",
+      _id: "EFFF3Eessdf",
+      title: "Chwast",
       city: "Żarów",
       price: 32,
       src: ExamplePhoto,
     },
     {
-      id: "EFFgdssdEessdf",
-      name: "Mandragora",
+      _id: "EFFgdssdEessdf",
+      title: "Mandragora",
       city: "Żarów",
       price: 32,
       src: ExamplePhoto,
     },
     {
-      id: "EFFgdss",
-      name: "ARG",
+      _id: "EFFgdss",
+      title: "ARG",
       city: "Żarów",
       price: 32,
       src: ExamplePhoto,
     },
     {
-      id: "EdsfFFgdss",
-      name: "GFZfg",
+      _id: "EdsfFFgdss",
+      title: "GFZfg",
       city: "Żarów",
       price: 32,
       src: ExamplePhoto,
     },
     {
-      id: "ESGEgg",
-      name: "Chwast",
+      _id: "ESGEgg",
+      title: "Chwast",
       city: "Żarów",
       price: 32,
       src: ExamplePhoto,
     },
     {
-      id: "ESGEg5g",
-      name: "Chwast",
+      _id: "ESGEg5g",
+      title: "Chwast",
       city: "Żarów",
       price: 32,
       src: ExamplePhoto,
     },
     {
-      id: "ESGgfEgg",
-      name: "Chwast",
+      _id: "ESGgfEgg",
+      title: "Chwast",
       city: "Żarów",
       price: 32,
       src: ExamplePhoto,
     },
     {
-      id: "ESGEsfdgg",
-      name: "Chwast",
+      _id: "ESGEsfdgg",
+      title: "Chwast",
       city: "Żarów",
       price: 32,
       src: ExamplePhoto,
     },
     {
-      id: "ESGEafggg",
-      name: "Chwast",
+      _id: "ESGEafggg",
+      title: "Chwast",
       city: "Żarów",
       price: 32,
       src: ExamplePhoto,
     },
   ];
   return (
-    <YourOfferGridContainer smallScreenColumns={2}>
+    <PlantsPageGridContainer smallScreenColumns={2}>
       {offers.map((offer) => (
-        <OfferCard width="auto" color="offer" key={offer.id}>
-          <div>
-            <ImageCard
-              alt="plantPhoto"
-              src={offer.src}
-              height="200"
-            ></ImageCard>
-          </div>
-
-          <FlexWrapper justifyContent="space-between">
-            <div>
+        <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
+          <OfferCardButton>
+            <PlantPageImageContainer>
+              <PlantPageImageCard
+                alt="plantPhoto"
+                src={offer.src}
+              ></PlantPageImageCard>
+            </PlantPageImageContainer>
+          </OfferCardButton>
+          <FlexWrapper justifyContent="space-between" direction="column">
+            <OffersInfoFlexWrapper justifyContent="space-between">
               <Typography fontSize="xxs" fontSizeMobile="xs">
-                {offer.name}
+                {offer.title}
               </Typography>
-              <Typography fontSize="xxxs" fontSizeMobile="xs">
-                {offer.city}
-              </Typography>
-            </div>
-            <div>
               <PriceTypography fontSize="xxs" fontSizeMobile="xs">
                 {offer.price}$
               </PriceTypography>
+            </OffersInfoFlexWrapper>
+            <OffersInfoFlexWrapper>
+              <Typography fontSize="xxxs" fontSizeMobile="xs">
+                {offer.city}
+              </Typography>
               <Icons />
-            </div>
+            </OffersInfoFlexWrapper>
           </FlexWrapper>
-        </OfferCard>
+        </PlantPageOfferCard>
       ))}
-    </YourOfferGridContainer>
+    </PlantsPageGridContainer>
   );
 };

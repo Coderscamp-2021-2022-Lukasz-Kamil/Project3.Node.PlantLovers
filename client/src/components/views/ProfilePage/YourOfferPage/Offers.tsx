@@ -11,7 +11,7 @@ import { useCookies } from "react-cookie";
 
 import { Offer } from "./OfferModel";
 
-const OfferCard = styled(Card)`
+export const OfferCard = styled(Card)`
   height: auto;
   width: 15vw;
   padding: 0;
@@ -25,7 +25,13 @@ const OfferCard = styled(Card)`
   }
 `;
 
-const YourOfferGridContainer = styled(GridContainer)`
+export const OfferCardButton = styled.button`
+  background: ${({ theme }) => theme.colors.button.transparent};
+  border: none;
+  cursor: pointer;
+`;
+
+export const YourOfferGridContainer = styled(GridContainer)`
   grid-gap: 4vw 4vw;
 
   @media (max-width: 576px) {
@@ -33,7 +39,7 @@ const YourOfferGridContainer = styled(GridContainer)`
   }
 `;
 
-const ImageContainer = styled.div`
+export const ImageContainer = styled.div`
   width: 15vw;
 
   @media (max-width: 1000px) {
@@ -45,13 +51,13 @@ const ImageContainer = styled.div`
   }
 `;
 
-const OffersInfoFlexWrapper = styled(FlexWrapper)`
+export const OffersInfoFlexWrapper = styled(FlexWrapper)`
   display: flex;
   width: 100%;
   justify-content: space-between;
 `;
 
-const PriceTypography = styled(Typography)`
+export const PriceTypography = styled(Typography)`
   text-align: end;
 `;
 
@@ -73,10 +79,11 @@ export const Offers = () => {
     <YourOfferGridContainer smallScreenColumns={2}>
       {offers.map((offer) => (
         <OfferCard width="auto" color="offer" key={offer._id}>
-          <ImageContainer>
-            <ImageCard alt="plantPhoto" src={offer.photos[0].url}></ImageCard>
-          </ImageContainer>
-
+          <OfferCardButton>
+            <ImageContainer>
+              <ImageCard alt="plantPhoto" src={offer.photos[0].url}></ImageCard>
+            </ImageContainer>
+          </OfferCardButton>
           <FlexWrapper justifyContent="space-between" direction="column">
             <OffersInfoFlexWrapper justifyContent="space-between">
               <Typography fontSize="xxs" fontSizeMobile="xs">

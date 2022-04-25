@@ -4,7 +4,7 @@ import { Input } from "../../../ui/Input/Input.style";
 import { FilterButtons } from "./FilterButtons";
 import { Offers } from "./Offers";
 
-const YourOfferPageContainer = styled.div`
+export const YourOfferPageContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -12,7 +12,7 @@ const YourOfferPageContainer = styled.div`
   margin: 15px 0;
 `;
 
-const SearchAndFilterContainer = styled.div`
+export const SearchAndFilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -22,7 +22,7 @@ const SearchAndFilterContainer = styled.div`
   }
 `;
 
-const SearchInput = styled(Input)`
+export const SearchInput = styled(Input)`
   border: none;
 
   @media (max-width: 576px) {

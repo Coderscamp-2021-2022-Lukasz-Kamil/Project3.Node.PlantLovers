@@ -8,7 +8,7 @@ const FilterButton = styled.button`
   width: 20vw;
   background: ${({ theme }) => theme.colors.card.secondary};
   padding: 0.48em 1em 0.48em 1em;
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.size.desktop.md}px;
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.common.textColor};
   position: relative;
@@ -18,6 +18,11 @@ const FilterButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
+  }
+
+  @media (max-width: 900px) {
+    font-size: ${({ theme }) => theme.size.desktop.sm}px;
+    width: 25vw;
   }
 `;
 const ArrowImage = styled.img`

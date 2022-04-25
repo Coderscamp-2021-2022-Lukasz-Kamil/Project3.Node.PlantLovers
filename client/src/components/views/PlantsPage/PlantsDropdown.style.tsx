@@ -9,8 +9,13 @@ export const PlantsDropdownWrapper = styled(Wrapper)`
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.common.textColor};
 
+  @media (max-width: 900px) {
+    font-size: ${({ theme }) => theme.size.desktop.sm}px;
+    width: 25vw;
+  }
+
   @media (max-width: 576px) {
-    width: 90vw;
+    width: 25vw;
     font-size: ${({ theme }) => theme.size.mobile.md}px;
   }
 `;
@@ -23,7 +28,7 @@ export const PlantsDropdownList = styled.ul`
   }
 
   @media (max-width: 576px) {
-    width: 90vw;
+    width: 25vw;
     font-size: ${({ theme }) => theme.size.mobile.md}px;
   } ;
 `;

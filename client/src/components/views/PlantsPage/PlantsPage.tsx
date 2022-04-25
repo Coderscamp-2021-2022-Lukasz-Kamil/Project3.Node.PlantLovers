@@ -9,12 +9,25 @@ import { PlantPageOfferts } from "./PlantPageOfferts";
 import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
 import { PlantsDropdown } from "./PlantsDropdown";
 import { CitySearch, PriceRange } from "./PlantsPageFilters";
+import {
+  SearchAndFilterContainer,
+  SearchInput,
+} from "../ProfilePage/YourOfferPage/YourOfferPage";
 
-const YourOfferPageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
+const YourOfferPageContainer = styled(FlexWrapper)`
   margin: 100px 0;
+`;
+
+const PlantsPageSearchAndFilterFlexWrapper = styled(FlexWrapper)`
+  width: 100%;
+`;
+
+const EmptyDiv = styled.div`
+  width: 25vw;
+`;
+
+const PlantsPageSearchAndFilterContainer = styled(SearchAndFilterContainer)`
+  width: 72%;
 `;
 
 const PlantsPageFlexWrapper = styled(FlexWrapper)`
@@ -29,7 +42,19 @@ const FilterContener = styled.div`
 
 const PlantsPage = () => {
   return (
-    <YourOfferPageContainer>
+    <YourOfferPageContainer direction="column">
+      <PlantsPageSearchAndFilterFlexWrapper>
+        <EmptyDiv></EmptyDiv>
+        <PlantsPageSearchAndFilterContainer>
+          <SearchInput
+            placeholder="Search for plant"
+            width="320px"
+            height="35px"
+          />
+          <SearchInput placeholder="Sort by" width="320px" height="35px" />
+        </PlantsPageSearchAndFilterContainer>
+      </PlantsPageSearchAndFilterFlexWrapper>
+
       <PlantsPageFlexWrapper justifyContent="flex-start">
         <FilterContener>
           <PlantsDropdown
