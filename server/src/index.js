@@ -15,19 +15,13 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  exposedHeaders: "Authorization",
+  origin: "*",
+  "Access-Control-Allow-Origin": "*",
+  exposedHeaders: "token",
 };
 app.use(cors(corsOptions));
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: "https://plant-lovers.herokuapp.com",
-//     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-//     "Access-Control-Allow-Origin": "https://plant-lovers.herokuapp.com",
-//   })
-// );
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`Server started`);
 });
 

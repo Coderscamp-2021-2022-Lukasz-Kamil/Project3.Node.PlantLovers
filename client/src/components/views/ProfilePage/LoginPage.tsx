@@ -46,7 +46,10 @@ export const LoginButton = styled(SignUpButton)`
 `;
 
 const LoginPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setUserIdCookie] = useCookies(["user-id"]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [token, setTokenCookie] = useCookies(["token"]);
 
   const signInFormHandler = useFormik({
     initialValues: {
@@ -75,8 +78,9 @@ const LoginPage = () => {
       },
     })
       .then((response) => {
-        console.log(response.headers);
+        console.log(response);
         setUserIdCookie("user-id", response.data.id);
+        setTokenCookie("token", response.headers.token);
         navigateTo();
       })
       .catch(() => {

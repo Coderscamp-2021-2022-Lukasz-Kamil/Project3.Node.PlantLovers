@@ -55,7 +55,9 @@ export const createOffer = async (req, res) => {
 
 export const deleteOffer = async (req, res) => {
   try {
-    const deletedOffer = await deleteOfferWithId(req.params.id);
+    const decoded = jwt.decode(req.headers.token);
+    const userId = decoded.sub;
+    const deletedOffer = await deleteOfferWithId(req.params.id, userId);
     if (!deletedOffer) return res.status(404).send("There is no offer");
   } catch (error) {
     return res.status(500).send(error.message);

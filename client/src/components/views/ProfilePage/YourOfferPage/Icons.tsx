@@ -6,8 +6,6 @@ import EditIcon from "../../../../assets/EditVector.svg";
 import DeleteVector from "../../../../assets/DeleteVector.svg";
 import ArchiveVector from "../../../../assets/ArchiveVector.svg";
 import { Button } from "../../../ui/Button/Button.style";
-import useFetchData from "../../../../hooks/UseFetch";
-import Offer from "../../../../shared/intefaces/offer.interface";
 
 const OfferIconsContainer = styled(FlexWrapper)`
   gap: 5px;

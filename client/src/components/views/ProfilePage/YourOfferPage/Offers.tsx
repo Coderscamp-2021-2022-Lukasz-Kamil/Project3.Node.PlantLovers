@@ -11,11 +11,6 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Offer } from "./OfferModel";
 
-// const axiosWithCredentials = axios.create({
-//   withCredentials: true,
-//   // timeout: 1000,
-// });
-
 const OfferCard = styled(Card)`
   height: 36vh;
   padding: 0;
@@ -43,7 +38,7 @@ const PriceTypography = styled(Typography)`
 
 export const Offers = () => {
   const [userIdCookie] = useCookies(["user-id"]);
-  console.log(userIdCookie["user-id"]);
+  const [token] = useCookies(["token"]);
   const { response } = useFetchData({
     url: `/offers/${userIdCookie["user-id"]}`,
     method: "GET",
@@ -55,57 +50,14 @@ export const Offers = () => {
 
   const offers: Offer[] = response;
 
-  // const onArchiveButtonClickWrapper = (offerId: string) => {
-  //   const onArchiveButtonClick = (
-  //     event: React.MouseEvent<HTMLButtonElement>
-  //   ) => {
-  //     console.log(event);
-  //     console.log("archive");
-  //     // axiosWithCredentials
-  //     // .put(BASE_URL + `/offers/archive/${offerId}`)
-  //     // .then((response) => {
-  //     //   console.log("archived");
-  //     // })
-  //     // .catch(() => {
-  //     //   console.log("failed to archive");
-  //     // });
-
-  //     axios({
-  //       method: "PUT",
-  //       url: BASE_URL + `/offers/archive/${offerId}`,
-  //       headers: {
-  //         accept: "*/*",
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //       .then((response) => {
-  //         console.log("archived");
-  //       })
-  //       .catch(() => {
-  //         console.log("failed to edit");
-  //       });
-  //   };
-  //   return onArchiveButtonClick;
-  // };
-
   const onArchiveButtonClick = (offerId: string) => {
-    console.log(event);
-    console.log("archive");
-    // axiosWithCredentials
-    // .put(BASE_URL + `/offers/archive/${offerId}`)
-    // .then((response) => {
-    //   console.log("archived");
-    // })
-    // .catch(() => {
-    //   console.log("failed to archive");
-    // });
-
     axios({
       method: "PUT",
       url: BASE_URL + `/offers/archive/${offerId}`,
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
+        token: token["token"],
       },
     })
       .then((response) => {
@@ -128,6 +80,7 @@ export const Offers = () => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
+        token: token["token"],
       },
     })
       .then((response) => {
@@ -147,6 +100,7 @@ export const Offers = () => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
+        token: token["token"],
       },
     })
       .then((response) => {
@@ -156,56 +110,6 @@ export const Offers = () => {
         console.log("failed to delete");
       });
   };
-
-  // const onEditButtonClickWrapper = (offerId: string) => {
-  //   const onEditButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //     console.log("edit");
-
-  //     axios({
-  //       method: "PUT",
-  //       url: BASE_URL + `/offers/${offerId}`,
-  //       data: {
-  //         daneDoUpdejtowania: null,
-  //       },
-  //       headers: {
-  //         accept: "*/*",
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //       .then((response) => {
-  //         console.log("edited");
-  //       })
-  //       .catch(() => {
-  //         console.log("failed to edit");
-  //       });
-  //   };
-  //   return onEditButtonClick;
-  // };
-
-  // const onDeleteButtonClickWrapper = (offerId: string) => {
-  //   const onDeleteButtonClick = (
-  //     event: React.MouseEvent<HTMLButtonElement>
-  //   ) => {
-  //     console.log("delete");
-
-  //     axios({
-  //       method: "DELETE",
-  //       url: BASE_URL + `/offers/${offerId}`,
-  //       headers: {
-  //         accept: "*/*",
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //       .then((response) => {
-  //         console.log("deleted");
-  //       })
-  //       .catch(() => {
-  //         console.log("failed to delete");
-  //       });
-  //   };
-
-  //   return onDeleteButtonClick;
-  // };
 
   return (
     <YourOfferGridContainer smallScreenColumns={2}>
