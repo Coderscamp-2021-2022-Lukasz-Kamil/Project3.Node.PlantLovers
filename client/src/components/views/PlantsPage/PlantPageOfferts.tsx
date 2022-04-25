@@ -1,48 +1,54 @@
 import React from "react";
 import styled from "styled-components";
-import { Card } from "../../ui/Card/Card.style";
 import { Typography } from "../../ui/Typography/Typography.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
+import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
+import ExamplePhoto from "../../../assets/examplePlantPhoto.svg";
+import {
+  ImageContainer,
+  OfferCard,
+  OfferCardButton,
+  OffersInfoFlexWrapper,
+  PriceTypography,
+  YourOfferGridContainer,
+} from "../ProfilePage/YourOfferPage/Offers";
 import Icons from "../ProfilePage/YourOfferPage/Icons";
 import { ReactComponent as RandomImage } from "../../../assets/examplePlantPhoto.svg";
 import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 import useFetchData from "../../../hooks/UseFetch";
 import { Offer } from "../ProfilePage/YourOfferPage/OfferModel";
-import { ImageCard } from "../../ui/ImageCard.style";
 
-const OfferCard = styled(Card)`
-  height: 36vh;
-  padding: 0;
+const PlantsPageGridContainer = styled(YourOfferGridContainer)`
+  margin-right: 2vw;
 
-  @media (max-width: 1050px) {
-    height: auto;
+  @media (max-width: 576px) {
+    grid-gap: 5vw 5vw;
   }
 `;
-
-const CardImage = styled(RandomImage)`
-  width: 100%;
-  height: 100%;
+const PlantPageImageCard = styled(ImageCard)`
+  @media (max-width: 1000px) {
+    height: ${({ mobileImageSize }) =>
+      mobileImageSize?.height ? mobileImageSize.height : "23vh"};
+  }
 `;
-
-const YourOfferGridContainer = styled(GridContainer)`
-  grid-gap: 1vw 4vw;
-
-  @media (max-width: 1050px) {
-    grid-gap: 2vw 2vw;
+const PlantPageOfferCard = styled(OfferCard)`
+  @media (max-width: 1000px) {
+    width: 20vw;
   }
 
   @media (max-width: 576px) {
-    grid-gap: 10vw 10vw;
+    width: 40vw;
   }
 `;
 
-const PriceTypography = styled(Typography)`
-  text-align: end;
-`;
+const PlantPageImageContainer = styled(ImageContainer)`
+  @media (max-width: 1000px) {
+    width: 20vw;
+  }
 
-const ImageContainer = styled.div`
-  width: 100%;
-  height: 86%;
+  @media (max-width: 576px) {
+    width: 40vw;
+  }
 `;
 
 export const PlantPageOfferts = () => {
@@ -58,33 +64,34 @@ export const PlantPageOfferts = () => {
   const offers: Offer[] = response;
 
   return (
-    <YourOfferGridContainer smallScreenColumns={2}>
+   <PlantsPageGridContainer smallScreenColumns={2}>
       {offers.map((offer) => (
-        <OfferCard width="auto" color="offer" key={offer._id}>
-          {/* <ImageContainer>{offer.photos[0].url}</ImageContainer> */}
-          <ImageCard
-            alt="plantPhoto"
+        <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
+          <OfferCardButton>
+            <PlantPageImageContainer>
+              <PlantPageImageCard
+                alt="plantPhoto"
             src={offer.photos[0].url}
-            height="auto"
-          ></ImageCard>
-          <FlexWrapper justifyContent="space-between">
-            <div>
+              ></PlantPageImageCard>
+            </PlantPageImageContainer>
+          </OfferCardButton>
+          <FlexWrapper justifyContent="space-between" direction="column">
+            <OffersInfoFlexWrapper justifyContent="space-between">
               <Typography fontSize="xxs" fontSizeMobile="xs">
                 {offer.title}
               </Typography>
-              <Typography fontSize="xxxs" fontSizeMobile="xs">
-                {offer.city}
-              </Typography>
-            </div>
-            <div>
               <PriceTypography fontSize="xxs" fontSizeMobile="xs">
                 {offer.price}$
               </PriceTypography>
-              <Icons />
-            </div>
+            </OffersInfoFlexWrapper>
+            <OffersInfoFlexWrapper>
+              <Typography fontSize="xxxs" fontSizeMobile="xs">
+                {offer.city}
+              </Typography>
+            </OffersInfoFlexWrapper>
           </FlexWrapper>
-        </OfferCard>
+        </PlantPageOfferCard>
       ))}
-    </YourOfferGridContainer>
+    </PlantsPageGridContainer>
   );
 };

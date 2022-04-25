@@ -13,6 +13,8 @@ import background from "../../../assets/LoginPagePhoto.svg";
 import { Card } from "../../ui/Card/Card.style";
 import { InputUser } from "../../ui/Input/Input.style";
 import { Button } from "../../ui/Button/Button.style";
+import background from "../../../assets/LoginPagePhoto.svg";
+import { Typography } from "../../ui/Typography/Typography.style";
 
 export const SignUpContainer = styled(LandingPageContainer)`
   background-image: url(${background});
@@ -38,16 +40,17 @@ const SignUpCard = styled(Card)`
   }
 `;
 
-export const Logo = styled.h4`
+export const Logo = styled(Typography)`
   font-family: "plants_lovin";
   font-size: clamp(3.5rem, 2.6rem + 4.5vw, 8rem);
   margin: 0 auto;
 `;
 
 export const SignUpButton = styled(Button)`
-  margin-top: 20px;
-  width: 300px;
-  text-transform: uppercase;
+	margin-top: 20px;
+	width: 300px;
+	text-transform: uppercase;
+
 
   @media (max-width: 576px) {
     margin-top: 20px;

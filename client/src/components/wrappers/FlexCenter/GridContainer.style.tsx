@@ -15,7 +15,7 @@ export const GridContainer = styled.div<GridColumnProps>`
   grid-gap: 1em;
   justify-content: center;
 
-  @media (max-width: 700px) {
+  @media (max-width: 1000px) {
     grid-template-columns: ${({ mediumScreenColumns }) =>
       mediumScreenColumns
         ? `repeat(${mediumScreenColumns}, 1fr)`

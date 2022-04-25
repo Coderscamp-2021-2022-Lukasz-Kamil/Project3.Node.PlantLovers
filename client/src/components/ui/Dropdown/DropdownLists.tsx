@@ -99,3 +99,22 @@ export const FilterHeightList: Item[] = [
     name: "over 100cm",
   },
 ];
+
+export const SortList: Item[] = [
+  {
+    id: 1,
+    name: "newest",
+  },
+  {
+    id: 2,
+    name: "oldest",
+  },
+  {
+    id: 3,
+    name: "alphabetical order A-Z",
+  },
+  {
+    id: 4,
+    name: "highest price Z-A",
+  },
+];

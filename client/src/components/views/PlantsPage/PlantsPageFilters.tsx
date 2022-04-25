@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Input } from "../../ui/Input/Input.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-import Arrow from "../../../assets/ArrowDownVector.svg";
+import ArrowUp from "../../../assets/ArrowDownVector.svg";
+import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 
 const FilterButton = styled.button`
   width: 20vw;
   background: ${({ theme }) => theme.colors.card.secondary};
   padding: 0.48em 1em 0.48em 1em;
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.size.desktop.md}px;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.common.textColor};
   position: relative;
   display: flex;
   justify-content: center;
@@ -22,6 +23,10 @@ const FilterButton = styled.button`
 `;
 const ArrowImage = styled.img`
   position: absolute;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
 const FiltersInputContainer = styled(FlexWrapper)`
@@ -40,6 +45,15 @@ const ArrowContainer = styled.div`
   padding: 0 1em 0 1em;
 `;
 
+const AllFiltersFilterButton = styled(FilterButton)`
+  display: none;
+
+  @media (max-width: 576px) {
+    display: flex;
+    font-size: ${({ theme }) => theme.size.mobile.md}px;
+  }
+`;
+
 export const CitySearch = () => {
   const [show, setShow] = useState(false);
   return (
@@ -47,7 +61,7 @@ export const CitySearch = () => {
       <FilterButton onClick={() => setShow(!show)}>
         City{" "}
         <ArrowContainer>
-          <ArrowImage src={Arrow} />
+          <ArrowImage src={ArrowUp} />
         </ArrowContainer>
       </FilterButton>
       {show ? (
@@ -71,7 +85,7 @@ export const PriceRange = () => {
       <FilterButton onClick={() => setShow(!show)}>
         Price{" "}
         <ArrowContainer>
-          <ArrowImage src={Arrow} />
+          <ArrowImage src={ArrowUp} />
         </ArrowContainer>
       </FilterButton>
       {show ? (
@@ -91,6 +105,27 @@ export const PriceRange = () => {
             type="number"
           />
         </FiltersInputContainer>
+      ) : null}
+    </div>
+  );
+};
+
+export const AllFilters = () => {
+  const [show, setShow] = useState(false);
+  return (
+    <div>
+      <AllFiltersFilterButton onClick={() => setShow(!show)}>
+        Filters{" "}
+        <ArrowContainer>
+          <ArrowImage src={ArrowUp} />
+        </ArrowContainer>
+      </AllFiltersFilterButton>
+      {show ? (
+        <PlantsPageWholeFilterComponent
+          desktopDisplay="none"
+          mobileDisplay="block"
+          position="absolute"
+        />
       ) : null}
     </div>
   );

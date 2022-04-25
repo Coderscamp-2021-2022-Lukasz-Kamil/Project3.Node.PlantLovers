@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DropdownListProps, DropdownLookProps } from "./Dropdown.intefrace";
 
 export const DropdownContainer = styled.div`
   display: flex;
@@ -9,23 +10,28 @@ export const DropdownContainer = styled.div`
   }
 `;
 
-export const Wrapper = styled.div`
-  width: 40vw;
-  margin-bottom: 0.8em;
-  padding: 0.4em 1em 0.4em 1em;
-  font-size: ${({ theme }) => theme.size.desktop.mds}px;
+export const Wrapper = styled.div<DropdownLookProps>`
+  width: ${({ desktopWidth }) => (desktopWidth ? desktopWidth : "40vw")};
+  margin-bottom: ${({ marginBottom }) =>
+    marginBottom ? marginBottom : "0.8em"};
+  padding: ${({ padding }) => (padding ? padding : "0.4em 1em 0.4em 1em")};
+  font-size: ${({ fontSizeDesktop }) =>
+    fontSizeDesktop ? fontSizeDesktop : "18px"};
   color: ${({ theme }) => theme.colors.common.textColor};
   background: ${({ theme }) => theme.colors.card.secondary};
-  border-radius: ${({ theme }) => theme.size.common.borderRadius};
-  border: 1px solid ${({ theme }) => theme.colors.common.textColor};
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "5px")};
+  border: ${({ border }) => (border ? border : "1px solid black")};
+  border-bottom: 1px solid black;
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
   }
 
   @media (max-width: 576px) {
-    width: 90vw;
-    font-size: ${({ theme }) => theme.size.mobile.md}px;
+    width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : "90vw")};
+    font-size: ${({ fontSizeMobile }) =>
+      fontSizeMobile ? fontSizeMobile : "14px"};
   }
 `;
 export const DropdownHeader = styled.div`
@@ -46,21 +52,29 @@ export const DropdownHeaderTitle = styled.div`
 export const DropdownHeaderIcon = styled(DropdownHeaderTitle)`
   position: absolute;
   justify-content: end;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
-export const List = styled.ul`
-  width: 40vw;
+export const List = styled.ul<DropdownListProps>`
+  width: ${({ listDesktopWidth }) =>
+    listDesktopWidth ? listDesktopWidth : "40vw"};
   border-radius: ${({ theme }) => theme.size.common.borderRadius};
   background: ${({ theme }) => theme.colors.card.secondary};
   border: 2px solid #e5e5e5;
   color: ${({ theme }) => theme.colors.common.textColor};
+  position: ${({ position }) => (position ? position : "absolute")};
+  z-index: 20;
 
   &:first-child {
     padding-top: 0.8em;
   }
 
   @media (max-width: 576px) {
-    width: 90vw;
+    width: ${({ listMobileWidth }) =>
+      listMobileWidth ? listMobileWidth : "90vw"};
     font-size: ${({ theme }) => theme.size.mobile.md}px;
   } ;
 `;

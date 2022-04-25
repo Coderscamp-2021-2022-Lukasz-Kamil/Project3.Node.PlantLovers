@@ -39,7 +39,7 @@ const LoginCard = styled(Card)`
     background: transparent;
     box-shadow: none;
   }
-`;
+
 const ErrorCard = styled.div`
   width: 280px;
   font-size: ${({theme})=> theme.size.desktop.xs}px;
@@ -124,7 +124,7 @@ const LoginPage = () => {
 
   return (
     <LoginContainer>
-      <Logo> Plant Lovers </Logo>
+      <Logo fontWeight="regular"> Plant Lovers </Logo>
       <LoginCard>
         <form onSubmit={onSubmitHandler}>
           <div>
