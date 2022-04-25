@@ -10,15 +10,12 @@ import {
   updateOffer,
 } from "../controllers/index.js";
 import { isAuthenticated } from "../../authorization/controllers/auth.js";
-import {
-  isAdmin,
-  isThatUserOrAdmin,
-} from "../../authorization/controllers/auth.js";
+import { isAdmin } from "../../authorization/controllers/auth.js";
 import { getOneOffer } from "../controllers/index.js";
 const router = express.Router();
 
 router.post("/", isAuthenticated, createOffer);
-router.delete("/:id", isThatUserOrAdmin, deleteOffer);
+router.delete("/:id", isAuthenticated, deleteOffer);
 router.get("/", getAllOffers);
 router.get("/:id", getAllUserOffers);
 router.get("/:id", getOneOffer);
