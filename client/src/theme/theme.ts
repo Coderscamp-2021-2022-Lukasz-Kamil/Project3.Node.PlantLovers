@@ -24,6 +24,7 @@ export const theme = {
       hover: "#AAD576",
       secondaryHover: "#A59E9E",
       transparent: "transparent",
+      addButton: "#F9F8F8",
     },
     input: {
       primary: "#F9F8F8",

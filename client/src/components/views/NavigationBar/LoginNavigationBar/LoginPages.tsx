@@ -13,7 +13,12 @@ const LoginPages = () => {
   return (
     <LoginNavBarButtonContainer>
       {pages.map((page) => (
-        <NavBarButton key={page.name} background="transparent" width="auto">
+        <NavBarButton
+          key={page.name}
+          background="transparent"
+          width="auto"
+          hoverBackground="transparent"
+        >
           <LoginPageLink to={page.source}>{page.name}</LoginPageLink>
         </NavBarButton>
       ))}

@@ -4,6 +4,7 @@ import NotFoundPhoto from "../../../assets/NotFoundPhoto.svg";
 import { LogOutButton } from "../../ui/ButtonWithIcon/ButtonWithIcon";
 import { Typography } from "../../ui/Typography/Typography.style";
 import LogoutVector from "../../../assets/LogoutVector.svg";
+import { PageLink } from "../NavigationBar/MainNavigationBar/NavigationBar.style";
 
 const NotFoundPicture = styled.div`
   background-image: url(${NotFoundPhoto});
@@ -59,7 +60,7 @@ const SiteNameRight = styled(SiteNameLeft)`
   margin-left: 30px;
 `;
 
-const Question = styled(Typography)`
+const NotFoundTypography = styled(Typography)`
   position: absolute;
   top: 10%;
   left: 50%;
@@ -82,7 +83,7 @@ const Question = styled(Typography)`
     font-size: ${({ theme }) => theme.size.mobile.titleXXs}px;
   }
 `;
-const NewSiteName = styled(Question)`
+const NewSiteName = styled(NotFoundTypography)`
   position: absolute;
   top: 120px;
   transform: translate(0, 0);
@@ -100,16 +101,19 @@ const NewSiteName = styled(Question)`
   }
 `;
 
-const TurnBackButton = styled(LogOutButton)`
-  top: 0;
-`;
-
 const NotFoundPage = () => {
   return (
     <div>
       <NotFoundPicture />
-      <TurnBackButton src={LogoutVector} content="Turn Back" />
-      <Question>Are you lost my friend?</Question>
+      <PageLink to="/">
+        <LogOutButton
+          src={LogoutVector}
+          content="Turn Back"
+          bottom="2%"
+          textColor="backgroundcolor"
+        />
+      </PageLink>
+      <NotFoundTypography>Are you lost my friend?</NotFoundTypography>
       <SiteNameContainer>
         <SiteNameLeft>Plant</SiteNameLeft>
         <div>

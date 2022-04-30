@@ -23,6 +23,7 @@ const PagesOnMobile = () => {
           background="transparent"
           mobileWidth="auto"
           padding="0"
+          hoverBackground="transparent"
         >
           <PageLink to={page.source}>
             <Icon src={page.icon} aria-label={page.aria} />
