@@ -9,6 +9,7 @@ export const ActivationContainer = styled(SignUpContainer)`
 `;
 
 export const ActivationCard = styled(SignUpCard)`
+  justify-content: center;
   max-height: 120px;
 `;
 
