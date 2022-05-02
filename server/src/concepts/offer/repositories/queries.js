@@ -1,5 +1,4 @@
 import Offer from "../model/Offer.js";
-// import User from "../../user/model/User.js";
 
 export async function getOffer(offerId) {
   const offer = await Offer.findById(offerId);

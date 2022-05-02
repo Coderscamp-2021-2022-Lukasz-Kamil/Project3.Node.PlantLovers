@@ -1,6 +1,6 @@
-interface Photos {
-    url: string;
-    isMainPhoto: boolean;
+interface Photo {
+  url: string;
+  isMainPhoto: boolean;
 }
 
-export default Photos;
+export default Photo;
