@@ -24,6 +24,7 @@ export const Dropdown = ({
   listMobileWidth,
   position,
   border,
+  borderBottom,
   borderRadius,
 }: IDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,6 +43,7 @@ export const Dropdown = ({
         marginBottom={marginBottom}
         padding={padding}
         border={border}
+        borderBottom={borderBottom}
         fontSizeDesktop={fontSizeDesktop}
         fontSizeMobile={fontSizeMobile}
         borderRadius={borderRadius}

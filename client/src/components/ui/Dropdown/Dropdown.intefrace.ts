@@ -17,6 +17,7 @@ export interface IDropdown {
   marginBottom?: string;
   padding?: string;
   border?: string;
+  borderBottom?: string;
   fontSizeDesktop?: string;
   fontSizeMobile?: string;
   listDesktopWidth?: string;
@@ -33,6 +34,7 @@ export interface DropdownLookProps {
   fontSizeDesktop?: string;
   fontSizeMobile?: string;
   border?: string;
+  borderBottom?: string;
   borderRadius?: string;
 }
 

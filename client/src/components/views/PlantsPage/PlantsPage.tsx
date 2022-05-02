@@ -13,7 +13,11 @@ import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
 
 export const YourOfferPageContainer = styled(FlexWrapper)`
-  margin: 100px 0;
+  margin: 80px 0;
+
+  @media (max-width: 576px) {
+    margin: 10px 0;
+  }
 `;
 
 export const PlantsPageSearchAndFilterFlexWrapper = styled(FlexWrapper)`
@@ -25,7 +29,8 @@ export const PlantsPageSearchAndFilterFlexWrapper = styled(FlexWrapper)`
 `;
 
 export const EmptyDiv = styled.div`
-  width: 25vw;
+  width: 24vw;
+  height: 53.78px;
 
   @media (max-width: 576px) {
     display: none;
@@ -35,11 +40,21 @@ export const EmptyDiv = styled.div`
 export const PlantsPageSearchAndFilterContainer = styled(
   SearchAndFilterContainer
 )`
-  width: 72%;
-
+  width: 100%;
   @media (max-width: 576px) {
     width: 80%;
     justify-content: space-between;
+  }
+`;
+
+const PlantsPageSearchAndFilterDesktopContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-right: 2vw;
+
+  @media (max-width: 1000px) {
+    margin-right: 3.4vw;
   }
 `;
 
@@ -63,6 +78,7 @@ export const PlantsPageOnlyMobileSearchInput = styled(PlantsPageSearchInput)`
 `;
 
 export const PlantsPageSearchDesktopOnlyInput = styled(SearchInput)`
+  border-radius: 10px;
   @media (max-width: 576px) {
     display: none;
   }
@@ -81,39 +97,45 @@ export const FilterContener = styled.div`
 const PlantsPage = () => {
   return (
     <YourOfferPageContainer direction="column">
-      <PlantsPageSearchAndFilterFlexWrapper>
-        <PlantsPageOnlyMobileSearchInput
-          placeholder="Search for plant"
-          width="320px"
-          height="35px"
-        />
-        <EmptyDiv></EmptyDiv>
-        <PlantsPageSearchAndFilterContainer>
-          <AllFilters />
-          <PlantsPageSearchDesktopOnlyInput
-            placeholder="Search for plant"
-            width="320px"
-            height="35px"
-          />
-          <Dropdown
-            title="Sort by"
-            ico={<Arrow />}
-            list={SortList}
-            desktopWidth="20vw"
-            mobileWidth="30vw"
-            padding="0.3em 1em 0.3em 1em"
-            marginBottom="0"
-            border="none"
-            borderRadius="0"
-            listDesktopWidth="20vw"
-            listMobileWidth="30vw"
-            position="absolute"
-          />
-        </PlantsPageSearchAndFilterContainer>
-      </PlantsPageSearchAndFilterFlexWrapper>
       <PlantsPageFlexWrapper justifyContent="flex-start">
-        <PlantsPageWholeFilterComponent />
-        <PlantPageOfferts />
+        <div>
+          <EmptyDiv></EmptyDiv>
+          <PlantsPageWholeFilterComponent />
+        </div>
+        <div>
+          <PlantsPageSearchAndFilterFlexWrapper>
+            <PlantsPageOnlyMobileSearchInput
+              placeholder="Search for plant"
+              width="320px"
+              height="35px"
+            />
+            <PlantsPageSearchAndFilterContainer>
+              <AllFilters />
+              <PlantsPageSearchAndFilterDesktopContainer>
+                <PlantsPageSearchDesktopOnlyInput
+                  placeholder="Search for plant"
+                  width="320px"
+                  height="35px"
+                />
+                <Dropdown
+                  title="Sort by"
+                  ico={<Arrow />}
+                  list={SortList}
+                  desktopWidth="20vw"
+                  mobileWidth="30vw"
+                  padding="0.3em 1em 0.3em 1em"
+                  marginBottom="0"
+                  border="none"
+                  borderRadius="0"
+                  listDesktopWidth="20vw"
+                  listMobileWidth="30vw"
+                  position="absolute"
+                />
+              </PlantsPageSearchAndFilterDesktopContainer>
+            </PlantsPageSearchAndFilterContainer>
+          </PlantsPageSearchAndFilterFlexWrapper>
+          <PlantPageOfferts />
+        </div>
       </PlantsPageFlexWrapper>
     </YourOfferPageContainer>
   );

@@ -21,7 +21,8 @@ export const Wrapper = styled.div<DropdownLookProps>`
   background: ${({ theme }) => theme.colors.card.secondary};
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "5px")};
   border: ${({ border }) => (border ? border : "1px solid black")};
-  border-bottom: 1px solid black;
+  border-bottom: ${({ borderBottom }) =>
+    borderBottom ? borderBottom : "1px solid black"};
   cursor: pointer;
 
   &:hover {
@@ -67,6 +68,7 @@ export const List = styled.ul<DropdownListProps>`
   color: ${({ theme }) => theme.colors.common.textColor};
   position: ${({ position }) => (position ? position : "absolute")};
   z-index: 20;
+  cursor: pointer;
 
   &:first-child {
     padding-top: 0.8em;
