@@ -20,11 +20,16 @@ const Pages = () => {
           background="transparent"
           width="auto"
           padding="0"
+          hoverBackground="transparent"
         >
           <PageLink to={page.source}>{page.name}</PageLink>
         </NavBarButton>
       ))}
-      <NavBarButton background="transparent" width="auto">
+      <NavBarButton
+        background="transparent"
+        width="auto"
+        hoverBackground="transparent"
+      >
         <PageLink to="/user/">
           <Icon src={UserVecor} aria-label="User profile" />
         </PageLink>

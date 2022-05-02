@@ -10,6 +10,8 @@ export const LoginNavBar = styled(NavBar)`
 `;
 
 export const LoginNavBarButtonContainer = styled(NavBarButtonContainer)`
+  margin-right: 40px;
+
   @media (max-width: 576px) {
     display: flex;
   }

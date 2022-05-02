@@ -14,6 +14,7 @@ export const AdminNavigationBar = () => {
         background="transparent"
         padding="0"
         color="textColor"
+        hoverBackground="transparent"
       >
         Plant Lovers
       </TitleButton>
