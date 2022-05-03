@@ -5,6 +5,7 @@ import { OneOffer } from "./OneOffer";
 import { BASE_URL } from "../../../hooks/UseFetch";
 import { useState, useEffect } from "react";
 import Offer from "../../../shared/intefaces/offer.interface";
+import { useParams } from "react-router";
 
 const OfferContainer = styled.div`
   display: flex;
@@ -35,13 +36,14 @@ export const Image = styled.img`
 `;
 
 const OfferPage = () => {
+  const { id } = useParams();
   const [offer, setOffer] = useState<null | Offer>();
 
   useEffect(() => {
     axios
       .request({
         method: "GET",
-        url: BASE_URL + "/offers/6264ed5884afa9f66088a4ee",
+        url: BASE_URL + `/offers/${id}`,
         headers: {
           accept: "*/*",
         },
