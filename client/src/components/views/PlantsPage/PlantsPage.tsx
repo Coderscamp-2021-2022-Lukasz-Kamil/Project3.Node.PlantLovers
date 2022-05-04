@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { SortList } from "../../ui/Dropdown/DropdownLists";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import { PlantPageOfferts } from "./PlantPageOfferts";
-import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
+import Arrow from "../../../assets/ArrowDownVector.svg";
 import { AllFilters } from "./PlantsPageFilters";
 import {
   SearchAndFilterContainer,
@@ -11,6 +11,7 @@ import {
 } from "../ProfilePage/YourOfferPage/YourOfferPage";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
+import { Input } from "../../ui/Input/Input.style";
 
 export const YourOfferPageContainer = styled(FlexWrapper)`
   margin: 80px 0;
@@ -42,8 +43,8 @@ export const PlantsPageSearchAndFilterContainer = styled(
 )`
   width: 100%;
   @media (max-width: 576px) {
-    width: 80%;
     justify-content: space-between;
+    align-items: end;
   }
 `;
 
@@ -52,14 +53,26 @@ const PlantsPageSearchAndFilterDesktopContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   margin-right: 2vw;
+  align-items: end;
 
   @media (max-width: 1000px) {
     margin-right: 3.4vw;
+  }
+
+  @media (max-width: 576px) {
+    width: auto;
+    margin-right: 0;
   }
 `;
 
 export const PlantsPageFlexWrapper = styled(FlexWrapper)`
   align-items: flex-start;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    justify-content: center;
+    gap: 0;
+  }
 `;
 
 export const PlantsPageSearchInput = styled(SearchInput)`
@@ -69,7 +82,8 @@ export const PlantsPageSearchInput = styled(SearchInput)`
 `;
 export const PlantsPageOnlyMobileSearchInput = styled(PlantsPageSearchInput)`
   display: none;
-  width: 80%;
+  width: 100%;
+  height: 29.4px;
 
   @media (max-width: 576px) {
     display: flex;
@@ -77,8 +91,14 @@ export const PlantsPageOnlyMobileSearchInput = styled(PlantsPageSearchInput)`
   }
 `;
 
-export const PlantsPageSearchDesktopOnlyInput = styled(SearchInput)`
+export const PlantsPageSearchDesktopOnlyInput = styled(Input)`
+  border: none;
   border-radius: 10px;
+
+  @media (max-width: 750px) {
+    width: 200px;
+  }
+
   @media (max-width: 576px) {
     display: none;
   }
@@ -104,32 +124,36 @@ const PlantsPage = () => {
         </div>
         <div>
           <PlantsPageSearchAndFilterFlexWrapper>
-            <PlantsPageOnlyMobileSearchInput
-              placeholder="Search for plant"
-              width="320px"
-              height="35px"
-            />
+            <PlantsPageOnlyMobileSearchInput placeholder="Search for plant" />
             <PlantsPageSearchAndFilterContainer>
               <AllFilters />
               <PlantsPageSearchAndFilterDesktopContainer>
                 <PlantsPageSearchDesktopOnlyInput
                   placeholder="Search for plant"
                   width="320px"
-                  height="35px"
+                  height="37.78px"
                 />
                 <Dropdown
                   title="Sort by"
-                  ico={<Arrow />}
+                  imageSrc={Arrow}
+                  imageWidth={20}
+                  imageHeigth={20}
+                  imageMarginRight="0"
+                  imageMobileWidth={15}
+                  imageMobileHeigth={15}
                   list={SortList}
-                  desktopWidth="20vw"
-                  mobileWidth="30vw"
+                  desktopWidth="200px"
+                  mobileWidth="35vw"
                   padding="0.3em 1em 0.3em 1em"
                   marginBottom="0"
                   border="none"
-                  borderRadius="0"
-                  listDesktopWidth="20vw"
-                  listMobileWidth="30vw"
+                  borderRadius="10px"
+                  listDesktopWidth="200px"
+                  listMobileWidth="60vw"
+                  listfontSizeMobile="mdl"
                   position="absolute"
+                  borderBottom="none"
+                  listMobileMargin="40px 40vw 0 0"
                 />
               </PlantsPageSearchAndFilterDesktopContainer>
             </PlantsPageSearchAndFilterContainer>

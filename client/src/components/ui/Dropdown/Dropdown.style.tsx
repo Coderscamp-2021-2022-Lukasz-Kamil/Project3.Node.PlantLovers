@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { DropdownListProps, DropdownLookProps } from "./Dropdown.intefrace";
+import {
+  DropdownListProps,
+  DropdownLookProps,
+  IconProps,
+} from "./Dropdown.intefrace";
 
 export const DropdownContainer = styled.div`
   display: flex;
@@ -15,8 +19,10 @@ export const Wrapper = styled.div<DropdownLookProps>`
   margin-bottom: ${({ marginBottom }) =>
     marginBottom ? marginBottom : "0.8em"};
   padding: ${({ padding }) => (padding ? padding : "0.4em 1em 0.4em 1em")};
-  font-size: ${({ fontSizeDesktop }) =>
-    fontSizeDesktop ? fontSizeDesktop : "18px"};
+  font-size: ${({ theme, fontSizeDesktop }) =>
+    fontSizeDesktop
+      ? theme.size.desktop[fontSizeDesktop]
+      : theme.size.desktop.mds}px;
   color: ${({ theme }) => theme.colors.common.textColor};
   background: ${({ theme }) => theme.colors.card.secondary};
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "5px")};
@@ -31,8 +37,10 @@ export const Wrapper = styled.div<DropdownLookProps>`
 
   @media (max-width: 576px) {
     width: ${({ mobileWidth }) => (mobileWidth ? mobileWidth : "90vw")};
-    font-size: ${({ fontSizeMobile }) =>
-      fontSizeMobile ? fontSizeMobile : "14px"};
+    font-size: ${({ theme, fontSizeMobile }) =>
+      fontSizeMobile
+        ? theme.size.mobile[fontSizeMobile]
+        : theme.size.mobile.md}px;
   }
 `;
 export const DropdownHeader = styled.div`
@@ -50,12 +58,17 @@ export const DropdownHeaderTitle = styled.div`
   position: relative;
 `;
 
-export const DropdownHeaderIcon = styled(DropdownHeaderTitle)`
+export const DropdownHeaderIcon = styled(DropdownHeaderTitle)<IconProps>`
   position: absolute;
   justify-content: end;
 
+  @media (max-width: 850px) {
+    position: ${({ smallerScreenIconPosition }) =>
+      smallerScreenIconPosition ? smallerScreenIconPosition : "absolute"};
+  }
+
   @media (max-width: 576px) {
-    display: none;
+    position: absolute;
   }
 `;
 
@@ -69,7 +82,6 @@ export const List = styled.ul<DropdownListProps>`
   position: ${({ position }) => (position ? position : "absolute")};
   z-index: 20;
   cursor: pointer;
-
   &:first-child {
     padding-top: 0.8em;
   }
@@ -77,7 +89,12 @@ export const List = styled.ul<DropdownListProps>`
   @media (max-width: 576px) {
     width: ${({ listMobileWidth }) =>
       listMobileWidth ? listMobileWidth : "90vw"};
-    font-size: ${({ theme }) => theme.size.mobile.md}px;
+    font-size: ${({ theme, listfontSizeMobile }) =>
+      listfontSizeMobile
+        ? theme.size.mobile[listfontSizeMobile]
+        : theme.size.mobile.md}px;
+    margin: ${({ listMobileMargin }) =>
+      listMobileMargin ? listMobileMargin : "0"};
   } ;
 `;
 
@@ -85,7 +102,11 @@ export const ListItem = styled.li`
   padding-left: 1em;
   list-style: none;
   margin-bottom: 0.8em;
-
+  border-bottom: 1px solid ${({ theme }) => theme.colors.common.textInactive};
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
   }

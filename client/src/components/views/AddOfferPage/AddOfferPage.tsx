@@ -4,7 +4,7 @@ import { Dropdown } from "../../ui/Dropdown/Dropdown";
 import { Input } from "../../ui/Input/Input.style";
 import { Textarea } from "../../ui/Textarea/Textarea.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-import { ReactComponent as Arrow } from "../../../assets/DownVector.svg";
+import Arrow from "../../../assets/DownVector.svg";
 import { CategoryList, HeightList } from "../../ui/Dropdown/DropdownLists";
 import { ButtonWithIcon } from "../../ui/ButtonWithIcon/ButtonWithIcon";
 import AddVector from "../../../assets/AddVector.svg";
@@ -71,8 +71,26 @@ const AddOfferPage = () => {
             width="100%"
             fontSizeMobile="md"
           />
-          <Dropdown title="Category" ico={<Arrow />} list={CategoryList} />
-          <Dropdown title="Height" ico={<Arrow />} list={HeightList} />
+          <Dropdown
+            title="Category"
+            imageSrc={Arrow}
+            imageWidth={15}
+            imageHeigth={15}
+            imageMobileWidth={15}
+            imageMobileHeigth={15}
+            imageMarginRight="0"
+            list={CategoryList}
+          />
+          <Dropdown
+            title="Height"
+            imageSrc={Arrow}
+            imageWidth={15}
+            imageHeigth={15}
+            imageMobileWidth={15}
+            imageMobileHeigth={15}
+            imageMarginRight="0"
+            list={HeightList}
+          />
           <AddOfferInput placeholder="Price" width="100%" fontSizeMobile="md" />
           <AddOfferInput
             placeholder="For exchange (input)"

@@ -115,6 +115,14 @@ export const SortList: Item[] = [
   },
   {
     id: 4,
-    name: "highest price Z-A",
+    name: "alphabetical order A-Z",
+  },
+  {
+    id: 5,
+    name: "highest price",
+  },
+  {
+    id: 6,
+    name: "lowest price",
   },
 ];

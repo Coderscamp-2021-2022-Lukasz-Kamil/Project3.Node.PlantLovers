@@ -9,10 +9,11 @@ import {
   Wrapper,
 } from "./Dropdown.style";
 import { IDropdown, Item } from "./Dropdown.intefrace";
+import { Icon } from "../ButtonWithIcon/ButtonWithIcon";
 
 export const Dropdown = ({
   title,
-  ico,
+  imageSrc,
   list,
   desktopWidth,
   mobileWidth,
@@ -26,6 +27,14 @@ export const Dropdown = ({
   border,
   borderBottom,
   borderRadius,
+  imageWidth,
+  imageHeigth,
+  imageMobileWidth,
+  imageMobileHeigth,
+  imageMarginRight,
+  listfontSizeMobile,
+  smallerScreenIconPosition,
+  listMobileMargin,
 }: IDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -50,7 +59,18 @@ export const Dropdown = ({
       >
         <DropdownHeader>
           <DropdownHeaderTitle>{selectedOption || title}</DropdownHeaderTitle>
-          <DropdownHeaderIcon>{ico}</DropdownHeaderIcon>
+          <DropdownHeaderIcon
+            smallerScreenIconPosition={smallerScreenIconPosition}
+          >
+            <Icon
+              src={imageSrc}
+              width={imageWidth}
+              height={imageHeigth}
+              mobileWidth={imageMobileWidth}
+              mobileHeight={imageMobileHeigth}
+              marginRight={imageMarginRight}
+            />
+          </DropdownHeaderIcon>
         </DropdownHeader>
       </Wrapper>
       {isOpen && (
@@ -58,6 +78,8 @@ export const Dropdown = ({
           listDesktopWidth={listDesktopWidth}
           listMobileWidth={listMobileWidth}
           position={position}
+          listfontSizeMobile={listfontSizeMobile}
+          listMobileMargin={listMobileMargin}
         >
           {list.map((item) => (
             <ListItem key={item.id} onClick={() => handleSelected(item)}>
