@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { SortList } from "../../ui/Dropdown/DropdownLists";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-import { PlantPageOfferts } from "./PlantPageOfferts";
+import { PlantPageOffers } from "./PlantPageOfferts";
 import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
 import { AllFilters } from "./PlantsPageFilters";
 import {
@@ -11,6 +11,10 @@ import {
 } from "../ProfilePage/YourOfferPage/YourOfferPage";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
+import { useState } from "react";
+import { Method } from "axios";
+import useFetchData from "../../../hooks/UseFetch";
+import Offer from "../../../shared/intefaces/offer.interface";
 
 export const YourOfferPageContainer = styled(FlexWrapper)`
   margin: 100px 0;
@@ -79,6 +83,45 @@ export const FilterContener = styled.div`
 `;
 
 const PlantsPage = () => {
+  const [searchPhrase, setSearchPhrase] = useState("");
+
+  const defaultParams = {
+    url: "/offers",
+    method: "GET" as Method,
+    headers: {
+      accept: "*/*",
+    },
+  };
+
+  let params = defaultParams;
+
+  if (searchPhrase === "") {
+    params = defaultParams;
+  } else {
+    params = {
+      url: "/offers/search/" + searchPhrase,
+      method: "GET",
+      headers: {
+        accept: "*/*",
+      },
+    };
+  }
+
+  const { response, error } = useFetchData({
+    url: params.url,
+    method: params.method,
+  });
+
+  const offer: Offer[] = response;
+
+  const displayOffers = () => {
+    if (!error) {
+      return <PlantPageOffers offers={offer} />;
+    } else if (error) {
+      return <div>cannot load recipes</div>;
+    }
+  };
+
   return (
     <YourOfferPageContainer direction="column">
       <PlantsPageSearchAndFilterFlexWrapper>
@@ -86,7 +129,11 @@ const PlantsPage = () => {
           placeholder="Search for plant"
           width="320px"
           height="35px"
+          onChange={(e) => {
+            setSearchPhrase(e.target.value);
+          }}
         />
+
         <EmptyDiv></EmptyDiv>
         <PlantsPageSearchAndFilterContainer>
           <AllFilters />
@@ -94,7 +141,11 @@ const PlantsPage = () => {
             placeholder="Search for plant"
             width="320px"
             height="35px"
+            onChange={(e) => {
+              setSearchPhrase(e.target.value);
+            }}
           />
+
           <Dropdown
             title="Sort by"
             ico={<Arrow />}
@@ -113,7 +164,7 @@ const PlantsPage = () => {
       </PlantsPageSearchAndFilterFlexWrapper>
       <PlantsPageFlexWrapper justifyContent="flex-start">
         <PlantsPageWholeFilterComponent />
-        <PlantPageOfferts />
+        {displayOffers()}
       </PlantsPageFlexWrapper>
     </YourOfferPageContainer>
   );

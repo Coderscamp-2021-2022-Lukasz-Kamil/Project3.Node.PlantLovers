@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Typography } from "../../ui/Typography/Typography.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
-import ExamplePhoto from "../../../assets/examplePlantPhoto.svg";
 import {
   ImageContainer,
   OfferCard,
@@ -12,11 +11,7 @@ import {
   PriceTypography,
   YourOfferGridContainer,
 } from "../ProfilePage/YourOfferPage/Offers";
-import Icons from "../ProfilePage/YourOfferPage/Icons";
-import { ReactComponent as RandomImage } from "../../../assets/examplePlantPhoto.svg";
-import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
-import useFetchData from "../../../hooks/UseFetch";
-import { Offer } from "../ProfilePage/YourOfferPage/OfferModel";
+import Offer from "../../../shared/intefaces/offer.interface";
 
 const PlantsPageGridContainer = styled(YourOfferGridContainer)`
   margin-right: 2vw;
@@ -51,27 +46,20 @@ const PlantPageImageContainer = styled(ImageContainer)`
   }
 `;
 
-export const PlantPageOfferts = () => {
-  const { response } = useFetchData({
-    url: `/offers`,
-    method: "GET",
-    headers: {
-      accept: "*/*",
-      "Content-Type": "application/json",
-    },
-  });
+interface PlantPageOffersProps {
+  offers: Offer[];
+}
 
-  const offers: Offer[] = response;
-
+export const PlantPageOffers = (props: PlantPageOffersProps) => {
   return (
-   <PlantsPageGridContainer smallScreenColumns={2}>
-      {offers.map((offer) => (
+    <PlantsPageGridContainer smallScreenColumns={2}>
+      {props.offers.map((offer) => (
         <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
           <OfferCardButton>
             <PlantPageImageContainer>
               <PlantPageImageCard
                 alt="plantPhoto"
-            src={offer.photos[0].url}
+                src={offer.photos[0].url}
               ></PlantPageImageCard>
             </PlantPageImageContainer>
           </OfferCardButton>
