@@ -10,6 +10,7 @@ import { ButtonWithIcon } from "../../ui/ButtonWithIcon/ButtonWithIcon";
 import AddVector from "../../../assets/AddVector.svg";
 import { Button } from "../../ui/Button/Button.style";
 import { OfferPhotos } from "./OfferPhotos";
+import { Typography } from "../../ui/Typography/Typography.style";
 
 const AddOfferFlexWrapper = styled(FlexWrapper)`
   margin-bottom: 50px;
@@ -57,6 +58,31 @@ const AddOfferInput = styled(Input)`
   margin-bottom: 0.8em;
 `;
 
+const ForExchangeContainer = styled(FlexWrapper)`
+  border-radius: 5px;
+  border: 1px solid #000;
+  background: #f9f8f8;
+  width: 100%;
+  height: 45px;
+
+  @media (max-width: 576px) {
+    height: 33px;
+    margin-bottom: 0.8em;
+  }
+`;
+
+const Checkbox = styled.input`
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+
+  @media (max-width: 576px) {
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+  }
+`;
+
 const AddOfferPage = () => {
   return (
     <AddOfferFlexWrapper direction="column">
@@ -92,12 +118,12 @@ const AddOfferPage = () => {
             list={HeightList}
           />
           <AddOfferInput placeholder="Price" width="100%" fontSizeMobile="md" />
-          <AddOfferInput
-            placeholder="For exchange (input)"
-            width="100%"
-            color="secondary"
-            fontSizeMobile="md"
-          />
+          <ForExchangeContainer>
+            <Typography fontSize="mds" fontSizeMobile="md">
+              For Exchange?
+            </Typography>
+            <Checkbox type="checkbox" />
+          </ForExchangeContainer>
         </AddOfferLeftColumnFlexWrapper>
         <AddOfferRightColumnFlexWrapper direction="column">
           <MainUploadedPhoto></MainUploadedPhoto>
