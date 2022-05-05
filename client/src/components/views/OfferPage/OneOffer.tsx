@@ -122,7 +122,13 @@ export const OneOffer = (props: {
 
         <CategoryEmailAndPhone
           email={props.email}
-          phoneNumber={props.phoneNumber}
+          phoneNumber={
+            props.phoneNumber.substring(0, 3) +
+            "-" +
+            props.phoneNumber.substring(3, 6) +
+            "-" +
+            props.phoneNumber.substring(6)
+          }
         />
       </div>
     </OfferCard>

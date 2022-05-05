@@ -2,6 +2,7 @@ import Category from "./category.interface";
 import Height from "./height.interface";
 import Location from "./location.interface";
 import Photo from "./photos.interface";
+import User from "./user.interface";
 
 interface Offer {
   id: number;
@@ -21,6 +22,7 @@ interface Offer {
   forExchange: boolean;
   isActive: boolean;
   isArchived: boolean;
+  userId: User;
 }
 
 export default Offer;

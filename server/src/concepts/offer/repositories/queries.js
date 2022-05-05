@@ -30,6 +30,17 @@ export async function getOffer(offerId) {
     {
       $unwind: "$height",
     },
+    {
+      $lookup: {
+        from: "users",
+        localField: "userId",
+        foreignField: "_id",
+        as: "userId",
+      },
+    },
+    {
+      $unwind: "$userId",
+    },
   ]);
 
   if (!offers) {

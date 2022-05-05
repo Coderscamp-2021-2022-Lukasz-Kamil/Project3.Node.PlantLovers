@@ -75,7 +75,7 @@ const OfferPage = () => {
         category={offer.category.name}
         height={offer.height.range}
         city={offer.city}
-        email={offer.email}
+        email={offer.userId.email}
         phoneNumber={offer.phoneNumber}
       />
     </OfferContainer>
