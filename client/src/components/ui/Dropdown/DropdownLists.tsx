@@ -115,7 +115,7 @@ export const SortList: Item[] = [
   },
   {
     id: 4,
-    name: "alphabetical order A-Z",
+    name: "alphabetical order Z-A",
   },
   {
     id: 5,
