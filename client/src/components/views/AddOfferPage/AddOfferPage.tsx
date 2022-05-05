@@ -75,6 +75,7 @@ const Checkbox = styled.input`
   width: 20px;
   height: 20px;
   margin-left: 10px;
+  accent-color: ${({ theme }) => theme.colors.button.primary};
 
   @media (max-width: 576px) {
     width: 15px;
