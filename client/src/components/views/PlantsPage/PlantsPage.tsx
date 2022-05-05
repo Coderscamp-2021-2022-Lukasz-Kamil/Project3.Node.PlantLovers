@@ -11,6 +11,7 @@ import {
 } from "../ProfilePage/YourOfferPage/YourOfferPage";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
+import { useState } from "react";
 
 export const YourOfferPageContainer = styled(FlexWrapper)`
   margin: 100px 0;
@@ -79,6 +80,11 @@ export const FilterContener = styled.div`
 `;
 
 const PlantsPage = () => {
+  const [sortOption, setSortOption] = useState<string | undefined>();
+
+  const onOptionChosen = (option: string) => {
+    setSortOption(option);
+  };
   return (
     <YourOfferPageContainer direction="column">
       <PlantsPageSearchAndFilterFlexWrapper>
@@ -108,12 +114,13 @@ const PlantsPage = () => {
             listDesktopWidth="20vw"
             listMobileWidth="30vw"
             position="absolute"
+            onOptionChosen={onOptionChosen}
           />
         </PlantsPageSearchAndFilterContainer>
       </PlantsPageSearchAndFilterFlexWrapper>
       <PlantsPageFlexWrapper justifyContent="flex-start">
         <PlantsPageWholeFilterComponent />
-        <PlantPageOfferts />
+        <PlantPageOfferts sortBy={sortOption} />
       </PlantsPageFlexWrapper>
     </YourOfferPageContainer>
   );

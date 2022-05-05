@@ -23,6 +23,7 @@ export interface IDropdown {
   listMobileWidth?: string;
   position?: string;
   borderRadius?: string;
+  onOptionChosen?: (chosenValue: string) => void;
 }
 
 export interface DropdownLookProps {

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Typography } from "../../ui/Typography/Typography.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
-import ExamplePhoto from "../../../assets/examplePlantPhoto.svg";
 import {
   ImageContainer,
   OfferCard,
@@ -12,11 +11,9 @@ import {
   PriceTypography,
   YourOfferGridContainer,
 } from "../ProfilePage/YourOfferPage/Offers";
-import Icons from "../ProfilePage/YourOfferPage/Icons";
-import { ReactComponent as RandomImage } from "../../../assets/examplePlantPhoto.svg";
-import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 import useFetchData from "../../../hooks/UseFetch";
 import { Offer } from "../ProfilePage/YourOfferPage/OfferModel";
+import { SortList } from "../../ui/Dropdown/DropdownLists";
 
 const PlantsPageGridContainer = styled(YourOfferGridContainer)`
   margin-right: 2vw;
@@ -51,7 +48,13 @@ const PlantPageImageContainer = styled(ImageContainer)`
   }
 `;
 
-export const PlantPageOfferts = () => {
+interface PlantPageOffersProps {
+  sortBy?: string;
+}
+
+export const PlantPageOfferts: React.FC<PlantPageOffersProps> = ({
+  sortBy,
+}) => {
   const { response } = useFetchData({
     url: `/offers`,
     method: "GET",
@@ -61,17 +64,58 @@ export const PlantPageOfferts = () => {
     },
   });
 
-  const offers: Offer[] = response;
+  let offers: Offer[] = response;
+
+  const sortCase = SortList.find((item) => item.name === sortBy);
+
+  if (offers) {
+    switch (sortCase?.name) {
+      case "newest":
+        offers = offers.sort((a, b) => {
+          const dateA = new Date(a.dateUpdated);
+          const dateB = new Date(b.dateUpdated);
+          return dateA.getTime() - dateB.getTime();
+        });
+        break;
+      case "oldest":
+        offers = offers.sort((a, b) => {
+          const dateA = new Date(a.dateUpdated);
+          const dateB = new Date(b.dateUpdated);
+          return dateB.getTime() - dateA.getTime();
+        });
+        break;
+      case "alphabetical order A-Z":
+        offers = offers.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case "alphabetical order Z-A":
+        offers = offers.sort((a, b) => b.title.localeCompare(a.title));
+        break;
+      case "highest price":
+        offers = offers.sort(
+          (a, b) =>
+            parseFloat(b.price.toString()) - parseFloat(a.price.toString())
+        );
+        break;
+      case "lowest price":
+        offers = offers.sort(
+          (a, b) =>
+            parseFloat(a.price.toString()) - parseFloat(b.price.toString())
+        );
+        break;
+      default:
+        "";
+    }
+  }
 
   return (
-   <PlantsPageGridContainer smallScreenColumns={2}>
+    <PlantsPageGridContainer smallScreenColumns={2}>
       {offers.map((offer) => (
         <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
           <OfferCardButton>
             <PlantPageImageContainer>
               <PlantPageImageCard
                 alt="plantPhoto"
-            src={offer.photos[0].url}
+                src={offer.photos[0].url}
               ></PlantPageImageCard>
             </PlantPageImageContainer>
           </OfferCardButton>

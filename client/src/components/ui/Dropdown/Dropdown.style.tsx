@@ -67,6 +67,7 @@ export const List = styled.ul<DropdownListProps>`
   color: ${({ theme }) => theme.colors.common.textColor};
   position: ${({ position }) => (position ? position : "absolute")};
   z-index: 20;
+  cursor: pointer;
 
   &:first-child {
     padding-top: 0.8em;
