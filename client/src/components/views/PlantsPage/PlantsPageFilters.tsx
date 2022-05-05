@@ -21,17 +21,27 @@ const FilterButton = styled.button`
     background-color: ${({ theme }) => theme.colors.card.highlighted};
   }
 
+  @media (max-width: 850px) {
+    justify-content: start;
+  }
+
   @media (max-width: 576px) {
     width: 60vw;
+    justify-content: center;
     font-size: ${({ theme }) => theme.size.mobile.lg}px;
   }
 `;
 const ArrowImage = styled.img`
   position: absolute;
 
+  @media (max-width: 850px) {
+    margin-right: 1em;
+  }
+
   @media (max-width: 576px) {
     width: 15px;
     height: 15px;
+    margin-right: 0;
   }
 `;
 
