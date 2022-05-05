@@ -37,6 +37,7 @@ const ArrowImage = styled.img`
 
 const FiltersInputContainer = styled(FlexWrapper)`
   position: relative;
+  width: 20vw;
 
   @media (max-width: 576px) {
     width: 60vw;
