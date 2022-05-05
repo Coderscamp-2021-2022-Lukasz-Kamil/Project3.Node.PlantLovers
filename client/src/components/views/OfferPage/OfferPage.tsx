@@ -6,6 +6,7 @@ import { BASE_URL } from "../../../hooks/UseFetch";
 import { useState, useEffect } from "react";
 import Offer from "../../../shared/intefaces/offer.interface";
 import { useParams } from "react-router";
+import { toast } from "react-toastify";
 
 const OfferContainer = styled.div`
   display: flex;
@@ -49,11 +50,10 @@ const OfferPage = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setOffer(response.data);
       })
-      .catch((error) => {
-        console.log(error.message);
+      .catch(() => {
+        return toast.error("Offer not found");
         setOffer(null);
       });
   }, []);
@@ -61,8 +61,6 @@ const OfferPage = () => {
   if (!offer) {
     return <div>Loading...</div>;
   }
-
-  console.log(offer);
 
   return (
     <OfferContainer>
