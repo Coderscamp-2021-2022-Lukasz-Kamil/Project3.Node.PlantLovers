@@ -47,7 +47,7 @@ const PlantPageImageContainer = styled(ImageContainer)`
 `;
 
 export const PlantPageOfferts = () => {
-  const { response } = useFetchData({
+  const { response } = useFetchData<Offer[]>({
     url: `/offers`,
     method: "GET",
     headers: {
@@ -56,12 +56,12 @@ export const PlantPageOfferts = () => {
     },
   });
 
-  const offers: Offer[] = response;
+  const offers = response;
 
   return (
     <PlantsPageGridContainer smallScreenColumns={2}>
       <PlantsPageGridContainer smallScreenColumns={2}>
-        {offers.map((offer) => (
+        {offers?.map((offer) => (
           <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
             <NavLink to={`offer/${offer._id}`}>
               <PlantPageImageContainer>

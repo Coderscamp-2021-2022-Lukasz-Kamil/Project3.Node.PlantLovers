@@ -43,7 +43,7 @@ export async function getOffer(offerId) {
     },
   ]);
 
-  if (!offers) {
+  if (!offers.length) {
     throw "There is no offer with id = " + offerId;
   }
   return offers[0];

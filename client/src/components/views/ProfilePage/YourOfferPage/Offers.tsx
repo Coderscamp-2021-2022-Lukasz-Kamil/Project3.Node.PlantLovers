@@ -64,7 +64,7 @@ export const PriceTypography = styled(Typography)`
 export const Offers = () => {
   const [userIdCookie] = useCookies(["user-id"]);
   const [token] = useCookies(["token"]);
-  const { response } = useFetchData({
+  const { response } = useFetchData<Offer[]>({
     url: `/offers/${userIdCookie["user-id"]}`,
     method: "GET",
     headers: {
@@ -73,7 +73,7 @@ export const Offers = () => {
     },
   });
 
-  const offers: Offer[] = response;
+  const offers = response;
 
   const onArchiveButtonClick = (offerId: string) => {
     axios({
@@ -138,7 +138,7 @@ export const Offers = () => {
 
   return (
     <YourOfferGridContainer smallScreenColumns={2}>
-      {offers.map((offer) => (
+      {offers?.map((offer) => (
         <OfferCard width="auto" color="offer" key={offer._id}>
           <OfferCardButton>
             <ImageContainer>

@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { OneOffer } from "./OneOffer";
 import { BASE_URL } from "../../../hooks/UseFetch";
 import { useState, useEffect } from "react";
 import Offer from "../../../shared/intefaces/offer.interface";
 import { useParams } from "react-router";
 import { toast } from "react-toastify";
+import useFetchData from "../../../hooks/UseFetch";
 
 const OfferContainer = styled.div`
   display: flex;
@@ -38,45 +38,50 @@ export const Image = styled.img`
 
 const OfferPage = () => {
   const { id } = useParams();
-  const [offer, setOffer] = useState<null | Offer>();
+  const [offer, setOffer] = useState<null | Offer>(null);
+
+  const { response, error, loading } = useFetchData<Offer>({
+    url: `${BASE_URL}/offers/${id}`,
+    method: "GET",
+    headers: {
+      accept: "*/*",
+    },
+  });
 
   useEffect(() => {
-    axios
-      .request({
-        method: "GET",
-        url: BASE_URL + `/offers/${id}`,
-        headers: {
-          accept: "*/*",
-        },
-      })
-      .then((response) => {
-        setOffer(response.data);
-      })
-      .catch(() => {
-        return toast.error("Offer not found");
-        setOffer(null);
-      });
-  }, []);
+    if (response) {
+      setOffer(response);
+    }
+    if (error) {
+      toast.error("Offer not found");
+    }
+  }, [response]);
 
-  if (!offer) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <OfferContainer>
-      <Image src={offer.photos[0].url} alt="sth" />
-      <OneOffer
-        key={offer.id}
-        title={offer.title}
-        price={offer.price}
-        description={offer.description}
-        category={offer.category.name}
-        height={offer.height.range}
-        city={offer.city}
-        email={offer.userId.email}
-        phoneNumber={offer.phoneNumber}
-      />
-    </OfferContainer>
+    <>
+      {offer ? (
+        <OfferContainer>
+          <Image src={offer.photos[0].url} alt="sth" />
+          <OneOffer
+            key={offer.id}
+            title={offer.title}
+            price={offer.price}
+            description={offer.description}
+            category={offer.category.name}
+            height={offer.height.range}
+            city={offer.city}
+            email={offer.userId.email}
+            phoneNumber={offer.phoneNumber}
+          />
+        </OfferContainer>
+      ) : (
+        <div>No offer</div>
+      )}
+    </>
   );
 };
 
