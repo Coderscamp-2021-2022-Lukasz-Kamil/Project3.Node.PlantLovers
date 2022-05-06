@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Typography } from "../../ui/Typography/Typography.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
-import ExamplePhoto from "../../../assets/examplePlantPhoto.svg";
 import {
   ImageContainer,
   OfferCard,
@@ -12,9 +11,6 @@ import {
   PriceTypography,
   YourOfferGridContainer,
 } from "../ProfilePage/YourOfferPage/Offers";
-import Icons from "../ProfilePage/YourOfferPage/Icons";
-import { ReactComponent as RandomImage } from "../../../assets/examplePlantPhoto.svg";
-import { GridContainer } from "../../wrappers/FlexCenter/GridContainer.style";
 import useFetchData from "../../../hooks/UseFetch";
 import { Offer } from "../ProfilePage/YourOfferPage/OfferModel";
 
@@ -23,6 +19,8 @@ const PlantsPageGridContainer = styled(YourOfferGridContainer)`
 
   @media (max-width: 576px) {
     grid-gap: 5vw 5vw;
+    width: 100%;
+    justify-items: center;
   }
 `;
 const PlantPageImageCard = styled(ImageCard)`
@@ -64,14 +62,14 @@ export const PlantPageOfferts = () => {
   const offers: Offer[] = response;
 
   return (
-   <PlantsPageGridContainer smallScreenColumns={2}>
+    <PlantsPageGridContainer smallScreenColumns={2}>
       {offers.map((offer) => (
         <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
           <OfferCardButton>
             <PlantPageImageContainer>
               <PlantPageImageCard
                 alt="plantPhoto"
-            src={offer.photos[0].url}
+                src={offer.photos[0].url}
               ></PlantPageImageCard>
             </PlantPageImageContainer>
           </OfferCardButton>
