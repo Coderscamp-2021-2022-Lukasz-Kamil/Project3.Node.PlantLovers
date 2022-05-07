@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent } from "react";
 import { SortList } from "../../ui/Dropdown/DropdownLists";
 import { PlantPageOffers } from "./PlantPageOfferts";
 import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
@@ -12,16 +12,18 @@ import Offer from "../../../shared/intefaces/offer.interface";
 import {
   YourOfferPageContainer,
   PlantsPageSearchAndFilterFlexWrapper,
-  PlantsPageOnlyMobileSearchInput,
-  EmptyDiv,
   PlantsPageSearchAndFilterContainer,
-  PlantsPageSearchDesktopOnlyInput,
+  PlantsPageSearchInput,
   PlantsPageFlexWrapper,
   ErrorMessage,
+  SearchButton,
+  SearchGroup,
+  SearchContainer,
 } from "./PlanPage.styled";
 
 const PlantsPage = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
+  const [searchPhraseToLookUp, setSearchPhraseToLookUp] = useState("");
 
   const defaultParams = {
     url: "/offers",
@@ -33,11 +35,11 @@ const PlantsPage = () => {
 
   let params = defaultParams;
 
-  if (searchPhrase === "") {
+  if (searchPhraseToLookUp === "") {
     params = defaultParams;
   } else {
     params = {
-      url: "/offers/search/" + searchPhrase,
+      url: "/offers/search/" + searchPhraseToLookUp,
       method: "GET",
       headers: {
         accept: "*/*",
@@ -69,29 +71,33 @@ const PlantsPage = () => {
   return (
     <YourOfferPageContainer direction="column">
       <PlantsPageSearchAndFilterFlexWrapper>
-        <PlantsPageOnlyMobileSearchInput
-          placeholder="Search for plant"
-          width="320px"
-          height="35px"
-          onKeyDown={(e) =>
-            e.key === "Enter" &&
-            setSearchPhrase((e.target as HTMLTextAreaElement).value)
-          }
-        />
-
-        <EmptyDiv></EmptyDiv>
+        <SearchContainer>
+          <SearchGroup>
+            <PlantsPageSearchInput
+              placeholder="Search for plant"
+              width="320px"
+              height="35px"
+              onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
+                e.key === "Enter" && setSearchPhraseToLookUp(searchPhrase);
+              }}
+              onChange={(e) => {
+                const inputValue = e.target.value;
+                setSearchPhrase(inputValue);
+                if (!inputValue) {
+                  setSearchPhraseToLookUp("");
+                }
+              }}
+            />
+            <SearchButton
+              type="submit"
+              onClick={() => setSearchPhraseToLookUp(searchPhrase)}
+            >
+              <img src="/searchIcon.png" height={"100%"} />
+            </SearchButton>
+          </SearchGroup>
+        </SearchContainer>
         <PlantsPageSearchAndFilterContainer>
           <AllFilters />
-          <PlantsPageSearchDesktopOnlyInput
-            placeholder="Search for plant"
-            width="320px"
-            height="35px"
-            onKeyDown={(e) =>
-              e.key === "Enter" &&
-              setSearchPhrase((e.target as HTMLTextAreaElement).value)
-            }
-          />
-
           <Dropdown
             title="Sort by"
             ico={<Arrow />}
