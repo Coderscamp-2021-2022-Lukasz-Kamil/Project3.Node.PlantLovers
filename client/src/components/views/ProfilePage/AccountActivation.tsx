@@ -6,6 +6,7 @@ import User from "../../../shared/intefaces/user.interface";
 const AccountActivation = () => {
   const { userId, token } = useParams<{ userId: string; token: string }>();
   const { response, error, loading } = useFetchData<User>({
+
     url: BASE_URL + `/users/activate/${userId}`,
     method: "PUT",
     headers: {
@@ -14,14 +15,16 @@ const AccountActivation = () => {
       token: token as string,
     },
   });
-  if (loading) {
-    return <></>;
-  }
-  if (error) {
-    return <div>{error}</div>;
-  }
 
-  return <div>{response}</div>;
+  return (
+    <ActivationContainer>
+      <ActivationLogo>Plant Lovers</ActivationLogo>
+      <ActivationCard>
+        {response}
+        {error}
+      </ActivationCard>
+    </ActivationContainer>
+  );
 };
 
 export default AccountActivation;

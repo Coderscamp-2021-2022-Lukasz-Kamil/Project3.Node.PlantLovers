@@ -24,6 +24,7 @@ export const theme = {
       hover: "#AAD576",
       secondaryHover: "#A59E9E",
       transparent: "transparent",
+      addButton: "#F9F8F8",
     },
     input: {
       primary: "#F9F8F8",
@@ -41,6 +42,7 @@ export const theme = {
       lg: 20,
       xl: 24,
       xxl: 26,
+      titleXXs: 32,
       titleXs: 35,
       titleSm: 45,
       titleMd: 50,
@@ -60,6 +62,8 @@ export const theme = {
       xxxl: 38,
       titleMd: 70,
       titleLg: 80,
+      titleXL: 110,
+      titleXXL: 140,
     },
     common: {
       borderRadius: "5px",

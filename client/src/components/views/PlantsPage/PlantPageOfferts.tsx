@@ -18,6 +18,8 @@ const PlantsPageGridContainer = styled(YourOfferGridContainer)`
 
   @media (max-width: 576px) {
     grid-gap: 5vw 5vw;
+    width: 100%;
+    justify-items: center;
   }
 `;
 const PlantPageImageCard = styled(ImageCard)`

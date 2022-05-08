@@ -30,6 +30,7 @@ const AdminMobliePages = () => {
           key={page.source}
           background="transparent"
           mobileWidth="auto"
+          hoverBackground="transparent"
         >
           <PageLink to={page.source}>
             <Icon src={page.icon} aria-label={page.aria} />
