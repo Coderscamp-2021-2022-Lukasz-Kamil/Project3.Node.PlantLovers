@@ -13,11 +13,14 @@ import {
 } from "../ProfilePage/YourOfferPage/Offers";
 import Offer from "../../../shared/intefaces/offer.interface";
 
+
 const PlantsPageGridContainer = styled(YourOfferGridContainer)`
   margin-right: 2vw;
 
   @media (max-width: 576px) {
     grid-gap: 5vw 5vw;
+    width: 100%;
+    justify-items: center;
   }
 `;
 const PlantPageImageCard = styled(ImageCard)`

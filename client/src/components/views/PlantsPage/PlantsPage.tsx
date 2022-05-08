@@ -35,6 +35,7 @@ const PlantsPage = () => {
 
   let params = defaultParams;
 
+
   if (searchPhraseToLookUp === "") {
     params = defaultParams;
   } else {
@@ -51,6 +52,7 @@ const PlantsPage = () => {
     url: params.url,
     method: params.method,
   });
+
 
   const offer: Offer[] = response;
 

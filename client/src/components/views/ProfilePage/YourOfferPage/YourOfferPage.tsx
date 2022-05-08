@@ -10,6 +10,10 @@ export const YourOfferPageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 15px 0;
+
+  @media (max-width: 576px) {
+    margin: 0 0 30px;
+  }
 `;
 
 export const SearchAndFilterContainer = styled.div`
