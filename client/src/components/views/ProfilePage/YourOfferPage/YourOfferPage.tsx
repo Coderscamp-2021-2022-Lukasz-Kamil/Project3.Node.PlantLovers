@@ -55,6 +55,7 @@ const YourOfferPage = () => {
             placeholder="Search for plant"
             width="320px"
             height="35px"
+            borderRadius="0"
           />
           <FilterButtons />
         </SearchAndFilterContainer>

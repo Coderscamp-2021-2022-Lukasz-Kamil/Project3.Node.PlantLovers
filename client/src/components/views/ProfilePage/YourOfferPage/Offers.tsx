@@ -9,7 +9,7 @@ import Icons from "./Icons";
 import useFetchData, { BASE_URL } from "../../../../hooks/UseFetch";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import { Offer } from "./OfferModel";
+import Offer from "../../../../shared/intefaces/offer.interface";
 
 export const OfferCard = styled(Card)`
   height: auto;

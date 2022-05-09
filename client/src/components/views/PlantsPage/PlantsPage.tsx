@@ -1,165 +1,124 @@
-import React from "react";
-import styled from "styled-components";
+import React, { KeyboardEvent } from "react";
 import { SortList } from "../../ui/Dropdown/DropdownLists";
-import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-import { PlantPageOfferts } from "./PlantPageOfferts";
-import Arrow from "../../../assets/ArrowDownVector.svg";
+import { PlantPageOffers } from "./PlantPageOfferts";
+import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
 import { AllFilters } from "./PlantsPageFilters";
-import {
-  SearchAndFilterContainer,
-  SearchInput,
-} from "../ProfilePage/YourOfferPage/YourOfferPage";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
-import { Input } from "../../ui/Input/Input.style";
-
-export const YourOfferPageContainer = styled(FlexWrapper)`
-  margin: 80px 0;
-
-  @media (max-width: 576px) {
-    margin: 10px 0;
-  }
-`;
-
-export const PlantsPageSearchAndFilterFlexWrapper = styled(FlexWrapper)`
-  width: 100%;
-
-  @media (max-width: 576px) {
-    flex-direction: column;
-  }
-`;
-
-export const EmptyDiv = styled.div`
-  width: 24vw;
-  height: 53.78px;
-
-  @media (max-width: 576px) {
-    display: none;
-  }
-`;
-
-export const PlantsPageSearchAndFilterContainer = styled(
-  SearchAndFilterContainer
-)`
-  width: 100%;
-  @media (max-width: 576px) {
-    justify-content: space-between;
-    align-items: end;
-  }
-`;
-
-const PlantsPageSearchAndFilterDesktopContainer = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-right: 2vw;
-  align-items: end;
-
-  @media (max-width: 1000px) {
-    margin-right: 3.4vw;
-  }
-
-  @media (max-width: 576px) {
-    width: auto;
-    margin-right: 0;
-  }
-`;
-
-export const PlantsPageFlexWrapper = styled(FlexWrapper)`
-  align-items: flex-start;
-
-  @media (max-width: 576px) {
-    width: 100%;
-    justify-content: center;
-    gap: 0;
-  }
-`;
-
-export const PlantsPageSearchInput = styled(SearchInput)`
-  @media (max-width: 576px) {
-    display: flex;
-  }
-`;
-export const PlantsPageOnlyMobileSearchInput = styled(PlantsPageSearchInput)`
-  display: none;
-  width: 100%;
-  height: 29.4px;
-
-  @media (max-width: 576px) {
-    display: flex;
-    margin: 0;
-  }
-`;
-
-export const PlantsPageSearchDesktopOnlyInput = styled(Input)`
-  border: none;
-  border-radius: 10px;
-
-  @media (max-width: 750px) {
-    width: 200px;
-  }
-
-  @media (max-width: 576px) {
-    display: none;
-  }
-`;
-
-export const FilterContener = styled.div`
-  background: ${({ theme }) => theme.colors.card.secondary};
-  height: 75vh;
-  margin: 0 2vw;
-
-  @media (max-width: 576px) {
-    display: none;
-  }
-`;
+import { useState } from "react";
+import { Method } from "axios";
+import useFetchData from "../../../hooks/UseFetch";
+import Offer from "../../../shared/intefaces/offer.interface";
+import {
+  YourOfferPageContainer,
+  PlantsPageSearchAndFilterFlexWrapper,
+  PlantsPageSearchAndFilterContainer,
+  PlantsPageSearchInput,
+  PlantsPageFlexWrapper,
+  ErrorMessage,
+  SearchButton,
+  SearchGroup,
+  SearchContainer,
+} from "./PlanPage.styled";
 
 const PlantsPage = () => {
+  const [searchPhrase, setSearchPhrase] = useState("");
+  const [searchPhraseToLookUp, setSearchPhraseToLookUp] = useState("");
+
+  const defaultParams = {
+    url: "/offers",
+    method: "GET" as Method,
+    headers: {
+      accept: "*/*",
+    },
+  };
+
+  let params = defaultParams;
+
+
+  if (searchPhraseToLookUp === "") {
+    params = defaultParams;
+  } else {
+    params = {
+      url: "/offers/search/" + searchPhraseToLookUp,
+      method: "GET",
+      headers: {
+        accept: "*/*",
+      },
+    };
+  }
+
+  const { response, error } = useFetchData({
+    url: params.url,
+    method: params.method,
+  });
+
+
+  const offer: Offer[] = response;
+
+  const displayOffers = () => {
+    if (offer.length === 0) {
+      return (
+        <ErrorMessage>
+          0 results found for your search. Please try another search term
+        </ErrorMessage>
+      );
+    } else if (!error) {
+      return <PlantPageOffers offers={offer} />;
+    } else {
+      return <ErrorMessage> Cannot load offers</ErrorMessage>;
+    }
+  };
+
   return (
     <YourOfferPageContainer direction="column">
+      <PlantsPageSearchAndFilterFlexWrapper>
+        <SearchContainer>
+          <SearchGroup>
+            <PlantsPageSearchInput
+              placeholder="Search for plant"
+              width="320px"
+              height="35px"
+              onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
+                e.key === "Enter" && setSearchPhraseToLookUp(searchPhrase);
+              }}
+              onChange={(e) => {
+                const inputValue = e.target.value;
+                setSearchPhrase(inputValue);
+                if (!inputValue) {
+                  setSearchPhraseToLookUp("");
+                }
+              }}
+            />
+            <SearchButton
+              type="submit"
+              onClick={() => setSearchPhraseToLookUp(searchPhrase)}
+            >
+              <img src="/searchIcon.png" height={"100%"} />
+            </SearchButton>
+          </SearchGroup>
+        </SearchContainer>
+        <PlantsPageSearchAndFilterContainer>
+          <AllFilters />
+          <Dropdown
+            title="Sort by"
+            ico={<Arrow />}
+            list={SortList}
+            desktopWidth="20vw"
+            mobileWidth="30vw"
+            padding="0.3em 1em 0.3em 1em"
+            marginBottom="0"
+            border="none"
+            borderRadius="0"
+            listDesktopWidth="20vw"
+            listMobileWidth="30vw"
+            position="absolute"
+          />
+        </PlantsPageSearchAndFilterContainer>
+      </PlantsPageSearchAndFilterFlexWrapper>
       <PlantsPageFlexWrapper justifyContent="flex-start">
-        <div>
-          <EmptyDiv></EmptyDiv>
-          <PlantsPageWholeFilterComponent />
-        </div>
-        <div>
-          <PlantsPageSearchAndFilterFlexWrapper>
-            <PlantsPageOnlyMobileSearchInput placeholder="Search for plant" />
-            <PlantsPageSearchAndFilterContainer>
-              <AllFilters />
-              <PlantsPageSearchAndFilterDesktopContainer>
-                <PlantsPageSearchDesktopOnlyInput
-                  placeholder="Search for plant"
-                  width="320px"
-                  height="37.78px"
-                />
-                <Dropdown
-                  title="Sort by"
-                  imageSrc={Arrow}
-                  imageWidth={20}
-                  imageHeigth={20}
-                  imageMarginRight="0"
-                  imageMobileWidth={15}
-                  imageMobileHeigth={15}
-                  list={SortList}
-                  desktopWidth="200px"
-                  mobileWidth="35vw"
-                  padding="0.3em 1em 0.3em 1em"
-                  marginBottom="0"
-                  border="none"
-                  borderRadius="10px"
-                  listDesktopWidth="200px"
-                  listMobileWidth="60vw"
-                  listfontSizeMobile="mdl"
-                  position="absolute"
-                  borderBottom="none"
-                  listMobileMargin="40px 40vw 0 0"
-                />
-              </PlantsPageSearchAndFilterDesktopContainer>
-            </PlantsPageSearchAndFilterContainer>
-          </PlantsPageSearchAndFilterFlexWrapper>
-          <PlantPageOfferts />
-        </div>
+        <PlantsPageWholeFilterComponent />
+        {displayOffers()}
       </PlantsPageFlexWrapper>
     </YourOfferPageContainer>
   );

@@ -7,10 +7,12 @@ interface InputProps {
   color?: "primary" | "secondary" | "placeholder" | "transparent";
   width?: string;
   height?: string;
+  borderRadius?: string;
 }
 
 export const Input = styled.input<InputProps>`
-  border-radius: 5px;
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : 5)}px;
+
   border: 1px solid #000;
   cursor: text;
   padding-left: 10px;
@@ -37,7 +39,8 @@ export const Input = styled.input<InputProps>`
     font-size: ${({ theme, fontSizeMobile }) =>
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
-        : theme.size.mobile.md}px;
+        : theme.size.mobile.xs}px;
+
     width: ${({ width }) => (width ? width : "280px")};
     height: ${({ height }) => (height ? height : "33px")};
   }

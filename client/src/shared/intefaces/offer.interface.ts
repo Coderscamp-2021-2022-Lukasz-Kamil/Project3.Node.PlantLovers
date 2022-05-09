@@ -1,11 +1,10 @@
 import Category from "./category.interface";
 import Height from "./height.interface";
 import Location from "./location.interface";
-import Photo from "./photos.interface";
+import Photos from "./photos.interface";
 import User from "./user.interface";
 
 interface Offer {
-  id: number;
   title: string;
   description: string;
   city: string;
@@ -14,7 +13,7 @@ interface Offer {
   email: string;
   dateCreated: Date;
   dateUpdated: Date;
-  photos: Photo[];
+  photos: Photos[];
   category: Category;
   height: Height;
   views: number;
@@ -22,6 +21,7 @@ interface Offer {
   forExchange: boolean;
   isActive: boolean;
   isArchived: boolean;
+  _id: string;
   userId: User;
 }
 
