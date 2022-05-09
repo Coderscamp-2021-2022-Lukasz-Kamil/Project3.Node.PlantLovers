@@ -67,7 +67,7 @@ const OfferPage = () => {
         <OfferContainer>
           <Image src={offer.photos[0].url} alt="sth" />
           <OneOffer
-            key={offer.id}
+            key={offer._id}
             title={offer.title}
             price={offer.price}
             description={offer.description}
