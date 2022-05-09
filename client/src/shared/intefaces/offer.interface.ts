@@ -2,6 +2,7 @@ import Category from "./category.interface";
 import Height from "./height.interface";
 import Location from "./location.interface";
 import Photos from "./photos.interface";
+import User from "./user.interface";
 
 interface Offer {
   title: string;
@@ -9,6 +10,7 @@ interface Offer {
   city: string;
   location?: Location;
   phoneNumber: string;
+  email: string;
   dateCreated: Date;
   dateUpdated: Date;
   photos: Photos[];
@@ -20,7 +22,7 @@ interface Offer {
   isActive: boolean;
   isArchived: boolean;
   _id: string;
-  userId: string;
+  userId: User;
 }
 
 export default Offer;

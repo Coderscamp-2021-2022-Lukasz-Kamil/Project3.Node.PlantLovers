@@ -6,14 +6,13 @@ import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
 import {
   ImageContainer,
   OfferCard,
-  OfferCardButton,
   OffersInfoFlexWrapper,
   PriceTypography,
   YourOfferGridContainer,
 } from "../ProfilePage/YourOfferPage/Offers";
 import Offer from "../../../shared/intefaces/offer.interface";
-
-
+import useFetchData from "../../../hooks/UseFetch";
+import { NavLink } from "react-router-dom";
 const PlantsPageGridContainer = styled(YourOfferGridContainer)`
   margin-right: 2vw;
 
@@ -53,6 +52,7 @@ interface PlantPageOffersProps {
   offers: Offer[];
 }
 
+
 export const PlantPageOffers = (props: PlantPageOffersProps) => {
   return (
     <PlantsPageGridContainer smallScreenColumns={2}>
@@ -83,6 +83,7 @@ export const PlantPageOffers = (props: PlantPageOffersProps) => {
           </FlexWrapper>
         </PlantPageOfferCard>
       ))}
+
     </PlantsPageGridContainer>
   );
 };

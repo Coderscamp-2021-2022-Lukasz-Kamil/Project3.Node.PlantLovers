@@ -1,12 +1,52 @@
 import Offer from "../model/Offer.js";
-// import User from "../../user/model/User.js";
+import mongoose from "mongoose";
 
 export async function getOffer(offerId) {
-  const offer = await Offer.findById(offerId);
-  if (!offer) {
+  const offers = await Offer.aggregate([
+    {
+      $match: {
+        _id: mongoose.Types.ObjectId(offerId),
+      },
+    },
+    {
+      $lookup: {
+        from: "categories",
+        localField: "category",
+        foreignField: "_id",
+        as: "category",
+      },
+    },
+    {
+      $unwind: "$category",
+    },
+    {
+      $lookup: {
+        from: "heights",
+        localField: "height",
+        foreignField: "_id",
+        as: "height",
+      },
+    },
+    {
+      $unwind: "$height",
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "userId",
+        foreignField: "_id",
+        as: "userId",
+      },
+    },
+    {
+      $unwind: "$userId",
+    },
+  ]);
+
+  if (!offers.length) {
     throw "There is no offer with id = " + offerId;
   }
-  return offer;
+  return offers[0];
 }
 
 export async function getAllOffers(options, limit, skip) {
