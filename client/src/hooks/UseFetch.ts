@@ -7,12 +7,13 @@ interface FetchDataParams {
   headers?: AxiosRequestHeaders | undefined;
   body?: Record<string, unknown>;
 }
-export const BASE_URL = "https://plant-lovers.herokuapp.com";
+// export const BASE_URL = "https://plant-lovers.herokuapp.com";
+export const BASE_URL = "http://localhost:3000";
 axios.defaults.method = "GET";
 axios.defaults.baseURL = BASE_URL;
 
-const useFetchData = (params: FetchDataParams) => {
-  const [response, setResponse] = useState([]);
+const useFetchData = <T>(params: FetchDataParams) => {
+  const [response, setResponse] = useState<T>();
   const [error, setError] = useState<any | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
