@@ -10,8 +10,8 @@ import {
   PriceTypography,
   YourOfferGridContainer,
 } from "../ProfilePage/YourOfferPage/Offers";
+
 import Offer from "../../../shared/intefaces/offer.interface";
-import useFetchData from "../../../hooks/UseFetch";
 import { NavLink } from "react-router-dom";
 const PlantsPageGridContainer = styled(YourOfferGridContainer)`
   margin-right: 2vw;
@@ -52,38 +52,38 @@ interface PlantPageOffersProps {
   offers: Offer[];
 }
 
-
 export const PlantPageOffers = (props: PlantPageOffersProps) => {
   return (
     <PlantsPageGridContainer smallScreenColumns={2}>
-      {props.offers.map((offer) => (
-        <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
-          <OfferCardButton>
-            <PlantPageImageContainer>
-              <PlantPageImageCard
-                alt="plantPhoto"
-                src={offer.photos[0].url}
-              ></PlantPageImageCard>
-            </PlantPageImageContainer>
-          </OfferCardButton>
-          <FlexWrapper justifyContent="space-between" direction="column">
-            <OffersInfoFlexWrapper justifyContent="space-between">
-              <Typography fontSize="xxs" fontSizeMobile="xs">
-                {offer.title}
-              </Typography>
-              <PriceTypography fontSize="xxs" fontSizeMobile="xs">
-                {offer.price}$
-              </PriceTypography>
-            </OffersInfoFlexWrapper>
-            <OffersInfoFlexWrapper>
-              <Typography fontSize="xxxs" fontSizeMobile="xs">
-                {offer.city}
-              </Typography>
-            </OffersInfoFlexWrapper>
-          </FlexWrapper>
-        </PlantPageOfferCard>
-      ))}
-
+      <PlantsPageGridContainer smallScreenColumns={2}>
+        {props.offers.map((offer) => (
+          <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
+            <NavLink to={`offer/${offer._id}`}>
+              <PlantPageImageContainer>
+                <PlantPageImageCard
+                  alt="plantPhoto"
+                  src={offer.photos[0].url}
+                ></PlantPageImageCard>
+              </PlantPageImageContainer>
+            </NavLink>
+            <FlexWrapper justifyContent="space-between" direction="column">
+              <OffersInfoFlexWrapper justifyContent="space-between">
+                <Typography fontSize="xxs" fontSizeMobile="xs">
+                  {offer.title}
+                </Typography>
+                <PriceTypography fontSize="xxs" fontSizeMobile="xs">
+                  {offer.price}$
+                </PriceTypography>
+              </OffersInfoFlexWrapper>
+              <OffersInfoFlexWrapper>
+                <Typography fontSize="xxxs" fontSizeMobile="xs">
+                  {offer.city}
+                </Typography>
+              </OffersInfoFlexWrapper>
+            </FlexWrapper>
+          </PlantPageOfferCard>
+        ))}
+      </PlantsPageGridContainer>
     </PlantsPageGridContainer>
   );
 };

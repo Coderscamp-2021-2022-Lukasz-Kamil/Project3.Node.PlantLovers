@@ -1,7 +1,7 @@
 import React, { KeyboardEvent } from "react";
 import { SortList } from "../../ui/Dropdown/DropdownLists";
 import { PlantPageOffers } from "./PlantPageOfferts";
-import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
+import Arrow from "../../../assets/ArrowDownVector.svg";
 import { AllFilters } from "./PlantsPageFilters";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
@@ -19,7 +19,7 @@ import {
   SearchButton,
   SearchGroup,
   SearchContainer,
-} from "./PlanPage.styled";
+} from "./PlantPage.styled";
 
 const PlantsPage = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
@@ -35,7 +35,6 @@ const PlantsPage = () => {
 
   let params = defaultParams;
 
-
   if (searchPhraseToLookUp === "") {
     params = defaultParams;
   } else {
@@ -48,23 +47,22 @@ const PlantsPage = () => {
     };
   }
 
-  const { response, error } = useFetchData({
+  const { response, error } = useFetchData<Offer[]>({
     url: params.url,
     method: params.method,
   });
 
-
-  const offer: Offer[] = response;
+  const offers: Offer[] = response ? response : [];
 
   const displayOffers = () => {
-    if (offer.length === 0) {
+    if (offers?.length === 0) {
       return (
         <ErrorMessage>
           0 results found for your search. Please try another search term
         </ErrorMessage>
       );
     } else if (!error) {
-      return <PlantPageOffers offers={offer} />;
+      return <PlantPageOffers offers={offers} />;
     } else {
       return <ErrorMessage> Cannot load offers</ErrorMessage>;
     }
@@ -102,7 +100,7 @@ const PlantsPage = () => {
           <AllFilters />
           <Dropdown
             title="Sort by"
-            ico={<Arrow />}
+            imageSrc={Arrow}
             list={SortList}
             desktopWidth="20vw"
             mobileWidth="30vw"

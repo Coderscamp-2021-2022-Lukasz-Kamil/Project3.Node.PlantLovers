@@ -14,7 +14,7 @@ export interface IDropdown {
   imageMobileWidth?: number;
   imageMobileHeigth?: number;
   imageMarginRight?: string;
-
+  icon?: string;
   desktopWidth?: string;
   mobileWidth?: string;
   marginBottom?: string;
