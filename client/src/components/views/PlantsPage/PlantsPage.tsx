@@ -1,126 +1,142 @@
-import React from "react";
-import styled from "styled-components";
+import React, { KeyboardEvent } from "react";
 import { SortList } from "../../ui/Dropdown/DropdownLists";
-import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-import { PlantPageOfferts } from "./PlantPageOfferts";
-import { ReactComponent as Arrow } from "../../../assets/ArrowDownVector.svg";
+import { PlantPageOffers } from "./PlantPageOffers";
+import Arrow from "../../../assets/ArrowDownVector.svg";
 import { AllFilters } from "./PlantsPageFilters";
-import {
-  SearchAndFilterContainer,
-  SearchInput,
-} from "../ProfilePage/YourOfferPage/YourOfferPage";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
 import { useState } from "react";
-
-export const YourOfferPageContainer = styled(FlexWrapper)`
-  margin: 100px 0;
-`;
-
-export const PlantsPageSearchAndFilterFlexWrapper = styled(FlexWrapper)`
-  width: 100%;
-
-  @media (max-width: 576px) {
-    flex-direction: column;
-  }
-`;
-
-export const EmptyDiv = styled.div`
-  width: 25vw;
-
-  @media (max-width: 576px) {
-    display: none;
-  }
-`;
-
-export const PlantsPageSearchAndFilterContainer = styled(
-  SearchAndFilterContainer
-)`
-  width: 72%;
-
-  @media (max-width: 576px) {
-    width: 80%;
-    justify-content: space-between;
-  }
-`;
-
-export const PlantsPageFlexWrapper = styled(FlexWrapper)`
-  align-items: flex-start;
-`;
-
-export const PlantsPageSearchInput = styled(SearchInput)`
-  @media (max-width: 576px) {
-    display: flex;
-  }
-`;
-export const PlantsPageOnlyMobileSearchInput = styled(PlantsPageSearchInput)`
-  display: none;
-  width: 80%;
-
-  @media (max-width: 576px) {
-    display: flex;
-    margin: 0;
-  }
-`;
-
-export const PlantsPageSearchDesktopOnlyInput = styled(SearchInput)`
-  @media (max-width: 576px) {
-    display: none;
-  }
-`;
-
-export const FilterContener = styled.div`
-  background: ${({ theme }) => theme.colors.card.secondary};
-  height: 75vh;
-  margin: 0 2vw;
-
-  @media (max-width: 576px) {
-    display: none;
-  }
-`;
+import { Method } from "axios";
+import useFetchData from "../../../hooks/UseFetch";
+import Offer from "../../../shared/intefaces/offer.interface";
+import {
+  YourOfferPageContainer,
+  PlantsPageSearchAndFilterFlexWrapper,
+  PlantsPageSearchAndFilterContainer,
+  PlantsPageSearchInput,
+  PlantsPageFlexWrapper,
+  ErrorMessage,
+  SearchButton,
+  SearchGroup,
+  SearchContainer,
+} from "./PlantPage.styled";
 
 const PlantsPage = () => {
   const [sortOption, setSortOption] = useState<string | undefined>();
+  const [searchPhrase, setSearchPhrase] = useState("");
+  const [searchPhraseToLookUp, setSearchPhraseToLookUp] = useState("");
+
+  const getSortParam = () => {
+    switch (sortOption) {
+      case "newest":
+        return "?sort=-dateUpdated";
+      case "oldest":
+        return "?sort=dateUpdated";
+      case "alphabetical order A-Z":
+        return "?sort=title";
+      case "alphabetical order Z-A":
+        return "?sort=-title";
+      case "highest price":
+        return "?sort=-price";
+      case "lowest price":
+        return "?sort=price";
+    }
+  };
+
+  const defaultParams = {
+    url: "/offers",
+    method: "GET" as Method,
+    headers: {
+      accept: "*/*",
+    },
+  };
 
   const onOptionChosen = (option: string) => {
     setSortOption(option);
   };
+
+  let params = defaultParams;
+
+  if (!sortOption && searchPhraseToLookUp === "") {
+    params = defaultParams;
+  } else if (!sortOption && searchPhraseToLookUp !== "") {
+    params.url = "/offers/search/" + searchPhraseToLookUp;
+  } else if (sortOption && searchPhraseToLookUp === "") {
+    params.url = "/offers" + getSortParam();
+  } else {
+    params.url = "/offers/search/" + searchPhraseToLookUp + getSortParam();
+  }
+
+  const { response, error } = useFetchData<Offer[]>({
+    url: params.url,
+    method: params.method,
+  });
+
+  const offers: Offer[] = response ? response : [];
+
+  const displayOffers = () => {
+    if (offers?.length === 0) {
+      return (
+        <ErrorMessage>
+          0 results found for your search. Please try another search term
+        </ErrorMessage>
+      );
+    } else if (!error) {
+      return <PlantPageOffers offers={offers} />;
+    } else {
+      return <ErrorMessage> Cannot load offers</ErrorMessage>;
+    }
+  };
+
   return (
     <YourOfferPageContainer direction="column">
       <PlantsPageSearchAndFilterFlexWrapper>
-        <PlantsPageOnlyMobileSearchInput
-          placeholder="Search for plant"
-          width="320px"
-          height="35px"
-        />
-        <EmptyDiv></EmptyDiv>
+        <SearchContainer>
+          <SearchGroup>
+            <PlantsPageSearchInput
+              placeholder="Search for plant"
+              width="320px"
+              height="35px"
+              onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
+                e.key === "Enter" && setSearchPhraseToLookUp(searchPhrase);
+              }}
+              onChange={(e) => {
+                const inputValue = e.target.value;
+                setSearchPhrase(inputValue);
+                if (!inputValue) {
+                  setSearchPhraseToLookUp("");
+                }
+              }}
+            />
+            <SearchButton
+              type="submit"
+              onClick={() => setSearchPhraseToLookUp(searchPhrase)}
+            >
+              <img src="/searchIcon.png" height={"100%"} />
+            </SearchButton>
+          </SearchGroup>
+        </SearchContainer>
         <PlantsPageSearchAndFilterContainer>
           <AllFilters />
-          <PlantsPageSearchDesktopOnlyInput
-            placeholder="Search for plant"
-            width="320px"
-            height="35px"
-          />
           <Dropdown
             title="Sort by"
-            ico={<Arrow />}
+            imageSrc={Arrow}
             list={SortList}
             desktopWidth="20vw"
             mobileWidth="30vw"
-            padding="0.3em 1em 0.3em 1em"
             marginBottom="0"
             border="none"
             borderRadius="0"
             listDesktopWidth="20vw"
             listMobileWidth="30vw"
-            position="absolute"
+            display="flex"
             onOptionChosen={onOptionChosen}
           />
         </PlantsPageSearchAndFilterContainer>
       </PlantsPageSearchAndFilterFlexWrapper>
       <PlantsPageFlexWrapper justifyContent="flex-start">
         <PlantsPageWholeFilterComponent />
-        <PlantPageOfferts sortBy={sortOption} />
+        {displayOffers()}
       </PlantsPageFlexWrapper>
     </YourOfferPageContainer>
   );

@@ -14,7 +14,7 @@ import { getUserOffers } from "../useCases/getUserOffers.js";
 
 export const getAllOffers = async (req, res) => {
   try {
-    const offers = await getOffers(req.body);
+    const offers = await getOffers(req.query.sort);
     return res.status(200).send(offers);
   } catch (error) {
     return res.status(500).send(error.message);
@@ -36,7 +36,7 @@ export const getOneOffer = async (req, res) => {
     if (!offer) return res.status(404).send("No offer found!");
     return res.status(200).send(offer);
   } catch (error) {
-    return res.status.send(500).send(error.message);
+    return res.status(500).send(error.message);
   }
 };
 

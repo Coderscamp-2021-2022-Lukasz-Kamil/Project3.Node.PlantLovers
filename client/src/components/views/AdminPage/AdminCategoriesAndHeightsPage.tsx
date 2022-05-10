@@ -1,7 +1,7 @@
 import React from "react";
 
 const AdminCategoriesAndHeightsPage = () => {
-  return <div>AdminCategoriesAndHeightsPage</div>;
+  return <div></div>;
 };
 
 export default AdminCategoriesAndHeightsPage;

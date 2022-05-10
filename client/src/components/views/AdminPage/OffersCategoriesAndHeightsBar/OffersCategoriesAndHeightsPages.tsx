@@ -6,7 +6,7 @@ import {
 } from "../../NavigationBar/LoginNavigationBar/LoginNavigationBar.style";
 import { NavBarButton } from "../../NavigationBar/MainNavigationBar/NavigationBar.style";
 
-const ProfileAndYourOfferBarButtonContainer = styled(
+const OffersCategoriesAndHeightsPagesButtonContainer = styled(
   LoginNavBarButtonContainer
 )`
   display: flex;
@@ -18,23 +18,27 @@ const ProfileAndYourOfferBarButtonContainer = styled(
   }
 `;
 
-export const ProfileAndYourOfferPages = () => {
+export const OffersCategoriesAndHeightsPages = () => {
   const pages = [
-    { source: "/user/your-offers", name: "Your Offers" },
-    { source: "/user/", name: "Your Profile" },
+    { source: "/admin/offers/users-offers", name: "Users Offers" },
+    {
+      source: "/admin/offers/categories-and-heights",
+      name: "Categories & Heights",
+    },
   ];
   return (
-    <ProfileAndYourOfferBarButtonContainer>
+    <OffersCategoriesAndHeightsPagesButtonContainer>
       {pages.map((page) => (
         <NavBarButton
           key={page.name}
           background="transparent"
           padding="0"
-          hoverBackground="transparent"
+          width="auto"
+          mobileWidth="auto"
         >
           <LoginPageLink to={page.source}>{page.name}</LoginPageLink>
         </NavBarButton>
       ))}
-    </ProfileAndYourOfferBarButtonContainer>
+    </OffersCategoriesAndHeightsPagesButtonContainer>
   );
 };
