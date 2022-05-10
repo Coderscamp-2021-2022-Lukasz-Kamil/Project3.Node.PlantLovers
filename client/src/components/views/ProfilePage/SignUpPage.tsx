@@ -21,7 +21,7 @@ export const SignUpContainer = styled(LandingPageContainer)`
   justify-content: center;
 `;
 
-const SignUpCard = styled(Card)`
+export const SignUpCard = styled(Card)`
   width: 440px;
   max-height: 500px;
   display: flex;
@@ -63,6 +63,7 @@ const ErrorCard = styled.div`
 `;
 
 const SignUpPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setUserIdCookie] = useCookies(["user-id"]);
   const signUpFormHandler = useFormik({
     initialValues: {
