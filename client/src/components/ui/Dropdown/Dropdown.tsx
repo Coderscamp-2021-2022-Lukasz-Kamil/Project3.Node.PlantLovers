@@ -38,15 +38,22 @@ export const Dropdown = ({
 }: IDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [rotatet, setRotate] = useState(false);
+  const rotateArrow = () => setRotate((state) => !state);
   const toggling = () => setIsOpen((state) => !state);
+  const wrapperFunction = () => {
+    rotateArrow();
+    toggling();
+  };
   const handleSelected = (value: Item) => {
     setSelectedOption(value.name);
     setIsOpen(false);
+    rotateArrow();
   };
   return (
     <DropdownContainer>
       <Wrapper
-        onClick={toggling}
+        onClick={wrapperFunction}
         desktopWidth={desktopWidth}
         mobileWidth={mobileWidth}
         marginBottom={marginBottom}
@@ -69,6 +76,7 @@ export const Dropdown = ({
               mobileWidth={imageMobileWidth}
               mobileHeight={imageMobileHeigth}
               marginRight={imageMarginRight}
+              rotate={rotatet}
             />
           </DropdownHeaderIcon>
         </DropdownHeader>
