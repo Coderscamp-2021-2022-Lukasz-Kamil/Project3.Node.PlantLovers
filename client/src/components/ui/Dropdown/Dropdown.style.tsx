@@ -15,6 +15,7 @@ export const DropdownContainer = styled.div`
 `;
 
 export const Wrapper = styled.div<DropdownLookProps>`
+  cursor: pointer;
   width: ${({ desktopWidth }) => (desktopWidth ? desktopWidth : "40vw")};
   margin-bottom: ${({ marginBottom }) =>
     marginBottom ? marginBottom : "0.8em"};
@@ -29,7 +30,11 @@ export const Wrapper = styled.div<DropdownLookProps>`
   border: ${({ border }) => (border ? border : "1px solid black")};
   border-bottom: ${({ borderBottom }) =>
     borderBottom ? borderBottom : "1px solid black"};
-  cursor: pointer;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
