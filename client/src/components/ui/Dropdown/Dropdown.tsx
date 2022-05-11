@@ -35,6 +35,7 @@ export const Dropdown = ({
   listfontSizeMobile,
   smallerScreenIconPosition,
   listMobileMargin,
+  textPosition,
 }: IDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -65,7 +66,9 @@ export const Dropdown = ({
         borderRadius={borderRadius}
       >
         <DropdownHeader>
-          <DropdownHeaderTitle>{selectedOption || title}</DropdownHeaderTitle>
+          <DropdownHeaderTitle textPosition={textPosition}>
+            {selectedOption || title}
+          </DropdownHeaderTitle>
           <DropdownHeaderIcon
             smallerScreenIconPosition={smallerScreenIconPosition}
           >

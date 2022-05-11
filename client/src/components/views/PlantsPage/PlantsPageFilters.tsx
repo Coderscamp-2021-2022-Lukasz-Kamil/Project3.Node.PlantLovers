@@ -28,7 +28,6 @@ const FilterButton = styled.button`
 
   @media (max-width: 576px) {
     width: 60vw;
-    justify-content: center;
     font-size: ${({ theme }) => theme.size.mobile.lg}px;
   }
 `;
@@ -48,15 +47,8 @@ const DropdownInput = styled(Input)`
 
 const ArrowContainer = styled.div`
   width: 100%;
-  position: absolute;
   display: flex;
   justify-content: end;
-  padding: 0 1em 0 1em;
-
-  @media (max-width: 850px) {
-    position: relative;
-    padding: 0;
-  }
 
   @media (max-width: 576px) {
     display: none;
@@ -114,6 +106,7 @@ export const CitySearch = () => {
             width="95%"
             height="35px"
             fontSizeDesktop="sm"
+            textAlign="left"
           />
         </FiltersInputContainer>
       ) : null}
@@ -154,6 +147,7 @@ export const PriceRange = () => {
             height="25px"
             fontSizeDesktop="sm"
             type="number"
+            textAlign="left"
           />
           <DropdownInput
             placeholder="To"
@@ -161,6 +155,7 @@ export const PriceRange = () => {
             height="25px"
             fontSizeDesktop="sm"
             type="number"
+            textAlign="left"
           />
         </FiltersInputContainer>
       ) : null}

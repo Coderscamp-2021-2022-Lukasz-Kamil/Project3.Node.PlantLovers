@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {
+  DropdownHeaderTitleProps,
   DropdownListProps,
   DropdownLookProps,
   IconProps,
@@ -56,10 +57,11 @@ export const DropdownHeader = styled.div`
   position: relative;
 `;
 
-export const DropdownHeaderTitle = styled.div`
+export const DropdownHeaderTitle = styled.div<DropdownHeaderTitleProps>`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: ${({ textPosition }) =>
+    textPosition ? textPosition : "center"};
   position: relative;
 `;
 

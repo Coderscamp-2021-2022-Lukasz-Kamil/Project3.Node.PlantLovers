@@ -65,6 +65,7 @@ const PlantsPageWholeFilterComponent = ({
         position="relative"
         smallerScreenIconPosition="relative"
         borderBottom="1px solid #A59E9E"
+        textPosition="left"
       />
       <Dropdown
         title="Height"
@@ -88,6 +89,7 @@ const PlantsPageWholeFilterComponent = ({
         position="relative"
         smallerScreenIconPosition="relative"
         borderBottom="1px solid #A59E9E"
+        textPosition="left"
       />
       <CitySearch />
       <PriceRange />

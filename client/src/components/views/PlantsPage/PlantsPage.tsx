@@ -124,7 +124,10 @@ const PlantsPage = () => {
         </div>
         <div>
           <PlantsPageSearchAndFilterFlexWrapper>
-            <PlantsPageOnlyMobileSearchInput placeholder="Search for plant" />
+            <PlantsPageOnlyMobileSearchInput
+              placeholder="Search for plant"
+              textAlign="left"
+            />
             <PlantsPageSearchAndFilterContainer>
               <AllFilters />
               <PlantsPageSearchAndFilterDesktopContainer>
@@ -132,6 +135,7 @@ const PlantsPage = () => {
                   placeholder="Search for plant"
                   width="320px"
                   height="37.78px"
+                  textAlign="left"
                 />
                 <Dropdown
                   title="Sort by"
@@ -154,6 +158,7 @@ const PlantsPage = () => {
                   position="absolute"
                   borderBottom="none"
                   listMobileMargin="40px 40vw 0 0"
+                  textPosition="left"
                 />
               </PlantsPageSearchAndFilterDesktopContainer>
             </PlantsPageSearchAndFilterContainer>

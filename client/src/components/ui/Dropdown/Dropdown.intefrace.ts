@@ -46,6 +46,7 @@ export interface IDropdown {
   borderRadius?: string;
   smallerScreenIconPosition?: "absolute" | "relative";
   listMobileMargin?: string;
+  textPosition?: "center" | "left";
 }
 
 export interface DropdownLookProps {
@@ -86,4 +87,8 @@ export interface DropdownListProps {
 
 export interface IconProps {
   smallerScreenIconPosition?: "absolute" | "relative";
+}
+
+export interface DropdownHeaderTitleProps {
+  textPosition?: "center" | "left";
 }
