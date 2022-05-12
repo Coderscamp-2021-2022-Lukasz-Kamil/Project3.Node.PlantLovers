@@ -166,17 +166,20 @@ export const PriceRange = () => {
 export const AllFilters = () => {
   const [show, setShow] = useState(false);
   const [rotating, setRotate] = useState(false);
+  //const [changeBackground, setChangeBackground] = useState(false);
   const openFiltr = () => setShow(!show);
   const rotateArrow = () => setRotate((state) => !state);
+  //const toogleBackground = () => setChangeBackground((state) => !state);
   const wrapperFunction = () => {
     openFiltr();
     rotateArrow();
+    //   toogleBackground();
   };
 
   return (
     <div>
       <AllFiltersFilterButton onClick={wrapperFunction}>
-        Filters{" "}
+        <span>Filters </span>
         <ArrowContainerAllFilters>
           <Icon
             src={Arrow}

@@ -44,9 +44,17 @@ export interface IDropdown {
   listfontSizeMobile?: "md" | "mdl";
   position?: string;
   borderRadius?: string;
-  smallerScreenIconPosition?: "absolute" | "relative";
+  iconPosition?: "absolute" | "relative";
   listMobileMargin?: string;
   textPosition?: "center" | "left";
+  listMarginTop?: string;
+  triangleDisplay?: string;
+  headerIconWidth?: "100%" | "unset";
+  dropdownHeaderTitleWidth?: "100%" | "unset";
+  iconMobileDisplay?: "block" | "none";
+  triangleMobileMargin?: string;
+  triangleMobileJustify?: string;
+  triangleWrapperMobileWidth?: string;
 }
 
 export interface DropdownLookProps {
@@ -83,12 +91,29 @@ export interface DropdownListProps {
   position?: string;
   listfontSizeMobile?: "md" | "mdl";
   listMobileMargin?: string;
+  listMarginTop?: string;
 }
 
 export interface IconProps {
-  smallerScreenIconPosition?: "absolute" | "relative";
+  iconPosition?: "absolute" | "relative";
+  headerIconWidth?: "100%" | "unset";
+  iconMobileDisplay?: "block" | "none";
 }
 
 export interface DropdownHeaderTitleProps {
   textPosition?: "center" | "left";
+  dropdownHeaderTitleWidth?: "100%" | "unset";
+}
+
+export interface TriangleAboveListContainerProps {
+  triangleDisplay?: string;
+}
+
+export interface TriangleAboveListProps {
+  triangleMobileMargin?: string;
+}
+
+export interface TriangleAboveListWrapperProps {
+  triangleMobileJustify?: string;
+  triangleWrapperMobileWidth?: string;
 }

@@ -13,11 +13,19 @@ import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
 import { Input } from "../../ui/Input/Input.style";
 
-export const YourOfferPageContainer = styled(FlexWrapper)`
+interface PlantsPageContainerProps {
+  changeBackground?: boolean;
+}
+
+export const PlantsPageContainer = styled(
+  FlexWrapper
+)<PlantsPageContainerProps>`
   margin: 80px 0;
 
   @media (max-width: 576px) {
     margin: 10px 0;
+    //   ${({ changeBackground }) =>
+      changeBackground && `background: #A3A5A8 `};
   }
 `;
 
@@ -116,7 +124,7 @@ export const FilterContener = styled.div`
 
 const PlantsPage = () => {
   return (
-    <YourOfferPageContainer direction="column">
+    <PlantsPageContainer direction="column">
       <PlantsPageFlexWrapper justifyContent="flex-start">
         <div>
           <EmptyDiv></EmptyDiv>
@@ -157,8 +165,12 @@ const PlantsPage = () => {
                   listfontSizeMobile="mdl"
                   position="absolute"
                   borderBottom="none"
-                  listMobileMargin="40px 40vw 0 0"
+                  listMobileMargin="42px 50vw 0 0"
                   textPosition="left"
+                  listMarginTop="53px"
+                  triangleDisplay="flex"
+                  headerIconWidth="unset"
+                  dropdownHeaderTitleWidth="unset"
                 />
               </PlantsPageSearchAndFilterDesktopContainer>
             </PlantsPageSearchAndFilterContainer>
@@ -166,7 +178,7 @@ const PlantsPage = () => {
           <PlantPageOfferts />
         </div>
       </PlantsPageFlexWrapper>
-    </YourOfferPageContainer>
+    </PlantsPageContainer>
   );
 };
 

@@ -7,6 +7,11 @@ import {
 import { CitySearch, PriceRange } from "./PlantsPageFilters";
 import Arrow from "../../../assets/ArrowDownVector.svg";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
+import {
+  TriangleAboveList,
+  TriangleAboveListContainer,
+  TriangleAboveListWrapper,
+} from "../../ui/Dropdown/Dropdown.style";
 
 export interface AllFiltresProps {
   desktopDisplay?: string;
@@ -26,7 +31,16 @@ export const FilterContener = styled.div<AllFiltresProps>`
   @media (max-width: 576px) {
     display: ${({ mobileDisplay }) => (mobileDisplay ? mobileDisplay : "none")};
     position: ${({ position }) => (position ? position : "relative")};
-    margin: 10px 15vw;
+    margin: 14px 15vw 0;
+  }
+`;
+
+export const TriangleAboveListContainerWholeFilter = styled(
+  TriangleAboveListContainer
+)`
+  @media (max-width: 576px) {
+    display: flex;
+    justify-content: start;
   }
 `;
 
@@ -43,13 +57,20 @@ const PlantsPageWholeFilterComponent = ({
       position={position}
       filterContainerHeigth={filterContainerHeigth}
     >
+      <TriangleAboveListContainerWholeFilter justifyContent="flex-end">
+        <TriangleAboveListWrapper
+          triangleMobileJustify="end"
+          triangleWrapperMobileWidth="20vw"
+        >
+          <TriangleAboveList />
+        </TriangleAboveListWrapper>
+      </TriangleAboveListContainerWholeFilter>
       <Dropdown
         title="Category"
         imageSrc={Arrow}
         imageWidth={20}
         imageHeigth={20}
-        imageMobileWidth={1}
-        imageMobileHeigth={1}
+        iconMobileDisplay="none"
         imageMarginRight="0"
         list={FilterCategoryList}
         desktopWidth="20vw"
@@ -63,7 +84,6 @@ const PlantsPageWholeFilterComponent = ({
         listMobileWidth="60vw"
         listfontSizeMobile="mdl"
         position="relative"
-        smallerScreenIconPosition="relative"
         borderBottom="1px solid #A59E9E"
         textPosition="left"
       />
@@ -72,8 +92,7 @@ const PlantsPageWholeFilterComponent = ({
         imageSrc={Arrow}
         imageWidth={20}
         imageHeigth={20}
-        imageMobileWidth={1}
-        imageMobileHeigth={1}
+        iconMobileDisplay="none"
         imageMarginRight="0"
         list={FilterHeightList}
         desktopWidth="20vw"
@@ -87,7 +106,6 @@ const PlantsPageWholeFilterComponent = ({
         listMobileWidth="60vw"
         listfontSizeMobile="mdl"
         position="relative"
-        smallerScreenIconPosition="relative"
         borderBottom="1px solid #A59E9E"
         textPosition="left"
       />
