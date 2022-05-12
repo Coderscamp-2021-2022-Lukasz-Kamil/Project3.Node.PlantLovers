@@ -4,13 +4,13 @@ export interface Item {
 }
 
 export interface IDropdown {
-  title: string;
+  title?: string;
   list: Item[];
   src?: string;
   alt?: string;
   imageSrc: string;
   imageWidth?: number;
-  imageHeigth?: number;
+  imageHeight?: number;
   imageMobileWidth?: number;
   imageMobileHeigth?: number;
   imageMarginRight?: string;
@@ -41,11 +41,15 @@ export interface IDropdown {
     | "titleLg";
   listDesktopWidth?: string;
   listMobileWidth?: string;
+  listDesktopHeight?: string;
   listfontSizeMobile?: "md" | "mdl";
+  listPadding?: string;
   position?: string;
   borderRadius?: string;
   smallerScreenIconPosition?: "absolute" | "relative";
   listMobileMargin?: string;
+  itemMarginBottom?: string;
+  iconPosition?: string;
 }
 
 export interface DropdownLookProps {
@@ -79,11 +83,14 @@ export interface DropdownLookProps {
 export interface DropdownListProps {
   listDesktopWidth?: string;
   listMobileWidth?: string;
+  listDesktopHeight?: string;
   position?: string;
   listfontSizeMobile?: "md" | "mdl";
   listMobileMargin?: string;
+  listPadding?: string;
 }
 
 export interface IconProps {
   smallerScreenIconPosition?: "absolute" | "relative";
+  position?: string;
 }

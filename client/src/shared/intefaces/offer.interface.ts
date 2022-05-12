@@ -10,9 +10,9 @@ interface Offer {
   city: string;
   location?: Location;
   phoneNumber: string;
-  email: string;
-  dateCreated: Date;
-  dateUpdated: Date;
+  email?: string;
+  dateCreated: string;
+  dateUpdated: string;
   photos: Photos[];
   category: Category;
   height: Height;

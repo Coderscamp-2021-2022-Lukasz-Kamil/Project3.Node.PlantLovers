@@ -23,18 +23,22 @@ export const Dropdown = ({
   fontSizeMobile,
   listDesktopWidth,
   listMobileWidth,
+  listDesktopHeight,
   position,
   border,
   borderBottom,
   borderRadius,
   imageWidth,
-  imageHeigth,
+  imageHeight,
   imageMobileWidth,
   imageMobileHeigth,
   imageMarginRight,
   listfontSizeMobile,
   smallerScreenIconPosition,
   listMobileMargin,
+  listPadding,
+  itemMarginBottom,
+  iconPosition,
 }: IDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -61,11 +65,12 @@ export const Dropdown = ({
           <DropdownHeaderTitle>{selectedOption || title}</DropdownHeaderTitle>
           <DropdownHeaderIcon
             smallerScreenIconPosition={smallerScreenIconPosition}
+            position={iconPosition}
           >
             <Icon
               src={imageSrc}
               width={imageWidth}
-              height={imageHeigth}
+              height={imageHeight}
               mobileWidth={imageMobileWidth}
               mobileHeight={imageMobileHeigth}
               marginRight={imageMarginRight}
@@ -80,9 +85,15 @@ export const Dropdown = ({
           position={position}
           listfontSizeMobile={listfontSizeMobile}
           listMobileMargin={listMobileMargin}
+          listDesktopHeight={listDesktopHeight}
+          listPadding={listPadding}
         >
           {list.map((item) => (
-            <ListItem key={item.id} onClick={() => handleSelected(item)}>
+            <ListItem
+              marginBottom={itemMarginBottom}
+              key={item.id}
+              onClick={() => handleSelected(item)}
+            >
               {item.name}
             </ListItem>
           ))}
