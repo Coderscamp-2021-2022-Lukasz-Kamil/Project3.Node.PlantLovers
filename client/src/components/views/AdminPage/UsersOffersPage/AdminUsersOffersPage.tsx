@@ -97,21 +97,25 @@ const AdminUsersOffersPage = () => {
             Header: "",
             accessor: "column.id",
             Cell: ({ cell }: any) => (
-              <ActionButton
-                className="delete align-center"
-                value={cell.row.values.id}
-                onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
-                  const offers = await handleDeleteOffer(
-                    cell.row.values._id,
-                    token
-                  );
-                  if (offers) {
-                    setOffers(offers);
-                  }
-                }}
-              >
-                Delete
-              </ActionButton>
+              <div className="align-center">
+                <ActionButton
+                  className="delete align-center"
+                  value={cell.row.values.id}
+                  onClick={async (
+                    event: React.MouseEvent<HTMLButtonElement>
+                  ) => {
+                    const offers = await handleDeleteOffer(
+                      cell.row.values._id,
+                      token
+                    );
+                    if (offers) {
+                      setOffers(offers);
+                    }
+                  }}
+                >
+                  Delete
+                </ActionButton>
+              </div>
             ),
             Filter: "",
           },

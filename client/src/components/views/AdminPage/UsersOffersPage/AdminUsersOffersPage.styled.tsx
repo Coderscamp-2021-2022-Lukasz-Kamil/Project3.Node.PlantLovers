@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { FlexWrapper } from "../../../wrappers/FlexCenter/FlexWrapper.style";
 
 export const TableWrapper = styled(FlexWrapper)`
+  overflow-x: scroll;
   min-height: 80vh;
-  align-items: flex-start;
-  padding: 30px 0;
+  width: 100%;
+  align-items: center;
+  padding: 2rem 1rem;
 
   .align-right {
     text-align: right;
@@ -25,7 +27,11 @@ export const TableWrapper = styled(FlexWrapper)`
 `;
 
 export const Table = styled.table`
-  width: 80%;
+  display: block;
+  max-width: fit-content;
+  margin: 0 auto;
+  overflow-x: auto;
+  white-space: nowrap;
   background-color: ${({ theme }) => theme.colors.table.primary};
   border-collapse: collapse;
 
