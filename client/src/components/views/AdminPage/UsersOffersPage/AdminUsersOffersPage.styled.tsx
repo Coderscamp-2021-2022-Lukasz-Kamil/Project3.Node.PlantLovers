@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { FlexWrapper } from "../../../wrappers/FlexCenter/FlexWrapper.style";
+import { Input } from "../../../ui/Input/Input.style";
+import { Button } from "../../../ui/Button/Button.style";
 
 export const TableWrapper = styled(FlexWrapper)`
   overflow-x: scroll;
@@ -34,17 +36,9 @@ export const Table = styled.table`
   white-space: nowrap;
   background-color: ${({ theme }) => theme.colors.table.primary};
   border-collapse: collapse;
-
-  tbody tr:nth-child(odd) {
-    background: ${({ theme }) => theme.colors.table.oddRow};
-  }
-
-  tbody tr:hover {
-    background-color: ${({ theme }) => theme.colors.table.secondary};
-  }
 `;
 
-export const THead = styled.thead`
+export const TableHead = styled.thead`
   font-size: ${({ theme }) => theme.size.desktop.mds}px;
 
   &:first-child {
@@ -52,13 +46,21 @@ export const THead = styled.thead`
   }
 `;
 
-export const TBody = styled.tbody`
+export const TableBody = styled.tbody`
   font-size: ${({ theme }) => theme.size.desktop.sm}px;
 `;
 
-export const TR = styled.tr``;
+export const TableRow = styled.tr`
+  &:nth-child(odd) {
+    background: ${({ theme }) => theme.colors.table.oddRow};
+  }
 
-export const TH = styled.th`
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.table.secondary};
+  }
+`;
+
+export const TableHeader = styled.th`
   align-items: center;
   padding: 0.4rem;
   font-weight: ${({ theme }) => theme.weight.regular};
@@ -66,31 +68,38 @@ export const TH = styled.th`
   border: 1px solid #ddd;
 `;
 
-export const TD = styled.td`
+export const TableData = styled.td`
   padding: 0.5rem;
   border: 1px solid #ddd;
 `;
 
-export const InputCheckbox = styled.input`
-  width: 0.9rem;
-  height: 0.9rem;
-`;
-
-export const InputSearch = styled.input`
-  min-width: 15vw;
+export const InputSearch = styled(Input)`
+  width: 15vw;
   height: 4vh;
   padding: 0 0.2rem;
-  border-radius: 4px;
   border-color: ${({ theme }) => theme.colors.table.primary};
+
+  @media (max-width: 1240px) {
+    min-width: 30vw;
+  }
+
+  @media (max-width: 850px) {
+    min-width: 45vw;
+  }
+
+  @media (max-width: 576px) {
+    min-width: 55vw;
+  }
 `;
 
-export const ActionButton = styled.button`
-  min-width: fit-content;
-  max-width: 4vw;
-  padding: 0.4rem;
-  background-color: #fff;
-  border-color: #fff;
-  cursor: pointer;
+export const ActionButton = styled(Button)`
+  height: 5vh;
+  min-width: 3vw;
+  max-width: 4.5vw;
+  margin: 0 1rem;
+  background-color: ${({ theme }) => theme.colors.button.secondary};
+  font-weight: ${({ theme }) => theme.weight.regular};
+  font-size: ${({ theme }) => theme.size.desktop.sm}px;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.button.secondary};

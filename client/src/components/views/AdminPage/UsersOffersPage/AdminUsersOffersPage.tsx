@@ -3,11 +3,11 @@ import React from "react";
 import {
   TableWrapper,
   Table,
-  THead,
-  TBody,
-  TR,
-  TH,
-  TD,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableHeader,
+  TableData,
   ActionButton,
 } from "./AdminUsersOffersPage.styled";
 import { useState, useEffect } from "react";
@@ -184,45 +184,45 @@ const AdminUsersOffersPage = () => {
     <>
       <TableWrapper>
         <Table {...getTableProps()}>
-          <THead>
+          <TableHead>
             {headerGroups.map((headerGroup) => {
               const { key, ...restHeaderGroup } =
                 headerGroup.getHeaderGroupProps();
               return (
-                <TR {...restHeaderGroup} key={key}>
+                <TableRow {...restHeaderGroup} key={key}>
                   {headerGroup.headers.map((column) => {
                     const { key, ...restAttributes } = column.getHeaderProps();
                     return (
-                      <TH {...restAttributes} key={key}>
+                      <TableHeader {...restAttributes} key={key}>
                         {column.render("Header")}
                         <div>
                           {column.canFilter ? column.render("Filter") : null}
                         </div>
-                      </TH>
+                      </TableHeader>
                     );
                   })}
-                </TR>
+                </TableRow>
               );
             })}
-          </THead>
-          <TBody {...getTableBodyProps()}>
+          </TableHead>
+          <TableBody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
               const { key, ...restRowProps } = row.getRowProps();
               return (
-                <TR {...restRowProps} key={key}>
+                <TableRow {...restRowProps} key={key}>
                   {row.cells.map((cell) => {
                     const { key, ...restCellProps } = cell.getCellProps();
                     return (
-                      <TD {...restCellProps} key={key}>
+                      <TableData {...restCellProps} key={key}>
                         {cell.render("Cell")}
-                      </TD>
+                      </TableData>
                     );
                   })}
-                </TR>
+                </TableRow>
               );
             })}
-          </TBody>
+          </TableBody>
         </Table>
       </TableWrapper>
     </>
