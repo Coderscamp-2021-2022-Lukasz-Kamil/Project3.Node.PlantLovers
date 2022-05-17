@@ -18,7 +18,7 @@ import SignUpPage from "../ProfilePage/SignUpPage";
 import YourOfferPage from "../ProfilePage/YourOfferPage/YourOfferPage";
 import AdminLoginPage from "../AdminPage/AdminLoginPage";
 import AdminCategoriesAndHeightsPage from "../AdminPage/AdminCategoriesAndHeightsPage";
-import AdminUsersOffersPage from "../AdminPage/AdminUsersOffersPage";
+import AdminUsersOffersPage from "../AdminPage/UsersOffersPage/AdminUsersOffersPage";
 import AdminUsersPage from "../AdminPage/AdminUsersPage";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";

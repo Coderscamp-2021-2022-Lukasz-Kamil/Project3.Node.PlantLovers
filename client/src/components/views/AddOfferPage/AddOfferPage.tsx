@@ -102,7 +102,7 @@ const AddOfferPage = () => {
             title="Category"
             imageSrc={Arrow}
             imageWidth={15}
-            imageHeigth={15}
+            imageHeight={15}
             imageMobileWidth={15}
             imageMobileHeigth={15}
             imageMarginRight="0"
@@ -112,7 +112,7 @@ const AddOfferPage = () => {
             title="Height"
             imageSrc={Arrow}
             imageWidth={15}
-            imageHeigth={15}
+            imageHeight={15}
             imageMobileWidth={15}
             imageMobileHeigth={15}
             imageMarginRight="0"

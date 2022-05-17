@@ -25,12 +25,19 @@ export const theme = {
       secondaryHover: "#A59E9E",
       transparent: "transparent",
       addButton: "#F9F8F8",
+      deleteButton: "#f41414",
     },
     input: {
       primary: "#F9F8F8",
       secondary: "#000",
       placeholder: "#9E9999",
       transparent: "transparent",
+    },
+    table: {
+      primary: "#F5F6F7",
+      secondary: "#AAD576",
+      oddRow: "#F0F0F0	",
+      filterButton: "#DCDCDC",
     },
   },
   size: {
