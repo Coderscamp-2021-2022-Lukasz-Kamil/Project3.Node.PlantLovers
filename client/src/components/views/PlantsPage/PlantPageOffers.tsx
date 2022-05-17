@@ -1,62 +1,28 @@
 import React from "react";
-import styled from "styled-components";
 import { Typography } from "../../ui/Typography/Typography.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
-import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
 import {
-  ImageContainer,
-  OfferCard,
   OffersInfoFlexWrapper,
   PriceTypography,
-  YourOfferGridContainer,
 } from "../ProfilePage/YourOfferPage/Offers";
-
+import {
+  PlantPageImageCard,
+  PlantPageOfferCard,
+  PlantPageImageContainer,
+  PlantsPageGridContainer,
+} from "./PlantPageOffers.styled";
 import Offer from "../../../shared/intefaces/offer.interface";
 import { NavLink } from "react-router-dom";
-const PlantsPageGridContainer = styled(YourOfferGridContainer)`
-  margin-right: 2vw;
-
-  @media (max-width: 576px) {
-    grid-gap: 5vw 5vw;
-    width: 100%;
-    justify-items: center;
-  }
-`;
-const PlantPageImageCard = styled(ImageCard)`
-  @media (max-width: 1000px) {
-    height: ${({ mobileImageSize }) =>
-      mobileImageSize?.height ? mobileImageSize.height : "23vh"};
-  }
-`;
-const PlantPageOfferCard = styled(OfferCard)`
-  @media (max-width: 1000px) {
-    width: 20vw;
-  }
-
-  @media (max-width: 576px) {
-    width: 40vw;
-  }
-`;
-
-const PlantPageImageContainer = styled(ImageContainer)`
-  @media (max-width: 1000px) {
-    width: 20vw;
-  }
-
-  @media (max-width: 576px) {
-    width: 40vw;
-  }
-`;
 
 interface PlantPageOffersProps {
-  offers: Offer[];
+  offers?: Offer[];
 }
 
-export const PlantPageOffers = (props: PlantPageOffersProps) => {
+export const PlantPageOffers: React.FC<PlantPageOffersProps> = ({ offers }) => {
   return (
     <PlantsPageGridContainer smallScreenColumns={2}>
-      <PlantsPageGridContainer smallScreenColumns={2}>
-        {props.offers.map((offer) => (
+      {offers &&
+        offers.map((offer) => (
           <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
             <NavLink to={`offer/${offer._id}`}>
               <PlantPageImageContainer>
@@ -83,7 +49,6 @@ export const PlantPageOffers = (props: PlantPageOffersProps) => {
             </FlexWrapper>
           </PlantPageOfferCard>
         ))}
-      </PlantsPageGridContainer>
     </PlantsPageGridContainer>
   );
 };

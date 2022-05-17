@@ -28,6 +28,7 @@ export const Dropdown = ({
   border,
   borderBottom,
   borderRadius,
+  onOptionChosen,
   imageWidth,
   imageHeight,
   imageMobileWidth,
@@ -43,9 +44,13 @@ export const Dropdown = ({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const toggling = () => setIsOpen((state) => !state);
+
   const handleSelected = (value: Item) => {
     setSelectedOption(value.name);
     setIsOpen(false);
+    if (onOptionChosen) {
+      onOptionChosen(value.name);
+    }
   };
   return (
     <DropdownContainer>

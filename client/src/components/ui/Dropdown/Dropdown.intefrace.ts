@@ -46,8 +46,10 @@ export interface IDropdown {
   listPadding?: string;
   position?: string;
   borderRadius?: string;
+  onOptionChosen?: (chosenValue: string) => void;
   smallerScreenIconPosition?: "absolute" | "relative";
   listMobileMargin?: string;
+  display?: string;
   itemMarginBottom?: string;
   iconPosition?: string;
 }

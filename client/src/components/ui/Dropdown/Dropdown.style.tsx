@@ -59,7 +59,6 @@ export const DropdownHeaderTitle = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  position: relative;
 `;
 
 export const DropdownHeaderIcon = styled(DropdownHeaderTitle)<IconProps>`
@@ -92,6 +91,7 @@ export const List = styled.ul<DropdownListProps>`
 
   z-index: 20;
   cursor: pointer;
+
   &:first-child {
     padding-top: 0.8em;
   }

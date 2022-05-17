@@ -26,7 +26,7 @@ interface LogOutPosition {
 
 export const Icon = styled.img<IconInButton>`
   display: flex;
-  margin-right: ${({ marginRight }) => (marginRight ? marginRight : "10px")};
+  margin-right: ${({ marginRight }) => (marginRight ? marginRight : "0px")};
   transition: 0.2s;
   width: ${({ width }) => (width ? width : 30)}px;
   height: ${({ height }) => (height ? height : 30)}px;

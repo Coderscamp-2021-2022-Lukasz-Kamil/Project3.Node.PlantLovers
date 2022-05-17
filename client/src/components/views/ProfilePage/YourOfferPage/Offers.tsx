@@ -33,7 +33,6 @@ export const OfferCardButton = styled.button`
 
 export const YourOfferGridContainer = styled(GridContainer)`
   grid-gap: 4vw 4vw;
-  margin-left: 4vw;
 
   @media (max-width: 576px) {
     grid-gap: 10vw 10vw;

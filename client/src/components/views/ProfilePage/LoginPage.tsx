@@ -85,7 +85,6 @@ const LoginPage = () => {
       },
     })
       .then((response) => {
-        console.log(response);
         setUserIdCookie("user-id", response.data.id);
         setTokenCookie("token", response.headers.token);
         navigateTo();
