@@ -5,6 +5,10 @@ import {
   IconProps,
 } from "./Dropdown.intefrace";
 
+interface ListItem {
+  marginBottom?: string;
+}
+
 export const DropdownContainer = styled.div`
   display: flex;
   flex-flow: column;
@@ -58,7 +62,7 @@ export const DropdownHeaderTitle = styled.div`
 `;
 
 export const DropdownHeaderIcon = styled(DropdownHeaderTitle)<IconProps>`
-  position: absolute;
+  position: ${({ position }) => (position ? position : "absolute")};
   justify-content: end;
 
   @media (max-width: 850px) {
@@ -74,11 +78,17 @@ export const DropdownHeaderIcon = styled(DropdownHeaderTitle)<IconProps>`
 export const List = styled.ul<DropdownListProps>`
   width: ${({ listDesktopWidth }) =>
     listDesktopWidth ? listDesktopWidth : "40vw"};
+
+  min-height: ${({ listDesktopHeight }) =>
+    listDesktopHeight ? listDesktopHeight : "5vh"};
+
   border-radius: ${({ theme }) => theme.size.common.borderRadius};
   background: ${({ theme }) => theme.colors.card.secondary};
   border: 2px solid #e5e5e5;
   color: ${({ theme }) => theme.colors.common.textColor};
   position: ${({ position }) => (position ? position : "absolute")};
+  padding: ${({ listPadding }) => (listPadding ? listPadding : "0")};
+
   z-index: 20;
   cursor: pointer;
 
@@ -98,10 +108,12 @@ export const List = styled.ul<DropdownListProps>`
   } ;
 `;
 
-export const ListItem = styled.li`
+export const ListItem = styled.li<ListItem>`
   padding-left: 1em;
   list-style: none;
-  margin-bottom: 0.8em;
+  font-size: 1rem;
+  margin-bottom: ${({ marginBottom }) =>
+    marginBottom ? marginBottom : "0.8em"};
   border-bottom: 1px solid ${({ theme }) => theme.colors.common.textInactive};
   &:last-child {
     border-bottom: none;
