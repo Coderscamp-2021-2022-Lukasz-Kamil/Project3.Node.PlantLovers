@@ -1,6 +1,7 @@
 import addNewHeight from "../useCases/addNewHeight.js";
 import validateCreateHeight from "../model/HeightValidation.js";
 import { getAllHeights } from "../repositories/queries.js";
+import { deleteHeightWithId } from "../useCases/deleteHeight.js";
 
 export const createHeight = async (req, res) => {
   const { error } = validateCreateHeight(req.body);
@@ -23,4 +24,14 @@ export const getHeights = async (req, res) => {
   } catch (error) {
     return res.status.send(500).send(error.message);
   }
+};
+
+export const deleteHeight = async (req, res) => {
+  try {
+    const { deletedCount } = await deleteHeightWithId(req.params.id);
+    if (!deletedCount) return res.status(404).send("There is no user");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+  return res.status(200).send(`Height with ${req.params.id} was deleted`);
 };

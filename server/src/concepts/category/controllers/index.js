@@ -1,6 +1,7 @@
 import addNewCategory from "../useCases/addNewCategory.js";
 import validateCreateCategory from "../model/CategoryValidation.js";
 import { getAllCategories } from "../repositories/queries.js";
+import { deleteCategoryWithId } from "../useCases/deleteCategory.js";
 
 export const createCategory = async (req, res) => {
   const { error } = validateCreateCategory(req.body);
@@ -23,4 +24,14 @@ export const getCategories = async (req, res) => {
   } catch (error) {
     return res.status.send(500).send(error.message);
   }
+};
+
+export const deleteCategory = async (req, res) => {
+  try {
+    const { deletedCount } = await deleteCategoryWithId(req.params.id);
+    if (!deletedCount) return res.status(404).send("Category not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+  return res.status(200).send(`Category with ${req.params.id} was deleted`);
 };
