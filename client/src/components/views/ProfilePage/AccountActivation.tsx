@@ -1,8 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetchData, { BASE_URL } from "../../../hooks/UseFetch";
+import User from "../../../shared/intefaces/user.interface";
 import styled from "styled-components";
-import { SignUpContainer, SignUpCard, Logo } from "./SignUpPage";
+import { SignUpCard, SignUpContainer, Logo } from "./SignUpPage";
 
 export const ActivationContainer = styled(SignUpContainer)`
   justify-content: flex-start;
@@ -19,7 +20,7 @@ export const ActivationLogo = styled(Logo)`
 
 const AccountActivation = () => {
   const { userId, token } = useParams<{ userId: string; token: string }>();
-  const { response, error } = useFetchData({
+  const { response, error, loading } = useFetchData<User>({
     url: BASE_URL + `/users/activate/${userId}`,
     method: "PUT",
     headers: {

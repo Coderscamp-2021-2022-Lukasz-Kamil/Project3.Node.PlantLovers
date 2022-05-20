@@ -8,10 +8,12 @@ interface InputProps {
   width?: string;
   height?: string;
   textAlign?: "center" | "left";
+  borderRadius?: string;
 }
 
 export const Input = styled.input<InputProps>`
-  border-radius: 5px;
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : 5)}px;
+
   border: 1px solid #000;
   cursor: text;
   padding: 0.3em 1em 0.3em 1em;
@@ -38,7 +40,8 @@ export const Input = styled.input<InputProps>`
     font-size: ${({ theme, fontSizeMobile }) =>
       fontSizeMobile
         ? theme.size.mobile[fontSizeMobile]
-        : theme.size.mobile.md}px;
+        : theme.size.mobile.xs}px;
+
     width: ${({ width }) => (width ? width : "280px")};
     height: ${({ height }) => (height ? height : "33px")};
   }

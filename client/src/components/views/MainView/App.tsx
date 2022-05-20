@@ -30,6 +30,7 @@ import GlobalFonts from "../../../font/fonts";
 import Offer from "../OfferPage/OfferPage";
 import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
 import AccountActivation from "../ProfilePage/AccountActivation";
+import { OffersCategoriesAndHeightsBar } from "../AdminPage/OffersCategoriesAndHeightsBar/OffersCategoriesAndHeightsBar";
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/add-offer" element={<AddOfferPage />} />
             <Route path="/plants" element={<PlantsPage />} />
-            <Route path="/plants/offer" element={<Offer />} />
+            <Route path="/plants/offer/:id" element={<Offer />} />
             <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
               <Route path="/user/" element={<UserPage />} />
               <Route path="/user/your-offers" element={<YourOfferPage />} />
@@ -60,14 +61,16 @@ function App() {
           <Route path="/" element={<AdminPagesWithNavigationBar />}>
             <Route path="/admin" element={<AdminLoginPage />} />
             <Route path="/admin/users" element={<AdminUsersPage />} />
-            <Route
-              path="admin/offers/categories-and-heights"
-              element={<AdminCategoriesAndHeightsPage />}
-            />
-            <Route
-              path="/admin/offers/users-offers"
-              element={<AdminUsersOffersPage />}
-            />
+            <Route path="/" element={<AdminOffersCategoriesAndHeightsBar />}>
+              <Route
+                path="admin/offers/categories-and-heights"
+                element={<AdminCategoriesAndHeightsPage />}
+              />
+              <Route
+                path="/admin/offers/users-offers"
+                element={<AdminUsersOffersPage />}
+              />
+            </Route>
             <Route path="/admin/settings" element={<AdminSettings />} />
           </Route>
         </Routes>
@@ -107,6 +110,15 @@ function App() {
     return (
       <>
         <ProfileAndYourOfferBar />
+        <Outlet />
+      </>
+    );
+  }
+
+  function AdminOffersCategoriesAndHeightsBar() {
+    return (
+      <>
+        <OffersCategoriesAndHeightsBar />
         <Outlet />
       </>
     );

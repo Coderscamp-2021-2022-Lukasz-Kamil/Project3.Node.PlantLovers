@@ -6,20 +6,20 @@ import { ImageCard } from "../../ui/ImageCard/ImageCard.style";
 import {
   ImageContainer,
   OfferCard,
-  OfferCardButton,
   OffersInfoFlexWrapper,
   PriceTypography,
   YourOfferGridContainer,
 } from "../ProfilePage/YourOfferPage/Offers";
-import useFetchData from "../../../hooks/UseFetch";
-import { Offer } from "../ProfilePage/YourOfferPage/OfferModel";
 
+import Offer from "../../../shared/intefaces/offer.interface";
+import { NavLink } from "react-router-dom";
 const PlantsPageGridContainer = styled(YourOfferGridContainer)`
   margin-right: 2vw;
 
   @media (max-width: 576px) {
     grid-gap: 5vw 5vw;
     width: 100%;
+    margin-right: 0;
     justify-items: center;
   }
 `;
@@ -49,30 +49,23 @@ const PlantPageImageContainer = styled(ImageContainer)`
   }
 `;
 
-export const PlantPageOfferts = () => {
-  const { response } = useFetchData({
-    url: `/offers`,
-    method: "GET",
-    headers: {
-      accept: "*/*",
-      "Content-Type": "application/json",
-    },
-  });
+interface PlantPageOffersProps {
+  offers: Offer[];
+}
 
-  const offers: Offer[] = response;
-
+export const PlantPageOffers = (props: PlantPageOffersProps) => {
   return (
     <PlantsPageGridContainer smallScreenColumns={2}>
-      {offers.map((offer) => (
+      {props.offers.map((offer) => (
         <PlantPageOfferCard width="auto" color="offer" key={offer._id}>
-          <OfferCardButton>
+          <NavLink to={`offer/${offer._id}`}>
             <PlantPageImageContainer>
               <PlantPageImageCard
                 alt="plantPhoto"
                 src={offer.photos[0].url}
               ></PlantPageImageCard>
             </PlantPageImageContainer>
-          </OfferCardButton>
+          </NavLink>
           <FlexWrapper justifyContent="space-between" direction="column">
             <OffersInfoFlexWrapper justifyContent="space-between">
               <Typography fontSize="xxs" fontSizeMobile="xs">
