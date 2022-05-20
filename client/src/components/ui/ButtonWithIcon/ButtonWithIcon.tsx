@@ -16,6 +16,7 @@ interface LogOutInterface {
   bottom?: string;
   right?: string;
   textColor?: "backgroundcolor" | "textColor";
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 interface LogOutPosition {
@@ -65,6 +66,7 @@ export const LogOutButton = ({
   src,
   content,
   textColor,
+  onClick,
 }: LogOutInterface) => {
   return (
     <LogOut
@@ -76,6 +78,7 @@ export const LogOutButton = ({
       right={right}
       bottom={bottom}
       textColor={textColor}
+      onClick={onClick}
     >
       <Icon src={src} />
       {content}
