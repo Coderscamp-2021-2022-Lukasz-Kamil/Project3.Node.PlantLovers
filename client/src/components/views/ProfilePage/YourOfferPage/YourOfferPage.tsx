@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Input } from "../../../ui/Input/Input.style";
+import LogOut from "../LogOut";
 import { FilterButtons } from "./FilterButtons";
 import { Offers } from "./Offers";
 
@@ -60,6 +61,7 @@ const YourOfferPage = () => {
           <FilterButtons />
         </SearchAndFilterContainer>
         <Offers />
+        <LogOut />
       </div>
     </YourOfferPageContainer>
   );
