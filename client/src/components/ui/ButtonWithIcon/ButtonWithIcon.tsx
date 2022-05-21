@@ -4,7 +4,7 @@ import { Button } from "../Button/Button.style";
 
 interface IconInButton {
   width?: number;
-  height?: number;
+  heigth?: number;
   marginRight?: string;
   mobileWidth?: number;
   mobileHeight?: number;
@@ -27,8 +27,8 @@ interface LogOutPosition {
 
 export const Icon = styled.img<IconInButton>`
   display: flex;
+  margin-right: ${({ marginRight }) => (marginRight ? marginRight : "0px")};
   transition: 0.2s;
-  margin-right: ${({ marginRight }) => (marginRight ? marginRight : "10px")};
   width: ${({ width }) => (width ? width : 30)}px;
   height: ${({ height }) => (height ? height : 30)}px;
   ${({ rotating }) => rotating && `transform: rotate(180deg)`};
@@ -99,7 +99,7 @@ export const ButtonWithIcon = (props: { content: string; src: string }) => {
       hoverColor="backgroundcolor"
       hoverBackground="secondaryHover"
     >
-      <Icon src={props.src} />
+      <Icon src={props.src} marginRight="10px" />
       {props.content}
     </Add>
   );

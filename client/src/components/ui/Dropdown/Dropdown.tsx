@@ -30,6 +30,7 @@ export const Dropdown = ({
   border,
   borderBottom,
   borderRadius,
+  onOptionChosen,
   imageWidth,
   imageHeigth,
   imageMobileWidth,
@@ -60,6 +61,9 @@ export const Dropdown = ({
     setSelectedOption(value.name);
     setIsOpen(false);
     rotateArrow();
+    if (onOptionChosen) {
+      onOptionChosen(value.name);
+    }
   };
   return (
     <DropdownContainer>
@@ -90,7 +94,7 @@ export const Dropdown = ({
             <Icon
               src={imageSrc}
               width={imageWidth}
-              height={imageHeigth}
+              heigth={imageHeigth}
               mobileWidth={imageMobileWidth}
               mobileHeight={imageMobileHeigth}
               marginRight={imageMarginRight}

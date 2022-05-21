@@ -49,8 +49,8 @@ export async function getOffer(offerId) {
   return offers[0];
 }
 
-export async function getAllOffers(options, limit, skip) {
-  const offers = await Offer.find(options).limit(limit).skip(skip);
+export async function getAllOffers(options, limit, skip, sort) {
+  const offers = await Offer.find(options).sort(sort).limit(limit).skip(skip);
 
   return offers;
 }

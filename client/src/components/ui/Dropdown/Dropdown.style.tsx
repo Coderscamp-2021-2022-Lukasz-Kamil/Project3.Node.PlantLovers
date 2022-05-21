@@ -10,6 +10,10 @@ import {
   TriangleAboveListWrapperProps,
 } from "./Dropdown.intefrace";
 
+interface ListItem {
+  marginBottom?: string;
+}
+
 export const DropdownContainer = styled.div`
   display: flex;
   flex-flow: column;
@@ -90,13 +94,19 @@ export const List = styled.ul<DropdownListProps>`
   margin-top: ${({ listMarginTop }) => (listMarginTop ? listMarginTop : "0")};
   width: ${({ listDesktopWidth }) =>
     listDesktopWidth ? listDesktopWidth : "40vw"};
+
+  min-height: ${({ listDesktopHeight }) =>
+    listDesktopHeight ? listDesktopHeight : "5vh"};
+
   border-radius: ${({ theme }) => theme.size.common.borderRadius};
   background: ${({ theme }) => theme.colors.card.secondary};
   border: 2px solid #f9f8f8;
   color: ${({ theme }) => theme.colors.common.textColor};
   position: ${({ position }) => (position ? position : "absolute")};
+
   z-index: 20;
   cursor: pointer;
+
   &:first-child {
     padding-top: 0.8em;
   }
@@ -150,18 +160,14 @@ export const TriangleAboveList = styled.div<TriangleAboveListProps>`
   }
 `;
 
-//@media (max-width: 576px){
-//    margin: ${({ triangleMobileMargin }) => triangleMobileMargin ? //triangleMobileMargin: "0 1.2em 0 0"}; }
-
 export const ListItem = styled.li`
   padding-left: 1em;
   list-style: none;
-  margin-bottom: 0.8em;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.common.textInactive};
-  &:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
+  font-size: 1rem;
+  margin-bottom: 0.6em;
+  // border-bottom: 1px solid ${({ theme }) =>
+    theme.colors.common.textInactive};
+
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
   }

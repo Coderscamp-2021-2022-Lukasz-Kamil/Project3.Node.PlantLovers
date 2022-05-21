@@ -1,6 +1,6 @@
 import React, { KeyboardEvent } from "react";
 import { SortList } from "../../ui/Dropdown/DropdownLists";
-import { PlantPageOffers } from "./PlantPageOfferts";
+import { PlantPageOffers } from "./PlantPageOffers";
 import Arrow from "../../../assets/ArrowDownVector.svg";
 import { AllFilters } from "./PlantsPageFilters";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
@@ -26,8 +26,26 @@ import {
 } from "./PlantPage.styled";
 
 const PlantsPage = () => {
+  const [sortOption, setSortOption] = useState<string | undefined>();
   const [searchPhrase, setSearchPhrase] = useState("");
   const [searchPhraseToLookUp, setSearchPhraseToLookUp] = useState("");
+
+  const getSortParam = () => {
+    switch (sortOption) {
+      case "newest":
+        return "?sort=-dateUpdated";
+      case "oldest":
+        return "?sort=dateUpdated";
+      case "alphabetical order A-Z":
+        return "?sort=title";
+      case "alphabetical order Z-A":
+        return "?sort=-title";
+      case "highest price":
+        return "?sort=-price";
+      case "lowest price":
+        return "?sort=price";
+    }
+  };
 
   const defaultParams = {
     url: "/offers",
@@ -37,18 +55,20 @@ const PlantsPage = () => {
     },
   };
 
+  const onOptionChosen = (option: string) => {
+    setSortOption(option);
+  };
+
   let params = defaultParams;
 
-  if (searchPhraseToLookUp === "") {
+  if (!sortOption && searchPhraseToLookUp === "") {
     params = defaultParams;
+  } else if (!sortOption && searchPhraseToLookUp !== "") {
+    params.url = "/offers/search/" + searchPhraseToLookUp;
+  } else if (sortOption && searchPhraseToLookUp === "") {
+    params.url = "/offers" + getSortParam();
   } else {
-    params = {
-      url: "/offers/search/" + searchPhraseToLookUp,
-      method: "GET",
-      headers: {
-        accept: "*/*",
-      },
-    };
+    params.url = "/offers/search/" + searchPhraseToLookUp + getSortParam();
   }
 
   const { response, error } = useFetchData<Offer[]>({
@@ -132,6 +152,7 @@ const PlantsPage = () => {
                 triangleDisplay="flex"
                 headerIconWidth="unset"
                 dropdownHeaderTitleWidth="unset"
+                onOptionChosen={onOptionChosen}
               />
             </PlantsPageSearchAndFilterContainer>
           </PlantsPageSearchAndFilterOnly>
