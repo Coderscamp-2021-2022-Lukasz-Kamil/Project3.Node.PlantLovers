@@ -7,6 +7,7 @@ interface InputProps {
   color?: "primary" | "secondary" | "placeholder" | "transparent";
   width?: string;
   height?: string;
+  textAlign?: "center" | "left";
   borderRadius?: string;
 }
 
@@ -15,7 +16,7 @@ export const Input = styled.input<InputProps>`
 
   border: 1px solid #000;
   cursor: text;
-  padding-left: 10px;
+  padding: 0.3em 1em 0.3em 1em;
   outline: none;
   font-size: ${({ theme, fontSizeDesktop }) =>
     fontSizeDesktop
@@ -30,7 +31,7 @@ export const Input = styled.input<InputProps>`
   &::placeholder {
     opacity: 0.8;
     font-family: "Poppins";
-    text-align: center;
+    text-align: ${({ textAlign }) => (textAlign ? textAlign : "center")};
     color: ${({ theme, color }) =>
       color ? theme.colors.input[color] : theme.colors.input.placeholder};
   }

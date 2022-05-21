@@ -8,7 +8,6 @@ interface GridColumnProps {
 
 export const GridContainer = styled.div<GridColumnProps>`
   display: grid;
-  width: 72vw;
   grid-template-columns: ${({ bigScreenColumns }) =>
     bigScreenColumns ? `repeat(${bigScreenColumns}, 1fr)` : `repeat(4, 1fr)`};
   grid-template-rows: auto;

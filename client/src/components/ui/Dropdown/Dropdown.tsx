@@ -7,6 +7,9 @@ import {
   List,
   ListItem,
   Wrapper,
+  TriangleAboveList,
+  TriangleAboveListContainer,
+  TriangleAboveListWrapper,
 } from "./Dropdown.style";
 import { IDropdown, Item } from "./Dropdown.intefrace";
 import { Icon } from "../ButtonWithIcon/ButtonWithIcon";
@@ -23,31 +26,41 @@ export const Dropdown = ({
   fontSizeMobile,
   listDesktopWidth,
   listMobileWidth,
-  listDesktopHeight,
   position,
   border,
   borderBottom,
   borderRadius,
   onOptionChosen,
   imageWidth,
-  imageHeight,
+  imageHeigth,
   imageMobileWidth,
   imageMobileHeigth,
   imageMarginRight,
   listfontSizeMobile,
-  smallerScreenIconPosition,
-  listMobileMargin,
-  listPadding,
-  itemMarginBottom,
   iconPosition,
+  listMobileMargin,
+  textPosition,
+  listMarginTop,
+  triangleDisplay,
+  headerIconWidth,
+  dropdownHeaderTitleWidth,
+  iconMobileDisplay,
+  triangleMobileJustify,
+  triangleWrapperMobileWidth,
 }: IDropdown) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [rotating, setRotate] = useState(false);
   const toggling = () => setIsOpen((state) => !state);
-
+  const rotateArrow = () => setRotate((state) => !state);
+  const wrapperFunction = () => {
+    rotateArrow();
+    toggling();
+  };
   const handleSelected = (value: Item) => {
     setSelectedOption(value.name);
     setIsOpen(false);
+    rotateArrow();
     if (onOptionChosen) {
       onOptionChosen(value.name);
     }
@@ -55,7 +68,7 @@ export const Dropdown = ({
   return (
     <DropdownContainer>
       <Wrapper
-        onClick={toggling}
+        onClick={wrapperFunction}
         desktopWidth={desktopWidth}
         mobileWidth={mobileWidth}
         marginBottom={marginBottom}
@@ -67,18 +80,25 @@ export const Dropdown = ({
         borderRadius={borderRadius}
       >
         <DropdownHeader>
-          <DropdownHeaderTitle>{selectedOption || title}</DropdownHeaderTitle>
+          <DropdownHeaderTitle
+            textPosition={textPosition}
+            dropdownHeaderTitleWidth={dropdownHeaderTitleWidth}
+          >
+            {selectedOption || title}
+          </DropdownHeaderTitle>
           <DropdownHeaderIcon
-            smallerScreenIconPosition={smallerScreenIconPosition}
-            position={iconPosition}
+            iconPosition={iconPosition}
+            headerIconWidth={headerIconWidth}
+            iconMobileDisplay={iconMobileDisplay}
           >
             <Icon
               src={imageSrc}
               width={imageWidth}
-              height={imageHeight}
+              heigth={imageHeigth}
               mobileWidth={imageMobileWidth}
               mobileHeight={imageMobileHeigth}
               marginRight={imageMarginRight}
+              rotating={rotating}
             />
           </DropdownHeaderIcon>
         </DropdownHeader>
@@ -90,15 +110,23 @@ export const Dropdown = ({
           position={position}
           listfontSizeMobile={listfontSizeMobile}
           listMobileMargin={listMobileMargin}
-          listDesktopHeight={listDesktopHeight}
-          listPadding={listPadding}
+          listMarginTop={listMarginTop}
         >
-          {list.map((item) => (
-            <ListItem
-              marginBottom={itemMarginBottom}
-              key={item.id}
-              onClick={() => handleSelected(item)}
+          <TriangleAboveListContainer
+            justifyContent="flex-end"
+            triangleDisplay={triangleDisplay}
+          >
+            <TriangleAboveListWrapper
+              justifyContent="flex-end"
+              triangleMobileJustify={triangleMobileJustify}
+              triangleWrapperMobileWidth={triangleWrapperMobileWidth}
             >
+              <TriangleAboveList />
+            </TriangleAboveListWrapper>
+          </TriangleAboveListContainer>
+
+          {list.map((item) => (
+            <ListItem key={item.id} onClick={() => handleSelected(item)}>
               {item.name}
             </ListItem>
           ))}

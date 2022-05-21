@@ -32,6 +32,7 @@ export const OffersCategoriesAndHeightsPages = () => {
         <NavBarButton
           key={page.name}
           background="transparent"
+          hoverBackground="transparent"
           padding="0"
           width="auto"
           mobileWidth="auto"
