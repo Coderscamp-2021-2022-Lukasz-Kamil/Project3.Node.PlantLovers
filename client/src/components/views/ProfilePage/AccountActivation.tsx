@@ -20,7 +20,7 @@ export const ActivationLogo = styled(Logo)`
 
 const AccountActivation = () => {
   const { userId, token } = useParams<{ userId: string; token: string }>();
-  const { response, error, loading } = useFetchData<User>({
+  const { response, error } = useFetchData<User>({
     url: BASE_URL + `/users/activate/${userId}`,
     method: "PUT",
     headers: {

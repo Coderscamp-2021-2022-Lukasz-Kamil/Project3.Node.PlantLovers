@@ -14,6 +14,7 @@ import { InputUser } from "../../ui/Input/Input.style";
 import { Button } from "../../ui/Button/Button.style";
 import background from "../../../assets/LoginPagePhoto.svg";
 import { Typography } from "../../ui/Typography/Typography.style";
+import { ErrorCard } from "./LoginPage";
 
 export const SignUpContainer = styled(LandingPageContainer)`
   background-image: url(${background});
@@ -53,13 +54,6 @@ export const SignUpButton = styled(Button)`
   @media (max-width: 576px) {
     margin-top: 20px;
   }
-`;
-
-const ErrorCard = styled.div`
-  width: 280px;
-  font-size: ${({ theme }) => theme.size.desktop.xs}px;
-  margin: 0 auto;
-  margin-bottom: 5px;
 `;
 
 const SignUpPage = () => {

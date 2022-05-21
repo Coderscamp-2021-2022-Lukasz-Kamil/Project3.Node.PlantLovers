@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { LogOutButton } from "../../../ui/ButtonWithIcon/ButtonWithIcon";
 import UserData from "./UserData";
 import UserPassword from "./UserPassword";
-import LogoutVector from "../../../../assets/LogoutVector.svg";
+import LogOut from "../LogOut";
 
 const ProfilePageContainer = styled.div`
   display: flex;
@@ -25,7 +24,7 @@ const UserPage = () => {
         <UserData />
         <UserPassword />
       </ProfilePageContainer>
-      <LogOutButton src={LogoutVector} content="Log out" />
+      <LogOut />
     </div>
   );
 };
