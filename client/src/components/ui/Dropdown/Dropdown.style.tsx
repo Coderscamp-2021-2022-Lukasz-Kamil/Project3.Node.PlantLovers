@@ -165,9 +165,9 @@ export const ListItem = styled.li`
   list-style: none;
   font-size: 1rem;
   margin-bottom: 0.6em;
-  // border-bottom: 1px solid ${({ theme }) =>
+  /* border-bottom: 1px solid ${({ theme }) =>
     theme.colors.common.textInactive};
-
+*/
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
   }
