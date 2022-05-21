@@ -9,7 +9,6 @@ interface FetchDataParams {
 }
 
 export const BASE_URL = "https://plant-lovers.herokuapp.com";
-// export const BASE_URL = "http://localhost:3000";
 axios.defaults.method = "GET";
 axios.defaults.baseURL = BASE_URL;
 

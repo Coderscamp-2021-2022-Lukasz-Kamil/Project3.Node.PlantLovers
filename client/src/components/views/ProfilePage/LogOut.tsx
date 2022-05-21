@@ -7,12 +7,12 @@ import { LogOutButton } from "../../ui/ButtonWithIcon/ButtonWithIcon";
 import LogoutVector from "../../../assets/LogoutVector.svg";
 
 const LogOut = () => {
-  const [, removeCookie] = useCookies();
+  const [_, __, removeCookie] = useCookies();
   const navigate = useNavigate();
-  const logout = async () => {
+  const logout = () => {
     try {
-      await removeCookie("user-id", { path: "/" });
-      removeCookie("token", { path: "/" });
+      removeCookie("user-id");
+      removeCookie("token");
       navigate("/user/login");
       return toast.success("You have been logged out!");
     } catch (error) {
