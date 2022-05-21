@@ -10,7 +10,7 @@ import { Method } from "axios";
 import useFetchData from "../../../hooks/UseFetch";
 import Offer from "../../../shared/intefaces/offer.interface";
 import {
-  YourOfferPageContainer,
+  PlantsPageContainer,
   PlantsPageSearchAndFilterFlexWrapper,
   PlantsPageSearchAndFilterContainer,
   PlantsPageSearchInput,
@@ -19,6 +19,10 @@ import {
   SearchButton,
   SearchGroup,
   SearchContainer,
+  EmptyDiv,
+  PlantsPageSearchAndFilterBar,
+  PlantsPageSearchAndFilterOnly,
+  SearchIcon,
 } from "./PlantPage.styled";
 
 const PlantsPage = () => {
@@ -89,56 +93,76 @@ const PlantsPage = () => {
   };
 
   return (
-    <YourOfferPageContainer direction="column">
+    <PlantsPageContainer direction="column">
       <PlantsPageSearchAndFilterFlexWrapper>
-        <SearchContainer>
-          <SearchGroup>
-            <PlantsPageSearchInput
-              placeholder="Search for plant"
-              width="320px"
-              height="35px"
-              onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
-                e.key === "Enter" && setSearchPhraseToLookUp(searchPhrase);
-              }}
-              onChange={(e) => {
-                const inputValue = e.target.value;
-                setSearchPhrase(inputValue);
-                if (!inputValue) {
-                  setSearchPhraseToLookUp("");
-                }
-              }}
-            />
-            <SearchButton
-              type="submit"
-              onClick={() => setSearchPhraseToLookUp(searchPhrase)}
-            >
-              <img src="/searchIcon.png" height={"100%"} />
-            </SearchButton>
-          </SearchGroup>
-        </SearchContainer>
-        <PlantsPageSearchAndFilterContainer>
-          <AllFilters />
-          <Dropdown
-            title="Sort by"
-            imageSrc={Arrow}
-            list={SortList}
-            desktopWidth="20vw"
-            mobileWidth="30vw"
-            marginBottom="0"
-            border="none"
-            borderRadius="0"
-            listDesktopWidth="20vw"
-            listMobileWidth="30vw"
-            display="flex"
-            onOptionChosen={onOptionChosen}
-          />
-        </PlantsPageSearchAndFilterContainer>
+        <PlantsPageSearchAndFilterBar>
+          <EmptyDiv></EmptyDiv>
+          <PlantsPageSearchAndFilterOnly>
+            <SearchContainer>
+              <SearchGroup>
+                <PlantsPageSearchInput
+                  placeholder="Search for plant"
+                  width="320px"
+                  height="37.78px"
+                  textAlign="left"
+                  onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
+                    e.key === "Enter" && setSearchPhraseToLookUp(searchPhrase);
+                  }}
+                  onChange={(e) => {
+                    const inputValue = e.target.value;
+                    setSearchPhrase(inputValue);
+                    if (!inputValue) {
+                      setSearchPhraseToLookUp("");
+                    }
+                  }}
+                />
+                <SearchButton
+                  type="submit"
+                  onClick={() => setSearchPhraseToLookUp(searchPhrase)}
+                >
+                  <SearchIcon src="/searchIcon.png" />
+                </SearchButton>
+              </SearchGroup>
+            </SearchContainer>
+            <PlantsPageSearchAndFilterContainer>
+              <AllFilters />
+              <Dropdown
+                title="Sort by"
+                imageSrc={Arrow}
+                imageWidth={20}
+                imageHeigth={20}
+                imageMarginRight="0"
+                imageMobileWidth={15}
+                imageMobileHeigth={15}
+                list={SortList}
+                desktopWidth="200px"
+                mobileWidth="35vw"
+                padding="0.3em 1em 0.3em 1em"
+                marginBottom="0"
+                border="none"
+                borderRadius="10px"
+                listDesktopWidth="200px"
+                listMobileWidth="60vw"
+                listfontSizeMobile="mdl"
+                position="absolute"
+                borderBottom="none"
+                listMobileMargin="42px 50vw 0 0"
+                textPosition="left"
+                listMarginTop="53px"
+                triangleDisplay="flex"
+                headerIconWidth="unset"
+                dropdownHeaderTitleWidth="unset"
+                onOptionChosen={onOptionChosen}
+              />
+            </PlantsPageSearchAndFilterContainer>
+          </PlantsPageSearchAndFilterOnly>
+        </PlantsPageSearchAndFilterBar>
       </PlantsPageSearchAndFilterFlexWrapper>
       <PlantsPageFlexWrapper justifyContent="flex-start">
         <PlantsPageWholeFilterComponent />
         {displayOffers()}
       </PlantsPageFlexWrapper>
-    </YourOfferPageContainer>
+    </PlantsPageContainer>
   );
 };
 

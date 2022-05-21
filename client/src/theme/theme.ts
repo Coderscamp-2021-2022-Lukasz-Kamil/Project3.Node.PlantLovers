@@ -5,6 +5,7 @@ export const theme = {
       textInactive: "#A59E9E",
       secondaryTextInactive: "#8B8B8B",
       backgroundcolor: "#FFF",
+      plantspagebackground: "#A3A5A8",
     },
     navigationBar: {
       primary: "#73A942",
