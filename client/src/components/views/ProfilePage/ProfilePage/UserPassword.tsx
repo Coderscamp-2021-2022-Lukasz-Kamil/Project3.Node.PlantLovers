@@ -56,7 +56,7 @@ const UserPassword = () => {
       },
       data: {
         currentPassword: editCredentialsFormHandler.values.currentPassword,
-        newPassword: editCredentialsFormHandler.values.newPassword,
+        password: editCredentialsFormHandler.values.newPassword,
         confirmPassword: editCredentialsFormHandler.values.confirmPassword,
       },
     })
