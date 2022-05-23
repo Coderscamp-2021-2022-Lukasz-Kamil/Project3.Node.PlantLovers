@@ -19,7 +19,7 @@ import YourOfferPage from "../ProfilePage/YourOfferPage/YourOfferPage";
 import AdminLoginPage from "../AdminPage/AdminLoginPage";
 import AdminCategoriesAndHeightsPage from "../AdminPage/AdminCategoriesAndHeightsPage";
 import AdminUsersOffersPage from "../AdminPage/UsersOffersPage/AdminUsersOffersPage";
-import AdminUsersPage from "../AdminPage/AdminUsersPage";
+import ManageUsersPage from "../AdminPage/ManageUsersPage/AdminUsersPage";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { NavigationBar } from "../NavigationBar/MainNavigationBar/NavigationBar";
@@ -60,7 +60,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/" element={<AdminPagesWithNavigationBar />}>
             <Route path="/admin" element={<AdminLoginPage />} />
-            <Route path="/admin/users" element={<AdminUsersPage />} />
+            <Route path="/admin/users" element={<ManageUsersPage />} />
             <Route path="/" element={<AdminOffersCategoriesAndHeightsBar />}>
               <Route
                 path="admin/offers/categories-and-heights"
