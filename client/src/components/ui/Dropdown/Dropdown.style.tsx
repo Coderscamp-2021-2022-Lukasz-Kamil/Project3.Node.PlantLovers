@@ -1,8 +1,13 @@
 import styled from "styled-components";
+import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import {
+  DropdownHeaderTitleProps,
   DropdownListProps,
   DropdownLookProps,
   IconProps,
+  TriangleAboveListContainerProps,
+  TriangleAboveListProps,
+  TriangleAboveListWrapperProps,
 } from "./Dropdown.intefrace";
 
 interface ListItem {
@@ -19,6 +24,7 @@ export const DropdownContainer = styled.div`
 `;
 
 export const Wrapper = styled.div<DropdownLookProps>`
+  cursor: pointer;
   width: ${({ desktopWidth }) => (desktopWidth ? desktopWidth : "40vw")};
   margin-bottom: ${({ marginBottom }) =>
     marginBottom ? marginBottom : "0.8em"};
@@ -33,7 +39,11 @@ export const Wrapper = styled.div<DropdownLookProps>`
   border: ${({ border }) => (border ? border : "1px solid black")};
   border-bottom: ${({ borderBottom }) =>
     borderBottom ? borderBottom : "1px solid black"};
-  cursor: pointer;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
@@ -53,29 +63,35 @@ export const DropdownHeader = styled.div`
   align-items: center;
   width: 100%;
   position: relative;
+
+  @media (max-width: 576px) {
+    flex-direction: row-reverse;
+  }
 `;
 
-export const DropdownHeaderTitle = styled.div`
-  width: 100%;
+export const DropdownHeaderTitle = styled.div<DropdownHeaderTitleProps>`
+  width: ${({ dropdownHeaderTitleWidth }) =>
+    dropdownHeaderTitleWidth ? dropdownHeaderTitleWidth : "100%"};
   display: flex;
-  justify-content: center;
+  justify-content: ${({ textPosition }) =>
+    textPosition ? textPosition : "center"};
+  position: relative;
 `;
 
 export const DropdownHeaderIcon = styled(DropdownHeaderTitle)<IconProps>`
-  position: ${({ position }) => (position ? position : "absolute")};
+  position: ${({ iconPosition }) => (iconPosition ? iconPosition : "relative")};
   justify-content: end;
-
-  @media (max-width: 850px) {
-    position: ${({ smallerScreenIconPosition }) =>
-      smallerScreenIconPosition ? smallerScreenIconPosition : "absolute"};
-  }
+  width: ${({ headerIconWidth }) =>
+    headerIconWidth ? headerIconWidth : "100%"};
 
   @media (max-width: 576px) {
-    position: absolute;
+    display: ${({ iconMobileDisplay }) =>
+      iconMobileDisplay ? iconMobileDisplay : "block"};
   }
 `;
 
 export const List = styled.ul<DropdownListProps>`
+  margin-top: ${({ listMarginTop }) => (listMarginTop ? listMarginTop : "0")};
   width: ${({ listDesktopWidth }) =>
     listDesktopWidth ? listDesktopWidth : "40vw"};
 
@@ -84,10 +100,9 @@ export const List = styled.ul<DropdownListProps>`
 
   border-radius: ${({ theme }) => theme.size.common.borderRadius};
   background: ${({ theme }) => theme.colors.card.secondary};
-  border: 2px solid #e5e5e5;
+  border: 2px solid #f9f8f8;
   color: ${({ theme }) => theme.colors.common.textColor};
   position: ${({ position }) => (position ? position : "absolute")};
-  padding: ${({ listPadding }) => (listPadding ? listPadding : "0")};
 
   z-index: 20;
   cursor: pointer;
@@ -108,17 +123,51 @@ export const List = styled.ul<DropdownListProps>`
   } ;
 `;
 
-export const ListItem = styled.li<ListItem>`
+export const TriangleAboveListContainer = styled(
+  FlexWrapper
+)<TriangleAboveListContainerProps>`
+  display: ${({ triangleDisplay }) =>
+    triangleDisplay ? triangleDisplay : "none"};
+`;
+
+export const TriangleAboveListWrapper = styled(
+  FlexWrapper
+)<TriangleAboveListWrapperProps>`
+  width: 20vw;
+
+  @media (max-width: 576px) {
+    justify-content: ${({ triangleMobileJustify }) =>
+      triangleMobileJustify ? triangleMobileJustify : "start"};
+    padding: 0 1em 0 1em;
+    width: ${({ triangleWrapperMobileWidth }) =>
+      triangleWrapperMobileWidth ? triangleWrapperMobileWidth : "22.2vw"};
+  }
+`;
+
+export const TriangleAboveList = styled.div<TriangleAboveListProps>`
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 15px solid #f9f8f8;
+  margin: 0 1.25em 0 0;
+  position: absolute;
+  top: -17px;
+
+  @media (max-width: 576px) {
+    margin: ${({ triangleMobileMargin }) =>
+      triangleMobileMargin ? triangleMobileMargin : "0.1em 0 0"};
+  }
+`;
+
+export const ListItem = styled.li`
   padding-left: 1em;
   list-style: none;
   font-size: 1rem;
-  margin-bottom: ${({ marginBottom }) =>
-    marginBottom ? marginBottom : "0.8em"};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.common.textInactive};
-  &:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
+  margin-bottom: 0.6em;
+  /* border-bottom: 1px solid ${({ theme }) =>
+    theme.colors.common.textInactive};
+*/
   &:hover {
     background-color: ${({ theme }) => theme.colors.card.highlighted};
   }

@@ -4,6 +4,7 @@ import { Input } from "../../ui/Input/Input.style";
 import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import Arrow from "../../../assets/ArrowDownVector.svg";
 import PlantsPageWholeFilterComponent from "./PlantsPageWholeFilterComponent";
+import { Icon } from "../../ui/ButtonWithIcon/ButtonWithIcon";
 
 const FilterButton = styled.button`
   width: 20vw;
@@ -27,21 +28,7 @@ const FilterButton = styled.button`
 
   @media (max-width: 576px) {
     width: 60vw;
-    justify-content: center;
     font-size: ${({ theme }) => theme.size.mobile.lg}px;
-  }
-`;
-const ArrowImage = styled.img`
-  position: absolute;
-
-  @media (max-width: 850px) {
-    margin-right: 1em;
-  }
-
-  @media (max-width: 576px) {
-    width: 15px;
-    height: 15px;
-    margin-right: 0;
   }
 `;
 
@@ -60,10 +47,8 @@ const DropdownInput = styled(Input)`
 
 const ArrowContainer = styled.div`
   width: 100%;
-  position: absolute;
   display: flex;
   justify-content: end;
-  padding: 0 1em 0 1em;
 
   @media (max-width: 576px) {
     display: none;
@@ -90,12 +75,28 @@ const AllFiltersFilterButton = styled(FilterButton)`
 
 export const CitySearch = () => {
   const [show, setShow] = useState(false);
+  const [rotating, setRotate] = useState(false);
+  const openFiltr = () => setShow(!show);
+  const rotateArrow = () => setRotate((state) => !state);
+
+  const wrapperFunction = () => {
+    openFiltr();
+    rotateArrow();
+  };
   return (
     <div>
-      <FilterButton onClick={() => setShow(!show)}>
+      <FilterButton onClick={wrapperFunction}>
         City{" "}
         <ArrowContainer>
-          <ArrowImage src={Arrow} />
+          <Icon
+            src={Arrow}
+            width={20}
+            height={20}
+            mobileWidth={15}
+            mobileHeight={15}
+            marginRight="0px"
+            rotating={rotating}
+          />
         </ArrowContainer>
       </FilterButton>
       {show ? (
@@ -105,6 +106,7 @@ export const CitySearch = () => {
             width="95%"
             height="35px"
             fontSizeDesktop="sm"
+            textAlign="left"
           />
         </FiltersInputContainer>
       ) : null}
@@ -114,12 +116,27 @@ export const CitySearch = () => {
 
 export const PriceRange = () => {
   const [show, setShow] = useState(false);
+  const [rotating, setRotate] = useState(false);
+  const openFiltr = () => setShow(!show);
+  const rotateArrow = () => setRotate((state) => !state);
+  const wrapperFunction = () => {
+    openFiltr();
+    rotateArrow();
+  };
   return (
     <div>
-      <FilterButton onClick={() => setShow(!show)}>
+      <FilterButton onClick={wrapperFunction}>
         Price{" "}
         <ArrowContainer>
-          <ArrowImage src={Arrow} />
+          <Icon
+            src={Arrow}
+            width={20}
+            height={20}
+            mobileWidth={15}
+            mobileHeight={15}
+            marginRight="0px"
+            rotating={rotating}
+          />
         </ArrowContainer>
       </FilterButton>
       {show ? (
@@ -130,6 +147,7 @@ export const PriceRange = () => {
             height="25px"
             fontSizeDesktop="sm"
             type="number"
+            textAlign="left"
           />
           <DropdownInput
             placeholder="To"
@@ -137,6 +155,7 @@ export const PriceRange = () => {
             height="25px"
             fontSizeDesktop="sm"
             type="number"
+            textAlign="left"
           />
         </FiltersInputContainer>
       ) : null}
@@ -146,12 +165,31 @@ export const PriceRange = () => {
 
 export const AllFilters = () => {
   const [show, setShow] = useState(false);
+  const [rotating, setRotate] = useState(false);
+  //const [changeBackground, setChangeBackground] = useState(false);
+  const openFiltr = () => setShow(!show);
+  const rotateArrow = () => setRotate((state) => !state);
+  //const toogleBackground = () => setChangeBackground((state) => !state);
+  const wrapperFunction = () => {
+    openFiltr();
+    rotateArrow();
+    //   toogleBackground();
+  };
+
   return (
     <div>
-      <AllFiltersFilterButton onClick={() => setShow(!show)}>
-        Filters{" "}
+      <AllFiltersFilterButton onClick={wrapperFunction}>
+        <span>Filters </span>
         <ArrowContainerAllFilters>
-          <ArrowImage src={Arrow} />
+          <Icon
+            src={Arrow}
+            width={20}
+            height={20}
+            mobileWidth={15}
+            mobileHeight={15}
+            marginRight="0px"
+            rotating={rotating}
+          />
         </ArrowContainerAllFilters>
       </AllFiltersFilterButton>
       {show ? (

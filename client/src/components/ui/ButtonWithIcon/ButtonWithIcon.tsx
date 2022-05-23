@@ -4,10 +4,11 @@ import { Button } from "../Button/Button.style";
 
 interface IconInButton {
   width?: number;
-  height?: number;
+  heigth?: number;
   marginRight?: string;
   mobileWidth?: number;
   mobileHeight?: number;
+  rotating?: boolean;
 }
 
 interface LogOutInterface {
@@ -16,6 +17,7 @@ interface LogOutInterface {
   bottom?: string;
   right?: string;
   textColor?: "backgroundcolor" | "textColor";
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 interface LogOutPosition {
@@ -30,6 +32,7 @@ export const Icon = styled.img<IconInButton>`
   transition: 0.2s;
   width: ${({ width }) => (width ? width : 30)}px;
   height: ${({ height }) => (height ? height : 30)}px;
+  ${({ rotating }) => rotating && `transform: rotate(180deg)`};
 
   @media (max-width: 680px) {
     width: ${({ width }) => (width ? width : 25)}px;
@@ -65,6 +68,7 @@ export const LogOutButton = ({
   src,
   content,
   textColor,
+  onClick,
 }: LogOutInterface) => {
   return (
     <LogOut
@@ -76,6 +80,7 @@ export const LogOutButton = ({
       right={right}
       bottom={bottom}
       textColor={textColor}
+      onClick={onClick}
     >
       <Icon src={src} />
       {content}
@@ -97,7 +102,7 @@ export const ButtonWithIcon = (props: { content: string; src: string }) => {
       hoverColor="backgroundcolor"
       hoverBackground="secondaryHover"
     >
-      <Icon src={props.src} />
+      <Icon src={props.src} marginRight="10px" />
       {props.content}
     </Add>
   );

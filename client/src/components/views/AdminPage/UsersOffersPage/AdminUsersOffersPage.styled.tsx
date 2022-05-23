@@ -69,7 +69,7 @@ export const TableHeader = styled.th`
 `;
 
 export const TableData = styled.td`
-  padding: 0.5rem;
+  padding: 1rem;
   border: 1px solid #ddd;
 `;
 
@@ -95,11 +95,12 @@ export const InputSearch = styled(Input)`
 export const ActionButton = styled(Button)`
   height: 5vh;
   min-width: 3vw;
-  max-width: 4.5vw;
+  max-width: fit-content;
   margin: 0 1rem;
   background-color: ${({ theme }) => theme.colors.button.secondary};
   font-weight: ${({ theme }) => theme.weight.regular};
   font-size: ${({ theme }) => theme.size.desktop.sm}px;
+  border: 2px solid ${({ theme }) => theme.colors.button.secondary};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.button.secondary};
