@@ -73,6 +73,7 @@ const UserData = () => {
       },
     })
       .then((response) => {
+        editProfileFormHandler.resetForm();
         return toast.success("Data changed!");
       })
       .catch((err) => {
