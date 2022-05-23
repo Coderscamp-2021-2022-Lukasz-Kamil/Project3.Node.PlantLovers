@@ -1,13 +1,4 @@
 import React from "react";
-import { Button } from "../../../ui/Button/Button.style";
-import { Input } from "../../../ui/Input/Input.style";
-import {
-  InputUserData,
-  ProfilePageContainerColumn,
-  ProfilePageContainerColumnItem,
-  ProfilePageTypography,
-} from "./UserData";
-
 import { useNavigate } from "react-router";
 import { useCookies } from "react-cookie";
 import { useFormik } from "formik";
@@ -15,8 +6,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BASE_URL } from "../../../../hooks/UseFetch";
+import { Button } from "../../../ui/Button/Button.style";
+import {
+  InputUserData,
+  ProfilePageContainerColumn,
+  ProfilePageContainerColumnItem,
+} from "./UserData";
 import { ErrorCard } from "../LoginPage";
-import { useParams } from "react-router-dom";
 import { editCredentialsSchema } from "../../../../shared/inputHandlers/EditCredentialsInputHandler";
 
 const UserPassword = () => {
