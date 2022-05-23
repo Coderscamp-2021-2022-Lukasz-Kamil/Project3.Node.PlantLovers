@@ -57,8 +57,7 @@ export const handleDeleteHeight = async (id: string, token: any) => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
+        token: token["token"],
       },
     });
 
@@ -105,8 +104,7 @@ export const handleCreateHeight = async (range: string, token: any) => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
+        token: token["token"],
       },
     });
     const getHeightsResponse = await axios({
@@ -140,8 +138,7 @@ export const handleCreateCategory = async (name: string, token: any) => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
+        token: token["token"],
       },
     });
     const getCategoriesResponse = await axios({

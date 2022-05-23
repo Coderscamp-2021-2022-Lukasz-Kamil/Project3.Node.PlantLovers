@@ -48,7 +48,7 @@ export const CategoriesTable = ({ categories, setCategories }: any) => {
           {
             Header: "",
             accessor: "_id",
-            Cell: ({ cell }: any) => (
+            Cell: ({ cell }) => (
               <div className="align-center">
                 <ActionButton
                   className="delete align-center"

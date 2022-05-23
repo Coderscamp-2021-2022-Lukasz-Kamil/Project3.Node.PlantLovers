@@ -18,6 +18,10 @@ import { WrapperOfTable } from "./CategoriesAndHeightsPage.styled";
 import { useCookies } from "react-cookie";
 import { handleDeleteHeight } from "../../../../shared/API/api";
 
+interface CellProps {
+  [key: string]: any;
+}
+
 export const HeightsTable = ({ heights, setHeights }: any) => {
   const [token] = useCookies(["token"]);
 
@@ -30,6 +34,23 @@ export const HeightsTable = ({ heights, setHeights }: any) => {
   });
 
   const data = useMemo<Height[]>(() => heights, [heights]);
+
+  const labelCell = ({ cell }: CellProps) => (
+    <div className="align-center">
+      <ActionButton
+        className="delete align-center"
+        value={cell.row.values.id}
+        onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
+          const heights = await handleDeleteHeight(cell.row.values._id, token);
+          if (heights) {
+            setHeights(heights);
+          }
+        }}
+      >
+        Delete
+      </ActionButton>
+    </div>
+  );
 
   const columns = React.useMemo<Column<Height>[]>(
     () => [
@@ -48,27 +69,7 @@ export const HeightsTable = ({ heights, setHeights }: any) => {
           {
             Header: "",
             accessor: "_id",
-            Cell: ({ cell }: any) => (
-              <div className="align-center">
-                <ActionButton
-                  className="delete align-center"
-                  value={cell.row.values.id}
-                  onClick={async (
-                    event: React.MouseEvent<HTMLButtonElement>
-                  ) => {
-                    const heights = await handleDeleteHeight(
-                      cell.row.values._id,
-                      token
-                    );
-                    if (heights) {
-                      setHeights(heights);
-                    }
-                  }}
-                >
-                  Delete
-                </ActionButton>
-              </div>
-            ),
+            Cell: labelCell,
           },
         ],
       },
