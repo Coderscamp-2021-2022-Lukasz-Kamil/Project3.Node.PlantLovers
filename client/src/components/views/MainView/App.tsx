@@ -17,7 +17,7 @@ import LoginPage from "../ProfilePage/LoginPage";
 import SignUpPage from "../ProfilePage/SignUpPage";
 import YourOfferPage from "../ProfilePage/YourOfferPage/YourOfferPage";
 import AdminLoginPage from "../AdminPage/AdminLoginPage";
-import AdminCategoriesAndHeightsPage from "../AdminPage/AdminCategoriesAndHeightsPage";
+import CategoriesAndHeightsPage from "../AdminPage/OffersCategoriesAndHeightsBar/CategoriesAndHeightsPage";
 import AdminUsersOffersPage from "../AdminPage/UsersOffersPage/AdminUsersOffersPage";
 import ManageUsersPage from "../AdminPage/ManageUsersPage/AdminUsersPage";
 import "react-toastify/dist/ReactToastify.css";
@@ -30,7 +30,7 @@ import GlobalFonts from "../../../font/fonts";
 import Offer from "../OfferPage/OfferPage";
 import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
 import AccountActivation from "../ProfilePage/AccountActivation";
-import { OffersCategoriesAndHeightsBar } from "../AdminPage/OffersCategoriesAndHeightsBar/OffersCategoriesAndHeightsBar";
+import { CategoriesAndHeightsBar } from "../AdminPage/OffersCategoriesAndHeightsBar/CategoriesAndHeightsBar";
 
 function App() {
   return (
@@ -64,7 +64,7 @@ function App() {
             <Route path="/" element={<AdminOffersCategoriesAndHeightsBar />}>
               <Route
                 path="admin/offers/categories-and-heights"
-                element={<AdminCategoriesAndHeightsPage />}
+                element={<CategoriesAndHeightsPage />}
               />
               <Route
                 path="/admin/offers/users-offers"
@@ -118,7 +118,7 @@ function App() {
   function AdminOffersCategoriesAndHeightsBar() {
     return (
       <>
-        <OffersCategoriesAndHeightsBar />
+        <CategoriesAndHeightsBar />
         <Outlet />
       </>
     );

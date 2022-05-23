@@ -109,6 +109,7 @@ const AdminUsersOffersPage = () => {
                       cell.row.values._id,
                       token
                     );
+
                     if (offers) {
                       setOffers(offers);
                     }

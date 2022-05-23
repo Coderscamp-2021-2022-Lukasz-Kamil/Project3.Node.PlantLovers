@@ -1,4 +1,4 @@
-import createCategory from "../repositories/commands.js";
+import { createCategory } from "../repositories/commands.js";
 import { findCategoryByName } from "../repositories/queries.js";
 
 const addNewCategory = async (data) => {
