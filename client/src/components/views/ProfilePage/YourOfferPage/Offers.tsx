@@ -65,7 +65,7 @@ export const Offers = () => {
   const [userIdCookie] = useCookies(["user-id"]);
   const [token] = useCookies(["token"]);
   const { response } = useFetchData<Offer[]>({
-    url: `/offers/${userIdCookie["user-id"]}`,
+    url: `/offers/user/${userIdCookie["user-id"]}`,
     method: "GET",
     headers: {
       accept: "*/*",

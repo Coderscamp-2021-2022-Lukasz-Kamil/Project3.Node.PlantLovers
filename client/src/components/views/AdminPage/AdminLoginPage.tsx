@@ -1,12 +1,11 @@
 import React from "react";
-import { ButtonWithIcon } from "../../ui/ButtonWithIcon/ButtonWithIcon";
-import AddVector from "../../../assets/AddVector.svg";
+import LoginPage from "../ProfilePage/LoginPage";
 
 const AdminLoginPage = () => {
   return (
     <div>
       <div>AdminLoginPage</div>
-      <ButtonWithIcon src={AddVector} content="Add Photos" />
+      <LoginPage />
     </div>
   );
 };
