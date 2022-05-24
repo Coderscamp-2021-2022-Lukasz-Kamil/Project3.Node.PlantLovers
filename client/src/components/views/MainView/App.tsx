@@ -31,7 +31,7 @@ import Offer from "../OfferPage/OfferPage";
 import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
 import AccountActivation from "../ProfilePage/AccountActivation";
 import { OffersCategoriesAndHeightsBar } from "../AdminPage/OffersCategoriesAndHeightsBar/OffersCategoriesAndHeightsBar";
-import ProtectedRoutes from "../ProfilePage/ProtectedRoutes";
+import ProtectedRoutes from "../ProfilePage/ProtectedRoutes/ProtectedRoutes";
 import AdminProtectedRoutes from "../AdminPage/AdminProtectedRoutes";
 
 function App() {

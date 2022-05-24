@@ -1,14 +1,16 @@
 import React from "react";
 import { useCookies } from "react-cookie";
 import { Navigate, Outlet } from "react-router-dom";
+import jwtDecode from "./DecodedToken";
 
 const useAuth = () => {
   const [userCookie] = useCookies();
 
-  if (userCookie["token"]) {
-    return true;
-  } else {
-    return false;
+  try {
+    const decodedToken = jwtDecode(userCookie["token"]);
+    return decodedToken.payload.sub;
+  } catch (err) {
+    <Navigate to="/user/login" />;
   }
 };
 
