@@ -1,6 +1,7 @@
 import React from "react";
 import {
   NavBar,
+  StartPageLink,
   TitleButton,
 } from "../../NavigationBar/MainNavigationBar/NavigationBar.style";
 import AdminMobliePages from "./AdminMobilePages";
@@ -16,7 +17,7 @@ export const AdminNavigationBar = () => {
         color="textColor"
         hoverBackground="transparent"
       >
-        Plant Lovers
+        <StartPageLink to="/"> Plant Lovers </StartPageLink>
       </TitleButton>
       <AdminPages />
       <AdminMobliePages />

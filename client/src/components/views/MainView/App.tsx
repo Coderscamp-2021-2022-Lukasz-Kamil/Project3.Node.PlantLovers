@@ -31,6 +31,8 @@ import Offer from "../OfferPage/OfferPage";
 import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
 import AccountActivation from "../ProfilePage/AccountActivation";
 import { OffersCategoriesAndHeightsBar } from "../AdminPage/OffersCategoriesAndHeightsBar/OffersCategoriesAndHeightsBar";
+import ProtectedRoutes from "../ProfilePage/ProtectedRoutes";
+import AdminProtectedRoutes from "../AdminPage/AdminProtectedRoutes";
 
 function App() {
   return (
@@ -41,12 +43,16 @@ function App() {
         <Routes>
           <Route path="/" element={<PagesWithNavigationBar />}>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/add-offer" element={<AddOfferPage />} />
+
             <Route path="/plants" element={<PlantsPage />} />
             <Route path="/plants/offer/:id" element={<Offer />} />
-            <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
-              <Route path="/user/" element={<UserPage />} />
-              <Route path="/user/your-offers" element={<YourOfferPage />} />
+
+            <Route path="/" element={<ProtectedRoutes />}>
+              <Route path="/add-offer" element={<AddOfferPage />} />
+              <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
+                <Route path="/user/" element={<UserPage />} />
+                <Route path="/user/your-offers" element={<YourOfferPage />} />
+              </Route>
             </Route>
           </Route>
           <Route path="/" element={<LoginPagesWithNavigationBar />}>
@@ -58,20 +64,22 @@ function App() {
             />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/" element={<AdminPagesWithNavigationBar />}>
-            <Route path="/admin" element={<AdminLoginPage />} />
-            <Route path="/admin/users" element={<AdminUsersPage />} />
-            <Route path="/" element={<AdminOffersCategoriesAndHeightsBar />}>
-              <Route
-                path="admin/offers/categories-and-heights"
-                element={<AdminCategoriesAndHeightsPage />}
-              />
-              <Route
-                path="/admin/offers/users-offers"
-                element={<AdminUsersOffersPage />}
-              />
+          <Route path="/" element={<AdminProtectedRoutes />}>
+            <Route path="/" element={<AdminPagesWithNavigationBar />}>
+              <Route path="/admin" element={<AdminLoginPage />} />
+              <Route path="/admin/users" element={<AdminUsersPage />} />
+              <Route path="/" element={<AdminOffersCategoriesAndHeightsBar />}>
+                <Route
+                  path="admin/offers/categories-and-heights"
+                  element={<AdminCategoriesAndHeightsPage />}
+                />
+                <Route
+                  path="/admin/offers/users-offers"
+                  element={<AdminUsersOffersPage />}
+                />
+              </Route>
+              <Route path="/admin/settings" element={<AdminSettings />} />
             </Route>
-            <Route path="/admin/settings" element={<AdminSettings />} />
           </Route>
         </Routes>
         <ToastContainer />
