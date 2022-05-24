@@ -1,31 +1,53 @@
-import { Method } from "axios";
 import React from "react";
 import { useCookies } from "react-cookie";
 import { Navigate, Outlet } from "react-router-dom";
-import useFetchData from "../../../hooks/UseFetch";
 
-const AdminuseAuth = () => {
-  const user = true;
+type DecodedToken = {
+  raw: string;
+  header: {
+    alg: string;
+    typ: string;
+  };
+  payload: {
+    sub: string;
+    rol: boolean;
+    iat: number;
+    exp: number;
+  };
+};
 
-  const { response, error, loading } = useFetchData({
-    url: "/users",
-    method: "GET" as Method,
-    headers: {
-      accept: "*/*",
+function jwtDecode(t: string) {
+  const token: DecodedToken = {
+    raw: "",
+    header: {
+      alg: "",
+      typ: "",
     },
-  });
+    payload: {
+      sub: "",
+      rol: false,
+      iat: 0,
+      exp: 0,
+    },
+  };
+  token.raw = t;
+  token.header = JSON.parse(window.atob(t.split(".")[0]));
+  token.payload = JSON.parse(window.atob(t.split(".")[1]));
+  return token;
+}
 
-  //
-
-  if (user) {
-    return true;
-  } else {
-    return false;
+const isAdmin = () => {
+  const [userCookie] = useCookies();
+  try {
+    const decodedToken = jwtDecode(userCookie["token"]);
+    return decodedToken.payload.rol;
+  } catch (err) {
+    <Navigate to="/" />;
   }
 };
 
 const AdminProtectedRoutes = () => {
-  const auth = AdminuseAuth();
+  const auth = isAdmin();
 
   return auth ? <Outlet /> : <Navigate to="/user/login" />;
 };
