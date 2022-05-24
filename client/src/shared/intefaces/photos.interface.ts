@@ -1,7 +1,7 @@
-interface Photos {
+interface Photo {
   url: string;
-  isMainPhoto: boolean;
-  _id: string;
+  isMainPhoto?: boolean;
+  _id?: string;
 }
 
-export default Photos;
+export default Photo;

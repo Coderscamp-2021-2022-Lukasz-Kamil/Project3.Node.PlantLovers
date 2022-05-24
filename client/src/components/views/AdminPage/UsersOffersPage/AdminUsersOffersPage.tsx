@@ -16,7 +16,7 @@ import { Method } from "axios";
 import { toast } from "react-toastify";
 import { Column, useTable, useFilters } from "react-table";
 import { useMemo } from "react";
-import Photos from "../../../../shared/intefaces/photos.interface";
+import Photo from "../../../../shared/intefaces/photos.interface";
 import { DefaultColumnFilter } from "./DefaultColumnFilter";
 import { FilterbyActive } from "./FilterByActive";
 import { useCookies } from "react-cookie";
@@ -29,7 +29,7 @@ interface Offer {
   _id: string;
   city: string;
   title: string;
-  photos: Photos[];
+  photos: Photo[];
   isActive: boolean;
 }
 

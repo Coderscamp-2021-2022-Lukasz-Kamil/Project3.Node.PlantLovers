@@ -17,6 +17,12 @@ import { NavLink } from "react-router-dom";
 interface PlantPageOffersProps {
   offers?: Offer[];
 }
+const getPhoto = (offer: Offer) => {
+  if (offer.photos[0]) {
+    return offer.photos[0].url;
+  }
+  return "https://img.freepik.com/free-photo/closeup-shot-beautiful-cactus-plants-blue-background_181624-22401.jpg?t=st=1653422114~exp=1653422714~hmac=a5c35ca268b5291cc1eafc966bac269bce13ecb5396b9b29ae7ee694e5f66b74&w=996";
+};
 
 export const PlantPageOffers: React.FC<PlantPageOffersProps> = ({ offers }) => {
   return (
@@ -28,7 +34,7 @@ export const PlantPageOffers: React.FC<PlantPageOffersProps> = ({ offers }) => {
               <PlantPageImageContainer>
                 <PlantPageImageCard
                   alt="plantPhoto"
-                  src={offer.photos[0].url}
+                  src={getPhoto(offer)}
                 ></PlantPageImageCard>
               </PlantPageImageContainer>
             </NavLink>

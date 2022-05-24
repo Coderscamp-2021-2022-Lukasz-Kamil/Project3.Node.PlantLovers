@@ -62,7 +62,7 @@ export const Dropdown = ({
     setIsOpen(false);
     rotateArrow();
     if (onOptionChosen) {
-      onOptionChosen(value.name);
+      onOptionChosen(value);
     }
   };
   return (

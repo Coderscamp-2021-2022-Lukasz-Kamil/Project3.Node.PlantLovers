@@ -1,6 +1,14 @@
 import Offer from "../model/Offer.js";
 import mongoose from "mongoose";
 
+export async function getOfferById(offerId) {
+  const offer = await Offer.findById(offerId);
+  if (!offer) {
+    throw "There is no offer with id = " + offerId;
+  }
+  return offer;
+}
+
 export async function getOffer(offerId) {
   const offers = await Offer.aggregate([
     {
@@ -44,7 +52,7 @@ export async function getOffer(offerId) {
   ]);
 
   if (!offers.length) {
-    throw "There is no offer with id = " + offerId;
+    throw new Error("There is no offer with id = " + offerId);
   }
   return offers[0];
 }

@@ -9,7 +9,6 @@ export const createCategory = async (data) => {
     await newCategory.save();
     return newCategory;
   } catch (err) {
-    console.log(err);
     return new Error("Category wasn't created");
   }
 };
