@@ -5,6 +5,7 @@ interface User {
   phoneNumber?: string;
   city?: string;
   isActive: boolean;
+  _id: string;
 }
 
 export default User;

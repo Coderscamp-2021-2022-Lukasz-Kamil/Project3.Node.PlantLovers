@@ -72,6 +72,7 @@ const offerSchema = new mongoose.Schema({
     ref: "Height",
     required: true,
   },
+
   views: {
     type: Number,
     required: true,

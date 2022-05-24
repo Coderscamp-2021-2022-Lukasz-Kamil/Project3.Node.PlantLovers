@@ -7,12 +7,13 @@ interface FetchDataParams {
   headers?: AxiosRequestHeaders | undefined;
   body?: Record<string, unknown>;
 }
+
 export const BASE_URL = "https://plant-lovers.herokuapp.com";
 axios.defaults.method = "GET";
 axios.defaults.baseURL = BASE_URL;
 
-const useFetchData = (params: FetchDataParams) => {
-  const [response, setResponse] = useState([]);
+const useFetchData = <T>(params: FetchDataParams) => {
+  const [response, setResponse] = useState<T>();
   const [error, setError] = useState<any | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
@@ -35,7 +36,7 @@ const useFetchData = (params: FetchDataParams) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [params.url]);
 
   return { response, error, loading };
 };

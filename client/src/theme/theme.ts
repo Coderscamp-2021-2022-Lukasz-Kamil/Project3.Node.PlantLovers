@@ -5,6 +5,7 @@ export const theme = {
       textInactive: "#A59E9E",
       secondaryTextInactive: "#8B8B8B",
       backgroundcolor: "#FFF",
+      plantspagebackground: "#A3A5A8",
     },
     navigationBar: {
       primary: "#73A942",
@@ -24,12 +25,20 @@ export const theme = {
       hover: "#AAD576",
       secondaryHover: "#A59E9E",
       transparent: "transparent",
+      addButton: "#F9F8F8",
+      deleteButton: "#f41414",
     },
     input: {
       primary: "#F9F8F8",
       secondary: "#000",
       placeholder: "#9E9999",
       transparent: "transparent",
+    },
+    table: {
+      primary: "#F5F6F7",
+      secondary: "#AAD576",
+      oddRow: "#F0F0F0	",
+      filterButton: "#DCDCDC",
     },
   },
   size: {
@@ -41,6 +50,7 @@ export const theme = {
       lg: 20,
       xl: 24,
       xxl: 26,
+      titleXXs: 32,
       titleXs: 35,
       titleSm: 45,
       titleMd: 50,
@@ -60,6 +70,8 @@ export const theme = {
       xxxl: 38,
       titleMd: 70,
       titleLg: 80,
+      titleXL: 110,
+      titleXXL: 140,
     },
     common: {
       borderRadius: "5px",

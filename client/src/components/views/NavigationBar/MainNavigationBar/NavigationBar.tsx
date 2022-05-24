@@ -6,7 +6,12 @@ import PagesOnMobile from "./PageMobile";
 export const NavigationBar = () => {
   return (
     <NavBar>
-      <TitleButton fontWeight="regular" background="transparent" padding="0">
+      <TitleButton
+        fontWeight="regular"
+        background="transparent"
+        padding="0"
+        hoverBackground="transparent"
+      >
         <StartPageLink to="/"> Plant Lovers </StartPageLink>
       </TitleButton>
       <Pages />

@@ -29,15 +29,18 @@ export interface ButtonProps {
     | "hover"
     | "secondary"
     | "secondaryHover"
-    | "transparent";
+    | "transparent"
+    | "addButton";
+
   width?: string;
   height?: string;
   padding?: string;
-  mediumWidth?: string;
-  mediumHeight?: string;
   mobileWidth?: string;
   mobileHeight?: string;
   borderRadius?: string;
+  border?: string;
+  hoverColor?: "backgroundcolor" | "textColor" | "textInactive";
+  hoverBackground?: "hover" | "secondaryHover" | "transparent";
 }
 
 export const Button = styled.button<ButtonProps>`
@@ -46,7 +49,7 @@ export const Button = styled.button<ButtonProps>`
   align-items: center;
   padding: ${({ padding }) => (padding ? padding : "0.5rem")};
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : 5)}px;
-  border: none;
+  border: ${({ border }) => (border ? border : "none")};
   cursor: pointer;
   transition: 0.2s;
   font-size: ${({ theme, fontSizeDesktop }) =>
@@ -63,10 +66,14 @@ export const Button = styled.button<ButtonProps>`
   height: ${({ height }) => (height ? height : "45px")};
 
   &:hover {
-    color: ${({ theme, color }) =>
-      color ? theme.colors.common[color] : theme.colors.common.textColor};
-    background: ${({ theme, background }) =>
-      background ? theme.colors.button[background] : theme.colors.button.hover};
+    color: ${({ theme, hoverColor }) =>
+      hoverColor
+        ? theme.colors.common[hoverColor]
+        : theme.colors.common.textColor};
+    background: ${({ theme, hoverBackground }) =>
+      hoverBackground
+        ? theme.colors.button[hoverBackground]
+        : theme.colors.button.hover};
   }
 
   @media (max-width: 576px) {

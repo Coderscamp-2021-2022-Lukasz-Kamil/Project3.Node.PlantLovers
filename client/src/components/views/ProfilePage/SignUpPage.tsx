@@ -14,6 +14,7 @@ import { InputUser } from "../../ui/Input/Input.style";
 import { Button } from "../../ui/Button/Button.style";
 import background from "../../../assets/LoginPagePhoto.svg";
 import { Typography } from "../../ui/Typography/Typography.style";
+import { ErrorCard } from "./LoginPage";
 
 export const SignUpContainer = styled(LandingPageContainer)`
   background-image: url(${background});
@@ -21,7 +22,7 @@ export const SignUpContainer = styled(LandingPageContainer)`
   justify-content: center;
 `;
 
-const SignUpCard = styled(Card)`
+export const SignUpCard = styled(Card)`
   width: 440px;
   max-height: 500px;
   display: flex;
@@ -55,14 +56,8 @@ export const SignUpButton = styled(Button)`
   }
 `;
 
-const ErrorCard = styled.div`
-  width: 280px;
-  font-size: ${({ theme }) => theme.size.desktop.xs}px;
-  margin: 0 auto;
-  margin-bottom: 5px;
-`;
-
 const SignUpPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setUserIdCookie] = useCookies(["user-id"]);
   const signUpFormHandler = useFormik({
     initialValues: {

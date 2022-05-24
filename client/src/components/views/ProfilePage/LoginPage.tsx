@@ -41,7 +41,7 @@ const LoginCard = styled(Card)`
   }
 `;
 
-const ErrorCard = styled.div`
+export const ErrorCard = styled.div`
   width: 280px;
   font-size: ${({ theme }) => theme.size.desktop.xs}px;
   margin: 0 auto;
@@ -85,7 +85,6 @@ const LoginPage = () => {
       },
     })
       .then((response) => {
-        console.log(response);
         setUserIdCookie("user-id", response.data.id);
         setTokenCookie("token", response.headers.token);
         navigateTo();

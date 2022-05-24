@@ -4,18 +4,35 @@ import { Button } from "../Button/Button.style";
 
 interface IconInButton {
   width?: number;
-  height?: number;
+  heigth?: number;
   marginRight?: string;
   mobileWidth?: number;
   mobileHeight?: number;
+  rotating?: boolean;
+}
+
+interface LogOutInterface {
+  content?: string;
+  src?: string;
+  bottom?: string;
+  right?: string;
+  textColor?: "backgroundcolor" | "textColor";
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+interface LogOutPosition {
+  bottom?: string;
+  right?: string;
+  textColor?: "backgroundcolor" | "textColor";
 }
 
 export const Icon = styled.img<IconInButton>`
   display: flex;
-  margin-right: ${({ marginRight }) => (marginRight ? marginRight : "10px")};
+  margin-right: ${({ marginRight }) => (marginRight ? marginRight : "0px")};
   transition: 0.2s;
   width: ${({ width }) => (width ? width : 30)}px;
   height: ${({ height }) => (height ? height : 30)}px;
+  ${({ rotating }) => rotating && `transform: rotate(180deg)`};
 
   @media (max-width: 680px) {
     width: ${({ width }) => (width ? width : 25)}px;
@@ -29,57 +46,63 @@ export const Icon = styled.img<IconInButton>`
 `;
 
 export const Add = styled(Button)`
-  border: 1px solid black;
   margin-bottom: 0.8em;
-  font-size: ${({ theme, fontSizeDesktop }) =>
-    fontSizeDesktop
-      ? theme.size.desktop[fontSizeDesktop]
-      : theme.size.desktop.mdl}px;
-  color: ${({ theme, color }) =>
-    color ? theme.colors.common[color] : theme.colors.common.textColor};
-  background: ${({ theme, background }) =>
-    background ? theme.colors.button[background] : theme.colors.card.secondary};
-  width: ${({ width }) => (width ? width : "100%")};
-  height: ${({ height }) => (height ? height : "65px")};
-  &:hover {
-    color: ${({ theme, color }) =>
-      color ? theme.colors.common[color] : theme.colors.common.backgroundcolor};
-    background: ${({ theme, background }) =>
-      background
-        ? theme.colors.button[background]
-        : theme.colors.button.secondaryHover};
-  }
   &:hover ${Icon} {
     filter: invert(91%) sepia(99%) saturate(2%) hue-rotate(230deg)
       brightness(108%) contrast(100%);
   }
-  @media (max-width: 576px) {
-    font-size: ${({ theme, fontSizeMobile }) =>
-      fontSizeMobile
-        ? theme.size.mobile[fontSizeMobile]
-        : theme.size.mobile.mdl}px;
-    height: ${({ height }) => (height ? height : "42px")};
-  }
 `;
 
-const LogOut = styled(Button)`
+const LogOut = styled(Button)<LogOutPosition>`
   position: absolute;
-  right: 0;
+  width: auto;
+  bottom: ${({ bottom }) => (bottom ? bottom : "unset")};
+  right: ${({ right }) => (right ? right : "2%")};
+  color: ${({ theme, textColor }) =>
+    textColor ? theme.colors.common[textColor] : theme.colors.common.textColor};
 `;
 
-export const LogOutButton = (props: { content: string; src: string }) => {
+export const LogOutButton = ({
+  right,
+  bottom,
+  src,
+  content,
+  textColor,
+  onClick,
+}: LogOutInterface) => {
   return (
-    <LogOut background="transparent" color="textColor">
-      <Icon src={props.src} />
-      {props.content}
+    <LogOut
+      background="transparent"
+      color="textColor"
+      hoverBackground="transparent"
+      hoverColor="textInactive"
+      width="auto"
+      right={right}
+      bottom={bottom}
+      textColor={textColor}
+      onClick={onClick}
+    >
+      <Icon src={src} />
+      {content}
     </LogOut>
   );
 };
 
 export const ButtonWithIcon = (props: { content: string; src: string }) => {
   return (
-    <Add>
-      <Icon src={props.src} />
+    <Add
+      border="1px solid black"
+      fontSizeDesktop="mdl"
+      color="textColor"
+      background="addButton"
+      width="100%"
+      height="65px"
+      mobileHeight="42px"
+      fontSizeMobile="mdl"
+      hoverColor="backgroundcolor"
+      hoverBackground="secondaryHover"
+    >
+      <Icon src={props.src} marginRight="10px" />
       {props.content}
     </Add>
   );

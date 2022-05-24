@@ -12,6 +12,7 @@ export interface Offer {
   title: string;
   userId: string;
   _id: string;
+  dateUpdated: string;
 }
 
 export interface Photo {

@@ -15,11 +15,20 @@ const AdminPages = () => {
   return (
     <NavBarButtonContainer>
       {pages.map((page) => (
-        <NavBarButton key={page.name} background="transparent" width="auto">
+        <NavBarButton
+          key={page.name}
+          background="transparent"
+          width="auto"
+          hoverBackground="transparent"
+        >
           <PageLink to={page.source}>{page.name}</PageLink>{" "}
         </NavBarButton>
       ))}
-      <NavBarButton background="transparent" width="auto">
+      <NavBarButton
+        background="transparent"
+        width="auto"
+        hoverBackground="transparent"
+      >
         <PageLink to="/admin/settings">
           <Icon src={UserVector} aria-label="User profile" />
         </PageLink>

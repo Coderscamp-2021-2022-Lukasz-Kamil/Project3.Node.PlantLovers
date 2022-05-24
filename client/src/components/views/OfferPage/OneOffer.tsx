@@ -6,7 +6,7 @@ import { CategoryHeightAndCity } from "./CategoryHeightAndCity";
 import { CategoryEmailAndPhone } from "./EmailAndPhone";
 
 const OfferCard = styled(Card)`
-  height: 620px;
+  height: 540px;
 
   @media (max-width: 1000px) {
     width: 80vw;
@@ -109,14 +109,27 @@ export const OneOffer = (props: {
         <Typography fontSize="sm">{props.description}</Typography>
       </DescriptionContainer>
 
-      <CategoryHeightAndCity />
+      <CategoryHeightAndCity
+        category={props.category}
+        height={props.height}
+        city={props.city}
+      />
 
       <div>
         <Typography fontSize="sm" fontWeight="bold">
           Contact:
         </Typography>
 
-        <CategoryEmailAndPhone />
+        <CategoryEmailAndPhone
+          email={props.email}
+          phoneNumber={
+            props.phoneNumber.substring(0, 3) +
+            "-" +
+            props.phoneNumber.substring(3, 6) +
+            "-" +
+            props.phoneNumber.substring(6)
+          }
+        />
       </div>
     </OfferCard>
   );

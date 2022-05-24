@@ -17,9 +17,9 @@ import LoginPage from "../ProfilePage/LoginPage";
 import SignUpPage from "../ProfilePage/SignUpPage";
 import YourOfferPage from "../ProfilePage/YourOfferPage/YourOfferPage";
 import AdminLoginPage from "../AdminPage/AdminLoginPage";
-import AdminCategoriesAndHeightsPage from "../AdminPage/AdminCategoriesAndHeightsPage";
-import AdminUsersOffersPage from "../AdminPage/AdminUsersOffersPage";
-import AdminUsersPage from "../AdminPage/AdminUsersPage";
+import CategoriesAndHeightsPage from "../AdminPage/OffersCategoriesAndHeightsBar/CategoriesAndHeightsPage";
+import AdminUsersOffersPage from "../AdminPage/UsersOffersPage/AdminUsersOffersPage";
+import ManageUsersPage from "../AdminPage/ManageUsersPage/AdminUsersPage";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { NavigationBar } from "../NavigationBar/MainNavigationBar/NavigationBar";
@@ -30,6 +30,7 @@ import GlobalFonts from "../../../font/fonts";
 import Offer from "../OfferPage/OfferPage";
 import { ProfileAndYourOfferBar } from "../ProfilePage/ProfileAndYourOfferBar/ProfileAndYourOfferBar";
 import AccountActivation from "../ProfilePage/AccountActivation";
+import { CategoriesAndHeightsBar } from "../AdminPage/OffersCategoriesAndHeightsBar/CategoriesAndHeightsBar";
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/add-offer" element={<AddOfferPage />} />
             <Route path="/plants" element={<PlantsPage />} />
-            <Route path="/plants/offer" element={<Offer />} />
+            <Route path="/plants/offer/:id" element={<Offer />} />
             <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
               <Route path="/user/" element={<UserPage />} />
               <Route path="/user/your-offers" element={<YourOfferPage />} />
@@ -59,15 +60,17 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
           <Route path="/" element={<AdminPagesWithNavigationBar />}>
             <Route path="/admin" element={<AdminLoginPage />} />
-            <Route path="/admin/users" element={<AdminUsersPage />} />
-            <Route
-              path="admin/offers/categories-and-heights"
-              element={<AdminCategoriesAndHeightsPage />}
-            />
-            <Route
-              path="/admin/offers/users-offers"
-              element={<AdminUsersOffersPage />}
-            />
+            <Route path="/admin/users" element={<ManageUsersPage />} />
+            <Route path="/" element={<AdminOffersCategoriesAndHeightsBar />}>
+              <Route
+                path="admin/offers/categories-and-heights"
+                element={<CategoriesAndHeightsPage />}
+              />
+              <Route
+                path="/admin/offers/users-offers"
+                element={<AdminUsersOffersPage />}
+              />
+            </Route>
             <Route path="/admin/settings" element={<AdminSettings />} />
           </Route>
         </Routes>
@@ -107,6 +110,15 @@ function App() {
     return (
       <>
         <ProfileAndYourOfferBar />
+        <Outlet />
+      </>
+    );
+  }
+
+  function AdminOffersCategoriesAndHeightsBar() {
+    return (
+      <>
+        <CategoriesAndHeightsBar />
         <Outlet />
       </>
     );

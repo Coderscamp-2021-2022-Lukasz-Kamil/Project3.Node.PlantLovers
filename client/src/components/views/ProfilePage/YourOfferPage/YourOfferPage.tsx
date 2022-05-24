@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Input } from "../../../ui/Input/Input.style";
+import LogOut from "../LogOut";
 import { FilterButtons } from "./FilterButtons";
 import { Offers } from "./Offers";
 
@@ -10,6 +11,10 @@ export const YourOfferPageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 15px 0;
+
+  @media (max-width: 576px) {
+    margin: 0 0 30px;
+  }
 `;
 
 export const SearchAndFilterContainer = styled.div`
@@ -51,10 +56,12 @@ const YourOfferPage = () => {
             placeholder="Search for plant"
             width="320px"
             height="35px"
+            borderRadius="0"
           />
           <FilterButtons />
         </SearchAndFilterContainer>
         <Offers />
+        <LogOut />
       </div>
     </YourOfferPageContainer>
   );
