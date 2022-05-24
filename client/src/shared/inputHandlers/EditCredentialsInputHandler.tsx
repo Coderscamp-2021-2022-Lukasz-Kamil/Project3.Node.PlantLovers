@@ -1,8 +1,7 @@
-import { useFormik } from "formik";
 import * as Yup from "yup";
 import { passwordRegExp } from "./constants";
 
-const editCredentialsSchema = Yup.object({
+export const editCredentialsSchema = Yup.object({
   currentPassword: Yup.string()
     .required("Password is required")
     .min(8, "Password is too short - should be 8 chars minimum")
@@ -23,15 +22,3 @@ const editCredentialsSchema = Yup.object({
     newPassword ? field.required().oneOf([Yup.ref("newPassword")]) : field
   ),
 });
-
-const editCredentialsFormHandler = useFormik({
-  initialValues: {
-    currentPassword: "",
-    newPassword: "",
-    confirmPassword: "",
-  },
-  validationSchema: editCredentialsSchema,
-  onSubmit: (values) => alert(JSON.stringify(values)),
-});
-
-export default editCredentialsFormHandler;
