@@ -160,7 +160,7 @@ const PlantsPage = () => {
         </PlantsPageSearchAndFilterBar>
       </PlantsPageSearchAndFilterFlexWrapper>
       <PlantsPageFlexWrapper justifyContent="flex-start">
-        <PlantsPageWholeFilterComponent />
+        {/* <PlantsPageWholeFilterComponent /> */}
         {displayOffers()}
       </PlantsPageFlexWrapper>
     </PlantsPageContainer>

@@ -166,11 +166,11 @@ export const Offers = () => {
                 <Typography fontSize="xxxs" fontSizeMobile="xs">
                   {offer.city}
                 </Typography>
-                <Icons
+                {/* <Icons
                   onArchiveButtonClick={() => onArchiveButtonClick(offer._id)}
                   onEditButtonClick={() => onEditButtonClick(offer._id)}
                   onDeleteButtonClick={() => onDeleteButtonClick(offer._id)}
-                />
+                /> */}
               </OffersInfoFlexWrapper>
             </FlexWrapper>
           </OfferCard>

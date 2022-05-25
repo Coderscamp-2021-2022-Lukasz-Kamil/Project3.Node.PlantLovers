@@ -9,14 +9,14 @@ const isAdmin = () => {
     const decodedToken = jwtDecode(userCookie["token"]);
     return decodedToken.payload.rol;
   } catch (err) {
-    <Navigate to="/user/login" />;
+    <Navigate to="/admin" />;
   }
 };
 
 const AdminProtectedRoutes = () => {
   const auth = isAdmin();
 
-  return auth ? <Outlet /> : <Navigate to="/user/login" />;
+  return auth ? <Outlet /> : <Navigate to="/admin" />;
 };
 
 export default AdminProtectedRoutes;
