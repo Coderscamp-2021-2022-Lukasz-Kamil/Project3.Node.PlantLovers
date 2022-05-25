@@ -44,8 +44,8 @@ export const getOneOffer = async (req, res) => {
 
 export const createOffer = async (req, res) => {
   const body = req.body;
-  const categoryObjId = new Mongoose.Types.ObjectId(body.category.id);
-  const heightObjId = new Mongoose.Types.ObjectId(body.height.id);
+  const categoryObjId = new Mongoose.Types.ObjectId(body.category._id);
+  const heightObjId = new Mongoose.Types.ObjectId(body.height._id);
 
   body.category = categoryObjId;
   body.height = heightObjId;
