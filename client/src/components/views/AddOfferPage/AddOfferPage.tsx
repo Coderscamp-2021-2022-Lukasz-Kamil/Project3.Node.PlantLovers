@@ -179,6 +179,7 @@ const AddOfferPage = () => {
             imageHeigth={15}
             imageMobileWidth={15}
             imageMobileHeigth={15}
+            desktopWidth="670px"
             imageMarginRight="0"
             list={categoryItems}
             listMarginTop="43px"
@@ -193,6 +194,7 @@ const AddOfferPage = () => {
             imageHeigth={15}
             imageMobileWidth={15}
             imageMobileHeigth={15}
+            desktopWidth="670px"
             imageMarginRight="0"
             list={heightsItems}
             listMarginTop="44px"
