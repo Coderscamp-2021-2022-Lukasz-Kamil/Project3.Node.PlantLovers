@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import UserData from "../ProfilePage/ProfilePage/UserData";
 import UserPassword from "../ProfilePage/ProfilePage/UserPassword";
-import LogOut from "../ProfilePage/LogOut";
+import AdminLogout from "./AdminLogoutPage";
 import { ProfilePageContainer } from "../ProfilePage/ProfilePage/ProfilePage";
 
 const AdminData = styled.div`
@@ -26,7 +26,7 @@ const AdminSettings = () => {
         <UserData />
         <UserPassword />
       </ProfilePageContainer>
-      <LogOut />
+      <AdminLogout />
     </div>
   );
 };
