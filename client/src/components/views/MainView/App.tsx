@@ -47,6 +47,7 @@ function App() {
             <Route path="/" element={<UserProfileOrOffersNavigationBar />}>
               <Route path="/user/" element={<UserPage />} />
               <Route path="/user/your-offers" element={<YourOfferPage />} />
+              <Route path="/user/add-offer" element={<AddOfferPage />} />
             </Route>
           </Route>
           <Route path="/" element={<LoginPagesWithNavigationBar />}>

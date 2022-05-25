@@ -9,7 +9,6 @@ export const createHeight = async (data) => {
     await newHeight.save();
     return newHeight;
   } catch (err) {
-    console.log(err);
     return new Error("Height wasn't created");
   }
 };

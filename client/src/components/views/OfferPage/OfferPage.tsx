@@ -41,13 +41,12 @@ const OfferPage = () => {
   const [offer, setOffer] = useState<null | Offer>(null);
 
   const { response, error, loading } = useFetchData<Offer>({
-    url: `${BASE_URL}/offers/${id}`,
+    url: BASE_URL + `/offers/${id}`,
     method: "GET",
     headers: {
       accept: "*/*",
     },
   });
-
   useEffect(() => {
     if (response) {
       setOffer(response);
