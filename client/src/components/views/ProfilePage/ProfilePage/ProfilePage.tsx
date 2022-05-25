@@ -4,7 +4,7 @@ import UserData from "./UserData";
 import UserPassword from "./UserPassword";
 import LogOut from "../LogOut";
 
-const ProfilePageContainer = styled.div`
+export const ProfilePageContainer = styled.div`
   display: flex;
   margin-top: 20px;
 

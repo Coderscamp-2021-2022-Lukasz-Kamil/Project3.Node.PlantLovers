@@ -20,7 +20,7 @@ export const LoginContainer = styled(LandingPageContainer)`
   justify-content: center;
 `;
 
-const LoginCard = styled(Card)`
+export const LoginCard = styled(Card)`
   margin: 0 auto;
   padding: 0;
   width: 440px;

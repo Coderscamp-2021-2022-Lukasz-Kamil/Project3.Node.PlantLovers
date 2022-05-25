@@ -64,9 +64,9 @@ function App() {
             />
           </Route>
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/admin" element={<AdminLoginPage />} />
           <Route path="/" element={<AdminProtectedRoutes />}>
             <Route path="/" element={<AdminPagesWithNavigationBar />}>
-              <Route path="/admin" element={<AdminLoginPage />} />
               <Route path="/admin/users" element={<ManageUsersPage />} />
               <Route path="/" element={<AdminOffersCategoriesAndHeightsBar />}>
                 <Route
