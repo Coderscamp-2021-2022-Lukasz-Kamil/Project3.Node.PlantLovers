@@ -1,5 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import { useState, useMemo, useEffect } from "react";
+import useFetchData from "../../../../hooks/UseFetch";
+import { Method } from "axios";
+import { toast } from "react-toastify";
+import { DefaultColumnFilter } from "../UsersOffersPage/DefaultColumnFilter";
 import {
   TableWrapper,
   Table,
@@ -9,61 +14,39 @@ import {
   TableHeader,
   TableData,
   ActionButton,
-} from "./AdminUsersOffersPage.styled";
-import { useState, useEffect } from "react";
-import useFetchData from "../../../../hooks/UseFetch";
-import { Method } from "axios";
-import { toast } from "react-toastify";
-import { Column, useTable, useFilters } from "react-table";
-import { useMemo } from "react";
-import Photo from "../../../../shared/intefaces/photos.interface";
-import { DefaultColumnFilter } from "./DefaultColumnFilter";
-import { FilterbyActive } from "./FilterByActive";
-import { useCookies } from "react-cookie";
+} from "../UsersOffersPage/AdminUsersOffersPage.styled";
 import {
-  handleDeleteOffer,
-  handleActivateOffer,
+  handleDeleteUser,
+  handleChangeToAdmin,
 } from "../../../../shared/API/api";
+import { FilterByAdmin } from "./FilterByAdmin";
+import { Heading } from "./ManageUsersPage.styled";
+import { useCookies } from "react-cookie";
+import { Column, useTable, useFilters } from "react-table";
 
-interface Offer {
+interface User {
   _id: string;
-  city: string;
-  title: string;
-  photos: Photo[];
+  email: string;
   isActive: boolean;
+  isAdmin: boolean;
 }
 
-const AdminUsersOffersPage = () => {
-  const [offers, setOffers] = useState<Offer[]>([]);
+const ManageUsersPage = () => {
+  const [users, setUsers] = useState<User[]>([]);
   const [token] = useCookies(["token"]);
 
-  const { response, error, loading } = useFetchData<Offer[]>({
-    url: "/offers",
+  const { response, error, loading } = useFetchData<User[]>({
+    url: "/users",
     method: "GET" as Method,
     headers: {
       accept: "*/*",
     },
   });
 
-  const data = useMemo<Offer[]>(() => offers, [offers]);
+  const data = useMemo<User[]>(() => users, [users]);
 
-  const columns = useMemo<Column<Offer>[]>(
+  const columns = useMemo<Column<User>[]>(
     () => [
-      {
-        Header: "Photo",
-        columns: [
-          {
-            Header: "",
-            accessor: "photos[0].url",
-            Cell: ({ cell: { value } }: any) => (
-              <div className="offer-photo">
-                <img src={value} />
-              </div>
-            ),
-            Filter: "",
-          },
-        ],
-      },
       {
         Header: "_ID",
         columns: [
@@ -74,20 +57,11 @@ const AdminUsersOffersPage = () => {
         ],
       },
       {
-        Header: "Name",
+        Header: "Email",
         columns: [
           {
             Header: "",
-            accessor: "title",
-          },
-        ],
-      },
-      {
-        Header: "City",
-        columns: [
-          {
-            Header: "",
-            accessor: "city",
+            accessor: "email",
           },
         ],
       },
@@ -105,13 +79,12 @@ const AdminUsersOffersPage = () => {
                   onClick={async (
                     event: React.MouseEvent<HTMLButtonElement>
                   ) => {
-                    const offers = await handleDeleteOffer(
+                    const users = await handleDeleteUser(
                       cell.row.values._id,
                       token
                     );
-
-                    if (offers) {
-                      setOffers(offers);
+                    if (users) {
+                      setUsers(users);
                     }
                   }}
                 >
@@ -121,34 +94,36 @@ const AdminUsersOffersPage = () => {
             ),
             Filter: "",
           },
+
           {
             Header: "",
-            accessor: "isActive",
-            Cell: ({ cell }) => {
+            accessor: "isAdmin",
+            Cell: ({ cell }: any) => {
               return cell.value === true ? (
-                <p className="align-center">Active</p>
+                <p className="align-center">Admin</p>
               ) : (
                 <div className="align-center">
                   <ActionButton
-                    className="activate"
+                    className="activate align-center"
+                    value={cell.row.values.id}
                     onClick={async (
                       event: React.MouseEvent<HTMLButtonElement>
                     ) => {
-                      const offers = await handleActivateOffer(
+                      const users = await handleChangeToAdmin(
                         cell.row.values._id,
                         token
                       );
-                      if (offers) {
-                        setOffers(offers);
+                      if (users) {
+                        setUsers(users);
                       }
                     }}
                   >
-                    Activate
+                    Make an Admin
                   </ActionButton>
                 </div>
               );
             },
-            Filter: FilterbyActive,
+            Filter: FilterByAdmin,
           },
         ],
       },
@@ -162,7 +137,6 @@ const AdminUsersOffersPage = () => {
     }),
     []
   );
-
   const tableInstance = useTable({ columns, data, defaultColumn }, useFilters);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -170,20 +144,21 @@ const AdminUsersOffersPage = () => {
 
   useEffect(() => {
     if (response) {
-      setOffers(response);
+      setUsers(response);
     }
     if (error) {
-      toast.error("Offer not found");
+      toast.error("User not found");
     }
   }, [response]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
-  const usersOffers: Offer[] = response ? response : [];
+  const allUsers: User[] = response ? response : [];
 
   return (
     <>
+      <Heading>Manage users</Heading>
       <TableWrapper>
         <Table {...getTableProps()}>
           <TableHead>
@@ -231,4 +206,4 @@ const AdminUsersOffersPage = () => {
   );
 };
 
-export default AdminUsersOffersPage;
+export default ManageUsersPage;

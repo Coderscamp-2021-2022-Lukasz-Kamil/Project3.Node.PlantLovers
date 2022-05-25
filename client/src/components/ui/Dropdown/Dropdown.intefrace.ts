@@ -1,5 +1,5 @@
 export interface Item {
-  id: number;
+  id: string;
   name: string;
 }
 
@@ -57,7 +57,7 @@ export interface IDropdown {
   triangleMobileMargin?: string;
   triangleMobileJustify?: string;
   triangleWrapperMobileWidth?: string;
-  onOptionChosen?: (chosenValue: string) => void;
+  onOptionChosen?: (chosenItem: Item) => void;
 }
 
 export interface DropdownLookProps {

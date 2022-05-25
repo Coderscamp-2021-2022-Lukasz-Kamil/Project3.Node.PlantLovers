@@ -1,6 +1,6 @@
 import Category from "../model/Category.js";
 
-const createCategory = async (data) => {
+export const createCategory = async (data) => {
   const newCategory = new Category({
     ...data,
   });
@@ -9,9 +9,10 @@ const createCategory = async (data) => {
     await newCategory.save();
     return newCategory;
   } catch (err) {
-    console.log(err);
     return new Error("Category wasn't created");
   }
 };
 
-export default createCategory;
+export const deleteCategory = async (id) => {
+  return await Category.deleteOne({ _id: id });
+};

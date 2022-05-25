@@ -9,8 +9,10 @@ import { deleteOfferWithId } from "../useCases/deleteOffer.js";
 import validateCreateOffer from "../model/OfferValidation.js";
 import { updateOfferFunc } from "../useCases/updateOffer.js";
 import jwt from "jsonwebtoken";
-import { getOffer } from "../repositories/queries.js";
+import { getOfferById } from "../repositories/queries.js";
+// import { getOffer } from "../repositories/queries.js";
 import { getUserOffers } from "../useCases/getUserOffers.js";
+import Mongoose from "mongoose";
 
 export const getAllOffers = async (req, res) => {
   try {
@@ -32,7 +34,7 @@ export const getAllUserOffers = async (req, res) => {
 
 export const getOneOffer = async (req, res) => {
   try {
-    const offer = await getOffer(req.params.id);
+    const offer = await getOfferById(req.params.id);
     if (!offer) return res.status(404).send("No offer found!");
     return res.status(200).send(offer);
   } catch (error) {
@@ -41,7 +43,14 @@ export const getOneOffer = async (req, res) => {
 };
 
 export const createOffer = async (req, res) => {
-  const { error } = validateCreateOffer(req.body);
+  const body = req.body;
+  const categoryObjId = new Mongoose.Types.ObjectId(body.category.id);
+  const heightObjId = new Mongoose.Types.ObjectId(body.height.id);
+
+  body.category = categoryObjId;
+  body.height = heightObjId;
+
+  const { error } = validateCreateOffer(body);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
@@ -88,7 +97,7 @@ export const archiveOffer = async (req, res) => {
     if (!archivedOffer) {
       return res.status(404).send("There is no offer");
     }
-    // res.append("Access-Control-Allow-Origin", "http://localhost:3001");
+    // res.append("Access-Control-Allow-Origin", "http://localhost:3000");
     // res.append(
     //   "Access-Control-Allow-Origin",
     //   "https://plant-lovers.herokuapp.com/"

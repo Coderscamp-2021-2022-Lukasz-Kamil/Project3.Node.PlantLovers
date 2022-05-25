@@ -1,5 +1,6 @@
 interface Height {
-    range: string;
-  }
-  
-  export default Height;
+  range: string;
+  _id: string;
+}
+
+export default Height;

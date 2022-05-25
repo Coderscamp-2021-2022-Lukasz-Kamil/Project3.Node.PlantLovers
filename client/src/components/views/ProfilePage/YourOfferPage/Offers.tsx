@@ -65,7 +65,7 @@ export const Offers = () => {
   const [userIdCookie] = useCookies(["user-id"]);
   const [token] = useCookies(["token"]);
   const { response } = useFetchData<Offer[]>({
-    url: `/offers/${userIdCookie["user-id"]}`,
+    url: `/offers/user/${userIdCookie["user-id"]}`,
     method: "GET",
     headers: {
       accept: "*/*",
@@ -136,37 +136,46 @@ export const Offers = () => {
       });
   };
 
+  const getPhoto = (offer: Offer) => {
+    if (offer.photos[0]) {
+      return offer.photos[0].url;
+    }
+    return "https://img.freepik.com/free-photo/closeup-shot-beautiful-cactus-plants-blue-background_181624-22401.jpg?t=st=1653422114~exp=1653422714~hmac=a5c35ca268b5291cc1eafc966bac269bce13ecb5396b9b29ae7ee694e5f66b74&w=996";
+  };
+
   return (
     <YourOfferGridContainer smallScreenColumns={2}>
-      {offers?.map((offer) => (
-        <OfferCard width="auto" color="offer" key={offer._id}>
-          <OfferCardButton>
-            <ImageContainer>
-              <ImageCard alt="plantPhoto" src={offer.photos[0].url}></ImageCard>
-            </ImageContainer>
-          </OfferCardButton>
-          <FlexWrapper justifyContent="space-between" direction="column">
-            <OffersInfoFlexWrapper justifyContent="space-between">
-              <Typography fontSize="xxs" fontSizeMobile="xs">
-                {offer.title}
-              </Typography>
-              <PriceTypography fontSize="xxs" fontSizeMobile="xs">
-                {offer.price}$
-              </PriceTypography>
-            </OffersInfoFlexWrapper>
-            <OffersInfoFlexWrapper>
-              <Typography fontSize="xxxs" fontSizeMobile="xs">
-                {offer.city}
-              </Typography>
-              <Icons
-                onArchiveButtonClick={() => onArchiveButtonClick(offer._id)}
-                onEditButtonClick={() => onEditButtonClick(offer._id)}
-                onDeleteButtonClick={() => onDeleteButtonClick(offer._id)}
-              />
-            </OffersInfoFlexWrapper>
-          </FlexWrapper>
-        </OfferCard>
-      ))}
+      {offers?.map((offer) => {
+        return (
+          <OfferCard width="auto" color="offer" key={offer._id}>
+            <OfferCardButton>
+              <ImageContainer>
+                <ImageCard alt="plantPhoto" src={getPhoto(offer)}></ImageCard>
+              </ImageContainer>
+            </OfferCardButton>
+            <FlexWrapper justifyContent="space-between" direction="column">
+              <OffersInfoFlexWrapper justifyContent="space-between">
+                <Typography fontSize="xxs" fontSizeMobile="xs">
+                  {offer.title}
+                </Typography>
+                <PriceTypography fontSize="xxs" fontSizeMobile="xs">
+                  {offer.price}$
+                </PriceTypography>
+              </OffersInfoFlexWrapper>
+              <OffersInfoFlexWrapper>
+                <Typography fontSize="xxxs" fontSizeMobile="xs">
+                  {offer.city}
+                </Typography>
+                <Icons
+                  onArchiveButtonClick={() => onArchiveButtonClick(offer._id)}
+                  onEditButtonClick={() => onEditButtonClick(offer._id)}
+                  onDeleteButtonClick={() => onDeleteButtonClick(offer._id)}
+                />
+              </OffersInfoFlexWrapper>
+            </FlexWrapper>
+          </OfferCard>
+        );
+      })}
     </YourOfferGridContainer>
   );
 };

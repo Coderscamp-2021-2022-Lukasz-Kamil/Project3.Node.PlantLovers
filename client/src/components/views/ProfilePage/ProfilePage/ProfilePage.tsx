@@ -6,7 +6,7 @@ import LogOut from "../LogOut";
 
 const ProfilePageContainer = styled.div`
   display: flex;
-  margin-top: 50px;
+  margin-top: 20px;
 
   @media (max-width: 750px) {
     flex-direction: column;

@@ -1,6 +1,6 @@
 import Height from "../model/Height.js";
 
-const createHeight = async (data) => {
+export const createHeight = async (data) => {
   const newHeight = new Height({
     ...data,
   });
@@ -9,9 +9,10 @@ const createHeight = async (data) => {
     await newHeight.save();
     return newHeight;
   } catch (err) {
-    console.log(err);
     return new Error("Height wasn't created");
   }
 };
 
-export default createHeight;
+export const deleteHeight = async (id) => {
+  return await Height.deleteOne({ _id: id });
+};

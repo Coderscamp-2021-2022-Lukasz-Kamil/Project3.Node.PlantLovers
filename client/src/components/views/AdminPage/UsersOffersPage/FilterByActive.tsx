@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-export const SelectColumnFilter = ({ column }: any) => {
+export const FilterbyActive = ({ column }: any) => {
   const { filterValue, setFilter, preFilteredRows, id } = column;
-  // Calculate the options for filtering
-  // using the preFilteredRows
+
   const options: string[] = React.useMemo(() => {
     const options = new Set();
-    preFilteredRows.forEach((row: any) => {
+
+    preFilteredRows?.forEach((row: any) => {
       options.add(row.values[id]);
     });
     return [...options.values()];
@@ -15,7 +15,7 @@ export const SelectColumnFilter = ({ column }: any) => {
 
   return (
     <select
-      value={filterValue}
+      value={filterValue ? filterValue : ""}
       onChange={(e) => {
         setFilter(e.target.value || undefined);
       }}

@@ -1,4 +1,4 @@
-import createHeight from "../repositories/commands.js";
+import { createHeight } from "../repositories/commands.js";
 import { findHeightByValue } from "../repositories/queries.js";
 
 const addNewHeight = async (data) => {

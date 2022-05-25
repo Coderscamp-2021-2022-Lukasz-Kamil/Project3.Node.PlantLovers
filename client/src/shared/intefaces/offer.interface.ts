@@ -1,7 +1,7 @@
 import Category from "./category.interface";
 import Height from "./height.interface";
 import Location from "./location.interface";
-import Photos from "./photos.interface";
+import Photo from "./photos.interface";
 import User from "./user.interface";
 
 interface Offer {
@@ -13,7 +13,7 @@ interface Offer {
   email?: string;
   dateCreated: string;
   dateUpdated: string;
-  photos: Photos[];
+  photos: Photo[];
   category: Category;
   height: Height;
   views: number;

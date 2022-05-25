@@ -2,7 +2,7 @@ import Joi from "joi-oid";
 
 const validateCreateOffer = (offer) => {
   const schema = Joi.object({
-    userId: Joi.objectId().optional(),
+    userId: Joi.objectId().required(),
 
     title: Joi.string().min(3).max(50).required(),
 
@@ -20,7 +20,7 @@ const validateCreateOffer = (offer) => {
     photos: Joi.array().items(
       Joi.object({
         url: Joi.string().required(),
-        isMainPhoto: Joi.boolean().required(),
+        isMainPhoto: Joi.boolean().optional(),
         _id: Joi.string().optional(),
       })
     ),
