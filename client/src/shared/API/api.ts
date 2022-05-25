@@ -137,8 +137,7 @@ export const handleChangeToAdmin = async (id: string, token: any) => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
+        token: token["token"],
       },
     });
     const getUsersResponse = await axios({
@@ -195,8 +194,7 @@ export const handleCreateCategory = async (name: string, token: any) => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
+        token: token["token"],
       },
     });
     const getCategoriesResponse = await axios({
@@ -213,6 +211,7 @@ export const getCategories = async () => {
     const getCategoriesResponse = await axios({
       url: "/categories",
     });
+    console.log(getCategoriesResponse);
     return getCategoriesResponse.data as Category[];
   } catch (error) {
     toast.error("Cannot load categories");
@@ -231,8 +230,7 @@ export const handleAddOffer = async ({
   photos,
   userId,
   token,
-}: // id,
-NewOffer) => {
+}: NewOffer) => {
   try {
     await axios({
       method: "POST",
@@ -252,14 +250,9 @@ NewOffer) => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
+        token: token["token"],
       },
     });
-    // const getOfferResponse = await axios({
-    //   url: `${BASE_URL}/offers/users/${id}`,
-    // });
-    // return getOfferResponse.data as Offer[];
   } catch (err: any) {
     toast.error("Cannot add offer");
   }
