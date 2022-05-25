@@ -1,102 +1,176 @@
+/*global browser*/
 import React from "react";
-import styled from "styled-components";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
-import { Input } from "../../ui/Input/Input.style";
-import { Textarea } from "../../ui/Textarea/Textarea.style";
-import { FlexWrapper } from "../../wrappers/FlexCenter/FlexWrapper.style";
 import Arrow from "../../../assets/DownVector.svg";
-import { CategoryList, HeightList } from "../../ui/Dropdown/DropdownLists";
-import { ButtonWithIcon } from "../../ui/ButtonWithIcon/ButtonWithIcon";
-import AddVector from "../../../assets/AddVector.svg";
 import { Button } from "../../ui/Button/Button.style";
-import { OfferPhotos } from "./OfferPhotos";
 import { Typography } from "../../ui/Typography/Typography.style";
-
-const AddOfferFlexWrapper = styled(FlexWrapper)`
-  margin-bottom: 50px;
-`;
-
-const AddOfferTitle = styled.h1`
-  margin: 20px 0;
-`;
-const AddOfferDataFlexWrapper = styled(FlexWrapper)`
-  margin: 0 10%;
-
-  @media (max-width: 576px) {
-    flex-direction: column;
-  }
-`;
-
-const AddOfferLeftColumnFlexWrapper = styled(FlexWrapper)`
-  margin-right: 10%;
-
-  @media (max-width: 576px) {
-    margin-right: 0;
-  }
-`;
-
-const AddOfferRightColumnFlexWrapper = styled(FlexWrapper)`
-  width: 30vw;
-
-  @media (max-width: 576px) {
-    width: 70vw;
-  }
-`;
-
-const AddOfferTextarea = styled(Textarea)`
-  margin-bottom: 0.8em;
-`;
-
-export const MainUploadedPhoto = styled.div`
-  width: 100%;
-  height: 30vh;
-  border: 1px solid black;
-  margin-bottom: 0.8em;
-`;
-
-const AddOfferInput = styled(Input)`
-  margin-bottom: 0.8em;
-`;
-
-const ForExchangeContainer = styled(FlexWrapper)`
-  border-radius: 5px;
-  border: 1px solid #000;
-  background: #f9f8f8;
-  width: 100%;
-  height: 45px;
-
-  @media (max-width: 576px) {
-    height: 33px;
-    margin-bottom: 0.8em;
-  }
-`;
-
-const Checkbox = styled.input`
-  width: 20px;
-  height: 20px;
-  margin-left: 10px;
-  accent-color: ${({ theme }) => theme.colors.button.primary};
-
-  @media (max-width: 576px) {
-    width: 15px;
-    height: 15px;
-    margin-left: 5px;
-  }
-`;
+import {
+  AddOfferFlexWrapper,
+  AddOfferTitle,
+  AddOfferDataFlexWrapper,
+  AddOfferInput,
+  AddOfferTextarea,
+  AddOfferLeftColumnFlexWrapper,
+  ForExchangeContainer,
+  Checkbox,
+} from "./AddOffer.styled";
+import { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router";
+import {
+  getCategories,
+  getHeights,
+  handleAddOffer,
+} from "../../../shared/API/api";
+import Category from "../../../shared/intefaces/category.interface";
+import Height from "../../../shared/intefaces/height.interface";
+import { Item } from "../../ui/Dropdown/Dropdown.intefrace";
+import Photo from "../../../shared/intefaces/photos.interface";
 
 const AddOfferPage = () => {
+  const [categories, setcategories] = useState<Category[]>([]);
+  const [heights, setHeights] = useState<Height[]>([]);
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [city, setCity] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const [categoryItems, setCategoryItems] = useState<Item[]>([]);
+  const [heightId, setHeightId] = useState("");
+  const [heightsItems, setHeightsItems] = useState<Item[]>([]);
+  const [price, setPrice] = useState("");
+  const [forExchange, setForExchange] = useState(true);
+  const [photo, setPhoto] = useState<Photo>();
+
+  const [token] = useCookies(["token"]);
+  const [userId] = useCookies(["user-id"]);
+
+  useEffect(() => {
+    const fetchHeights = async () => {
+      const allHeights = await getHeights();
+      if (allHeights) {
+        setHeights(allHeights);
+      }
+    };
+    fetchHeights();
+  }, []);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const allCategories = await getCategories();
+      if (allCategories) {
+        setcategories(allCategories);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    if (categories) {
+      const items = categories.map((c) => {
+        return { id: c._id, name: c.name };
+      });
+      setCategoryItems(items);
+    }
+  }, [categories]);
+
+  useEffect(() => {
+    if (heights) {
+      const items = heights.map((c) => {
+        return { id: c._id, name: c.range };
+      });
+      setHeightsItems(items);
+    }
+  }, [heights]);
+
+  const navigate = useNavigate();
+  const navigation = () => {
+    navigate("/user/your-offers");
+  };
+
+  const titleHandler = (event: any) => {
+    setTitle(event.target.value);
+  };
+
+  const descriptionHandler = (event: any) => {
+    setDescription(event.target.value);
+  };
+
+  const cityHandler = (event: any) => {
+    setCity(event.target.value);
+  };
+
+  const phoneNumberHandler = (event: any) => {
+    setPhoneNumber(event.target.value);
+  };
+
+  const categoryHandler = (chosenOption: Item) => {
+    setCategoryId(chosenOption.id);
+  };
+
+  const heightHandler = (chosenOption: Item) => {
+    setHeightId(chosenOption.id);
+  };
+
+  const priceHandler = (event: any) => {
+    const onlyDigits = event.target.value.replace(/\D/g, "");
+    setPrice(onlyDigits);
+  };
+
+  const onExchangeHandler = () => {
+    setForExchange(!forExchange);
+  };
+
+  const photoLinkHandler = (event: any) => {
+    setPhoto({ url: event.target.value });
+  };
+
+  const findCategory = (categoryId: string) => {
+    return categories.filter((c) => c._id === categoryId)[0];
+  };
+
+  const findHeight = (heightId: string) => {
+    return heights.filter((c) => c._id === heightId)[0];
+  };
+
   return (
     <AddOfferFlexWrapper direction="column">
       <AddOfferTitle>Add Offer</AddOfferTitle>
       <AddOfferDataFlexWrapper>
         <AddOfferLeftColumnFlexWrapper direction="column">
-          <AddOfferInput placeholder="Title" width="100%" fontSizeMobile="md" />
-          <AddOfferTextarea placeholder="Description" />
-          <AddOfferInput placeholder="City" width="100%" fontSizeMobile="md" />
           <AddOfferInput
-            placeholder="Phone Number"
+            placeholder="Title"
+            type="text"
+            id="title"
             width="100%"
             fontSizeMobile="md"
+            onChange={titleHandler}
+            value={title}
+          />
+          <AddOfferTextarea
+            placeholder="Description"
+            id="description"
+            onChange={descriptionHandler}
+            value={description}
+          />
+          <AddOfferInput
+            placeholder="City"
+            type="text"
+            id="city"
+            width="100%"
+            fontSizeMobile="md"
+            onChange={cityHandler}
+            value={city}
+          />
+          <AddOfferInput
+            placeholder="Phone Number"
+            type="tel"
+            id="phone"
+            width="100%"
+            fontSizeMobile="md"
+            onChange={phoneNumberHandler}
+            value={phoneNumber}
           />
           <Dropdown
             title="Category"
@@ -106,10 +180,11 @@ const AddOfferPage = () => {
             imageMobileWidth={15}
             imageMobileHeigth={15}
             imageMarginRight="0"
-            list={CategoryList}
+            list={categoryItems}
             listMarginTop="43px"
             listMobileMargin="34px 0 0"
             iconPosition="absolute"
+            onOptionChosen={categoryHandler}
           />
           <Dropdown
             title="Height"
@@ -119,25 +194,61 @@ const AddOfferPage = () => {
             imageMobileWidth={15}
             imageMobileHeigth={15}
             imageMarginRight="0"
-            list={HeightList}
+            list={heightsItems}
             listMarginTop="44px"
             listMobileMargin="34px 0 0"
             iconPosition="absolute"
+            onOptionChosen={heightHandler}
           />
-          <AddOfferInput placeholder="Price" width="100%" fontSizeMobile="md" />
+          <AddOfferInput
+            placeholder="Price"
+            type="number"
+            id="price"
+            inputMode="decimal"
+            width="100%"
+            fontSizeMobile="md"
+            onChange={priceHandler}
+            value={price}
+          />
           <ForExchangeContainer>
             <Typography fontSize="mds" fontSizeMobile="md">
               For Exchange?
             </Typography>
-            <Checkbox type="checkbox" />
+            <Checkbox
+              type="checkbox"
+              id="checkbox"
+              onChange={onExchangeHandler}
+            />
           </ForExchangeContainer>
+          <AddOfferInput
+            placeholder="Picture's link"
+            type="text"
+            id="picture"
+            onChange={photoLinkHandler}
+            value={photo?.url}
+          />
+          <Button
+            onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
+              await handleAddOffer({
+                title,
+                description,
+                city,
+                phoneNumber,
+                category: findCategory(categoryId),
+                height: findHeight(heightId),
+                price,
+                forExchange,
+                photos: photo ? [photo] : [],
+                userId: userId["user-id"],
+                token,
+              });
+
+              setTimeout(navigation, 1000);
+            }}
+          >
+            Save Changes
+          </Button>
         </AddOfferLeftColumnFlexWrapper>
-        <AddOfferRightColumnFlexWrapper direction="column">
-          <MainUploadedPhoto></MainUploadedPhoto>
-          <OfferPhotos />
-          <ButtonWithIcon src={AddVector} content="Add" />
-          <Button>Save Changes</Button>
-        </AddOfferRightColumnFlexWrapper>
       </AddOfferDataFlexWrapper>
     </AddOfferFlexWrapper>
   );

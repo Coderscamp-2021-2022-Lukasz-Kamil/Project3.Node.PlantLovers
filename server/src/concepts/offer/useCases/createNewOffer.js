@@ -42,7 +42,6 @@ export async function createNewOffer(body) {
     notifyUserAboutOffer(user, offer);
     return offer;
   } catch (err) {
-    console.log(err);
-    return new Error("Offer wasn't created");
+    return new Error("Offer wasn't created" + err.message);
   }
 }

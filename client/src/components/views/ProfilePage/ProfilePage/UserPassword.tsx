@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../../../ui/Button/Button.style";
 import { useNavigate } from "react-router";
 import { useCookies } from "react-cookie";
 import { useFormik } from "formik";
@@ -6,7 +7,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BASE_URL } from "../../../../hooks/UseFetch";
-import { Button } from "../../../ui/Button/Button.style";
 import {
   InputUserData,
   ProfilePageContainerColumn,

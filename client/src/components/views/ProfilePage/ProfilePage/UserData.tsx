@@ -1,18 +1,17 @@
 import React from "react";
-import styled from "styled-components";
-import { Button } from "../../../ui/Button/Button.style";
-import { InputUser } from "../../../ui/Input/Input.style";
-import { Typography } from "../../../ui/Typography/Typography.style";
-import { FlexWrapper } from "../../../wrappers/FlexCenter/FlexWrapper.style";
-import { editProfileSchema } from "../../../../shared/inputHandlers/EditProfileInputHandler";
 import { useCookies } from "react-cookie";
 import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BASE_URL } from "../../../../hooks/UseFetch";
+import styled from "styled-components";
+import { Button } from "../../../ui/Button/Button.style";
+import { InputUser } from "../../../ui/Input/Input.style";
+import { Typography } from "../../../ui/Typography/Typography.style";
+import { FlexWrapper } from "../../../wrappers/FlexCenter/FlexWrapper.style";
+import { editProfileSchema } from "../../../../shared/inputHandlers/EditProfileInputHandler";
 import { ErrorCard } from "../LoginPage";
-import { useParams } from "react-router-dom";
 
 export const ProfilePageContainerColumn = styled(FlexWrapper)`
   width: 100%;

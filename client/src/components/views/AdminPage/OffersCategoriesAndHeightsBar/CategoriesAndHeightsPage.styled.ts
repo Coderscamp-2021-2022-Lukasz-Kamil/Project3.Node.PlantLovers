@@ -4,13 +4,11 @@ import { TableWrapper } from "../UsersOffersPage/AdminUsersOffersPage.styled";
 
 export const FlexLayout = styled(FlexWrapper)`
   width: 100%;
-  /* background-color: red; */
   min-height: 70vh;
   padding: 3rem;
 `;
 
 export const TableInputWrapper = styled(FlexWrapper)`
-  /* background-color: green; */
   justify-content: center;
   min-height: 60vh;
   width: 30vw;
@@ -20,7 +18,6 @@ export const TableInputWrapper = styled(FlexWrapper)`
 
 export const InputWrapper = styled(FlexWrapper)`
   align-items: flex-end;
-  /* background-color: orange; */
   height: 5vh;
 `;
 

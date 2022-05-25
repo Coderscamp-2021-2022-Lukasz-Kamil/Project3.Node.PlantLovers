@@ -4,7 +4,22 @@ import Offer from "../intefaces/offer.interface";
 import Height from "../intefaces/height.interface";
 import Category from "../intefaces/category.interface";
 import User from "../intefaces/user.interface";
+import Photo from "../intefaces/photos.interface";
 import { toast } from "react-toastify";
+
+export interface NewOffer {
+  token: any;
+  title: string;
+  description: string;
+  city: string;
+  phoneNumber: string;
+  photos: Photo[];
+  category: Category;
+  height: Height;
+  forExchange: boolean;
+  price: string;
+  userId: string;
+}
 
 export const handleDeleteOffer = async (id: string, token: any) => {
   try {
@@ -122,7 +137,8 @@ export const handleChangeToAdmin = async (id: string, token: any) => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
-        token: token["token"],
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
       },
     });
     const getUsersResponse = await axios({
@@ -179,7 +195,8 @@ export const handleCreateCategory = async (name: string, token: any) => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
-        token: token["token"],
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
       },
     });
     const getCategoriesResponse = await axios({
@@ -199,5 +216,51 @@ export const getCategories = async () => {
     return getCategoriesResponse.data as Category[];
   } catch (error) {
     toast.error("Cannot load categories");
+  }
+};
+
+export const handleAddOffer = async ({
+  title,
+  description,
+  city,
+  phoneNumber,
+  category,
+  height,
+  price,
+  forExchange,
+  photos,
+  userId,
+  token,
+}: // id,
+NewOffer) => {
+  try {
+    await axios({
+      method: "POST",
+      url: BASE_URL + "/offers",
+      data: {
+        title: title,
+        description: description,
+        city: city,
+        phoneNumber: phoneNumber,
+        category: category,
+        height: height,
+        price: price,
+        forExchange: forExchange,
+        userId: userId,
+        photos: photos,
+      },
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
+      },
+    });
+    // const getOfferResponse = await axios({
+    //   url: `${BASE_URL}/offers/users/${id}`,
+    // });
+    // return getOfferResponse.data as Offer[];
+  } catch (err: any) {
+    toast.error("Cannot add offer");
   }
 };

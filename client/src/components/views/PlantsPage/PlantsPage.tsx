@@ -24,6 +24,7 @@ import {
   PlantsPageSearchAndFilterOnly,
   SearchIcon,
 } from "./PlantPage.styled";
+import { Item } from "../../ui/Dropdown/Dropdown.intefrace";
 
 const PlantsPage = () => {
   const [sortOption, setSortOption] = useState<string | undefined>();
@@ -48,15 +49,15 @@ const PlantsPage = () => {
   };
 
   const defaultParams = {
-    url: "/offers",
+    url: "/offers/",
     method: "GET" as Method,
     headers: {
       accept: "*/*",
     },
   };
 
-  const onOptionChosen = (option: string) => {
-    setSortOption(option);
+  const onOptionChosen = (option: Item) => {
+    setSortOption(option.name);
   };
 
   let params = defaultParams;

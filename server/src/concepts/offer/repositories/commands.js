@@ -9,7 +9,6 @@ export const createOffer = async (data) => {
   try {
     return await newOffer.save();
   } catch (err) {
-    console.log(err);
     return new Error("Offer wasn't created");
   }
 };
