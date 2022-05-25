@@ -9,8 +9,8 @@ import { deleteOfferWithId } from "../useCases/deleteOffer.js";
 import validateCreateOffer from "../model/OfferValidation.js";
 import { updateOfferFunc } from "../useCases/updateOffer.js";
 import jwt from "jsonwebtoken";
-import { getOfferById } from "../repositories/queries.js";
-// import { getOffer } from "../repositories/queries.js";
+// import { getOfferById } from "../repositories/queries.js";
+import { getOffer } from "../repositories/queries.js";
 import { getUserOffers } from "../useCases/getUserOffers.js";
 import Mongoose from "mongoose";
 
@@ -34,7 +34,8 @@ export const getAllUserOffers = async (req, res) => {
 
 export const getOneOffer = async (req, res) => {
   try {
-    const offer = await getOfferById(req.params.id);
+    const offer = await getOffer(req.params.id);
+    console.log(offer);
     if (!offer) return res.status(404).send("No offer found!");
     return res.status(200).send(offer);
   } catch (error) {

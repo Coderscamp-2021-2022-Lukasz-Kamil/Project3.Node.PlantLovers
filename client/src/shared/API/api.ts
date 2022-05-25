@@ -51,7 +51,8 @@ export const handleActivateOffer = async (id: string, token: any) => {
       headers: {
         accept: "*/*",
         "Content-Type": "application/json",
-        token: token["token"],
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjU5ZGNlNzkzYzk4MWIxZDEzOThiMTMiLCJyb2wiOnRydWUsImlhdCI6MTY1MjM3NjcwNCwiZXhwIjoxNjU1OTc2NzA0fQ.HAQL6KXkrVwCPBb7vjf3AEsxpkVyTjERz6ZknRWDOUU",
       },
     });
 

@@ -57,7 +57,7 @@ const LoginPage = () => {
   const [_, setUserIdCookie] = useCookies(["user-id"]);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [token, setTokenCookie] = useCookies(["token"]);
-
+  console.log(token);
   const signInFormHandler = useFormik({
     initialValues: {
       email: "",

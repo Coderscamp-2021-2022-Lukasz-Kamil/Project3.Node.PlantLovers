@@ -1,4 +1,3 @@
-/*global browser*/
 import React from "react";
 import { Dropdown } from "../../ui/Dropdown/Dropdown";
 import Arrow from "../../../assets/DownVector.svg";

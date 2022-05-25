@@ -4,7 +4,6 @@ import {
   BoldPlusRegularContainer,
   BoldPlusRegularContainerItem,
 } from "./OneOffer";
-// I wanted to use this to make shorter code but I dunno how to pass this to main file and use there props form type//
 
 interface Offer {
   category: string;
@@ -13,6 +12,7 @@ interface Offer {
 }
 
 export const CategoryHeightAndCity = (props: Offer) => {
+  console.log(props);
   const offers = [
     { name: "Category", type: props.category },
     { name: "Height", type: props.height },

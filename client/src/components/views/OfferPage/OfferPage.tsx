@@ -38,8 +38,8 @@ export const Image = styled.img`
 
 const OfferPage = () => {
   const { id } = useParams();
-  const [offer, setOffer] = useState<null | Offer>(null);
-
+  const [offer, setOffer] = useState<Offer>();
+  console.log(offer);
   const { response, error, loading } = useFetchData<Offer>({
     url: BASE_URL + `/offers/${id}`,
     method: "GET",
@@ -47,6 +47,7 @@ const OfferPage = () => {
       accept: "*/*",
     },
   });
+  console.log(response);
   useEffect(() => {
     if (response) {
       setOffer(response);
@@ -59,6 +60,7 @@ const OfferPage = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  console.log(offer);
 
   return (
     <>

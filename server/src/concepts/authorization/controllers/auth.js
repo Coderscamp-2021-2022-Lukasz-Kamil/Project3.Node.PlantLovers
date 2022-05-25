@@ -29,7 +29,7 @@ export const isAuthenticated = (req, res, next) => {
   if (!check) {
     return res.status(401).send("Access denied!");
   }
-
+  console.log(token);
   next();
 };
 

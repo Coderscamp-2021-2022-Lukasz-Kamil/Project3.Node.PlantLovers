@@ -10,51 +10,57 @@ export async function getOfferById(offerId) {
 }
 
 export async function getOffer(offerId) {
-  const offers = await Offer.aggregate([
-    {
-      $match: {
-        _id: mongoose.Types.ObjectId(offerId),
+  try {
+    const offers = await Offer.aggregate([
+      {
+        $match: {
+          _id: mongoose.Types.ObjectId(offerId),
+        },
       },
-    },
-    {
-      $lookup: {
-        from: "categories",
-        localField: "category",
-        foreignField: "_id",
-        as: "category",
+      {
+        $lookup: {
+          from: "categories",
+          localField: "category",
+          foreignField: "_id",
+          as: "category",
+        },
       },
-    },
-    {
-      $unwind: "$category",
-    },
-    {
-      $lookup: {
-        from: "heights",
-        localField: "height",
-        foreignField: "_id",
-        as: "height",
+      {
+        $unwind: "$category",
       },
-    },
-    {
-      $unwind: "$height",
-    },
-    {
-      $lookup: {
-        from: "users",
-        localField: "userId",
-        foreignField: "_id",
-        as: "userId",
+      {
+        $lookup: {
+          from: "heights",
+          localField: "height",
+          foreignField: "_id",
+          as: "height",
+        },
       },
-    },
-    {
-      $unwind: "$userId",
-    },
-  ]);
+      {
+        $unwind: "$height",
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "userId",
+          foreignField: "_id",
+          as: "userId",
+        },
+      },
+      {
+        $unwind: "$userId",
+      },
+    ]);
 
-  if (!offers.length) {
-    throw new Error("There is no offer with id = " + offerId);
+    if (!offers.length) {
+      throw new Error("There is no offer with id = " + offerId);
+    }
+    console.log(offers);
+    return offers[0];
+  } catch (err) {
+    console.log(err);
+    console.log(err.message);
   }
-  return offers[0];
 }
 
 export async function getAllOffers(options, limit, skip, sort) {
