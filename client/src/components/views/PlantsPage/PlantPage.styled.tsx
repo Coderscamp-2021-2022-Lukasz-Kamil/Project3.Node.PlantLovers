@@ -133,15 +133,17 @@ export const EmptyDiv = styled.div`
 
 export const PlantsPageSearchAndFilterBar = styled.div`
   display: flex;
+  justify-content: center;
   width: 100%;
 `;
 export const PlantsPageSearchAndFilterOnly = styled.div`
   display: flex;
-  width: 100%;
+  width: 75%;
   justify-content: space-between;
   gap: 40px;
 
   @media (max-width: 576px) {
+    width: 90%;
     flex-direction: column;
     gap: 10px;
   }

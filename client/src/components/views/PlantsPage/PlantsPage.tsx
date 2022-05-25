@@ -19,7 +19,7 @@ import {
   SearchButton,
   SearchGroup,
   SearchContainer,
-  EmptyDiv,
+  // EmptyDiv,
   PlantsPageSearchAndFilterBar,
   PlantsPageSearchAndFilterOnly,
   SearchIcon,
@@ -97,7 +97,7 @@ const PlantsPage = () => {
     <PlantsPageContainer direction="column">
       <PlantsPageSearchAndFilterFlexWrapper>
         <PlantsPageSearchAndFilterBar>
-          <EmptyDiv></EmptyDiv>
+          {/* <EmptyDiv></EmptyDiv> */}
           <PlantsPageSearchAndFilterOnly>
             <SearchContainer>
               <SearchGroup>
