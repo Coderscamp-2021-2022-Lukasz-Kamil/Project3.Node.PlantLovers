@@ -35,8 +35,10 @@ const AddOfferPage = () => {
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+
   const [categoryId, setCategoryId] = useState("");
   const [categoryItems, setCategoryItems] = useState<Item[]>([]);
+
   const [heightId, setHeightId] = useState("");
   const [heightsItems, setHeightsItems] = useState<Item[]>([]);
   const [price, setPrice] = useState("");
@@ -45,44 +47,6 @@ const AddOfferPage = () => {
 
   const [token] = useCookies(["token"]);
   const [userId] = useCookies(["user-id"]);
-
-  useEffect(() => {
-    const fetchHeights = async () => {
-      const allHeights = await getHeights();
-      if (allHeights) {
-        setHeights(allHeights);
-      }
-    };
-    fetchHeights();
-  }, []);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const allCategories = await getCategories();
-      if (allCategories) {
-        setcategories(allCategories);
-      }
-    };
-    fetchCategories();
-  }, []);
-
-  useEffect(() => {
-    if (categories) {
-      const items = categories.map((c) => {
-        return { id: c._id, name: c.name };
-      });
-      setCategoryItems(items);
-    }
-  }, [categories]);
-
-  useEffect(() => {
-    if (heights) {
-      const items = heights.map((c) => {
-        return { id: c._id, name: c.range };
-      });
-      setHeightsItems(items);
-    }
-  }, [heights]);
 
   const navigate = useNavigate();
   const navigation = () => {
@@ -133,6 +97,45 @@ const AddOfferPage = () => {
   const findHeight = (heightId: string) => {
     return heights.filter((c) => c._id === heightId)[0];
   };
+
+  useEffect(() => {
+    const fetchHeights = async () => {
+      const allHeights = await getHeights();
+      if (allHeights) {
+        setHeights(allHeights);
+      }
+    };
+    fetchHeights();
+  }, []);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const allCategories = await getCategories();
+      if (allCategories) {
+        setcategories(allCategories);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    if (categories) {
+      const items = categories.map((c) => {
+        return { id: c._id, name: c.name };
+      });
+      console.log(items);
+      setCategoryItems(items);
+    }
+  }, [categories]);
+
+  useEffect(() => {
+    if (heights) {
+      const items = heights.map((c) => {
+        return { id: c._id, name: c.range };
+      });
+      setHeightsItems(items);
+    }
+  }, [heights]);
 
   return (
     <AddOfferFlexWrapper direction="column">
